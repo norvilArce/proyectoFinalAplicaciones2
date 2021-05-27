@@ -33,8 +33,11 @@ namespace WCF_Hunde
 		private Int16 mvarrol_emp;
 		private DateTime mvarfecha_ingreso;
 		private Int16 mvarsueldo;
+		private String mvaremail_emp;
 		private String mvarcod_supervisor;
-		private Boolean mvarestado_emp;
+        private String mvarusu_ult_modificacion_emp;
+        private DateTime mvarfecha_ult_modificacion_emp;
+        private Boolean mvarestado_emp;
 
 		[DataMember]		
 		public String cod_emp
@@ -60,11 +63,29 @@ namespace WCF_Hunde
             get { return mvarsueldo; }
             set { mvarsueldo = value; }
         }
-		[DataMember]
+        [DataMember]
+        public String email_emp
+        {
+            get { return mvaremail_emp; }
+            set { mvaremail_emp = value; }
+        }
+        [DataMember]
 		public String cod_supervisor
         {
             get { return mvarcod_supervisor; }
             set { mvarcod_supervisor = value; }
+        }
+        [DataMember]
+        public String usu_ult_modificacion_emp
+        {
+            get { return mvarusu_ult_modificacion_emp; }
+            set { mvarusu_ult_modificacion_emp = value; }
+        }
+        [DataMember]
+        public DateTime fecha_ult_modificacion_emp
+        {
+            get { return mvarfecha_ult_modificacion_emp; }
+            set { mvarfecha_ult_modificacion_emp = value; }
         }
         [DataMember]
 		public Boolean estado_emp
