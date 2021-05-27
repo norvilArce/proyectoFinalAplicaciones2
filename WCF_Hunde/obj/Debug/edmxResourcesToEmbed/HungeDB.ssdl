@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HundeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Tb_Cliente">
+    <Key>
+      <PropertyRef Name="cod_cli" />
+    </Key>
+    <Property Name="cod_cli" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="Tipo_ciente" Type="int" Nullable="false" />
+    <Property Name="nom_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ape_pat_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ape_mat_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="direccion_cliente" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="cel_cliente" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="email_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="es_dueno" Type="int" Nullable="false" />
+    <Property Name="es_empleado" Type="int" Nullable="false" />
+    <Property Name="id_ubigeo" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="dni_cliente" Type="char" MaxLength="8" Nullable="false" />
+    <Property Name="usu_reg_cli" Type="varchar" MaxLength="4" />
+    <Property Name="fec_reg_cli" Type="datetime" />
+    <Property Name="usu_ult_modificacion_cli" Type="varchar" MaxLength="4" />
+    <Property Name="fecha_ult_modificacion_cli" Type="datetime" />
+    <Property Name="estado_cli" Type="int" />
+  </EntityType>
+  <EntityType Name="Tb_Empleado">
+    <Key>
+      <PropertyRef Name="cod_emp" />
+    </Key>
+    <Property Name="cod_emp" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="rol_emp" Type="int" Nullable="false" />
+    <Property Name="fecha_ingreso" Type="datetime" Nullable="false" />
+    <Property Name="sueldo" Type="money" />
+    <Property Name="email_emp" Type="varchar" MaxLength="50" />
+    <Property Name="cod_supervisor" Type="varchar" MaxLength="4" />
+    <Property Name="cod_cli" Type="varchar" MaxLength="4" />
+    <Property Name="usu_ult_modificacion_emp" Type="varchar" MaxLength="4" />
+    <Property Name="fecha_ult_modificacion_emp" Type="datetime" />
+    <Property Name="estado_emp" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tb_Paciente">
+    <Key>
+      <PropertyRef Name="cod_pac" />
+    </Key>
+    <Property Name="cod_pac" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="nom_pac" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="tipo_pac" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="raza" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fec_nac_pac" Type="date" Nullable="false" />
+    <Property Name="sexo" Type="int" Nullable="false" />
+    <Property Name="color" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="longitud" Type="float" Nullable="false" />
+    <Property Name="peso" Type="float" Nullable="false" />
+    <Property Name="ult_vis_pac" Type="date" />
+    <Property Name="foto" Type="varchar" MaxLength="50" />
+    <Property Name="observaciones_pac" Type="varchar" MaxLength="300" />
+    <Property Name="est_pac" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tb_Proveedor">
+    <Key>
+      <PropertyRef Name="cod_prov" />
+    </Key>
+    <Property Name="cod_prov" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="nom_prov" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ruc_prov" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="direccion_prov" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="tel_prov" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="email_prov" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="rep_ven_prov" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="usu_reg_prov" Type="varchar" MaxLength="4" />
+    <Property Name="fec_reg_prov" Type="datetime" />
+    <Property Name="usu_ult_modificacion_prov" Type="varchar" MaxLength="4" />
+    <Property Name="fecha_ult_modificacion_prov" Type="datetime" />
+    <Property Name="estado_prov" Type="int" />
+  </EntityType>
+  <EntityType Name="Tb_Usuario">
+    <Key>
+      <PropertyRef Name="login_usuario" />
+    </Key>
+    <Property Name="login_usuario" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="pass_usuario" Type="varchar" MaxLength="20" />
+    <Property Name="niv_usuario" Type="int" />
+    <Property Name="est_usuario" Type="int" />
+    <Property Name="fec_registro" Type="datetime" />
+    <Property Name="usu_reg_usu" Type="varchar" MaxLength="4" />
+    <Property Name="cod_emp" Type="varchar" MaxLength="4" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vw_ClientesSonEmpleados">
+    <Key>
+      <PropertyRef Name="cod_emp" />
+      <PropertyRef Name="rol_emp" />
+      <PropertyRef Name="fecha_ingreso" />
+      <PropertyRef Name="estado_emp" />
+      <PropertyRef Name="tipo_ciente" />
+      <PropertyRef Name="nom_cliente" />
+      <PropertyRef Name="ape_pat_cliente" />
+      <PropertyRef Name="ape_mat_cliente" />
+      <PropertyRef Name="direccion_cliente" />
+      <PropertyRef Name="cel_cliente" />
+      <PropertyRef Name="email_cliente" />
+      <PropertyRef Name="es_dueno" />
+      <PropertyRef Name="es_empleado" />
+      <PropertyRef Name="id_ubigeo" />
+      <PropertyRef Name="dni_cliente" />
+    </Key>
+    <Property Name="cod_emp" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="rol_emp" Type="int" Nullable="false" />
+    <Property Name="fecha_ingreso" Type="datetime" Nullable="false" />
+    <Property Name="sueldo" Type="money" />
+    <Property Name="email_emp" Type="varchar" MaxLength="50" />
+    <Property Name="cod_supervisor" Type="varchar" MaxLength="4" />
+    <Property Name="cod_cli" Type="varchar" MaxLength="4" />
+    <Property Name="usu_ult_modificacion_emp" Type="varchar" MaxLength="4" />
+    <Property Name="fecha_ult_modificacion_emp" Type="datetime" />
+    <Property Name="estado_emp" Type="int" Nullable="false" />
+    <Property Name="tipo_ciente" Type="int" Nullable="false" />
+    <Property Name="nom_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ape_pat_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ape_mat_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="direccion_cliente" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="cel_cliente" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="email_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="es_dueno" Type="int" Nullable="false" />
+    <Property Name="es_empleado" Type="int" Nullable="false" />
+    <Property Name="id_ubigeo" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="dni_cliente" Type="char" MaxLength="8" Nullable="false" />
+    <Property Name="usu_reg_cli" Type="varchar" MaxLength="4" />
+    <Property Name="fec_reg_cli" Type="datetime" />
+    <Property Name="usu_ult_modificacion_cli" Type="varchar" MaxLength="4" />
+    <Property Name="fecha_ult_modificacion_cli" Type="datetime" />
+    <Property Name="estado_cli" Type="int" />
+  </EntityType>
+  <Association Name="FK_Empleado_user">
+    <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="0..1" />
+    <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tb_Cliente">
+        <PropertyRef Name="cod_cli" />
+      </Principal>
+      <Dependent Role="Tb_Empleado">
+        <PropertyRef Name="cod_cli" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_user">
+    <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="0..1" />
+    <End Role="Tb_Usuario" Type="Self.Tb_Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tb_Empleado">
+        <PropertyRef Name="cod_emp" />
+      </Principal>
+      <Dependent Role="Tb_Usuario">
+        <PropertyRef Name="cod_emp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="usp_ActualizarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vtipo_ciente" Type="int" Mode="In" />
+    <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
+    <Parameter Name="vape_pat_cli" Type="varchar" Mode="In" />
+    <Parameter Name="vape_mat_cli" Type="varchar" Mode="In" />
+    <Parameter Name="vdir_cli" Type="varchar" Mode="In" />
+    <Parameter Name="vcel_cli" Type="varchar" Mode="In" />
+    <Parameter Name="vemail_cli" Type="varchar" Mode="In" />
+    <Parameter Name="ves_dueno" Type="int" Mode="In" />
+    <Parameter Name="ves_empleado" Type="int" Mode="In" />
+    <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
+    <Parameter Name="vdni_cli" Type="char" Mode="In" />
+    <Parameter Name="vusu_ult_mod" Type="varchar" Mode="In" />
+    <Parameter Name="vfec_ult_mod" Type="datetime" Mode="In" />
+    <Parameter Name="vestado_cli" Type="int" Mode="In" />
+    <Parameter Name="vrol_emp" Type="int" Mode="In" />
+    <Parameter Name="vfecha_ingreso" Type="datetime" Mode="In" />
+    <Parameter Name="vsueldo" Type="money" Mode="In" />
+    <Parameter Name="vcod_supervisor" Type="varchar" Mode="In" />
+    <Parameter Name="vestado_emp" Type="int" Mode="In" />
+    <Parameter Name="vcod_cli" Type="varchar" Mode="In" />
+    <Parameter Name="vcod_emp" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="usp_InsertarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vtipo_ciente" Type="int" Mode="In" />
+    <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
+    <Parameter Name="vape_pat_cli" Type="varchar" Mode="In" />
+    <Parameter Name="vape_mat_cli" Type="varchar" Mode="In" />
+    <Parameter Name="vdir_cli" Type="varchar" Mode="In" />
+    <Parameter Name="vcel_cli" Type="varchar" Mode="In" />
+    <Parameter Name="vemail_cli" Type="varchar" Mode="In" />
+    <Parameter Name="ves_dueno" Type="int" Mode="In" />
+    <Parameter Name="ves_empleado" Type="int" Mode="In" />
+    <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
+    <Parameter Name="vdni_cli" Type="char" Mode="In" />
+    <Parameter Name="vusu_reg_cli" Type="varchar" Mode="In" />
+    <Parameter Name="vestado_cli" Type="int" Mode="In" />
+    <Parameter Name="vrol_emp" Type="int" Mode="In" />
+    <Parameter Name="vfecha_ingreso" Type="datetime" Mode="In" />
+    <Parameter Name="vsueldo" Type="money" Mode="In" />
+    <Parameter Name="vcod_supervisor" Type="varchar" Mode="In" />
+    <Parameter Name="vestado_emp" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="HundeDBModelStoreContainer">
+    <EntitySet Name="Tb_Cliente" EntityType="Self.Tb_Cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tb_Empleado" EntityType="Self.Tb_Empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tb_Paciente" EntityType="Self.Tb_Paciente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tb_Proveedor" EntityType="Self.Tb_Proveedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tb_Usuario" EntityType="Self.Tb_Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vw_ClientesSonEmpleados" EntityType="Self.vw_ClientesSonEmpleados" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_ClientesSonEmpleados].[cod_emp] AS [cod_emp], 
+    [vw_ClientesSonEmpleados].[rol_emp] AS [rol_emp], 
+    [vw_ClientesSonEmpleados].[fecha_ingreso] AS [fecha_ingreso], 
+    [vw_ClientesSonEmpleados].[sueldo] AS [sueldo], 
+    [vw_ClientesSonEmpleados].[email_emp] AS [email_emp], 
+    [vw_ClientesSonEmpleados].[cod_supervisor] AS [cod_supervisor], 
+    [vw_ClientesSonEmpleados].[cod_cli] AS [cod_cli], 
+    [vw_ClientesSonEmpleados].[usu_ult_modificacion_emp] AS [usu_ult_modificacion_emp], 
+    [vw_ClientesSonEmpleados].[fecha_ult_modificacion_emp] AS [fecha_ult_modificacion_emp], 
+    [vw_ClientesSonEmpleados].[estado_emp] AS [estado_emp], 
+    [vw_ClientesSonEmpleados].[tipo_ciente] AS [tipo_ciente], 
+    [vw_ClientesSonEmpleados].[nom_cliente] AS [nom_cliente], 
+    [vw_ClientesSonEmpleados].[ape_pat_cliente] AS [ape_pat_cliente], 
+    [vw_ClientesSonEmpleados].[ape_mat_cliente] AS [ape_mat_cliente], 
+    [vw_ClientesSonEmpleados].[direccion_cliente] AS [direccion_cliente], 
+    [vw_ClientesSonEmpleados].[cel_cliente] AS [cel_cliente], 
+    [vw_ClientesSonEmpleados].[email_cliente] AS [email_cliente], 
+    [vw_ClientesSonEmpleados].[es_dueno] AS [es_dueno], 
+    [vw_ClientesSonEmpleados].[es_empleado] AS [es_empleado], 
+    [vw_ClientesSonEmpleados].[id_ubigeo] AS [id_ubigeo], 
+    [vw_ClientesSonEmpleados].[dni_cliente] AS [dni_cliente], 
+    [vw_ClientesSonEmpleados].[usu_reg_cli] AS [usu_reg_cli], 
+    [vw_ClientesSonEmpleados].[fec_reg_cli] AS [fec_reg_cli], 
+    [vw_ClientesSonEmpleados].[usu_ult_modificacion_cli] AS [usu_ult_modificacion_cli], 
+    [vw_ClientesSonEmpleados].[fecha_ult_modificacion_cli] AS [fecha_ult_modificacion_cli], 
+    [vw_ClientesSonEmpleados].[estado_cli] AS [estado_cli]
+    FROM [dbo].[vw_ClientesSonEmpleados] AS [vw_ClientesSonEmpleados]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Empleado_user" Association="Self.FK_Empleado_user">
+      <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+      <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_user" Association="Self.FK_Usuario_user">
+      <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+      <End Role="Tb_Usuario" EntitySet="Tb_Usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

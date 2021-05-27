@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8bcbf7b7351f417796d81c7194b2a439" Name="Diagram1">
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Cliente" Width="1.5" PointX="0.625" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Empleado" Width="1.5" PointX="2.875" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Paciente" Width="1.5" PointX="7.125" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Proveedor" Width="1.5" PointX="9" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Usuario" Width="1.5" PointX="5.125" PointY="2" IsExpanded="true" />
+        <AssociationConnector Association="HundeDBModel.FK_Empleado_user" ManuallyRouted="false" />
+        <AssociationConnector Association="HundeDBModel.FK_Usuario_user" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HundeDBModel.vw_ClientesSonEmpleados" Width="1.5" PointX="3.375" PointY="5.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
