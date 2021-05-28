@@ -12,15 +12,15 @@ namespace WCF_Hunde
     public class ServicioEmpleado : IServicioEmpleado
     {
         HundeDBEntities hundeDB = new HundeDBEntities();
-        public Boolean insertarEmpleado(Cliente cliente, Empleado empleado)
+        public Boolean insertarEmpleado(Empleado empleado)
         {
             try
             {
                 //usp
-                hundeDB.usp_InsertarEmpleado(cliente.Tipo_ciente, cliente.nom_cliente, cliente.ape_pat_cliente,
-                    cliente.ape_mat_cliente, cliente.direccion_cliente, cliente.cel_cliente, cliente.email_cliente,
-                    Convert.ToInt16(cliente.es_dueno), Convert.ToInt16(cliente.es_empleado), cliente.id_ubigeo,
-                    cliente.dni_cliente, cliente.usu_reg_cli, Convert.ToInt16(cliente.estado_cli), empleado.rol_emp,
+                hundeDB.usp_InsertarEmpleado(empleado.Tipo_ciente, empleado.nom_cliente, empleado.ape_pat_cliente,
+                    empleado.ape_mat_cliente, empleado.direccion_cliente, empleado.cel_cliente, empleado.email_cliente,
+                    Convert.ToInt16(empleado.es_dueno), empleado.id_ubigeo,
+                    empleado.dni_cliente, empleado.usu_reg_cli, Convert.ToInt16(empleado.estado_cli), empleado.rol_emp,
                     empleado.fecha_ingreso, empleado.sueldo, empleado.cod_supervisor, Convert.ToInt16(empleado.estado_emp));
                 return true;
             }
@@ -90,10 +90,10 @@ namespace WCF_Hunde
                 //usp
                 hundeDB.usp_ActualizarEmpleado(empleado.Tipo_ciente, empleado.nom_cliente, empleado.ape_pat_cliente,
                     empleado.ape_mat_cliente, empleado.direccion_cliente, empleado.cel_cliente, empleado.email_cliente,
-                    Convert.ToInt16(empleado.es_dueno), Convert.ToInt16(empleado.es_empleado), empleado.id_ubigeo,
-                    empleado.dni_cliente, empleado.usu_ult_modificacion_emp, empleado.fecha_ult_modificacion_emp,
-                    Convert.ToInt16(empleado.estado_cli), empleado.rol_emp, empleado.fecha_ingreso, empleado.sueldo,
-                    empleado.cod_supervisor, Convert.ToInt16(empleado.estado_emp), empleado.cod_cli, empleado.cod_emp);
+                    Convert.ToInt16(empleado.es_dueno), empleado.id_ubigeo, empleado.dni_cliente,
+                    empleado.usu_ult_modificacion_emp, empleado.fecha_ult_modificacion_emp, Convert.ToInt16(empleado.estado_cli),
+                    empleado.rol_emp, empleado.fecha_ingreso, empleado.sueldo, empleado.cod_supervisor,
+                    Convert.ToInt16(empleado.estado_emp), empleado.cod_emp);
 
                 return true;
             }

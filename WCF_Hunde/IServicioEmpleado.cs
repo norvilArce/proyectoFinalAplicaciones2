@@ -12,7 +12,7 @@ namespace WCF_Hunde
     public interface IServicioEmpleado
     {
         [OperationContract]
-        Boolean insertarEmpleado(Cliente cliente, Empleado empleado);
+        Boolean insertarEmpleado(Empleado empleado);
         [OperationContract]
         List<Empleado> listarEmpleados(); //en nuestro modelo de negocio, son empleados son tambien clientes
         [OperationContract]

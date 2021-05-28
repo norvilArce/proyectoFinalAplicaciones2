@@ -141,7 +141,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
     </ReferentialConstraint>
   </Association>
   <Function Name="usp_ActualizarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="vtipo_cliente" Type="int" Mode="In" />
+    <Parameter Name="vtipo_ciente" Type="int" Mode="In" />
     <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
     <Parameter Name="vape_pat_cli" Type="varchar" Mode="In" />
     <Parameter Name="vape_mat_cli" Type="varchar" Mode="In" />
@@ -149,7 +149,6 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
     <Parameter Name="vcel_cli" Type="varchar" Mode="In" />
     <Parameter Name="vemail_cli" Type="varchar" Mode="In" />
     <Parameter Name="ves_dueno" Type="int" Mode="In" />
-    <Parameter Name="ves_empleado" Type="int" Mode="In" />
     <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
     <Parameter Name="vdni_cli" Type="char" Mode="In" />
     <Parameter Name="vusu_ult_mod" Type="varchar" Mode="In" />
@@ -160,14 +159,13 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
     <Parameter Name="vsueldo" Type="money" Mode="In" />
     <Parameter Name="vcod_supervisor" Type="varchar" Mode="In" />
     <Parameter Name="vestado_emp" Type="int" Mode="In" />
-    <Parameter Name="vcod_cli" Type="varchar" Mode="In" />
     <Parameter Name="vcod_emp" Type="varchar" Mode="In" />
   </Function>
   <Function Name="usp_EliminarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="vcod_emp" Type="varchar" Mode="In" />
   </Function>
   <Function Name="usp_InsertarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="vtipo_cliente" Type="int" Mode="In" />
+    <Parameter Name="vtipo_ciente" Type="int" Mode="In" />
     <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
     <Parameter Name="vape_pat_cli" Type="varchar" Mode="In" />
     <Parameter Name="vape_mat_cli" Type="varchar" Mode="In" />
@@ -175,10 +173,9 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
     <Parameter Name="vcel_cli" Type="varchar" Mode="In" />
     <Parameter Name="vemail_cli" Type="varchar" Mode="In" />
     <Parameter Name="ves_dueno" Type="int" Mode="In" />
-    <Parameter Name="ves_empleado" Type="int" Mode="In" />
     <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
     <Parameter Name="vdni_cli" Type="char" Mode="In" />
-    <Parameter Name="vusu_reg_cli" Type="varchar" Mode="In" />
+    <Parameter Name="vusu_reg" Type="varchar" Mode="In" />
     <Parameter Name="vestado_cli" Type="int" Mode="In" />
     <Parameter Name="vrol_emp" Type="int" Mode="In" />
     <Parameter Name="vfecha_ingreso" Type="datetime" Mode="In" />

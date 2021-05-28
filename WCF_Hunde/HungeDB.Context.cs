@@ -34,11 +34,11 @@ namespace WCF_Hunde
         public virtual DbSet<Tb_Proveedor> Tb_Proveedor { get; set; }
         public virtual DbSet<vw_ClientesSonEmpleados> vw_ClientesSonEmpleados { get; set; }
     
-        public virtual int usp_ActualizarEmpleado(Nullable<int> vtipo_cliente, string vnom_cliente, string vape_pat_cli, string vape_mat_cli, string vdir_cli, string vcel_cli, string vemail_cli, Nullable<int> ves_dueno, Nullable<int> ves_empleado, string vid_ubigeo, string vdni_cli, string vusu_ult_mod, Nullable<System.DateTime> vfec_ult_mod, Nullable<int> vestado_cli, Nullable<int> vrol_emp, Nullable<System.DateTime> vfecha_ingreso, Nullable<decimal> vsueldo, string vcod_supervisor, Nullable<int> vestado_emp, string vcod_cli, string vcod_emp)
+        public virtual int usp_ActualizarEmpleado(Nullable<int> vtipo_ciente, string vnom_cliente, string vape_pat_cli, string vape_mat_cli, string vdir_cli, string vcel_cli, string vemail_cli, Nullable<int> ves_dueno, string vid_ubigeo, string vdni_cli, string vusu_ult_mod, Nullable<System.DateTime> vfec_ult_mod, Nullable<int> vestado_cli, Nullable<int> vrol_emp, Nullable<System.DateTime> vfecha_ingreso, Nullable<decimal> vsueldo, string vcod_supervisor, Nullable<int> vestado_emp, string vcod_emp)
         {
-            var vtipo_clienteParameter = vtipo_cliente.HasValue ?
-                new ObjectParameter("vtipo_cliente", vtipo_cliente) :
-                new ObjectParameter("vtipo_cliente", typeof(int));
+            var vtipo_cienteParameter = vtipo_ciente.HasValue ?
+                new ObjectParameter("vtipo_ciente", vtipo_ciente) :
+                new ObjectParameter("vtipo_ciente", typeof(int));
     
             var vnom_clienteParameter = vnom_cliente != null ?
                 new ObjectParameter("vnom_cliente", vnom_cliente) :
@@ -67,10 +67,6 @@ namespace WCF_Hunde
             var ves_duenoParameter = ves_dueno.HasValue ?
                 new ObjectParameter("ves_dueno", ves_dueno) :
                 new ObjectParameter("ves_dueno", typeof(int));
-    
-            var ves_empleadoParameter = ves_empleado.HasValue ?
-                new ObjectParameter("ves_empleado", ves_empleado) :
-                new ObjectParameter("ves_empleado", typeof(int));
     
             var vid_ubigeoParameter = vid_ubigeo != null ?
                 new ObjectParameter("vid_ubigeo", vid_ubigeo) :
@@ -112,22 +108,18 @@ namespace WCF_Hunde
                 new ObjectParameter("vestado_emp", vestado_emp) :
                 new ObjectParameter("vestado_emp", typeof(int));
     
-            var vcod_cliParameter = vcod_cli != null ?
-                new ObjectParameter("vcod_cli", vcod_cli) :
-                new ObjectParameter("vcod_cli", typeof(string));
-    
             var vcod_empParameter = vcod_emp != null ?
                 new ObjectParameter("vcod_emp", vcod_emp) :
                 new ObjectParameter("vcod_emp", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_ActualizarEmpleado", vtipo_clienteParameter, vnom_clienteParameter, vape_pat_cliParameter, vape_mat_cliParameter, vdir_cliParameter, vcel_cliParameter, vemail_cliParameter, ves_duenoParameter, ves_empleadoParameter, vid_ubigeoParameter, vdni_cliParameter, vusu_ult_modParameter, vfec_ult_modParameter, vestado_cliParameter, vrol_empParameter, vfecha_ingresoParameter, vsueldoParameter, vcod_supervisorParameter, vestado_empParameter, vcod_cliParameter, vcod_empParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_ActualizarEmpleado", vtipo_cienteParameter, vnom_clienteParameter, vape_pat_cliParameter, vape_mat_cliParameter, vdir_cliParameter, vcel_cliParameter, vemail_cliParameter, ves_duenoParameter, vid_ubigeoParameter, vdni_cliParameter, vusu_ult_modParameter, vfec_ult_modParameter, vestado_cliParameter, vrol_empParameter, vfecha_ingresoParameter, vsueldoParameter, vcod_supervisorParameter, vestado_empParameter, vcod_empParameter);
         }
     
-        public virtual int usp_InsertarEmpleado(Nullable<int> vtipo_cliente, string vnom_cliente, string vape_pat_cli, string vape_mat_cli, string vdir_cli, string vcel_cli, string vemail_cli, Nullable<int> ves_dueno, Nullable<int> ves_empleado, string vid_ubigeo, string vdni_cli, string vusu_reg_cli, Nullable<int> vestado_cli, Nullable<int> vrol_emp, Nullable<System.DateTime> vfecha_ingreso, Nullable<decimal> vsueldo, string vcod_supervisor, Nullable<int> vestado_emp)
+        public virtual int usp_InsertarEmpleado(Nullable<int> vtipo_ciente, string vnom_cliente, string vape_pat_cli, string vape_mat_cli, string vdir_cli, string vcel_cli, string vemail_cli, Nullable<int> ves_dueno, string vid_ubigeo, string vdni_cli, string vusu_reg, Nullable<int> vestado_cli, Nullable<int> vrol_emp, Nullable<System.DateTime> vfecha_ingreso, Nullable<decimal> vsueldo, string vcod_supervisor, Nullable<int> vestado_emp)
         {
-            var vtipo_clienteParameter = vtipo_cliente.HasValue ?
-                new ObjectParameter("vtipo_cliente", vtipo_cliente) :
-                new ObjectParameter("vtipo_cliente", typeof(int));
+            var vtipo_cienteParameter = vtipo_ciente.HasValue ?
+                new ObjectParameter("vtipo_ciente", vtipo_ciente) :
+                new ObjectParameter("vtipo_ciente", typeof(int));
     
             var vnom_clienteParameter = vnom_cliente != null ?
                 new ObjectParameter("vnom_cliente", vnom_cliente) :
@@ -157,10 +149,6 @@ namespace WCF_Hunde
                 new ObjectParameter("ves_dueno", ves_dueno) :
                 new ObjectParameter("ves_dueno", typeof(int));
     
-            var ves_empleadoParameter = ves_empleado.HasValue ?
-                new ObjectParameter("ves_empleado", ves_empleado) :
-                new ObjectParameter("ves_empleado", typeof(int));
-    
             var vid_ubigeoParameter = vid_ubigeo != null ?
                 new ObjectParameter("vid_ubigeo", vid_ubigeo) :
                 new ObjectParameter("vid_ubigeo", typeof(string));
@@ -169,9 +157,9 @@ namespace WCF_Hunde
                 new ObjectParameter("vdni_cli", vdni_cli) :
                 new ObjectParameter("vdni_cli", typeof(string));
     
-            var vusu_reg_cliParameter = vusu_reg_cli != null ?
-                new ObjectParameter("vusu_reg_cli", vusu_reg_cli) :
-                new ObjectParameter("vusu_reg_cli", typeof(string));
+            var vusu_regParameter = vusu_reg != null ?
+                new ObjectParameter("vusu_reg", vusu_reg) :
+                new ObjectParameter("vusu_reg", typeof(string));
     
             var vestado_cliParameter = vestado_cli.HasValue ?
                 new ObjectParameter("vestado_cli", vestado_cli) :
@@ -197,7 +185,7 @@ namespace WCF_Hunde
                 new ObjectParameter("vestado_emp", vestado_emp) :
                 new ObjectParameter("vestado_emp", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertarEmpleado", vtipo_clienteParameter, vnom_clienteParameter, vape_pat_cliParameter, vape_mat_cliParameter, vdir_cliParameter, vcel_cliParameter, vemail_cliParameter, ves_duenoParameter, ves_empleadoParameter, vid_ubigeoParameter, vdni_cliParameter, vusu_reg_cliParameter, vestado_cliParameter, vrol_empParameter, vfecha_ingresoParameter, vsueldoParameter, vcod_supervisorParameter, vestado_empParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertarEmpleado", vtipo_cienteParameter, vnom_clienteParameter, vape_pat_cliParameter, vape_mat_cliParameter, vdir_cliParameter, vcel_cliParameter, vemail_cliParameter, ves_duenoParameter, vid_ubigeoParameter, vdni_cliParameter, vusu_regParameter, vestado_cliParameter, vrol_empParameter, vfecha_ingresoParameter, vsueldoParameter, vcod_supervisorParameter, vestado_empParameter);
         }
     
         public virtual int usp_EliminarEmpleado(string vcod_emp)

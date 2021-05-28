@@ -5,7 +5,6 @@ D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\
 D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\Proy_Hunde_WCF\WCF_Hunde\bin\Debug\EntityFramework.SqlServer.dll
 D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\Proy_Hunde_WCF\WCF_Hunde\bin\Debug\EntityFramework.xml
 D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\Proy_Hunde_WCF\WCF_Hunde\bin\Debug\EntityFramework.SqlServer.xml
-D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\Proy_Hunde_WCF\WCF_Hunde\obj\Debug\WCF_Hunde.csprojAssemblyReference.cache
 D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\Proy_Hunde_WCF\WCF_Hunde\obj\Debug\WCF_Hunde.csproj.CoreCompileInputs.cache
 D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\Proy_Hunde_WCF\WCF_Hunde\obj\Debug\WCF_Hunde.csproj.CopyComplete
 D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\Proy_Hunde_WCF\WCF_Hunde\obj\Debug\WCF_Hunde.dll
