@@ -10,7 +10,7 @@
             <PropertyRef Name="cod_cli" />
           </Key>
           <Property Name="cod_cli" Type="varchar" MaxLength="4" Nullable="false" />
-          <Property Name="Tipo_ciente" Type="int" Nullable="false" />
+          <Property Name="Tipo_cliente" Type="int" Nullable="false" />
           <Property Name="nom_cliente" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ape_pat_cliente" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ape_mat_cliente" Type="varchar" MaxLength="50" Nullable="false" />
@@ -41,6 +41,15 @@
           <Property Name="usu_ult_modificacion_emp" Type="varchar" MaxLength="4" />
           <Property Name="fecha_ult_modificacion_emp" Type="datetime" />
           <Property Name="estado_emp" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Medicina">
+          <Key>
+            <PropertyRef Name="cod_med" />
+          </Key>
+          <Property Name="cod_med" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="tipo_medicina" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre_medicina" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cod_uni_med" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Tb_Paciente">
           <Key>
@@ -77,18 +86,6 @@
           <Property Name="fecha_ult_modificacion_prov" Type="datetime" />
           <Property Name="estado_prov" Type="int" />
         </EntityType>
-        <EntityType Name="Tb_Usuario">
-          <Key>
-            <PropertyRef Name="login_usuario" />
-          </Key>
-          <Property Name="login_usuario" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="pass_usuario" Type="varchar" MaxLength="20" />
-          <Property Name="niv_usuario" Type="int" />
-          <Property Name="est_usuario" Type="int" />
-          <Property Name="fec_registro" Type="datetime" />
-          <Property Name="usu_reg_usu" Type="varchar" MaxLength="4" />
-          <Property Name="cod_emp" Type="varchar" MaxLength="4" />
-        </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="vw_ClientesSonEmpleados">
@@ -97,7 +94,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
             <PropertyRef Name="rol_emp" />
             <PropertyRef Name="fecha_ingreso" />
             <PropertyRef Name="estado_emp" />
-            <PropertyRef Name="tipo_ciente" />
+            <PropertyRef Name="Tipo_cliente" />
             <PropertyRef Name="nom_cliente" />
             <PropertyRef Name="ape_pat_cliente" />
             <PropertyRef Name="ape_mat_cliente" />
@@ -119,7 +116,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
           <Property Name="usu_ult_modificacion_emp" Type="varchar" MaxLength="4" />
           <Property Name="fecha_ult_modificacion_emp" Type="datetime" />
           <Property Name="estado_emp" Type="int" Nullable="false" />
-          <Property Name="tipo_ciente" Type="int" Nullable="false" />
+          <Property Name="Tipo_cliente" Type="int" Nullable="false" />
           <Property Name="nom_cliente" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ape_pat_cliente" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ape_mat_cliente" Type="varchar" MaxLength="50" Nullable="false" />
@@ -148,20 +145,8 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Usuario_user">
-          <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="0..1" />
-          <End Role="Tb_Usuario" Type="Self.Tb_Usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tb_Empleado">
-              <PropertyRef Name="cod_emp" />
-            </Principal>
-            <Dependent Role="Tb_Usuario">
-              <PropertyRef Name="cod_emp" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Function Name="usp_ActualizarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="vtipo_ciente" Type="int" Mode="In" />
+          <Parameter Name="vtipo_cliente" Type="int" Mode="In" />
           <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
           <Parameter Name="vape_pat_cli" Type="varchar" Mode="In" />
           <Parameter Name="vape_mat_cli" Type="varchar" Mode="In" />
@@ -183,8 +168,11 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
           <Parameter Name="vcod_cli" Type="varchar" Mode="In" />
           <Parameter Name="vcod_emp" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="usp_EliminarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_emp" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="usp_InsertarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="vtipo_ciente" Type="int" Mode="In" />
+          <Parameter Name="vtipo_cliente" Type="int" Mode="In" />
           <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
           <Parameter Name="vape_pat_cli" Type="varchar" Mode="In" />
           <Parameter Name="vape_mat_cli" Type="varchar" Mode="In" />
@@ -206,9 +194,9 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
         <EntityContainer Name="HundeDBModelStoreContainer">
           <EntitySet Name="Tb_Cliente" EntityType="Self.Tb_Cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Empleado" EntityType="Self.Tb_Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Medicina" EntityType="Self.Tb_Medicina" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Paciente" EntityType="Self.Tb_Paciente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Proveedor" EntityType="Self.Tb_Proveedor" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tb_Usuario" EntityType="Self.Tb_Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="vw_ClientesSonEmpleados" EntityType="Self.vw_ClientesSonEmpleados" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vw_ClientesSonEmpleados].[cod_emp] AS [cod_emp], 
@@ -221,7 +209,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
     [vw_ClientesSonEmpleados].[usu_ult_modificacion_emp] AS [usu_ult_modificacion_emp], 
     [vw_ClientesSonEmpleados].[fecha_ult_modificacion_emp] AS [fecha_ult_modificacion_emp], 
     [vw_ClientesSonEmpleados].[estado_emp] AS [estado_emp], 
-    [vw_ClientesSonEmpleados].[tipo_ciente] AS [tipo_ciente], 
+    [vw_ClientesSonEmpleados].[Tipo_cliente] AS [Tipo_cliente], 
     [vw_ClientesSonEmpleados].[nom_cliente] AS [nom_cliente], 
     [vw_ClientesSonEmpleados].[ape_pat_cliente] AS [ape_pat_cliente], 
     [vw_ClientesSonEmpleados].[ape_mat_cliente] AS [ape_mat_cliente], 
@@ -243,144 +231,14 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
             <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
             <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
           </AssociationSet>
-          <AssociationSet Name="FK_Usuario_user" Association="Self.FK_Usuario_user">
-            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
-            <End Role="Tb_Usuario" EntitySet="Tb_Usuario" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HundeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Tb_Cliente">
-          <Key>
-            <PropertyRef Name="cod_cli" />
-          </Key>
-          <Property Name="cod_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Tipo_ciente" Type="Int32" Nullable="false" />
-          <Property Name="nom_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ape_pat_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ape_mat_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="direccion_cliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cel_cliente" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="email_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="es_dueno" Type="Int32" Nullable="false" />
-          <Property Name="es_empleado" Type="Int32" Nullable="false" />
-          <Property Name="id_ubigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="dni_cliente" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="usu_reg_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="fec_reg_cli" Type="DateTime" Precision="3" />
-          <Property Name="usu_ult_modificacion_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="fecha_ult_modificacion_cli" Type="DateTime" Precision="3" />
-          <Property Name="estado_cli" Type="Int32" />
-          <NavigationProperty Name="Tb_Empleado" Relationship="Self.FK_Empleado_user" FromRole="Tb_Cliente" ToRole="Tb_Empleado" />
-        </EntityType>
-        <EntityType Name="Tb_Empleado">
-          <Key>
-            <PropertyRef Name="cod_emp" />
-          </Key>
-          <Property Name="cod_emp" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="rol_emp" Type="Int32" Nullable="false" />
-          <Property Name="fecha_ingreso" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="sueldo" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="email_emp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="cod_supervisor" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="cod_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="usu_ult_modificacion_emp" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="fecha_ult_modificacion_emp" Type="DateTime" Precision="3" />
-          <Property Name="estado_emp" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Tb_Cliente" Relationship="Self.FK_Empleado_user" FromRole="Tb_Empleado" ToRole="Tb_Cliente" />
-          <NavigationProperty Name="Tb_Usuario" Relationship="Self.FK_Usuario_user" FromRole="Tb_Empleado" ToRole="Tb_Usuario" />
-        </EntityType>
-        <EntityType Name="Tb_Paciente">
-          <Key>
-            <PropertyRef Name="cod_pac" />
-          </Key>
-          <Property Name="cod_pac" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="nom_pac" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="tipo_pac" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="raza" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fec_nac_pac" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="sexo" Type="Int32" Nullable="false" />
-          <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="longitud" Type="Double" Nullable="false" />
-          <Property Name="peso" Type="Double" Nullable="false" />
-          <Property Name="ult_vis_pac" Type="DateTime" Precision="0" />
-          <Property Name="foto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="observaciones_pac" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Name="est_pac" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Tb_Proveedor">
-          <Key>
-            <PropertyRef Name="cod_prov" />
-          </Key>
-          <Property Name="cod_prov" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="nom_prov" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ruc_prov" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="direccion_prov" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="tel_prov" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="email_prov" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="rep_ven_prov" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="usu_reg_prov" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="fec_reg_prov" Type="DateTime" Precision="3" />
-          <Property Name="usu_ult_modificacion_prov" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="fecha_ult_modificacion_prov" Type="DateTime" Precision="3" />
-          <Property Name="estado_prov" Type="Int32" />
-        </EntityType>
-        <EntityType Name="Tb_Usuario">
-          <Key>
-            <PropertyRef Name="login_usuario" />
-          </Key>
-          <Property Name="login_usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="pass_usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="niv_usuario" Type="Int32" />
-          <Property Name="est_usuario" Type="Int32" />
-          <Property Name="fec_registro" Type="DateTime" Precision="3" />
-          <Property Name="usu_reg_usu" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="cod_emp" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Tb_Empleado" Relationship="Self.FK_Usuario_user" FromRole="Tb_Usuario" ToRole="Tb_Empleado" />
-        </EntityType>
-        <Association Name="FK_Empleado_user">
-          <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="0..1" />
-          <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tb_Cliente">
-              <PropertyRef Name="cod_cli" />
-            </Principal>
-            <Dependent Role="Tb_Empleado">
-              <PropertyRef Name="cod_cli" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Usuario_user">
-          <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="0..1" />
-          <End Role="Tb_Usuario" Type="Self.Tb_Usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tb_Empleado">
-              <PropertyRef Name="cod_emp" />
-            </Principal>
-            <Dependent Role="Tb_Usuario">
-              <PropertyRef Name="cod_emp" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="HundeDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Tb_Cliente" EntityType="Self.Tb_Cliente" />
-          <EntitySet Name="Tb_Empleado" EntityType="Self.Tb_Empleado" />
-          <EntitySet Name="Tb_Paciente" EntityType="Self.Tb_Paciente" />
-          <EntitySet Name="Tb_Proveedor" EntityType="Self.Tb_Proveedor" />
-          <EntitySet Name="Tb_Usuario" EntityType="Self.Tb_Usuario" />
-          <AssociationSet Name="FK_Empleado_user" Association="Self.FK_Empleado_user">
-            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
-            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Usuario_user" Association="Self.FK_Usuario_user">
-            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
-            <End Role="Tb_Usuario" EntitySet="Tb_Usuario" />
-          </AssociationSet>
-          <EntitySet Name="vw_ClientesSonEmpleados" EntityType="HundeDBModel.vw_ClientesSonEmpleados" />
           <FunctionImport Name="usp_ActualizarEmpleado">
-            <Parameter Name="vtipo_ciente" Mode="In" Type="Int32" />
+            <Parameter Name="vtipo_cliente" Mode="In" Type="Int32" />
             <Parameter Name="vnom_cliente" Mode="In" Type="String" />
             <Parameter Name="vape_pat_cli" Mode="In" Type="String" />
             <Parameter Name="vape_mat_cli" Mode="In" Type="String" />
@@ -403,7 +261,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
             <Parameter Name="vcod_emp" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_InsertarEmpleado">
-            <Parameter Name="vtipo_ciente" Mode="In" Type="Int32" />
+            <Parameter Name="vtipo_cliente" Mode="In" Type="Int32" />
             <Parameter Name="vnom_cliente" Mode="In" Type="String" />
             <Parameter Name="vape_pat_cli" Mode="In" Type="String" />
             <Parameter Name="vape_mat_cli" Mode="In" Type="String" />
@@ -422,14 +280,110 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
             <Parameter Name="vcod_supervisor" Mode="In" Type="String" />
             <Parameter Name="vestado_emp" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="usp_EliminarEmpleado">
+          <Parameter Name="vcod_emp" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Tb_Cliente" EntityType="HundeDBModel.Tb_Cliente" />
+          <EntitySet Name="Tb_Empleado" EntityType="HundeDBModel.Tb_Empleado" />
+          <EntitySet Name="Tb_Medicina" EntityType="HundeDBModel.Tb_Medicina" />
+          <EntitySet Name="Tb_Paciente" EntityType="HundeDBModel.Tb_Paciente" />
+          <EntitySet Name="Tb_Proveedor" EntityType="HundeDBModel.Tb_Proveedor" />
+          <EntitySet Name="vw_ClientesSonEmpleados" EntityType="HundeDBModel.vw_ClientesSonEmpleados" />
+          <AssociationSet Name="FK_Empleado_user" Association="HundeDBModel.FK_Empleado_user">
+            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Tb_Cliente">
+          <Key>
+            <PropertyRef Name="cod_cli" />
+          </Key>
+          <Property Name="cod_cli" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo_cliente" Type="Int32" Nullable="false" />
+          <Property Name="nom_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ape_pat_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ape_mat_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direccion_cliente" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cel_cliente" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="email_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="es_dueno" Type="Int32" Nullable="false" />
+          <Property Name="es_empleado" Type="Int32" Nullable="false" />
+          <Property Name="id_ubigeo" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="dni_cliente" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="usu_reg_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="fec_reg_cli" Type="DateTime" Precision="3" />
+          <Property Name="usu_ult_modificacion_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ult_modificacion_cli" Type="DateTime" Precision="3" />
+          <Property Name="estado_cli" Type="Int32" />
+          <NavigationProperty Name="Tb_Empleado" Relationship="HundeDBModel.FK_Empleado_user" FromRole="Tb_Cliente" ToRole="Tb_Empleado" />
+        </EntityType>
+        <EntityType Name="Tb_Empleado">
+          <Key>
+            <PropertyRef Name="cod_emp" />
+          </Key>
+          <Property Name="cod_emp" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="rol_emp" Type="Int32" Nullable="false" />
+          <Property Name="fecha_ingreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="sueldo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="email_emp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cod_supervisor" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="cod_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="usu_ult_modificacion_emp" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ult_modificacion_emp" Type="DateTime" Precision="3" />
+          <Property Name="estado_emp" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tb_Cliente" Relationship="HundeDBModel.FK_Empleado_user" FromRole="Tb_Empleado" ToRole="Tb_Cliente" />
+        </EntityType>
+        <EntityType Name="Tb_Medicina">
+          <Key>
+            <PropertyRef Name="cod_med" />
+          </Key>
+          <Property Name="cod_med" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_medicina" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombre_medicina" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cod_uni_med" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Paciente">
+          <Key>
+            <PropertyRef Name="cod_pac" />
+          </Key>
+          <Property Name="cod_pac" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="nom_pac" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_pac" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="raza" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fec_nac_pac" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="sexo" Type="Int32" Nullable="false" />
+          <Property Name="color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="longitud" Type="Double" Nullable="false" />
+          <Property Name="peso" Type="Double" Nullable="false" />
+          <Property Name="ult_vis_pac" Type="DateTime" Precision="0" />
+          <Property Name="foto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="observaciones_pac" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="est_pac" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Proveedor">
+          <Key>
+            <PropertyRef Name="cod_prov" />
+          </Key>
+          <Property Name="cod_prov" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="nom_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ruc_prov" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="direccion_prov" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tel_prov" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="email_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rep_ven_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usu_reg_prov" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="fec_reg_prov" Type="DateTime" Precision="3" />
+          <Property Name="usu_ult_modificacion_prov" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ult_modificacion_prov" Type="DateTime" Precision="3" />
+          <Property Name="estado_prov" Type="Int32" />
+        </EntityType>
         <EntityType Name="vw_ClientesSonEmpleados">
           <Key>
             <PropertyRef Name="cod_emp" />
             <PropertyRef Name="rol_emp" />
             <PropertyRef Name="fecha_ingreso" />
             <PropertyRef Name="estado_emp" />
-            <PropertyRef Name="tipo_ciente" />
+            <PropertyRef Name="Tipo_cliente" />
             <PropertyRef Name="nom_cliente" />
             <PropertyRef Name="ape_pat_cliente" />
             <PropertyRef Name="ape_mat_cliente" />
@@ -451,7 +405,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
           <Property Name="usu_ult_modificacion_emp" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="fecha_ult_modificacion_emp" Type="DateTime" Precision="3" />
           <Property Name="estado_emp" Type="Int32" Nullable="false" />
-          <Property Name="tipo_ciente" Type="Int32" Nullable="false" />
+          <Property Name="Tipo_cliente" Type="Int32" Nullable="false" />
           <Property Name="nom_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ape_pat_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ape_mat_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -468,98 +422,110 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
           <Property Name="fecha_ult_modificacion_cli" Type="DateTime" Precision="3" />
           <Property Name="estado_cli" Type="Int32" />
         </EntityType>
+        <Association Name="FK_Empleado_user">
+          <End Type="HundeDBModel.Tb_Cliente" Role="Tb_Cliente" Multiplicity="0..1" />
+          <End Type="HundeDBModel.Tb_Empleado" Role="Tb_Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Cliente">
+              <PropertyRef Name="cod_cli" />
+            </Principal>
+            <Dependent Role="Tb_Empleado">
+              <PropertyRef Name="cod_cli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="HundeDBModelStoreContainer" CdmEntityContainer="HundeDBEntities">
+          <FunctionImportMapping FunctionImportName="usp_ActualizarEmpleado" FunctionName="HundeDBModel.Store.usp_ActualizarEmpleado" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarEmpleado" FunctionName="HundeDBModel.Store.usp_InsertarEmpleado" />
+          <FunctionImportMapping FunctionImportName="usp_EliminarEmpleado" FunctionName="HundeDBModel.Store.usp_EliminarEmpleado" />
           <EntitySetMapping Name="Tb_Cliente">
             <EntityTypeMapping TypeName="HundeDBModel.Tb_Cliente">
               <MappingFragment StoreEntitySet="Tb_Cliente">
-                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
-                <ScalarProperty Name="Tipo_ciente" ColumnName="Tipo_ciente" />
-                <ScalarProperty Name="nom_cliente" ColumnName="nom_cliente" />
-                <ScalarProperty Name="ape_pat_cliente" ColumnName="ape_pat_cliente" />
-                <ScalarProperty Name="ape_mat_cliente" ColumnName="ape_mat_cliente" />
-                <ScalarProperty Name="direccion_cliente" ColumnName="direccion_cliente" />
-                <ScalarProperty Name="cel_cliente" ColumnName="cel_cliente" />
-                <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
-                <ScalarProperty Name="es_dueno" ColumnName="es_dueno" />
-                <ScalarProperty Name="es_empleado" ColumnName="es_empleado" />
-                <ScalarProperty Name="id_ubigeo" ColumnName="id_ubigeo" />
-                <ScalarProperty Name="dni_cliente" ColumnName="dni_cliente" />
-                <ScalarProperty Name="usu_reg_cli" ColumnName="usu_reg_cli" />
-                <ScalarProperty Name="fec_reg_cli" ColumnName="fec_reg_cli" />
-                <ScalarProperty Name="usu_ult_modificacion_cli" ColumnName="usu_ult_modificacion_cli" />
-                <ScalarProperty Name="fecha_ult_modificacion_cli" ColumnName="fecha_ult_modificacion_cli" />
                 <ScalarProperty Name="estado_cli" ColumnName="estado_cli" />
+                <ScalarProperty Name="fecha_ult_modificacion_cli" ColumnName="fecha_ult_modificacion_cli" />
+                <ScalarProperty Name="usu_ult_modificacion_cli" ColumnName="usu_ult_modificacion_cli" />
+                <ScalarProperty Name="fec_reg_cli" ColumnName="fec_reg_cli" />
+                <ScalarProperty Name="usu_reg_cli" ColumnName="usu_reg_cli" />
+                <ScalarProperty Name="dni_cliente" ColumnName="dni_cliente" />
+                <ScalarProperty Name="id_ubigeo" ColumnName="id_ubigeo" />
+                <ScalarProperty Name="es_empleado" ColumnName="es_empleado" />
+                <ScalarProperty Name="es_dueno" ColumnName="es_dueno" />
+                <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
+                <ScalarProperty Name="cel_cliente" ColumnName="cel_cliente" />
+                <ScalarProperty Name="direccion_cliente" ColumnName="direccion_cliente" />
+                <ScalarProperty Name="ape_mat_cliente" ColumnName="ape_mat_cliente" />
+                <ScalarProperty Name="ape_pat_cliente" ColumnName="ape_pat_cliente" />
+                <ScalarProperty Name="nom_cliente" ColumnName="nom_cliente" />
+                <ScalarProperty Name="Tipo_cliente" ColumnName="Tipo_cliente" />
+                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tb_Empleado">
             <EntityTypeMapping TypeName="HundeDBModel.Tb_Empleado">
               <MappingFragment StoreEntitySet="Tb_Empleado">
-                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
-                <ScalarProperty Name="rol_emp" ColumnName="rol_emp" />
-                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
-                <ScalarProperty Name="sueldo" ColumnName="sueldo" />
-                <ScalarProperty Name="email_emp" ColumnName="email_emp" />
-                <ScalarProperty Name="cod_supervisor" ColumnName="cod_supervisor" />
-                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
-                <ScalarProperty Name="usu_ult_modificacion_emp" ColumnName="usu_ult_modificacion_emp" />
-                <ScalarProperty Name="fecha_ult_modificacion_emp" ColumnName="fecha_ult_modificacion_emp" />
                 <ScalarProperty Name="estado_emp" ColumnName="estado_emp" />
+                <ScalarProperty Name="fecha_ult_modificacion_emp" ColumnName="fecha_ult_modificacion_emp" />
+                <ScalarProperty Name="usu_ult_modificacion_emp" ColumnName="usu_ult_modificacion_emp" />
+                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
+                <ScalarProperty Name="cod_supervisor" ColumnName="cod_supervisor" />
+                <ScalarProperty Name="email_emp" ColumnName="email_emp" />
+                <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="rol_emp" ColumnName="rol_emp" />
+                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Medicina">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Medicina">
+              <MappingFragment StoreEntitySet="Tb_Medicina">
+                <ScalarProperty Name="cod_uni_med" ColumnName="cod_uni_med" />
+                <ScalarProperty Name="nombre_medicina" ColumnName="nombre_medicina" />
+                <ScalarProperty Name="tipo_medicina" ColumnName="tipo_medicina" />
+                <ScalarProperty Name="cod_med" ColumnName="cod_med" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tb_Paciente">
             <EntityTypeMapping TypeName="HundeDBModel.Tb_Paciente">
               <MappingFragment StoreEntitySet="Tb_Paciente">
-                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
-                <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
-                <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
-                <ScalarProperty Name="raza" ColumnName="raza" />
-                <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
-                <ScalarProperty Name="sexo" ColumnName="sexo" />
-                <ScalarProperty Name="color" ColumnName="color" />
-                <ScalarProperty Name="longitud" ColumnName="longitud" />
-                <ScalarProperty Name="peso" ColumnName="peso" />
-                <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
-                <ScalarProperty Name="foto" ColumnName="foto" />
-                <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
                 <ScalarProperty Name="est_pac" ColumnName="est_pac" />
+                <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
+                <ScalarProperty Name="raza" ColumnName="raza" />
+                <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
+                <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
+                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tb_Proveedor">
             <EntityTypeMapping TypeName="HundeDBModel.Tb_Proveedor">
               <MappingFragment StoreEntitySet="Tb_Proveedor">
-                <ScalarProperty Name="cod_prov" ColumnName="cod_prov" />
-                <ScalarProperty Name="nom_prov" ColumnName="nom_prov" />
-                <ScalarProperty Name="ruc_prov" ColumnName="ruc_prov" />
-                <ScalarProperty Name="direccion_prov" ColumnName="direccion_prov" />
-                <ScalarProperty Name="tel_prov" ColumnName="tel_prov" />
-                <ScalarProperty Name="email_prov" ColumnName="email_prov" />
-                <ScalarProperty Name="rep_ven_prov" ColumnName="rep_ven_prov" />
-                <ScalarProperty Name="usu_reg_prov" ColumnName="usu_reg_prov" />
-                <ScalarProperty Name="fec_reg_prov" ColumnName="fec_reg_prov" />
-                <ScalarProperty Name="usu_ult_modificacion_prov" ColumnName="usu_ult_modificacion_prov" />
-                <ScalarProperty Name="fecha_ult_modificacion_prov" ColumnName="fecha_ult_modificacion_prov" />
                 <ScalarProperty Name="estado_prov" ColumnName="estado_prov" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tb_Usuario">
-            <EntityTypeMapping TypeName="HundeDBModel.Tb_Usuario">
-              <MappingFragment StoreEntitySet="Tb_Usuario">
-                <ScalarProperty Name="login_usuario" ColumnName="login_usuario" />
-                <ScalarProperty Name="pass_usuario" ColumnName="pass_usuario" />
-                <ScalarProperty Name="niv_usuario" ColumnName="niv_usuario" />
-                <ScalarProperty Name="est_usuario" ColumnName="est_usuario" />
-                <ScalarProperty Name="fec_registro" ColumnName="fec_registro" />
-                <ScalarProperty Name="usu_reg_usu" ColumnName="usu_reg_usu" />
-                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+                <ScalarProperty Name="fecha_ult_modificacion_prov" ColumnName="fecha_ult_modificacion_prov" />
+                <ScalarProperty Name="usu_ult_modificacion_prov" ColumnName="usu_ult_modificacion_prov" />
+                <ScalarProperty Name="fec_reg_prov" ColumnName="fec_reg_prov" />
+                <ScalarProperty Name="usu_reg_prov" ColumnName="usu_reg_prov" />
+                <ScalarProperty Name="rep_ven_prov" ColumnName="rep_ven_prov" />
+                <ScalarProperty Name="email_prov" ColumnName="email_prov" />
+                <ScalarProperty Name="tel_prov" ColumnName="tel_prov" />
+                <ScalarProperty Name="direccion_prov" ColumnName="direccion_prov" />
+                <ScalarProperty Name="ruc_prov" ColumnName="ruc_prov" />
+                <ScalarProperty Name="nom_prov" ColumnName="nom_prov" />
+                <ScalarProperty Name="cod_prov" ColumnName="cod_prov" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -581,7 +547,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
                 <ScalarProperty Name="ape_mat_cliente" ColumnName="ape_mat_cliente" />
                 <ScalarProperty Name="ape_pat_cliente" ColumnName="ape_pat_cliente" />
                 <ScalarProperty Name="nom_cliente" ColumnName="nom_cliente" />
-                <ScalarProperty Name="tipo_ciente" ColumnName="tipo_ciente" />
+                <ScalarProperty Name="Tipo_cliente" ColumnName="Tipo_cliente" />
                 <ScalarProperty Name="estado_emp" ColumnName="estado_emp" />
                 <ScalarProperty Name="fecha_ult_modificacion_emp" ColumnName="fecha_ult_modificacion_emp" />
                 <ScalarProperty Name="usu_ult_modificacion_emp" ColumnName="usu_ult_modificacion_emp" />
@@ -595,8 +561,6 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="usp_ActualizarEmpleado" FunctionName="HundeDBModel.Store.usp_ActualizarEmpleado" />
-          <FunctionImportMapping FunctionImportName="usp_InsertarEmpleado" FunctionName="HundeDBModel.Store.usp_InsertarEmpleado" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

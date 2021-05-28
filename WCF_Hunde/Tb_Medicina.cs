@@ -12,16 +12,11 @@ namespace WCF_Hunde
     using System;
     using System.Collections.Generic;
     
-    public partial class Tb_Usuario
+    public partial class Tb_Medicina
     {
-        public string login_usuario { get; set; }
-        public string pass_usuario { get; set; }
-        public Nullable<int> niv_usuario { get; set; }
-        public Nullable<int> est_usuario { get; set; }
-        public Nullable<System.DateTime> fec_registro { get; set; }
-        public string usu_reg_usu { get; set; }
-        public string cod_emp { get; set; }
-    
-        public virtual Tb_Empleado Tb_Empleado { get; set; }
+        public string cod_med { get; set; }
+        public string tipo_medicina { get; set; }
+        public string nombre_medicina { get; set; }
+        public int cod_uni_med { get; set; }
     }
 }

@@ -5,7 +5,7 @@
       <PropertyRef Name="cod_cli" />
     </Key>
     <Property Name="cod_cli" Type="varchar" MaxLength="4" Nullable="false" />
-    <Property Name="Tipo_ciente" Type="int" Nullable="false" />
+    <Property Name="Tipo_cliente" Type="int" Nullable="false" />
     <Property Name="nom_cliente" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ape_pat_cliente" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ape_mat_cliente" Type="varchar" MaxLength="50" Nullable="false" />
@@ -36,6 +36,15 @@
     <Property Name="usu_ult_modificacion_emp" Type="varchar" MaxLength="4" />
     <Property Name="fecha_ult_modificacion_emp" Type="datetime" />
     <Property Name="estado_emp" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tb_Medicina">
+    <Key>
+      <PropertyRef Name="cod_med" />
+    </Key>
+    <Property Name="cod_med" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="tipo_medicina" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="nombre_medicina" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cod_uni_med" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Tb_Paciente">
     <Key>
@@ -72,18 +81,6 @@
     <Property Name="fecha_ult_modificacion_prov" Type="datetime" />
     <Property Name="estado_prov" Type="int" />
   </EntityType>
-  <EntityType Name="Tb_Usuario">
-    <Key>
-      <PropertyRef Name="login_usuario" />
-    </Key>
-    <Property Name="login_usuario" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="pass_usuario" Type="varchar" MaxLength="20" />
-    <Property Name="niv_usuario" Type="int" />
-    <Property Name="est_usuario" Type="int" />
-    <Property Name="fec_registro" Type="datetime" />
-    <Property Name="usu_reg_usu" Type="varchar" MaxLength="4" />
-    <Property Name="cod_emp" Type="varchar" MaxLength="4" />
-  </EntityType>
   <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
   <EntityType Name="vw_ClientesSonEmpleados">
@@ -92,7 +89,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
       <PropertyRef Name="rol_emp" />
       <PropertyRef Name="fecha_ingreso" />
       <PropertyRef Name="estado_emp" />
-      <PropertyRef Name="tipo_ciente" />
+      <PropertyRef Name="Tipo_cliente" />
       <PropertyRef Name="nom_cliente" />
       <PropertyRef Name="ape_pat_cliente" />
       <PropertyRef Name="ape_mat_cliente" />
@@ -114,7 +111,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
     <Property Name="usu_ult_modificacion_emp" Type="varchar" MaxLength="4" />
     <Property Name="fecha_ult_modificacion_emp" Type="datetime" />
     <Property Name="estado_emp" Type="int" Nullable="false" />
-    <Property Name="tipo_ciente" Type="int" Nullable="false" />
+    <Property Name="Tipo_cliente" Type="int" Nullable="false" />
     <Property Name="nom_cliente" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ape_pat_cliente" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ape_mat_cliente" Type="varchar" MaxLength="50" Nullable="false" />
@@ -143,20 +140,8 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Usuario_user">
-    <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="0..1" />
-    <End Role="Tb_Usuario" Type="Self.Tb_Usuario" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Tb_Empleado">
-        <PropertyRef Name="cod_emp" />
-      </Principal>
-      <Dependent Role="Tb_Usuario">
-        <PropertyRef Name="cod_emp" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Function Name="usp_ActualizarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="vtipo_ciente" Type="int" Mode="In" />
+    <Parameter Name="vtipo_cliente" Type="int" Mode="In" />
     <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
     <Parameter Name="vape_pat_cli" Type="varchar" Mode="In" />
     <Parameter Name="vape_mat_cli" Type="varchar" Mode="In" />
@@ -178,8 +163,11 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
     <Parameter Name="vcod_cli" Type="varchar" Mode="In" />
     <Parameter Name="vcod_emp" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="usp_EliminarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vcod_emp" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="usp_InsertarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="vtipo_ciente" Type="int" Mode="In" />
+    <Parameter Name="vtipo_cliente" Type="int" Mode="In" />
     <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
     <Parameter Name="vape_pat_cli" Type="varchar" Mode="In" />
     <Parameter Name="vape_mat_cli" Type="varchar" Mode="In" />
@@ -201,9 +189,9 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
   <EntityContainer Name="HundeDBModelStoreContainer">
     <EntitySet Name="Tb_Cliente" EntityType="Self.Tb_Cliente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tb_Empleado" EntityType="Self.Tb_Empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tb_Medicina" EntityType="Self.Tb_Medicina" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tb_Paciente" EntityType="Self.Tb_Paciente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tb_Proveedor" EntityType="Self.Tb_Proveedor" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Tb_Usuario" EntityType="Self.Tb_Usuario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vw_ClientesSonEmpleados" EntityType="Self.vw_ClientesSonEmpleados" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [vw_ClientesSonEmpleados].[cod_emp] AS [cod_emp], 
@@ -216,7 +204,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
     [vw_ClientesSonEmpleados].[usu_ult_modificacion_emp] AS [usu_ult_modificacion_emp], 
     [vw_ClientesSonEmpleados].[fecha_ult_modificacion_emp] AS [fecha_ult_modificacion_emp], 
     [vw_ClientesSonEmpleados].[estado_emp] AS [estado_emp], 
-    [vw_ClientesSonEmpleados].[tipo_ciente] AS [tipo_ciente], 
+    [vw_ClientesSonEmpleados].[Tipo_cliente] AS [Tipo_cliente], 
     [vw_ClientesSonEmpleados].[nom_cliente] AS [nom_cliente], 
     [vw_ClientesSonEmpleados].[ape_pat_cliente] AS [ape_pat_cliente], 
     [vw_ClientesSonEmpleados].[ape_mat_cliente] AS [ape_mat_cliente], 
@@ -237,10 +225,6 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
     <AssociationSet Name="FK_Empleado_user" Association="Self.FK_Empleado_user">
       <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
       <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Usuario_user" Association="Self.FK_Usuario_user">
-      <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
-      <End Role="Tb_Usuario" EntitySet="Tb_Usuario" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

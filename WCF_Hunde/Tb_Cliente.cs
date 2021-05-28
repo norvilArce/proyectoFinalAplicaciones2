@@ -21,7 +21,7 @@ namespace WCF_Hunde
         }
     
         public string cod_cli { get; set; }
-        public int Tipo_ciente { get; set; }
+        public int Tipo_cliente { get; set; }
         public string nom_cliente { get; set; }
         public string ape_pat_cliente { get; set; }
         public string ape_mat_cliente { get; set; }

@@ -78,13 +78,13 @@
     <Compile Include="Tb_Empleado.cs">
       <DependentUpon>HungeDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Tb_Medicina.cs">
+      <DependentUpon>HungeDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Tb_Paciente.cs">
       <DependentUpon>HungeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Tb_Proveedor.cs">
-      <DependentUpon>HungeDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tb_Usuario.cs">
       <DependentUpon>HungeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="vw_ClientesSonEmpleados.cs">
