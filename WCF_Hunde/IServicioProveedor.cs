@@ -19,6 +19,10 @@ namespace WCF_Hunde
 
         [OperationContract]
         List<EstadosBE> GetAllEstadoProveedorMedicina(Int16 strEstadoProveedor, String strTipoMedicina);
+
+        [OperationContract]
+        List<ProveedorBE> ConsultarSupervisor(String strRepVenProv);
+
     }
 
     // Creamos la data contractual de Proveedores

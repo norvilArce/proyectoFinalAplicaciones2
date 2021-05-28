@@ -52,7 +52,34 @@ namespace WCF_Hunde
             }
         }
 
-    
+        public List<ProveedorBE> ConsultarSupervisor(string strRepVenProv)
+        {
+
+            HundeDBEntities misProveedores = new HundeDBEntities();
+            List<ProveedorBE> objListaProveedor = new List<ProveedorBE>();
+
+            try
+            {
+
+                var query = misProveedores.usp_RepresentanteProveedor(strRepVenProv);
+                foreach (var rs in query)
+                {
+                    ProveedorBE objListaProveedores = new ProveedorBE();
+                    objListaProveedores.cod_prov = rs.cod_prov;
+                    objListaProveedores.rep_ven_prov = rs.rep_ven_prov;
+                    objListaProveedores.nom_prov = rs.nom_prov;
+
+                    objListaProveedor.Add(objListaProveedores);
+
+                }
+                return objListaProveedor;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         public List<EstadosBE> GetAllEstadoProveedorMedicina(short strEstadoProveedor, string strTipoMedicina)
         {
