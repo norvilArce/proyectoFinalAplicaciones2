@@ -156,5 +156,8 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ActualizarCliente" FunctionName="HundeDBModel.Store.usp_ActualizarCliente" />
+    <FunctionImportMapping FunctionImportName="usp_EliminarCliente" FunctionName="HundeDBModel.Store.usp_EliminarCliente" />
+    <FunctionImportMapping FunctionImportName="usp_InsertarCliente" FunctionName="HundeDBModel.Store.usp_InsertarCliente" />
   </EntityContainerMapping>
 </Mapping>

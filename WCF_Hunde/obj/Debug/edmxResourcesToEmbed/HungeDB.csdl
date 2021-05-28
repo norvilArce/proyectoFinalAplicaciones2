@@ -64,6 +64,41 @@
     <FunctionImport Name="usp_RepresentanteProveedor" ReturnType="Collection(HundeDBModel.usp_RepresentanteProveedor_Result)">
       <Parameter Name="rep_ven_prov" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="usp_ActualizarCliente">
+      <Parameter Name="vtipo_ciente" Mode="In" Type="Int32" />
+      <Parameter Name="vnom_cliente" Mode="In" Type="String" />
+      <Parameter Name="vape_pat_cli" Mode="In" Type="String" />
+      <Parameter Name="vape_mat_cli" Mode="In" Type="String" />
+      <Parameter Name="vdir_cli" Mode="In" Type="String" />
+      <Parameter Name="vcel_cli" Mode="In" Type="String" />
+      <Parameter Name="vemail_cli" Mode="In" Type="String" />
+      <Parameter Name="ves_dueno" Mode="In" Type="Int32" />
+      <Parameter Name="ves_empleado" Mode="In" Type="Int32" />
+      <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
+      <Parameter Name="vdni_cli" Mode="In" Type="String" />
+      <Parameter Name="vusu_ult_mod" Mode="In" Type="String" />
+      <Parameter Name="vfec_ult_mod" Mode="In" Type="DateTime" />
+      <Parameter Name="vestado_cli" Mode="In" Type="Int32" />
+      <Parameter Name="vcod_cli" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_EliminarCliente">
+      <Parameter Name="vcod_cli" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_InsertarCliente">
+      <Parameter Name="vtipo_cliente" Mode="In" Type="Int32" />
+      <Parameter Name="vnom_cliente" Mode="In" Type="String" />
+      <Parameter Name="vape_pat_cli" Mode="In" Type="String" />
+      <Parameter Name="vape_mat_cli" Mode="In" Type="String" />
+      <Parameter Name="vdir_cli" Mode="In" Type="String" />
+      <Parameter Name="vcel_cli" Mode="In" Type="String" />
+      <Parameter Name="vemail_cli" Mode="In" Type="String" />
+      <Parameter Name="ves_dueno" Mode="In" Type="Int32" />
+      <Parameter Name="ves_empleado" Mode="In" Type="Int32" />
+      <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
+      <Parameter Name="vdni_cli" Mode="In" Type="String" />
+      <Parameter Name="vusu_reg_cli" Mode="In" Type="String" />
+      <Parameter Name="vestado_cli" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="Tb_Cliente">
     <Key>

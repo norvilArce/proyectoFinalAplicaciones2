@@ -227,5 +227,136 @@ namespace WCF_Hunde
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_RepresentanteProveedor_Result>("usp_RepresentanteProveedor", rep_ven_provParameter);
         }
+    
+        public virtual int usp_ActualizarCliente(Nullable<int> vtipo_ciente, string vnom_cliente, string vape_pat_cli, string vape_mat_cli, string vdir_cli, string vcel_cli, string vemail_cli, Nullable<int> ves_dueno, Nullable<int> ves_empleado, string vid_ubigeo, string vdni_cli, string vusu_ult_mod, Nullable<System.DateTime> vfec_ult_mod, Nullable<int> vestado_cli, string vcod_cli)
+        {
+            var vtipo_cienteParameter = vtipo_ciente.HasValue ?
+                new ObjectParameter("vtipo_ciente", vtipo_ciente) :
+                new ObjectParameter("vtipo_ciente", typeof(int));
+    
+            var vnom_clienteParameter = vnom_cliente != null ?
+                new ObjectParameter("vnom_cliente", vnom_cliente) :
+                new ObjectParameter("vnom_cliente", typeof(string));
+    
+            var vape_pat_cliParameter = vape_pat_cli != null ?
+                new ObjectParameter("vape_pat_cli", vape_pat_cli) :
+                new ObjectParameter("vape_pat_cli", typeof(string));
+    
+            var vape_mat_cliParameter = vape_mat_cli != null ?
+                new ObjectParameter("vape_mat_cli", vape_mat_cli) :
+                new ObjectParameter("vape_mat_cli", typeof(string));
+    
+            var vdir_cliParameter = vdir_cli != null ?
+                new ObjectParameter("vdir_cli", vdir_cli) :
+                new ObjectParameter("vdir_cli", typeof(string));
+    
+            var vcel_cliParameter = vcel_cli != null ?
+                new ObjectParameter("vcel_cli", vcel_cli) :
+                new ObjectParameter("vcel_cli", typeof(string));
+    
+            var vemail_cliParameter = vemail_cli != null ?
+                new ObjectParameter("vemail_cli", vemail_cli) :
+                new ObjectParameter("vemail_cli", typeof(string));
+    
+            var ves_duenoParameter = ves_dueno.HasValue ?
+                new ObjectParameter("ves_dueno", ves_dueno) :
+                new ObjectParameter("ves_dueno", typeof(int));
+    
+            var ves_empleadoParameter = ves_empleado.HasValue ?
+                new ObjectParameter("ves_empleado", ves_empleado) :
+                new ObjectParameter("ves_empleado", typeof(int));
+    
+            var vid_ubigeoParameter = vid_ubigeo != null ?
+                new ObjectParameter("vid_ubigeo", vid_ubigeo) :
+                new ObjectParameter("vid_ubigeo", typeof(string));
+    
+            var vdni_cliParameter = vdni_cli != null ?
+                new ObjectParameter("vdni_cli", vdni_cli) :
+                new ObjectParameter("vdni_cli", typeof(string));
+    
+            var vusu_ult_modParameter = vusu_ult_mod != null ?
+                new ObjectParameter("vusu_ult_mod", vusu_ult_mod) :
+                new ObjectParameter("vusu_ult_mod", typeof(string));
+    
+            var vfec_ult_modParameter = vfec_ult_mod.HasValue ?
+                new ObjectParameter("vfec_ult_mod", vfec_ult_mod) :
+                new ObjectParameter("vfec_ult_mod", typeof(System.DateTime));
+    
+            var vestado_cliParameter = vestado_cli.HasValue ?
+                new ObjectParameter("vestado_cli", vestado_cli) :
+                new ObjectParameter("vestado_cli", typeof(int));
+    
+            var vcod_cliParameter = vcod_cli != null ?
+                new ObjectParameter("vcod_cli", vcod_cli) :
+                new ObjectParameter("vcod_cli", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_ActualizarCliente", vtipo_cienteParameter, vnom_clienteParameter, vape_pat_cliParameter, vape_mat_cliParameter, vdir_cliParameter, vcel_cliParameter, vemail_cliParameter, ves_duenoParameter, ves_empleadoParameter, vid_ubigeoParameter, vdni_cliParameter, vusu_ult_modParameter, vfec_ult_modParameter, vestado_cliParameter, vcod_cliParameter);
+        }
+    
+        public virtual int usp_EliminarCliente(string vcod_cli)
+        {
+            var vcod_cliParameter = vcod_cli != null ?
+                new ObjectParameter("vcod_cli", vcod_cli) :
+                new ObjectParameter("vcod_cli", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_EliminarCliente", vcod_cliParameter);
+        }
+    
+        public virtual int usp_InsertarCliente(Nullable<int> vtipo_cliente, string vnom_cliente, string vape_pat_cli, string vape_mat_cli, string vdir_cli, string vcel_cli, string vemail_cli, Nullable<int> ves_dueno, Nullable<int> ves_empleado, string vid_ubigeo, string vdni_cli, string vusu_reg_cli, Nullable<int> vestado_cli)
+        {
+            var vtipo_clienteParameter = vtipo_cliente.HasValue ?
+                new ObjectParameter("vtipo_cliente", vtipo_cliente) :
+                new ObjectParameter("vtipo_cliente", typeof(int));
+    
+            var vnom_clienteParameter = vnom_cliente != null ?
+                new ObjectParameter("vnom_cliente", vnom_cliente) :
+                new ObjectParameter("vnom_cliente", typeof(string));
+    
+            var vape_pat_cliParameter = vape_pat_cli != null ?
+                new ObjectParameter("vape_pat_cli", vape_pat_cli) :
+                new ObjectParameter("vape_pat_cli", typeof(string));
+    
+            var vape_mat_cliParameter = vape_mat_cli != null ?
+                new ObjectParameter("vape_mat_cli", vape_mat_cli) :
+                new ObjectParameter("vape_mat_cli", typeof(string));
+    
+            var vdir_cliParameter = vdir_cli != null ?
+                new ObjectParameter("vdir_cli", vdir_cli) :
+                new ObjectParameter("vdir_cli", typeof(string));
+    
+            var vcel_cliParameter = vcel_cli != null ?
+                new ObjectParameter("vcel_cli", vcel_cli) :
+                new ObjectParameter("vcel_cli", typeof(string));
+    
+            var vemail_cliParameter = vemail_cli != null ?
+                new ObjectParameter("vemail_cli", vemail_cli) :
+                new ObjectParameter("vemail_cli", typeof(string));
+    
+            var ves_duenoParameter = ves_dueno.HasValue ?
+                new ObjectParameter("ves_dueno", ves_dueno) :
+                new ObjectParameter("ves_dueno", typeof(int));
+    
+            var ves_empleadoParameter = ves_empleado.HasValue ?
+                new ObjectParameter("ves_empleado", ves_empleado) :
+                new ObjectParameter("ves_empleado", typeof(int));
+    
+            var vid_ubigeoParameter = vid_ubigeo != null ?
+                new ObjectParameter("vid_ubigeo", vid_ubigeo) :
+                new ObjectParameter("vid_ubigeo", typeof(string));
+    
+            var vdni_cliParameter = vdni_cli != null ?
+                new ObjectParameter("vdni_cli", vdni_cli) :
+                new ObjectParameter("vdni_cli", typeof(string));
+    
+            var vusu_reg_cliParameter = vusu_reg_cli != null ?
+                new ObjectParameter("vusu_reg_cli", vusu_reg_cli) :
+                new ObjectParameter("vusu_reg_cli", typeof(string));
+    
+            var vestado_cliParameter = vestado_cli.HasValue ?
+                new ObjectParameter("vestado_cli", vestado_cli) :
+                new ObjectParameter("vestado_cli", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertarCliente", vtipo_clienteParameter, vnom_clienteParameter, vape_pat_cliParameter, vape_mat_cliParameter, vdir_cliParameter, vcel_cliParameter, vemail_cliParameter, ves_duenoParameter, ves_empleadoParameter, vid_ubigeoParameter, vdni_cliParameter, vusu_reg_cliParameter, vestado_cliParameter);
+        }
     }
 }

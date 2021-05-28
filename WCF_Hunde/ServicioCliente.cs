@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.Data.Entity.Core;
 using System.Text;
 
 namespace WCF_Hunde
@@ -81,14 +82,8 @@ namespace WCF_Hunde
             HundeDBEntities MisClientes = new HundeDBEntities();
             try
             {
-                //Obtenemos con LINQ la instancia del cliente a actualizar
-                Tb_Cliente objCliente = (from objClient in MisClientes.Tb_Cliente
-                                         where objClient.cod_cli == strCod
-                                         select objClient).FirstOrDefault();
-
-                //Removemos el vendedor
-                MisClientes.Tb_Cliente.Remove(objCliente);
-                MisClientes.SaveChanges();
+                //usp
+                MisClientes.usp_EliminarCliente(strCod);
 
                 return true;
             }
@@ -156,30 +151,13 @@ namespace WCF_Hunde
             HundeDBEntities MisClientes = new HundeDBEntities();
             try
             {
-                //Crea la instancia del nuevo vendedor
-                Tb_Cliente objCliente = new Tb_Cliente();
-                //Asignamos las propiedades al nuevo cliente desde el parametro para que sea reconocido por el objeto
-                //Codigo vacio a ser llenado de forma automatica incremental
-                objCliente.cod_cli = String.Empty;
-                objCliente.Tipo_cliente = objClienteBE.Tipo_cliente;
-                objCliente.nom_cliente = objClienteBE.nom_cliente;
-                objCliente.ape_pat_cliente = objClienteBE.ape_pat_cliente;
-                objCliente.ape_mat_cliente = objClienteBE.ape_mat_cliente;
-                objCliente.direccion_cliente = objClienteBE.direccion_cliente;
-                objCliente.cel_cliente = objClienteBE.cel_cliente;
-                objCliente.email_cliente = objClienteBE.email_cliente;
-                objCliente.es_dueno = objClienteBE.es_dueno;
-                objCliente.es_empleado = objClienteBE.es_empleado;
-                objCliente.id_ubigeo = objClienteBE.id_ubigeo;
-                objCliente.dni_cliente = objClienteBE.dni_cliente;
-                objCliente.usu_reg_cli = objClienteBE.usu_reg_cli;
-                objCliente.fec_reg_cli = objClienteBE.fec_reg_cli;
-                objCliente.estado_cli = objClienteBE.estado_cli;
+                //usp
+                MisClientes.usp_InsertarCliente(objClienteBE.Tipo_cliente, objClienteBE.nom_cliente, objClienteBE.ape_pat_cliente,
+                    objClienteBE.ape_mat_cliente, objClienteBE.direccion_cliente, objClienteBE.cel_cliente,
+                    objClienteBE.email_cliente, objClienteBE.es_dueno, objClienteBE.es_empleado, objClienteBE.id_ubigeo,
+                    objClienteBE.dni_cliente, objClienteBE.usu_reg_cli, objClienteBE.estado_cli);
 
-                //Agrega nueva instancia
-                MisClientes.Tb_Cliente.Add(objCliente);
                 return true;
-
             }
             catch (EntityException ex)
             {
@@ -194,36 +172,17 @@ namespace WCF_Hunde
 
             try
             {
-                //Obtenemos con LINQ el cliente para actualizar
-                Tb_Cliente objCliente = (from objClient in MisClientes.Tb_Cliente
-                                         where objClient.cod_cli == objClienteBE.cod_cli
-                                         select objClient).FirstOrDefault();
-
-                //el vendedor se encuentra identificado
-
-                //Asignamos las propiedades a la instancia de objCliente actualizar desde el parametro objClient
-                objCliente.cod_cli = objClienteBE.cod_cli;
-                objCliente.Tipo_cliente = objClienteBE.Tipo_cliente;
-                objCliente.nom_cliente = objClienteBE.nom_cliente;
-                objCliente.ape_pat_cliente = objClienteBE.ape_pat_cliente;
-                objCliente.ape_mat_cliente = objClienteBE.ape_mat_cliente;
-                objCliente.direccion_cliente = objClienteBE.direccion_cliente;
-                objCliente.cel_cliente = objClienteBE.cel_cliente;
-                objCliente.email_cliente = objClienteBE.email_cliente;
-                objCliente.es_dueno = objClienteBE.es_dueno;
-                objCliente.es_empleado = objClienteBE.es_empleado;
-                objCliente.id_ubigeo = objClienteBE.id_ubigeo;
-                objCliente.dni_cliente = objClienteBE.dni_cliente;
-                objCliente.estado_cli = objClienteBE.estado_cli;
-
-                //Agrega nueva instancia
-                MisClientes.SaveChanges();
+                //usp
+                MisClientes.usp_ActualizarCliente(objClienteBE.Tipo_cliente, objClienteBE.nom_cliente,
+                    objClienteBE.ape_pat_cliente, objClienteBE.ape_mat_cliente, objClienteBE.direccion_cliente,
+                    objClienteBE.cel_cliente, objClienteBE.email_cliente, objClienteBE.es_dueno,
+                    objClienteBE.es_empleado, objClienteBE.id_ubigeo, objClienteBE.dni_cliente,
+                    objClienteBE.usu_ult_modificacion_cli, objClienteBE.fecha_ult_modificacion_cli, objClienteBE.estado_cli,
+                    objClienteBE.cod_cli);
                 return true;
-
             }
             catch (EntityException ex)
             {
-
                 throw new Exception(ex.Message);
             }
         }
