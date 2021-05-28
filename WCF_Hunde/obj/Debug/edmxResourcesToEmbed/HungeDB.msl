@@ -122,5 +122,39 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_ListarEstadoProveedorMedicina" FunctionName="HundeDBModel.Store.usp_ListarEstadoProveedorMedicina">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarEstadoProveedorMedicina_Result">
+          <ScalarProperty Name="cod_prov" ColumnName="cod_prov" />
+          <ScalarProperty Name="cod_med" ColumnName="cod_med" />
+          <ScalarProperty Name="nom_prov" ColumnName="nom_prov" />
+          <ScalarProperty Name="estado_prov" ColumnName="estado_prov" />
+          <ScalarProperty Name="nombre_medicina" ColumnName="nombre_medicina" />
+          <ScalarProperty Name="tipo_medicina" ColumnName="tipo_medicina" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ListarTipoMedicinaProveedor" FunctionName="HundeDBModel.Store.usp_ListarTipoMedicinaProveedor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarTipoMedicinaProveedor_Result">
+          <ScalarProperty Name="cod_prov" ColumnName="cod_prov" />
+          <ScalarProperty Name="cod_med" ColumnName="cod_med" />
+          <ScalarProperty Name="nom_prov" ColumnName="nom_prov" />
+          <ScalarProperty Name="email_prov" ColumnName="email_prov" />
+          <ScalarProperty Name="tel_prov" ColumnName="tel_prov" />
+          <ScalarProperty Name="nombre_medicina" ColumnName="nombre_medicina" />
+          <ScalarProperty Name="tipo_medicina" ColumnName="tipo_medicina" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_RepresentanteProveedor" FunctionName="HundeDBModel.Store.usp_RepresentanteProveedor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HundeDBModel.usp_RepresentanteProveedor_Result">
+          <ScalarProperty Name="cod_prov" ColumnName="cod_prov" />
+          <ScalarProperty Name="nom_prov" ColumnName="nom_prov" />
+          <ScalarProperty Name="rep_ven_prov" ColumnName="rep_ven_prov" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

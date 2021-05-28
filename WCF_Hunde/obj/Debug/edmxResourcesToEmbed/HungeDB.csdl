@@ -54,6 +54,16 @@
       <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
       <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
     </AssociationSet>
+    <FunctionImport Name="usp_ListarEstadoProveedorMedicina" ReturnType="Collection(HundeDBModel.usp_ListarEstadoProveedorMedicina_Result)">
+      <Parameter Name="estado_prov" Mode="In" Type="Int32" />
+      <Parameter Name="tipo_medicina" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_ListarTipoMedicinaProveedor" ReturnType="Collection(HundeDBModel.usp_ListarTipoMedicinaProveedor_Result)">
+      <Parameter Name="tipo_medicina" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_RepresentanteProveedor" ReturnType="Collection(HundeDBModel.usp_RepresentanteProveedor_Result)">
+      <Parameter Name="rep_ven_prov" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="Tb_Cliente">
     <Key>
@@ -195,4 +205,26 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <ComplexType Name="usp_ListarEstadoProveedorMedicina_Result">
+    <Property Type="String" Name="cod_prov" Nullable="false" MaxLength="4" />
+    <Property Type="String" Name="cod_med" Nullable="false" MaxLength="4" />
+    <Property Type="String" Name="nom_prov" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="estado_prov" Nullable="true" />
+    <Property Type="String" Name="nombre_medicina" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="tipo_medicina" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="usp_ListarTipoMedicinaProveedor_Result">
+    <Property Type="String" Name="cod_prov" Nullable="false" MaxLength="4" />
+    <Property Type="String" Name="cod_med" Nullable="false" MaxLength="4" />
+    <Property Type="String" Name="nom_prov" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="email_prov" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="tel_prov" Nullable="false" MaxLength="9" />
+    <Property Type="String" Name="nombre_medicina" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="tipo_medicina" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="usp_RepresentanteProveedor_Result">
+    <Property Type="String" Name="cod_prov" Nullable="false" MaxLength="4" />
+    <Property Type="String" Name="nom_prov" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="rep_ven_prov" Nullable="false" MaxLength="50" />
+  </ComplexType>
 </Schema>

@@ -196,5 +196,36 @@ namespace WCF_Hunde
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_EliminarEmpleado", vcod_empParameter);
         }
+    
+        public virtual ObjectResult<usp_ListarEstadoProveedorMedicina_Result> usp_ListarEstadoProveedorMedicina(Nullable<int> estado_prov, string tipo_medicina)
+        {
+            var estado_provParameter = estado_prov.HasValue ?
+                new ObjectParameter("estado_prov", estado_prov) :
+                new ObjectParameter("estado_prov", typeof(int));
+    
+            var tipo_medicinaParameter = tipo_medicina != null ?
+                new ObjectParameter("tipo_medicina", tipo_medicina) :
+                new ObjectParameter("tipo_medicina", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ListarEstadoProveedorMedicina_Result>("usp_ListarEstadoProveedorMedicina", estado_provParameter, tipo_medicinaParameter);
+        }
+    
+        public virtual ObjectResult<usp_ListarTipoMedicinaProveedor_Result> usp_ListarTipoMedicinaProveedor(string tipo_medicina)
+        {
+            var tipo_medicinaParameter = tipo_medicina != null ?
+                new ObjectParameter("tipo_medicina", tipo_medicina) :
+                new ObjectParameter("tipo_medicina", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ListarTipoMedicinaProveedor_Result>("usp_ListarTipoMedicinaProveedor", tipo_medicinaParameter);
+        }
+    
+        public virtual ObjectResult<usp_RepresentanteProveedor_Result> usp_RepresentanteProveedor(string rep_ven_prov)
+        {
+            var rep_ven_provParameter = rep_ven_prov != null ?
+                new ObjectParameter("rep_ven_prov", rep_ven_prov) :
+                new ObjectParameter("rep_ven_prov", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_RepresentanteProveedor_Result>("usp_RepresentanteProveedor", rep_ven_provParameter);
+        }
     }
 }
