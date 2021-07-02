@@ -15,14 +15,13 @@ namespace WCF_Hunde
         ProveedorBE ConsultarProveedor(String strCod);
 
         [OperationContract]
-        List<ProveedorBE> GetAllMedicinaProveedor(String srtTipoMedicina);
-
-        [OperationContract]
-        List<EstadosBE> GetAllEstadoProveedorMedicina(Int16 strEstadoProveedor, String strTipoMedicina);
-
-        [OperationContract]
         List<ProveedorBE> ConsultarSupervisor(String strRepVenProv);
 
+        [OperationContract]
+        List<ProveedorBE> ConsultarMedicinaProveedor(String srtTipoMedicina);
+
+        [OperationContract]
+        List<EstadosBE> ConsultarEstadoProveedorMedicina(Int16 strEstadoProveedor, String strTipoMedicina);
     }
 
     // Creamos la data contractual de Proveedores

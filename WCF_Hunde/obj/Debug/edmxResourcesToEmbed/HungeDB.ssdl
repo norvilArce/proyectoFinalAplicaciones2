@@ -14,7 +14,7 @@
     <Property Name="email_cliente" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="es_dueno" Type="int" Nullable="false" />
     <Property Name="es_empleado" Type="int" Nullable="false" />
-    <Property Name="id_ubigeo" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="id_ubigeo" Type="varchar" MaxLength="6" />
     <Property Name="dni_cliente" Type="char" MaxLength="8" Nullable="false" />
     <Property Name="usu_reg_cli" Type="varchar" MaxLength="4" />
     <Property Name="fec_reg_cli" Type="datetime" />
@@ -98,8 +98,8 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
       <PropertyRef Name="email_cliente" />
       <PropertyRef Name="es_dueno" />
       <PropertyRef Name="es_empleado" />
-      <PropertyRef Name="id_ubigeo" />
       <PropertyRef Name="dni_cliente" />
+      <PropertyRef Name="id_ubigeo" />
     </Key>
     <Property Name="cod_emp" Type="varchar" MaxLength="4" Nullable="false" />
     <Property Name="rol_emp" Type="int" Nullable="false" />
@@ -221,6 +221,12 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
   <Function Name="usp_ListarEstadoProveedorMedicina" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="estado_prov" Type="int" Mode="In" />
     <Parameter Name="tipo_medicina" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="usp_ListarPacientePorTratamiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tipo_tratamiento" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="usp_ListarPacientesPorRaza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vraza" Type="varchar" Mode="In" />
   </Function>
   <Function Name="usp_ListarTipoMedicinaProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="tipo_medicina" Type="varchar" Mode="In" />

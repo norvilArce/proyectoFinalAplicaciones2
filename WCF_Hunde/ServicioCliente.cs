@@ -11,7 +11,29 @@ namespace WCF_Hunde
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "ServicioCliente" en el código y en el archivo de configuración a la vez.
     public class ServicioCliente : IServicioCliente
     {
-        public ClienteBE ConsultCliente(string strCod)
+        public bool InsertarCliente(ClienteBE objClienteBE)
+        {
+            //Instanciamos el modelo
+            HundeDBEntities MisClientes = new HundeDBEntities();
+            try
+            {
+                //usp
+                MisClientes.usp_InsertarCliente(objClienteBE.Tipo_cliente, objClienteBE.nom_cliente,
+                    objClienteBE.ape_pat_cliente, objClienteBE.ape_mat_cliente, objClienteBE.direccion_cliente,
+                    objClienteBE.cel_cliente, objClienteBE.email_cliente, objClienteBE.es_dueno,
+                    objClienteBE.es_empleado, objClienteBE.id_ubigeo, objClienteBE.dni_cliente,
+                    objClienteBE.usu_reg_cli, objClienteBE.estado_cli);
+                return true;
+            }
+            catch (EntityException ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+        public ClienteBE ConsultarCliente(string strCod)
         {
             HundeDBEntities MisClientes = new HundeDBEntities();
             try
@@ -77,7 +99,30 @@ namespace WCF_Hunde
             }
         }
 
-        public bool DeleteCliente(string strCod)
+
+        public bool ActualizarCliente(ClienteBE objClienteBE)
+        {
+            HundeDBEntities MisClientes = new HundeDBEntities();
+
+            try
+            {
+                //usp
+                MisClientes.usp_ActualizarCliente(objClienteBE.Tipo_cliente, objClienteBE.nom_cliente,
+                    objClienteBE.ape_pat_cliente, objClienteBE.ape_mat_cliente, objClienteBE.direccion_cliente,
+                    objClienteBE.cel_cliente, objClienteBE.email_cliente, objClienteBE.es_dueno,
+                    objClienteBE.es_empleado, objClienteBE.id_ubigeo, objClienteBE.dni_cliente,
+                    objClienteBE.usu_ult_modificacion_cli, objClienteBE.fecha_ult_modificacion_cli,
+                    objClienteBE.estado_cli, objClienteBE.cod_cli);
+                return true;
+            }
+            catch (EntityException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+        public bool EliminarCliente(string strCod)
         {
             HundeDBEntities MisClientes = new HundeDBEntities();
             try
@@ -94,7 +139,7 @@ namespace WCF_Hunde
         }
 
      
-        public List<ClienteBE> GetAllCliente()
+        public List<ClienteBE> ListarClientes()
         {
             HundeDBEntities MisClientes = new HundeDBEntities();
             try
@@ -138,48 +183,6 @@ namespace WCF_Hunde
                 }
 
                 return objListaCliente;
-            }
-            catch (EntityException ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public bool InsertCliente(ClienteBE objClienteBE)
-        {
-            //Instanciamos el modelo
-            HundeDBEntities MisClientes = new HundeDBEntities();
-            try
-            {
-                //usp
-                MisClientes.usp_InsertarCliente(objClienteBE.Tipo_cliente, objClienteBE.nom_cliente, objClienteBE.ape_pat_cliente,
-                    objClienteBE.ape_mat_cliente, objClienteBE.direccion_cliente, objClienteBE.cel_cliente,
-                    objClienteBE.email_cliente, objClienteBE.es_dueno, objClienteBE.es_empleado, objClienteBE.id_ubigeo,
-                    objClienteBE.dni_cliente, objClienteBE.usu_reg_cli, objClienteBE.estado_cli);
-
-                return true;
-            }
-            catch (EntityException ex)
-            {
-
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public bool UpdateCliente(ClienteBE objClienteBE)
-        {
-            HundeDBEntities MisClientes = new HundeDBEntities();
-
-            try
-            {
-                //usp
-                MisClientes.usp_ActualizarCliente(objClienteBE.Tipo_cliente, objClienteBE.nom_cliente,
-                    objClienteBE.ape_pat_cliente, objClienteBE.ape_mat_cliente, objClienteBE.direccion_cliente,
-                    objClienteBE.cel_cliente, objClienteBE.email_cliente, objClienteBE.es_dueno,
-                    objClienteBE.es_empleado, objClienteBE.id_ubigeo, objClienteBE.dni_cliente,
-                    objClienteBE.usu_ult_modificacion_cli, objClienteBE.fecha_ult_modificacion_cli, objClienteBE.estado_cli,
-                    objClienteBE.cod_cli);
-                return true;
             }
             catch (EntityException ex)
             {

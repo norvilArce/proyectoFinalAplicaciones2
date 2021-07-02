@@ -159,5 +159,45 @@
     <FunctionImportMapping FunctionImportName="usp_ActualizarCliente" FunctionName="HundeDBModel.Store.usp_ActualizarCliente" />
     <FunctionImportMapping FunctionImportName="usp_EliminarCliente" FunctionName="HundeDBModel.Store.usp_EliminarCliente" />
     <FunctionImportMapping FunctionImportName="usp_InsertarCliente" FunctionName="HundeDBModel.Store.usp_InsertarCliente" />
+    <FunctionImportMapping FunctionImportName="usp_ListarPacientesPorRaza" FunctionName="HundeDBModel.Store.usp_ListarPacientesPorRaza">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientesPorRaza_Result">
+          <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+          <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
+          <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
+          <ScalarProperty Name="raza" ColumnName="raza" />
+          <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="longitud" ColumnName="longitud" />
+          <ScalarProperty Name="peso" ColumnName="peso" />
+          <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
+          <ScalarProperty Name="est_pac" ColumnName="est_pac" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ListarPacientePorTratamiento" FunctionName="HundeDBModel.Store.usp_ListarPacientePorTratamiento">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientePorTratamiento_Result">
+          <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+          <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
+          <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
+          <ScalarProperty Name="raza" ColumnName="raza" />
+          <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="longitud" ColumnName="longitud" />
+          <ScalarProperty Name="peso" ColumnName="peso" />
+          <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
+          <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
+          <ScalarProperty Name="est_pac" ColumnName="est_pac" />
+          <ScalarProperty Name="cod_trat" ColumnName="cod_trat" />
+          <ScalarProperty Name="nombre_trat" ColumnName="nombre_trat" />
+          <ScalarProperty Name="tipo_trat" ColumnName="tipo_trat" />
+          <ScalarProperty Name="estado_trat" ColumnName="estado_trat" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

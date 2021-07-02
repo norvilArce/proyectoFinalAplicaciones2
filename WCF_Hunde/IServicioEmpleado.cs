@@ -12,16 +12,19 @@ namespace WCF_Hunde
     public interface IServicioEmpleado
     {
         [OperationContract]
-        Boolean insertarEmpleado(Empleado empleado);
-        [OperationContract]
-        List<Empleado> listarEmpleados(); //en nuestro modelo de negocio, son empleados son tambien clientes
-        [OperationContract]
-        Boolean actualizarEmpleado(Empleado empleado);
-        [OperationContract]
-        Boolean eliminarEmpleado(String codEmpl);
-        [OperationContract]
-        Empleado getEmpleado(String codEmpl);
+        Boolean InsertarEmpleado(Empleado empleado);
 
+        [OperationContract]
+        Empleado ConsultarEmpleado(String codEmpl);
+                
+        [OperationContract]
+        Boolean ActualizarEmpleado(Empleado empleado);
+
+        [OperationContract]
+        Boolean EliminarEmpleado(String codEmpl);
+
+        [OperationContract]
+        List<Empleado> ListarEmpleados(); // En nuestro modelo de negocio, los empleados pueden ser también clientes
     }
 
     //data contractual

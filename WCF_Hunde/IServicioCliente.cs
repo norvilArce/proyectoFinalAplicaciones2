@@ -12,19 +12,19 @@ namespace WCF_Hunde
     public interface IServicioCliente
     {
         [OperationContract]
-        ClienteBE ConsultCliente(String strCod);
+        Boolean InsertarCliente(ClienteBE objClienteBE);
 
         [OperationContract]
-        Boolean InsertCliente(ClienteBE objClienteBE);
+        ClienteBE ConsultarCliente(String strCod);
 
         [OperationContract]
-        Boolean UpdateCliente(ClienteBE objClienteBE);
+        Boolean ActualizarCliente(ClienteBE objClienteBE);
 
         [OperationContract]
-        Boolean DeleteCliente(String strCod);
+        Boolean EliminarCliente(String strCod);
 
         [OperationContract]
-        List<ClienteBE> GetAllCliente();
+        List<ClienteBE> ListarClientes();
     }
 
     [DataContract]

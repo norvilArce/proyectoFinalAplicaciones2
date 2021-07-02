@@ -19,7 +19,7 @@
           <Property Name="email_cliente" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="es_dueno" Type="int" Nullable="false" />
           <Property Name="es_empleado" Type="int" Nullable="false" />
-          <Property Name="id_ubigeo" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="id_ubigeo" Type="varchar" MaxLength="6" />
           <Property Name="dni_cliente" Type="char" MaxLength="8" Nullable="false" />
           <Property Name="usu_reg_cli" Type="varchar" MaxLength="4" />
           <Property Name="fec_reg_cli" Type="datetime" />
@@ -103,8 +103,8 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
             <PropertyRef Name="email_cliente" />
             <PropertyRef Name="es_dueno" />
             <PropertyRef Name="es_empleado" />
-            <PropertyRef Name="id_ubigeo" />
             <PropertyRef Name="dni_cliente" />
+            <PropertyRef Name="id_ubigeo" />
           </Key>
           <Property Name="cod_emp" Type="varchar" MaxLength="4" Nullable="false" />
           <Property Name="rol_emp" Type="int" Nullable="false" />
@@ -226,6 +226,12 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
         <Function Name="usp_ListarEstadoProveedorMedicina" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="estado_prov" Type="int" Mode="In" />
           <Parameter Name="tipo_medicina" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ListarPacientePorTratamiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tipo_tratamiento" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ListarPacientesPorRaza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vraza" Type="varchar" Mode="In" />
         </Function>
         <Function Name="usp_ListarTipoMedicinaProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tipo_medicina" Type="varchar" Mode="In" />
@@ -360,7 +366,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
             <Parameter Name="vcod_cli" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_EliminarCliente">
-            <Parameter Name="vcod_cli" Mode="In" Type="String" />
+          <Parameter Name="vcod_cli" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_InsertarCliente">
             <Parameter Name="vtipo_cliente" Mode="In" Type="Int32" />
@@ -377,6 +383,12 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
             <Parameter Name="vusu_reg_cli" Mode="In" Type="String" />
             <Parameter Name="vestado_cli" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="usp_ListarPacientesPorRaza" ReturnType="Collection(HundeDBModel.usp_ListarPacientesPorRaza_Result)">
+          <Parameter Name="vraza" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarPacientePorTratamiento" ReturnType="Collection(HundeDBModel.usp_ListarPacientePorTratamiento_Result)">
+          <Parameter Name="tipo_tratamiento" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Tb_Cliente">
           <Key>
@@ -392,7 +404,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
           <Property Name="email_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="es_dueno" Type="Int32" Nullable="false" />
           <Property Name="es_empleado" Type="Int32" Nullable="false" />
-          <Property Name="id_ubigeo" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="id_ubigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
           <Property Name="dni_cliente" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
           <Property Name="usu_reg_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="fec_reg_cli" Type="DateTime" Precision="3" />
@@ -539,6 +551,38 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
           <Property Type="String" Name="cod_prov" Nullable="false" MaxLength="4" />
           <Property Type="String" Name="nom_prov" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="rep_ven_prov" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarPacientesPorRaza_Result">
+          <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tipo_pac" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="raza" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
+          <Property Type="Int32" Name="sexo" Nullable="false" />
+          <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
+          <Property Type="Double" Name="longitud" Nullable="false" />
+          <Property Type="Double" Name="peso" Nullable="false" />
+          <Property Type="DateTime" Name="ult_vis_pac" Nullable="true" />
+          <Property Type="String" Name="foto" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="observaciones_pac" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="est_pac" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarPacientePorTratamiento_Result">
+          <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tipo_pac" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="raza" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
+          <Property Type="Int32" Name="sexo" Nullable="false" />
+          <Property Type="Double" Name="longitud" Nullable="false" />
+          <Property Type="Double" Name="peso" Nullable="false" />
+          <Property Type="DateTime" Name="ult_vis_pac" Nullable="true" />
+          <Property Type="String" Name="observaciones_pac" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="est_pac" Nullable="false" />
+          <Property Type="Int32" Name="cod_trat" Nullable="false" />
+          <Property Type="String" Name="nombre_trat" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tipo_trat" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="estado_trat" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -704,6 +748,46 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
           <FunctionImportMapping FunctionImportName="usp_ActualizarCliente" FunctionName="HundeDBModel.Store.usp_ActualizarCliente" />
           <FunctionImportMapping FunctionImportName="usp_EliminarCliente" FunctionName="HundeDBModel.Store.usp_EliminarCliente" />
           <FunctionImportMapping FunctionImportName="usp_InsertarCliente" FunctionName="HundeDBModel.Store.usp_InsertarCliente" />
+          <FunctionImportMapping FunctionImportName="usp_ListarPacientesPorRaza" FunctionName="HundeDBModel.Store.usp_ListarPacientesPorRaza">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientesPorRaza_Result">
+                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+                <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
+                <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
+                <ScalarProperty Name="raza" ColumnName="raza" />
+                <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
+                <ScalarProperty Name="est_pac" ColumnName="est_pac" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarPacientePorTratamiento" FunctionName="HundeDBModel.Store.usp_ListarPacientePorTratamiento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientePorTratamiento_Result">
+                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+                <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
+                <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
+                <ScalarProperty Name="raza" ColumnName="raza" />
+                <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
+                <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
+                <ScalarProperty Name="est_pac" ColumnName="est_pac" />
+                <ScalarProperty Name="cod_trat" ColumnName="cod_trat" />
+                <ScalarProperty Name="nombre_trat" ColumnName="nombre_trat" />
+                <ScalarProperty Name="tipo_trat" ColumnName="tipo_trat" />
+                <ScalarProperty Name="estado_trat" ColumnName="estado_trat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

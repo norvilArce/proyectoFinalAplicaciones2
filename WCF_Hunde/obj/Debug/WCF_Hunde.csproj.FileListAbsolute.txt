@@ -9,3 +9,15 @@ D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\
 D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\Proy_Hunde_WCF\WCF_Hunde\obj\Debug\WCF_Hunde.csproj.CopyComplete
 D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\Proy_Hunde_WCF\WCF_Hunde\obj\Debug\WCF_Hunde.dll
 D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\Proy_Hunde_WCF\WCF_Hunde\obj\Debug\WCF_Hunde.pdb
+E:\ISIL\4to Ciclo\.Desarrollo de Aplicaciones II\.Avances de Proyecto\Avance 02 - Examen Parcial\Correcciones\Proy_Hunde_WCF\WCF_Hunde\bin\Debug\WCF_Hunde.dll.config
+E:\ISIL\4to Ciclo\.Desarrollo de Aplicaciones II\.Avances de Proyecto\Avance 02 - Examen Parcial\Correcciones\Proy_Hunde_WCF\WCF_Hunde\bin\Debug\WCF_Hunde.dll
+E:\ISIL\4to Ciclo\.Desarrollo de Aplicaciones II\.Avances de Proyecto\Avance 02 - Examen Parcial\Correcciones\Proy_Hunde_WCF\WCF_Hunde\bin\Debug\WCF_Hunde.pdb
+E:\ISIL\4to Ciclo\.Desarrollo de Aplicaciones II\.Avances de Proyecto\Avance 02 - Examen Parcial\Correcciones\Proy_Hunde_WCF\WCF_Hunde\bin\Debug\EntityFramework.dll
+E:\ISIL\4to Ciclo\.Desarrollo de Aplicaciones II\.Avances de Proyecto\Avance 02 - Examen Parcial\Correcciones\Proy_Hunde_WCF\WCF_Hunde\bin\Debug\EntityFramework.SqlServer.dll
+E:\ISIL\4to Ciclo\.Desarrollo de Aplicaciones II\.Avances de Proyecto\Avance 02 - Examen Parcial\Correcciones\Proy_Hunde_WCF\WCF_Hunde\bin\Debug\EntityFramework.xml
+E:\ISIL\4to Ciclo\.Desarrollo de Aplicaciones II\.Avances de Proyecto\Avance 02 - Examen Parcial\Correcciones\Proy_Hunde_WCF\WCF_Hunde\bin\Debug\EntityFramework.SqlServer.xml
+E:\ISIL\4to Ciclo\.Desarrollo de Aplicaciones II\.Avances de Proyecto\Avance 02 - Examen Parcial\Correcciones\Proy_Hunde_WCF\WCF_Hunde\obj\Debug\WCF_Hunde.csprojAssemblyReference.cache
+E:\ISIL\4to Ciclo\.Desarrollo de Aplicaciones II\.Avances de Proyecto\Avance 02 - Examen Parcial\Correcciones\Proy_Hunde_WCF\WCF_Hunde\obj\Debug\WCF_Hunde.csproj.CoreCompileInputs.cache
+E:\ISIL\4to Ciclo\.Desarrollo de Aplicaciones II\.Avances de Proyecto\Avance 02 - Examen Parcial\Correcciones\Proy_Hunde_WCF\WCF_Hunde\obj\Debug\WCF_Hunde.csproj.CopyComplete
+E:\ISIL\4to Ciclo\.Desarrollo de Aplicaciones II\.Avances de Proyecto\Avance 02 - Examen Parcial\Correcciones\Proy_Hunde_WCF\WCF_Hunde\obj\Debug\WCF_Hunde.dll
+E:\ISIL\4to Ciclo\.Desarrollo de Aplicaciones II\.Avances de Proyecto\Avance 02 - Examen Parcial\Correcciones\Proy_Hunde_WCF\WCF_Hunde\obj\Debug\WCF_Hunde.pdb

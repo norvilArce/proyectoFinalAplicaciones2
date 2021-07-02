@@ -1,4 +1,4 @@
-﻿// La generación de código T4 está habilitada para el modelo 'D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\Proy_Hunde_WCF\WCF_Hunde\HungeDB.edmx'. 
+﻿// La generación de código T4 está habilitada para el modelo 'E:\ISIL\4to Ciclo\.Desarrollo de Aplicaciones II\.Avances de Proyecto\Avance 02 - Examen Parcial\Correcciones\Proy_Hunde_WCF\WCF_Hunde\HungeDB.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.

@@ -70,11 +70,13 @@
     <Compile Include="IService1.cs" />
     <Compile Include="IServicioCliente.cs" />
     <Compile Include="IServicioEmpleado.cs" />
+    <Compile Include="IServicioPaciente.cs" />
     <Compile Include="IServicioProveedor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service1.cs" />
     <Compile Include="ServicioCliente.cs" />
     <Compile Include="ServicioEmpleado.cs" />
+    <Compile Include="ServicioPaciente.cs" />
     <Compile Include="ServicioProveedor.cs" />
     <Compile Include="Tb_Cliente.cs">
       <DependentUpon>HungeDB.tt</DependentUpon>
@@ -92,6 +94,12 @@
       <DependentUpon>HungeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="usp_ListarEstadoProveedorMedicina_Result.cs">
+      <DependentUpon>HungeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarPacientePorTratamiento_Result.cs">
+      <DependentUpon>HungeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarPacientesPorRaza_Result.cs">
       <DependentUpon>HungeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="usp_ListarTipoMedicinaProveedor_Result.cs">
