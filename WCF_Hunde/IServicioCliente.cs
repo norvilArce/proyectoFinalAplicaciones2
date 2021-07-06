@@ -12,7 +12,9 @@ namespace WCF_Hunde
     public interface IServicioCliente
     {
         [OperationContract]
-        Boolean InsertarClient(ClienteBE objClienteBE);
+        
+        //comentario cliente
+        Boolean InsertarCliente(ClienteBE objClienteBE);
 
         [OperationContract]
         ClienteBE ConsultarCliente(String strCod);
