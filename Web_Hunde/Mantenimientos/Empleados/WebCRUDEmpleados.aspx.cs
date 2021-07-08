@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Web_Hunde.Mantenimiento.Empleados
+namespace Web_Hunde.Mantenimientos.Empleados
 {
-    public partial class WebCRUDEmpleado : System.Web.UI.Page
+    public partial class WebCRUDEmpleados : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
