@@ -12,6 +12,8 @@ namespace WCF_Hunde
     public interface IServicioCliente
     {
         [OperationContract]
+        
+        //comentario cliente
         Boolean InsertarCliente(ClienteBE objClienteBE);
 
         [OperationContract]
