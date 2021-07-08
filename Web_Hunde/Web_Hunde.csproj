@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Consultas\" />
+    <Folder Include="CSS\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
