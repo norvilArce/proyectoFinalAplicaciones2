@@ -44,6 +44,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -67,10 +69,53 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\ProxyProveedor\configuration91.svcinfo" />
+    <None Include="Connected Services\ProxyProveedor\configuration.svcinfo" />
+    <None Include="Connected Services\ProxyProveedor\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Mantenimientos\Empleados\WebCRUDEmpleados.aspx" />
+    <Content Include="Mantenimientos\Proveedores\WebConsultaProveedor.aspx" />
+    <Content Include="Mantenimientos\Proveedores\WebConsultarEstadoProveedorMedicina.aspx" />
+    <Content Include="Mantenimientos\Proveedores\WebConsultarMedicinaProveedor.aspx" />
+    <Content Include="Mantenimientos\Proveedores\WebConsultarSupervisor.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\ProxyProveedor\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimientos\Proveedores\WebConsultaProveedor.aspx.cs">
+      <DependentUpon>WebConsultaProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenimientos\Proveedores\WebConsultaProveedor.aspx.designer.cs">
+      <DependentUpon>WebConsultaProveedor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimientos\Proveedores\WebConsultarEstadoProveedorMedicina.aspx.cs">
+      <DependentUpon>WebConsultarEstadoProveedorMedicina.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenimientos\Proveedores\WebConsultarEstadoProveedorMedicina.aspx.designer.cs">
+      <DependentUpon>WebConsultarEstadoProveedorMedicina.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimientos\Proveedores\WebConsultarMedicinaProveedor.aspx.cs">
+      <DependentUpon>WebConsultarMedicinaProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenimientos\Proveedores\WebConsultarMedicinaProveedor.aspx.designer.cs">
+      <DependentUpon>WebConsultarMedicinaProveedor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimientos\Proveedores\WebConsultarSupervisor.aspx.cs">
+      <DependentUpon>WebConsultarSupervisor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenimientos\Proveedores\WebConsultarSupervisor.aspx.designer.cs">
+      <DependentUpon>WebConsultarSupervisor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebMaster.master.cs">
       <DependentUpon>WebMaster.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -86,6 +131,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="WebMaster.master" />
+    <None Include="Connected Services\ProxyProveedor\service.wsdl" />
+    <None Include="Connected Services\ProxyProveedor\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProxyProveedor\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProxyProveedor\WCF_Hunde.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Connected Services\ProxyProveedor\Web_Hunde.ProxyProveedor.EstadosBE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ProxyProveedor\Web_Hunde.ProxyProveedor.ProveedorBE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -96,6 +157,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Consultas\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ProxyProveedor\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

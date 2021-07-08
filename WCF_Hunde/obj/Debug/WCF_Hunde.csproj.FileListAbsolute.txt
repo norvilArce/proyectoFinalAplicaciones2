@@ -21,3 +21,15 @@ E:\ISIL\4to Ciclo\.Desarrollo de Aplicaciones II\.Avances de Proyecto\Avance 02 
 E:\ISIL\4to Ciclo\.Desarrollo de Aplicaciones II\.Avances de Proyecto\Avance 02 - Examen Parcial\Correcciones\Proy_Hunde_WCF\WCF_Hunde\obj\Debug\WCF_Hunde.csproj.CopyComplete
 E:\ISIL\4to Ciclo\.Desarrollo de Aplicaciones II\.Avances de Proyecto\Avance 02 - Examen Parcial\Correcciones\Proy_Hunde_WCF\WCF_Hunde\obj\Debug\WCF_Hunde.dll
 E:\ISIL\4to Ciclo\.Desarrollo de Aplicaciones II\.Avances de Proyecto\Avance 02 - Examen Parcial\Correcciones\Proy_Hunde_WCF\WCF_Hunde\obj\Debug\WCF_Hunde.pdb
+D:\Ciclo 5\AP2\final2\WCF_Hunde\bin\Debug\WCF_Hunde.dll.config
+D:\Ciclo 5\AP2\final2\WCF_Hunde\bin\Debug\WCF_Hunde.dll
+D:\Ciclo 5\AP2\final2\WCF_Hunde\bin\Debug\WCF_Hunde.pdb
+D:\Ciclo 5\AP2\final2\WCF_Hunde\bin\Debug\EntityFramework.dll
+D:\Ciclo 5\AP2\final2\WCF_Hunde\bin\Debug\EntityFramework.SqlServer.dll
+D:\Ciclo 5\AP2\final2\WCF_Hunde\bin\Debug\EntityFramework.xml
+D:\Ciclo 5\AP2\final2\WCF_Hunde\bin\Debug\EntityFramework.SqlServer.xml
+D:\Ciclo 5\AP2\final2\WCF_Hunde\obj\Debug\WCF_Hunde.csprojAssemblyReference.cache
+D:\Ciclo 5\AP2\final2\WCF_Hunde\obj\Debug\WCF_Hunde.csproj.CoreCompileInputs.cache
+D:\Ciclo 5\AP2\final2\WCF_Hunde\obj\Debug\WCF_Hunde.csproj.CopyComplete
+D:\Ciclo 5\AP2\final2\WCF_Hunde\obj\Debug\WCF_Hunde.dll
+D:\Ciclo 5\AP2\final2\WCF_Hunde\obj\Debug\WCF_Hunde.pdb

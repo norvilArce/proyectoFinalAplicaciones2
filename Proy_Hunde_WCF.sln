@@ -6,13 +6,15 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCF_Hunde", "WCF_Hunde\WCF_Hunde.csproj", "{C94DCFFD-38F2-4C04-8AFE-BAFA02887BF4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web_Hunde", "Web_Hunde\Web_Hunde.csproj", "{892C2627-6E22-4279-A110-2601EE7C24AF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C94DCFFD-38F2-4C04-8AFE-BAFA02887BF4} = {C94DCFFD-38F2-4C04-8AFE-BAFA02887BF4}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C94DCFFD-38F2-4C04-8AFE-BAFA02887BF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C94DCFFD-38F2-4C04-8AFE-BAFA02887BF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -22,7 +24,6 @@ Global
 		{892C2627-6E22-4279-A110-2601EE7C24AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{892C2627-6E22-4279-A110-2601EE7C24AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{892C2627-6E22-4279-A110-2601EE7C24AF}.Release|Any CPU.Build.0 = Release|Any CPU
-
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
