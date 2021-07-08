@@ -157,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Consultas\" />
+    <Folder Include="CSS\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
