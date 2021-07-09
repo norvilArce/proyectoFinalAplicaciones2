@@ -4,6 +4,78 @@
     <FunctionImportMapping FunctionImportName="usp_ActualizarEmpleado" FunctionName="HundeDBModel.Store.usp_ActualizarEmpleado" />
     <FunctionImportMapping FunctionImportName="usp_InsertarEmpleado" FunctionName="HundeDBModel.Store.usp_InsertarEmpleado" />
     <FunctionImportMapping FunctionImportName="usp_EliminarEmpleado" FunctionName="HundeDBModel.Store.usp_EliminarEmpleado" />
+    <FunctionImportMapping FunctionImportName="usp_ListarTipoMedicinaProveedor" FunctionName="HundeDBModel.Store.usp_ListarTipoMedicinaProveedor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarTipoMedicinaProveedor_Result">
+          <ScalarProperty Name="cod_prov" ColumnName="cod_prov" />
+          <ScalarProperty Name="cod_med" ColumnName="cod_med" />
+          <ScalarProperty Name="nom_prov" ColumnName="nom_prov" />
+          <ScalarProperty Name="email_prov" ColumnName="email_prov" />
+          <ScalarProperty Name="tel_prov" ColumnName="tel_prov" />
+          <ScalarProperty Name="nombre_medicina" ColumnName="nombre_medicina" />
+          <ScalarProperty Name="tipo_medicina" ColumnName="tipo_medicina" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ActualizarCliente" FunctionName="HundeDBModel.Store.usp_ActualizarCliente" />
+    <FunctionImportMapping FunctionImportName="usp_EliminarCliente" FunctionName="HundeDBModel.Store.usp_EliminarCliente" />
+    <FunctionImportMapping FunctionImportName="usp_InsertarCliente" FunctionName="HundeDBModel.Store.usp_InsertarCliente" />
+    <FunctionImportMapping FunctionImportName="usp_ListarEmpleado" FunctionName="HundeDBModel.Store.usp_ListarEmpleado">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarEmpleado_Result">
+          <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+          <ScalarProperty Name="rol_emp" ColumnName="rol_emp" />
+          <ScalarProperty Name="nom_empleado" ColumnName="nom_empleado" />
+          <ScalarProperty Name="ape_empleado" ColumnName="ape_empleado" />
+          <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+          <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+          <ScalarProperty Name="email_emp" ColumnName="email_emp" />
+          <ScalarProperty Name="cod_supervisor" ColumnName="cod_supervisor" />
+          <ScalarProperty Name="usu_ult_modificacion_emp" ColumnName="usu_ult_modificacion_emp" />
+          <ScalarProperty Name="fecha_ult_modificacion_emp" ColumnName="fecha_ult_modificacion_emp" />
+          <ScalarProperty Name="estado_emp" ColumnName="estado_emp" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Tb_Cliente">
+      <EntityTypeMapping TypeName="HundeDBModel.Tb_Cliente">
+        <MappingFragment StoreEntitySet="Tb_Cliente">
+          <ScalarProperty Name="estado_cli" ColumnName="estado_cli" />
+          <ScalarProperty Name="fecha_ult_modificacion_cli" ColumnName="fecha_ult_modificacion_cli" />
+          <ScalarProperty Name="usu_ult_modificacion_cli" ColumnName="usu_ult_modificacion_cli" />
+          <ScalarProperty Name="fec_reg_cli" ColumnName="fec_reg_cli" />
+          <ScalarProperty Name="usu_reg_cli" ColumnName="usu_reg_cli" />
+          <ScalarProperty Name="dni_cliente" ColumnName="dni_cliente" />
+          <ScalarProperty Name="id_ubigeo" ColumnName="id_ubigeo" />
+          <ScalarProperty Name="es_dueno" ColumnName="es_dueno" />
+          <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
+          <ScalarProperty Name="cel_cliente" ColumnName="cel_cliente" />
+          <ScalarProperty Name="direccion_cliente" ColumnName="direccion_cliente" />
+          <ScalarProperty Name="ape_mat_cliente" ColumnName="ape_mat_cliente" />
+          <ScalarProperty Name="ape_pat_cliente" ColumnName="ape_pat_cliente" />
+          <ScalarProperty Name="nom_cliente" ColumnName="nom_cliente" />
+          <ScalarProperty Name="Tipo_cliente" ColumnName="Tipo_cliente" />
+          <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tb_Empleado">
+      <EntityTypeMapping TypeName="HundeDBModel.Tb_Empleado">
+        <MappingFragment StoreEntitySet="Tb_Empleado">
+          <ScalarProperty Name="estado_emp" ColumnName="estado_emp" />
+          <ScalarProperty Name="fecha_ult_modificacion_emp" ColumnName="fecha_ult_modificacion_emp" />
+          <ScalarProperty Name="usu_ult_modificacion_emp" ColumnName="usu_ult_modificacion_emp" />
+          <ScalarProperty Name="cod_supervisor" ColumnName="cod_supervisor" />
+          <ScalarProperty Name="email_emp" ColumnName="email_emp" />
+          <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+          <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+          <ScalarProperty Name="ape_empleado" ColumnName="ape_empleado" />
+          <ScalarProperty Name="nom_empleado" ColumnName="nom_empleado" />
+          <ScalarProperty Name="rol_emp" ColumnName="rol_emp" />
+          <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Tb_Medicina">
       <EntityTypeMapping TypeName="HundeDBModel.Tb_Medicina">
         <MappingFragment StoreEntitySet="Tb_Medicina">
@@ -51,83 +123,94 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="usp_ListarTipoMedicinaProveedor" FunctionName="HundeDBModel.Store.usp_ListarTipoMedicinaProveedor">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarTipoMedicinaProveedor_Result">
-          <ScalarProperty Name="cod_prov" ColumnName="cod_prov" />
-          <ScalarProperty Name="cod_med" ColumnName="cod_med" />
-          <ScalarProperty Name="nom_prov" ColumnName="nom_prov" />
+    <EntitySetMapping Name="vw_DetallesPaciente">
+      <EntityTypeMapping TypeName="HundeDBModel.vw_DetallesPaciente">
+        <MappingFragment StoreEntitySet="vw_DetallesPaciente">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="detalles_observaciones" ColumnName="detalles_observaciones" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="actividad" ColumnName="actividad" />
+          <ScalarProperty Name="nutricion" ColumnName="nutricion" />
+          <ScalarProperty Name="conducta" ColumnName="conducta" />
+          <ScalarProperty Name="peso" ColumnName="peso" />
+          <ScalarProperty Name="longitud" ColumnName="longitud" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+          <ScalarProperty Name="raza" ColumnName="raza" />
+          <ScalarProperty Name="tipo_paciente" ColumnName="tipo_paciente" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_ProveedorActivo">
+      <EntityTypeMapping TypeName="HundeDBModel.vw_ProveedorActivo">
+        <MappingFragment StoreEntitySet="vw_ProveedorActivo">
+          <ScalarProperty Name="estado_prov" ColumnName="estado_prov" />
+          <ScalarProperty Name="fecha_ult_modificacion_prov" ColumnName="fecha_ult_modificacion_prov" />
+          <ScalarProperty Name="usu_ult_modificacion_prov" ColumnName="usu_ult_modificacion_prov" />
+          <ScalarProperty Name="fec_reg_prov" ColumnName="fec_reg_prov" />
+          <ScalarProperty Name="usu_reg_prov" ColumnName="usu_reg_prov" />
+          <ScalarProperty Name="rep_ven_prov" ColumnName="rep_ven_prov" />
           <ScalarProperty Name="email_prov" ColumnName="email_prov" />
           <ScalarProperty Name="tel_prov" ColumnName="tel_prov" />
-          <ScalarProperty Name="nombre_medicina" ColumnName="nombre_medicina" />
+          <ScalarProperty Name="direccion_prov" ColumnName="direccion_prov" />
+          <ScalarProperty Name="ruc_prov" ColumnName="ruc_prov" />
+          <ScalarProperty Name="nom_prov" ColumnName="nom_prov" />
+          <ScalarProperty Name="cod_prov" ColumnName="cod_prov" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_ProveedorMedicina">
+      <EntityTypeMapping TypeName="HundeDBModel.vw_ProveedorMedicina">
+        <MappingFragment StoreEntitySet="vw_ProveedorMedicina">
           <ScalarProperty Name="tipo_medicina" ColumnName="tipo_medicina" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="usp_ActualizarCliente" FunctionName="HundeDBModel.Store.usp_ActualizarCliente" />
-    <FunctionImportMapping FunctionImportName="usp_EliminarCliente" FunctionName="HundeDBModel.Store.usp_EliminarCliente" />
-    <FunctionImportMapping FunctionImportName="usp_InsertarCliente" FunctionName="HundeDBModel.Store.usp_InsertarCliente" />
-    <EntitySetMapping Name="Tb_Cliente">
-      <EntityTypeMapping TypeName="HundeDBModel.Tb_Cliente">
-        <MappingFragment StoreEntitySet="Tb_Cliente">
-          <ScalarProperty Name="estado_cli" ColumnName="estado_cli" />
-          <ScalarProperty Name="fecha_ult_modificacion_cli" ColumnName="fecha_ult_modificacion_cli" />
-          <ScalarProperty Name="usu_ult_modificacion_cli" ColumnName="usu_ult_modificacion_cli" />
-          <ScalarProperty Name="fec_reg_cli" ColumnName="fec_reg_cli" />
-          <ScalarProperty Name="usu_reg_cli" ColumnName="usu_reg_cli" />
-          <ScalarProperty Name="dni_cliente" ColumnName="dni_cliente" />
-          <ScalarProperty Name="id_ubigeo" ColumnName="id_ubigeo" />
-          <ScalarProperty Name="es_dueno" ColumnName="es_dueno" />
-          <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
-          <ScalarProperty Name="cel_cliente" ColumnName="cel_cliente" />
-          <ScalarProperty Name="direccion_cliente" ColumnName="direccion_cliente" />
-          <ScalarProperty Name="ape_mat_cliente" ColumnName="ape_mat_cliente" />
-          <ScalarProperty Name="ape_pat_cliente" ColumnName="ape_pat_cliente" />
-          <ScalarProperty Name="nom_cliente" ColumnName="nom_cliente" />
-          <ScalarProperty Name="Tipo_cliente" ColumnName="Tipo_cliente" />
+          <ScalarProperty Name="nombre_medicina" ColumnName="nombre_medicina" />
+          <ScalarProperty Name="cod_med" ColumnName="cod_med" />
+          <ScalarProperty Name="estado_prov" ColumnName="estado_prov" />
+          <ScalarProperty Name="fec_reg_prov" ColumnName="fec_reg_prov" />
+          <ScalarProperty Name="rep_ven_prov" ColumnName="rep_ven_prov" />
+          <ScalarProperty Name="email_prov" ColumnName="email_prov" />
+          <ScalarProperty Name="tel_prov" ColumnName="tel_prov" />
+          <ScalarProperty Name="direccion_prov" ColumnName="direccion_prov" />
+          <ScalarProperty Name="ruc_prov" ColumnName="ruc_prov" />
+          <ScalarProperty Name="nom_prov" ColumnName="nom_prov" />
+          <ScalarProperty Name="cod_prov" ColumnName="cod_prov" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_ActualizarPaciente" FunctionName="HundeDBModel.Store.usp_ActualizarPaciente" />
+    <FunctionImportMapping FunctionImportName="usp_ActualizarProveedor" FunctionName="HundeDBModel.Store.usp_ActualizarProveedor" />
+    <FunctionImportMapping FunctionImportName="usp_EliminarPaciente" FunctionName="HundeDBModel.Store.usp_EliminarPaciente" />
+    <FunctionImportMapping FunctionImportName="usp_EliminarProveedor" FunctionName="HundeDBModel.Store.usp_EliminarProveedor" />
+    <FunctionImportMapping FunctionImportName="usp_InsertarPaciente" FunctionName="HundeDBModel.Store.usp_InsertarPaciente" />
+    <FunctionImportMapping FunctionImportName="usp_InsertarProveedor" FunctionName="HundeDBModel.Store.usp_InsertarProveedor" />
+    <FunctionImportMapping FunctionImportName="usp_ListarClientes" FunctionName="HundeDBModel.Store.usp_ListarClientes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarClientes_Result">
           <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Tb_Empleado">
-      <EntityTypeMapping TypeName="HundeDBModel.Tb_Empleado">
-        <MappingFragment StoreEntitySet="Tb_Empleado">
-          <ScalarProperty Name="estado_emp" ColumnName="estado_emp" />
-          <ScalarProperty Name="fecha_ult_modificacion_emp" ColumnName="fecha_ult_modificacion_emp" />
-          <ScalarProperty Name="usu_ult_modificacion_emp" ColumnName="usu_ult_modificacion_emp" />
-          <ScalarProperty Name="cod_supervisor" ColumnName="cod_supervisor" />
-          <ScalarProperty Name="email_emp" ColumnName="email_emp" />
-          <ScalarProperty Name="sueldo" ColumnName="sueldo" />
-          <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
-          <ScalarProperty Name="ape_empleado" ColumnName="ape_empleado" />
-          <ScalarProperty Name="nom_empleado" ColumnName="nom_empleado" />
-          <ScalarProperty Name="rol_emp" ColumnName="rol_emp" />
-          <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="usp_ListarPacientesPorRaza1" FunctionName="HundeDBModel.Store.usp_ListarPacientesPorRaza">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientesPorRaza1_Result">
-          <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
-          <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
-          <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
-          <ScalarProperty Name="raza" ColumnName="raza" />
-          <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
-          <ScalarProperty Name="sexo" ColumnName="sexo" />
-          <ScalarProperty Name="color" ColumnName="color" />
-          <ScalarProperty Name="longitud" ColumnName="longitud" />
-          <ScalarProperty Name="peso" ColumnName="peso" />
-          <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
-          <ScalarProperty Name="foto" ColumnName="foto" />
-          <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
-          <ScalarProperty Name="est_pac" ColumnName="est_pac" />
+          <ScalarProperty Name="Tipo_cliente" ColumnName="Tipo_cliente" />
+          <ScalarProperty Name="nom_cliente" ColumnName="nom_cliente" />
+          <ScalarProperty Name="ape_pat_cliente" ColumnName="ape_pat_cliente" />
+          <ScalarProperty Name="ape_mat_cliente" ColumnName="ape_mat_cliente" />
+          <ScalarProperty Name="direccion_cliente" ColumnName="direccion_cliente" />
+          <ScalarProperty Name="cel_cliente" ColumnName="cel_cliente" />
+          <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
+          <ScalarProperty Name="es_dueno" ColumnName="es_dueno" />
+          <ScalarProperty Name="id_ubigeo" ColumnName="id_ubigeo" />
+          <ScalarProperty Name="dni_cliente" ColumnName="dni_cliente" />
+          <ScalarProperty Name="usu_reg_cli" ColumnName="usu_reg_cli" />
+          <ScalarProperty Name="fec_reg_cli" ColumnName="fec_reg_cli" />
+          <ScalarProperty Name="usu_ult_modificacion_cli" ColumnName="usu_ult_modificacion_cli" />
+          <ScalarProperty Name="fecha_ult_modificacion_cli" ColumnName="fecha_ult_modificacion_cli" />
+          <ScalarProperty Name="estado_cli" ColumnName="estado_cli" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="usp_ListarPacientePorTratamiento1" FunctionName="HundeDBModel.Store.usp_ListarPacientePorTratamiento">
+    <FunctionImportMapping FunctionImportName="usp_ListarPacientePorTratamiento2" FunctionName="HundeDBModel.Store.usp_ListarPacientePorTratamiento">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientePorTratamiento1_Result">
+        <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientePorTratamiento2_Result">
           <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
           <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
           <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
@@ -144,6 +227,82 @@
           <ScalarProperty Name="nombre_trat" ColumnName="nombre_trat" />
           <ScalarProperty Name="tipo_trat" ColumnName="tipo_trat" />
           <ScalarProperty Name="estado_trat" ColumnName="estado_trat" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ListarPacientes" FunctionName="HundeDBModel.Store.usp_ListarPacientes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientes_Result">
+          <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+          <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
+          <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
+          <ScalarProperty Name="raza" ColumnName="raza" />
+          <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="longitud" ColumnName="longitud" />
+          <ScalarProperty Name="peso" ColumnName="peso" />
+          <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
+          <ScalarProperty Name="est_pac" ColumnName="est_pac" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ListarPacientesPorCliente" FunctionName="HundeDBModel.Store.usp_ListarPacientesPorCliente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientesPorCliente_Result">
+          <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+          <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
+          <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
+          <ScalarProperty Name="raza" ColumnName="raza" />
+          <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="longitud" ColumnName="longitud" />
+          <ScalarProperty Name="peso" ColumnName="peso" />
+          <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
+          <ScalarProperty Name="est_pac" ColumnName="est_pac" />
+          <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ListarPacientesPorRaza2" FunctionName="HundeDBModel.Store.usp_ListarPacientesPorRaza">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientesPorRaza2_Result">
+          <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+          <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
+          <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
+          <ScalarProperty Name="raza" ColumnName="raza" />
+          <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="longitud" ColumnName="longitud" />
+          <ScalarProperty Name="peso" ColumnName="peso" />
+          <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
+          <ScalarProperty Name="est_pac" ColumnName="est_pac" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ListarProveedores" FunctionName="HundeDBModel.Store.usp_ListarProveedores">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarProveedores_Result">
+          <ScalarProperty Name="cod_prov" ColumnName="cod_prov" />
+          <ScalarProperty Name="nom_prov" ColumnName="nom_prov" />
+          <ScalarProperty Name="ruc_prov" ColumnName="ruc_prov" />
+          <ScalarProperty Name="direccion_prov" ColumnName="direccion_prov" />
+          <ScalarProperty Name="tel_prov" ColumnName="tel_prov" />
+          <ScalarProperty Name="email_prov" ColumnName="email_prov" />
+          <ScalarProperty Name="rep_ven_prov" ColumnName="rep_ven_prov" />
+          <ScalarProperty Name="usu_reg_prov" ColumnName="usu_reg_prov" />
+          <ScalarProperty Name="fec_reg_prov" ColumnName="fec_reg_prov" />
+          <ScalarProperty Name="usu_ult_modificacion_prov" ColumnName="usu_ult_modificacion_prov" />
+          <ScalarProperty Name="fecha_ult_modificacion_prov" ColumnName="fecha_ult_modificacion_prov" />
+          <ScalarProperty Name="estado_prov" ColumnName="estado_prov" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

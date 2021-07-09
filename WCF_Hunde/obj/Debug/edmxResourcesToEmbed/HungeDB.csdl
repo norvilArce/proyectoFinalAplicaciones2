@@ -27,9 +27,6 @@
     <FunctionImport Name="usp_EliminarEmpleado">
       <Parameter Name="vcod_emp" Mode="In" Type="String" />
     </FunctionImport>
-    <EntitySet Name="Tb_Medicina" EntityType="HundeDBModel.Tb_Medicina" />
-    <EntitySet Name="Tb_Paciente" EntityType="HundeDBModel.Tb_Paciente" />
-    <EntitySet Name="Tb_Proveedor" EntityType="HundeDBModel.Tb_Proveedor" />
     <FunctionImport Name="usp_ListarEstadoProveedorMedicina" ReturnType="Collection(HundeDBModel.usp_ListarEstadoProveedorMedicina_Result)">
       <Parameter Name="estado_prov" Mode="In" Type="Int32" />
       <Parameter Name="tipo_medicina" Mode="In" Type="String" />
@@ -79,59 +76,94 @@
     <FunctionImport Name="usp_ListarPacientePorTratamiento" ReturnType="Collection(HundeDBModel.usp_ListarPacientePorTratamiento_Result)">
       <Parameter Name="tipo_tratamiento" Mode="In" Type="String" />
     </FunctionImport>
-    <EntitySet Name="Tb_Cliente" EntityType="HundeDBModel.Tb_Cliente" />
-    <EntitySet Name="Tb_Empleado" EntityType="HundeDBModel.Tb_Empleado" />
     <FunctionImport Name="usp_ListarPacientesPorRaza1" ReturnType="Collection(HundeDBModel.usp_ListarPacientesPorRaza1_Result)">
       <Parameter Name="vraza" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="usp_ListarPacientePorTratamiento1" ReturnType="Collection(HundeDBModel.usp_ListarPacientePorTratamiento1_Result)">
       <Parameter Name="tipo_tratamiento" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="usp_ListarProveedor" ReturnType="Collection(HundeDBModel.usp_ListarProveedor_Result)">
+      <Parameter Name="cod_prov" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_ListarEmpleado" ReturnType="Collection(HundeDBModel.usp_ListarEmpleado_Result)" />
+    <EntitySet Name="Tb_Cliente" EntityType="HundeDBModel.Tb_Cliente" />
+    <EntitySet Name="Tb_Empleado" EntityType="HundeDBModel.Tb_Empleado" />
+    <EntitySet Name="Tb_Medicina" EntityType="HundeDBModel.Tb_Medicina" />
+    <EntitySet Name="Tb_Paciente" EntityType="HundeDBModel.Tb_Paciente" />
+    <EntitySet Name="Tb_Proveedor" EntityType="HundeDBModel.Tb_Proveedor" />
+    <EntitySet Name="vw_DetallesPaciente" EntityType="HundeDBModel.vw_DetallesPaciente" />
+    <EntitySet Name="vw_ProveedorActivo" EntityType="HundeDBModel.vw_ProveedorActivo" />
+    <EntitySet Name="vw_ProveedorMedicina" EntityType="HundeDBModel.vw_ProveedorMedicina" />
+    <FunctionImport Name="usp_ActualizarPaciente">
+      <Parameter Name="vnom_pac" Mode="In" Type="String" />
+      <Parameter Name="vtipo_pac" Mode="In" Type="String" />
+      <Parameter Name="vraza" Mode="In" Type="String" />
+      <Parameter Name="vfec_nac_pac" Mode="In" Type="DateTime" />
+      <Parameter Name="vsexo" Mode="In" Type="Int32" />
+      <Parameter Name="vcolor" Mode="In" Type="String" />
+      <Parameter Name="vlongitud" Mode="In" Type="Double" />
+      <Parameter Name="vpeso" Mode="In" Type="Double" />
+      <Parameter Name="vult_vis_pac" Mode="In" Type="DateTime" />
+      <Parameter Name="vfoto" Mode="In" Type="String" />
+      <Parameter Name="vobservaciones_pac" Mode="In" Type="String" />
+      <Parameter Name="vest_pac" Mode="In" Type="Int32" />
+      <Parameter Name="vcod_pac" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_ActualizarProveedor">
+      <Parameter Name="vnom_prov" Mode="In" Type="String" />
+      <Parameter Name="vruc_prov" Mode="In" Type="String" />
+      <Parameter Name="vdireccion_prov" Mode="In" Type="String" />
+      <Parameter Name="vtel_prov" Mode="In" Type="String" />
+      <Parameter Name="vemail_prov" Mode="In" Type="String" />
+      <Parameter Name="vrep_ven_prov" Mode="In" Type="String" />
+      <Parameter Name="vusu_ult_mod" Mode="In" Type="String" />
+      <Parameter Name="vfecha_ult_mod" Mode="In" Type="DateTime" />
+      <Parameter Name="vestado_prov" Mode="In" Type="Int32" />
+      <Parameter Name="vcod_prov" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_EliminarPaciente">
+      <Parameter Name="vcod_pac" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_EliminarProveedor">
+      <Parameter Name="vcod_prov" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_InsertarPaciente">
+      <Parameter Name="vnom_pac" Mode="In" Type="String" />
+      <Parameter Name="vtipo_pac" Mode="In" Type="String" />
+      <Parameter Name="vraza" Mode="In" Type="String" />
+      <Parameter Name="vfec_nac_pac" Mode="In" Type="DateTime" />
+      <Parameter Name="vsexo" Mode="In" Type="Int32" />
+      <Parameter Name="vcolor" Mode="In" Type="String" />
+      <Parameter Name="vlongitud" Mode="In" Type="Double" />
+      <Parameter Name="vpeso" Mode="In" Type="Double" />
+      <Parameter Name="vult_vis_pac" Mode="In" Type="DateTime" />
+      <Parameter Name="vfoto" Mode="In" Type="String" />
+      <Parameter Name="vobservaciones_pac" Mode="In" Type="String" />
+      <Parameter Name="vest_pac" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_InsertarProveedor">
+      <Parameter Name="vnom_prov" Mode="In" Type="String" />
+      <Parameter Name="vruc_prov" Mode="In" Type="String" />
+      <Parameter Name="vdireccion_prov" Mode="In" Type="String" />
+      <Parameter Name="vtel_prov" Mode="In" Type="String" />
+      <Parameter Name="vemail_prov" Mode="In" Type="String" />
+      <Parameter Name="vrep_ven_prov" Mode="In" Type="String" />
+      <Parameter Name="vusu_reg_prov" Mode="In" Type="String" />
+      <Parameter Name="vestado_prov" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_ListarClientes" ReturnType="Collection(HundeDBModel.usp_ListarClientes_Result)" />
+    <FunctionImport Name="usp_ListarPacientePorTratamiento2" ReturnType="Collection(HundeDBModel.usp_ListarPacientePorTratamiento2_Result)">
+      <Parameter Name="tipo_tratamiento" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_ListarPacientes" ReturnType="Collection(HundeDBModel.usp_ListarPacientes_Result)" />
+    <FunctionImport Name="usp_ListarPacientesPorCliente" ReturnType="Collection(HundeDBModel.usp_ListarPacientesPorCliente_Result)">
+      <Parameter Name="vcod_cli" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_ListarPacientesPorRaza2" ReturnType="Collection(HundeDBModel.usp_ListarPacientesPorRaza2_Result)">
+      <Parameter Name="vraza" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_ListarProveedores" ReturnType="Collection(HundeDBModel.usp_ListarProveedores_Result)" />
   </EntityContainer>
-  <EntityType Name="Tb_Medicina">
-    <Key>
-      <PropertyRef Name="cod_med" />
-    </Key>
-    <Property Name="cod_med" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="tipo_medicina" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="nombre_medicina" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cod_uni_med" Type="Int32" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Tb_Paciente">
-    <Key>
-      <PropertyRef Name="cod_pac" />
-    </Key>
-    <Property Name="cod_pac" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="nom_pac" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="tipo_pac" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="raza" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="fec_nac_pac" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="sexo" Type="Int32" Nullable="false" />
-    <Property Name="color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="longitud" Type="Double" Nullable="false" />
-    <Property Name="peso" Type="Double" Nullable="false" />
-    <Property Name="ult_vis_pac" Type="DateTime" Precision="0" />
-    <Property Name="foto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="observaciones_pac" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-    <Property Name="est_pac" Type="Int32" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Tb_Proveedor">
-    <Key>
-      <PropertyRef Name="cod_prov" />
-    </Key>
-    <Property Name="cod_prov" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="nom_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ruc_prov" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
-    <Property Name="direccion_prov" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="tel_prov" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
-    <Property Name="email_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="rep_ven_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="usu_reg_prov" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="fec_reg_prov" Type="DateTime" Precision="3" />
-    <Property Name="usu_ult_modificacion_prov" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="fecha_ult_modificacion_prov" Type="DateTime" Precision="3" />
-    <Property Name="estado_prov" Type="Int32" />
-  </EntityType>
   <ComplexType Name="usp_ListarEstadoProveedorMedicina_Result">
     <Property Type="String" Name="cod_prov" Nullable="false" MaxLength="4" />
     <Property Type="String" Name="cod_med" Nullable="false" MaxLength="4" />
@@ -186,6 +218,63 @@
     <Property Type="String" Name="tipo_trat" Nullable="false" MaxLength="50" />
     <Property Type="Int32" Name="estado_trat" Nullable="true" />
   </ComplexType>
+  <ComplexType Name="usp_ListarPacientesPorRaza1_Result">
+    <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+    <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="tipo_pac" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="raza" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
+    <Property Type="Int32" Name="sexo" Nullable="false" />
+    <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
+    <Property Type="Double" Name="longitud" Nullable="false" />
+    <Property Type="Double" Name="peso" Nullable="false" />
+    <Property Type="DateTime" Name="ult_vis_pac" Nullable="true" />
+    <Property Type="String" Name="foto" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="observaciones_pac" Nullable="true" MaxLength="300" />
+    <Property Type="Int32" Name="est_pac" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_ListarPacientePorTratamiento1_Result">
+    <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+    <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="tipo_pac" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="raza" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
+    <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="sexo" Nullable="false" />
+    <Property Type="Double" Name="longitud" Nullable="false" />
+    <Property Type="Double" Name="peso" Nullable="false" />
+    <Property Type="DateTime" Name="ult_vis_pac" Nullable="true" />
+    <Property Type="String" Name="observaciones_pac" Nullable="true" MaxLength="300" />
+    <Property Type="Int32" Name="est_pac" Nullable="false" />
+    <Property Type="Int32" Name="cod_trat" Nullable="false" />
+    <Property Type="String" Name="nombre_trat" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="tipo_trat" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="estado_trat" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="usp_ListarProveedor_Result">
+    <Property Type="String" Name="cod_prov" Nullable="false" MaxLength="4" />
+    <Property Type="String" Name="nom_prov" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ruc_prov" Nullable="false" MaxLength="11" />
+    <Property Type="String" Name="direccion_prov" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="tel_prov" Nullable="false" MaxLength="9" />
+    <Property Type="String" Name="email_prov" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="rep_ven_prov" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="fec_reg_prov" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="estado_prov" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="usp_ListarEmpleado_Result">
+    <Property Type="String" Name="cod_emp" Nullable="false" MaxLength="4" />
+    <Property Type="Int32" Name="rol_emp" Nullable="false" />
+    <Property Type="String" Name="nom_empleado" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ape_empleado" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="fecha_ingreso" Nullable="false" Precision="23" />
+    <Property Type="Decimal" Name="sueldo" Nullable="true" Precision="19" />
+    <Property Type="String" Name="email_emp" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="cod_supervisor" Nullable="true" MaxLength="4" />
+    <Property Type="String" Name="usu_ult_modificacion_emp" Nullable="true" MaxLength="4" />
+    <Property Type="DateTime" Name="fecha_ult_modificacion_emp" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="estado_emp" Nullable="false" />
+  </ComplexType>
   <EntityType Name="Tb_Cliente">
     <Key>
       <PropertyRef Name="cod_cli" />
@@ -223,22 +312,150 @@
     <Property Name="fecha_ult_modificacion_emp" Type="DateTime" Precision="3" />
     <Property Name="estado_emp" Type="Int32" Nullable="false" />
   </EntityType>
-  <ComplexType Name="usp_ListarPacientesPorRaza1_Result">
-    <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
-    <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="tipo_pac" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="raza" Nullable="false" MaxLength="50" />
-    <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
-    <Property Type="Int32" Name="sexo" Nullable="false" />
-    <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
-    <Property Type="Double" Name="longitud" Nullable="false" />
-    <Property Type="Double" Name="peso" Nullable="false" />
-    <Property Type="DateTime" Name="ult_vis_pac" Nullable="true" />
-    <Property Type="String" Name="foto" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="observaciones_pac" Nullable="true" MaxLength="300" />
-    <Property Type="Int32" Name="est_pac" Nullable="false" />
+  <EntityType Name="Tb_Medicina">
+    <Key>
+      <PropertyRef Name="cod_med" />
+    </Key>
+    <Property Name="cod_med" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="tipo_medicina" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nombre_medicina" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cod_uni_med" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tb_Paciente">
+    <Key>
+      <PropertyRef Name="cod_pac" />
+    </Key>
+    <Property Name="cod_pac" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="nom_pac" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tipo_pac" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="raza" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fec_nac_pac" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="sexo" Type="Int32" Nullable="false" />
+    <Property Name="color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="longitud" Type="Double" Nullable="false" />
+    <Property Name="peso" Type="Double" Nullable="false" />
+    <Property Name="ult_vis_pac" Type="DateTime" Precision="0" />
+    <Property Name="foto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="observaciones_pac" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="est_pac" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tb_Proveedor">
+    <Key>
+      <PropertyRef Name="cod_prov" />
+    </Key>
+    <Property Name="cod_prov" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="nom_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ruc_prov" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="direccion_prov" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="tel_prov" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="email_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="rep_ven_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="usu_reg_prov" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="fec_reg_prov" Type="DateTime" Precision="3" />
+    <Property Name="usu_ult_modificacion_prov" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_ult_modificacion_prov" Type="DateTime" Precision="3" />
+    <Property Name="estado_prov" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vw_DetallesPaciente">
+    <Key>
+      <PropertyRef Name="codigo" />
+      <PropertyRef Name="nombre" />
+      <PropertyRef Name="tipo_paciente" />
+      <PropertyRef Name="raza" />
+      <PropertyRef Name="fecha_nacimiento" />
+      <PropertyRef Name="sexo" />
+      <PropertyRef Name="color" />
+      <PropertyRef Name="longitud" />
+      <PropertyRef Name="peso" />
+      <PropertyRef Name="conducta" />
+      <PropertyRef Name="nutricion" />
+      <PropertyRef Name="actividad" />
+      <PropertyRef Name="estado" />
+    </Key>
+    <Property Name="codigo" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tipo_paciente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="raza" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_nacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="sexo" Type="Int32" Nullable="false" />
+    <Property Name="color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="longitud" Type="Double" Nullable="false" />
+    <Property Name="peso" Type="Double" Nullable="false" />
+    <Property Name="conducta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nutricion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="actividad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="observaciones" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="detalles_observaciones" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vw_ProveedorActivo">
+    <Key>
+      <PropertyRef Name="cod_prov" />
+      <PropertyRef Name="nom_prov" />
+      <PropertyRef Name="ruc_prov" />
+      <PropertyRef Name="direccion_prov" />
+      <PropertyRef Name="tel_prov" />
+      <PropertyRef Name="email_prov" />
+      <PropertyRef Name="rep_ven_prov" />
+    </Key>
+    <Property Name="cod_prov" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="nom_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ruc_prov" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="direccion_prov" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="tel_prov" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="email_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="rep_ven_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="usu_reg_prov" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="fec_reg_prov" Type="DateTime" Precision="3" />
+    <Property Name="usu_ult_modificacion_prov" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_ult_modificacion_prov" Type="DateTime" Precision="3" />
+    <Property Name="estado_prov" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vw_ProveedorMedicina">
+    <Key>
+      <PropertyRef Name="cod_prov" />
+      <PropertyRef Name="nom_prov" />
+      <PropertyRef Name="ruc_prov" />
+      <PropertyRef Name="direccion_prov" />
+      <PropertyRef Name="tel_prov" />
+      <PropertyRef Name="email_prov" />
+      <PropertyRef Name="rep_ven_prov" />
+      <PropertyRef Name="cod_med" />
+      <PropertyRef Name="nombre_medicina" />
+      <PropertyRef Name="tipo_medicina" />
+    </Key>
+    <Property Name="cod_prov" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="nom_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ruc_prov" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="direccion_prov" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="tel_prov" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="email_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="rep_ven_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fec_reg_prov" Type="DateTime" Precision="3" />
+    <Property Name="estado_prov" Type="Int32" />
+    <Property Name="cod_med" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="nombre_medicina" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tipo_medicina" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="usp_ListarClientes_Result">
+    <Property Type="String" Name="cod_cli" Nullable="false" MaxLength="4" />
+    <Property Type="Int32" Name="Tipo_cliente" Nullable="false" />
+    <Property Type="String" Name="nom_cliente" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ape_pat_cliente" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ape_mat_cliente" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="direccion_cliente" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="cel_cliente" Nullable="false" MaxLength="9" />
+    <Property Type="String" Name="email_cliente" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="es_dueno" Nullable="false" />
+    <Property Type="String" Name="id_ubigeo" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="dni_cliente" Nullable="false" MaxLength="8" />
+    <Property Type="String" Name="usu_reg_cli" Nullable="true" MaxLength="4" />
+    <Property Type="DateTime" Name="fec_reg_cli" Nullable="true" Precision="23" />
+    <Property Type="String" Name="usu_ult_modificacion_cli" Nullable="true" MaxLength="4" />
+    <Property Type="DateTime" Name="fecha_ult_modificacion_cli" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="estado_cli" Nullable="true" />
   </ComplexType>
-  <ComplexType Name="usp_ListarPacientePorTratamiento1_Result">
+  <ComplexType Name="usp_ListarPacientePorTratamiento2_Result">
     <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
     <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="tipo_pac" Nullable="false" MaxLength="50" />
@@ -255,5 +472,65 @@
     <Property Type="String" Name="nombre_trat" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="tipo_trat" Nullable="false" MaxLength="50" />
     <Property Type="Int32" Name="estado_trat" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="usp_ListarPacientes_Result">
+    <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+    <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="tipo_pac" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="raza" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
+    <Property Type="Int32" Name="sexo" Nullable="false" />
+    <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
+    <Property Type="Double" Name="longitud" Nullable="false" />
+    <Property Type="Double" Name="peso" Nullable="false" />
+    <Property Type="DateTime" Name="ult_vis_pac" Nullable="true" />
+    <Property Type="String" Name="foto" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="observaciones_pac" Nullable="true" MaxLength="300" />
+    <Property Type="Int32" Name="est_pac" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_ListarPacientesPorCliente_Result">
+    <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+    <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="tipo_pac" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="raza" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
+    <Property Type="Int32" Name="sexo" Nullable="false" />
+    <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
+    <Property Type="Double" Name="longitud" Nullable="false" />
+    <Property Type="Double" Name="peso" Nullable="false" />
+    <Property Type="DateTime" Name="ult_vis_pac" Nullable="true" />
+    <Property Type="String" Name="foto" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="observaciones_pac" Nullable="true" MaxLength="300" />
+    <Property Type="Int32" Name="est_pac" Nullable="false" />
+    <Property Type="String" Name="cod_cli" Nullable="true" MaxLength="4" />
+  </ComplexType>
+  <ComplexType Name="usp_ListarPacientesPorRaza2_Result">
+    <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+    <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="tipo_pac" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="raza" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
+    <Property Type="Int32" Name="sexo" Nullable="false" />
+    <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
+    <Property Type="Double" Name="longitud" Nullable="false" />
+    <Property Type="Double" Name="peso" Nullable="false" />
+    <Property Type="DateTime" Name="ult_vis_pac" Nullable="true" />
+    <Property Type="String" Name="foto" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="observaciones_pac" Nullable="true" MaxLength="300" />
+    <Property Type="Int32" Name="est_pac" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_ListarProveedores_Result">
+    <Property Type="String" Name="cod_prov" Nullable="false" MaxLength="4" />
+    <Property Type="String" Name="nom_prov" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ruc_prov" Nullable="false" MaxLength="11" />
+    <Property Type="String" Name="direccion_prov" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="tel_prov" Nullable="false" MaxLength="9" />
+    <Property Type="String" Name="email_prov" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="rep_ven_prov" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="usu_reg_prov" Nullable="true" MaxLength="4" />
+    <Property Type="DateTime" Name="fec_reg_prov" Nullable="true" Precision="23" />
+    <Property Type="String" Name="usu_ult_modificacion_prov" Nullable="true" MaxLength="4" />
+    <Property Type="DateTime" Name="fecha_ult_modificacion_prov" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="estado_prov" Nullable="true" />
   </ComplexType>
 </Schema>

@@ -16,7 +16,7 @@ namespace Win_Hunde
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new EmpleadoLista());
+            Application.Run(new Form1());
         }
     }
 }

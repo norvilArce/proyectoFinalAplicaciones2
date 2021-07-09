@@ -86,6 +86,93 @@
           <Property Name="fecha_ult_modificacion_prov" Type="datetime" />
           <Property Name="estado_prov" Type="int" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_DetallesPaciente">
+          <Key>
+            <PropertyRef Name="codigo" />
+            <PropertyRef Name="nombre" />
+            <PropertyRef Name="tipo_paciente" />
+            <PropertyRef Name="raza" />
+            <PropertyRef Name="fecha_nacimiento" />
+            <PropertyRef Name="sexo" />
+            <PropertyRef Name="color" />
+            <PropertyRef Name="longitud" />
+            <PropertyRef Name="peso" />
+            <PropertyRef Name="conducta" />
+            <PropertyRef Name="nutricion" />
+            <PropertyRef Name="actividad" />
+            <PropertyRef Name="estado" />
+          </Key>
+          <Property Name="codigo" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tipo_paciente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="raza" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fecha_nacimiento" Type="date" Nullable="false" />
+          <Property Name="sexo" Type="int" Nullable="false" />
+          <Property Name="color" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="longitud" Type="float" Nullable="false" />
+          <Property Name="peso" Type="float" Nullable="false" />
+          <Property Name="conducta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nutricion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="actividad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="observaciones" Type="varchar" MaxLength="300" />
+          <Property Name="detalles_observaciones" Type="varchar" MaxLength="300" />
+          <Property Name="estado" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorActivo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_ProveedorActivo">
+          <Key>
+            <PropertyRef Name="cod_prov" />
+            <PropertyRef Name="nom_prov" />
+            <PropertyRef Name="ruc_prov" />
+            <PropertyRef Name="direccion_prov" />
+            <PropertyRef Name="tel_prov" />
+            <PropertyRef Name="email_prov" />
+            <PropertyRef Name="rep_ven_prov" />
+          </Key>
+          <Property Name="cod_prov" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="nom_prov" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ruc_prov" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="direccion_prov" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="tel_prov" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="email_prov" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="rep_ven_prov" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usu_reg_prov" Type="varchar" MaxLength="4" />
+          <Property Name="fec_reg_prov" Type="datetime" />
+          <Property Name="usu_ult_modificacion_prov" Type="varchar" MaxLength="4" />
+          <Property Name="fecha_ult_modificacion_prov" Type="datetime" />
+          <Property Name="estado_prov" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorMedicina' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_ProveedorMedicina">
+          <Key>
+            <PropertyRef Name="cod_prov" />
+            <PropertyRef Name="nom_prov" />
+            <PropertyRef Name="ruc_prov" />
+            <PropertyRef Name="direccion_prov" />
+            <PropertyRef Name="tel_prov" />
+            <PropertyRef Name="email_prov" />
+            <PropertyRef Name="rep_ven_prov" />
+            <PropertyRef Name="cod_med" />
+            <PropertyRef Name="nombre_medicina" />
+            <PropertyRef Name="tipo_medicina" />
+          </Key>
+          <Property Name="cod_prov" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="nom_prov" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ruc_prov" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="direccion_prov" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="tel_prov" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="email_prov" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="rep_ven_prov" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fec_reg_prov" Type="datetime" />
+          <Property Name="estado_prov" Type="int" />
+          <Property Name="cod_med" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="nombre_medicina" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tipo_medicina" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <Function Name="usp_ActualizarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="vtipo_cliente" Type="int" Mode="In" />
           <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
@@ -115,11 +202,44 @@
           <Parameter Name="vestado_emp" Type="int" Mode="In" />
           <Parameter Name="vcod_emp" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="usp_ActualizarPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vnom_pac" Type="varchar" Mode="In" />
+          <Parameter Name="vtipo_pac" Type="varchar" Mode="In" />
+          <Parameter Name="vraza" Type="varchar" Mode="In" />
+          <Parameter Name="vfec_nac_pac" Type="date" Mode="In" />
+          <Parameter Name="vsexo" Type="int" Mode="In" />
+          <Parameter Name="vcolor" Type="varchar" Mode="In" />
+          <Parameter Name="vlongitud" Type="float" Mode="In" />
+          <Parameter Name="vpeso" Type="float" Mode="In" />
+          <Parameter Name="vult_vis_pac" Type="date" Mode="In" />
+          <Parameter Name="vfoto" Type="varchar" Mode="In" />
+          <Parameter Name="vobservaciones_pac" Type="varchar" Mode="In" />
+          <Parameter Name="vest_pac" Type="int" Mode="In" />
+          <Parameter Name="vcod_pac" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ActualizarProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vnom_prov" Type="varchar" Mode="In" />
+          <Parameter Name="vruc_prov" Type="varchar" Mode="In" />
+          <Parameter Name="vdireccion_prov" Type="varchar" Mode="In" />
+          <Parameter Name="vtel_prov" Type="varchar" Mode="In" />
+          <Parameter Name="vemail_prov" Type="varchar" Mode="In" />
+          <Parameter Name="vrep_ven_prov" Type="varchar" Mode="In" />
+          <Parameter Name="vusu_ult_mod" Type="varchar" Mode="In" />
+          <Parameter Name="vfecha_ult_mod" Type="datetime" Mode="In" />
+          <Parameter Name="vestado_prov" Type="int" Mode="In" />
+          <Parameter Name="vcod_prov" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="usp_EliminarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="vcod_cli" Type="varchar" Mode="In" />
         </Function>
         <Function Name="usp_EliminarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="vcod_emp" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_pac" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_prov" Type="varchar" Mode="In" />
         </Function>
         <Function Name="usp_InsertarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="vtipo_cliente" Type="int" Mode="In" />
@@ -145,12 +265,43 @@
           <Parameter Name="vcod_supervisor" Type="varchar" Mode="In" />
           <Parameter Name="vestado_emp" Type="int" Mode="In" />
         </Function>
+        <Function Name="usp_InsertarPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vnom_pac" Type="varchar" Mode="In" />
+          <Parameter Name="vtipo_pac" Type="varchar" Mode="In" />
+          <Parameter Name="vraza" Type="varchar" Mode="In" />
+          <Parameter Name="vfec_nac_pac" Type="date" Mode="In" />
+          <Parameter Name="vsexo" Type="int" Mode="In" />
+          <Parameter Name="vcolor" Type="varchar" Mode="In" />
+          <Parameter Name="vlongitud" Type="float" Mode="In" />
+          <Parameter Name="vpeso" Type="float" Mode="In" />
+          <Parameter Name="vult_vis_pac" Type="date" Mode="In" />
+          <Parameter Name="vfoto" Type="varchar" Mode="In" />
+          <Parameter Name="vobservaciones_pac" Type="varchar" Mode="In" />
+          <Parameter Name="vest_pac" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vnom_prov" Type="varchar" Mode="In" />
+          <Parameter Name="vruc_prov" Type="varchar" Mode="In" />
+          <Parameter Name="vdireccion_prov" Type="varchar" Mode="In" />
+          <Parameter Name="vtel_prov" Type="varchar" Mode="In" />
+          <Parameter Name="vemail_prov" Type="varchar" Mode="In" />
+          <Parameter Name="vrep_ven_prov" Type="varchar" Mode="In" />
+          <Parameter Name="vusu_reg_prov" Type="varchar" Mode="In" />
+          <Parameter Name="vestado_prov" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ListarClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="usp_ListarPacientePorTratamiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tipo_tratamiento" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ListarPacientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarPacientesPorCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_cli" Type="varchar" Mode="In" />
         </Function>
         <Function Name="usp_ListarPacientesPorRaza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="vraza" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="usp_ListarProveedores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="usp_ListarTipoMedicinaProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tipo_medicina" Type="varchar" Mode="In" />
         </Function>
@@ -160,6 +311,57 @@
           <EntitySet Name="Tb_Medicina" EntityType="Self.Tb_Medicina" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Paciente" EntityType="Self.Tb_Paciente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Proveedor" EntityType="Self.Tb_Proveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_DetallesPaciente" EntityType="Self.vw_DetallesPaciente" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_DetallesPaciente].[codigo] AS [codigo], 
+    [vw_DetallesPaciente].[nombre] AS [nombre], 
+    [vw_DetallesPaciente].[tipo_paciente] AS [tipo_paciente], 
+    [vw_DetallesPaciente].[raza] AS [raza], 
+    [vw_DetallesPaciente].[fecha_nacimiento] AS [fecha_nacimiento], 
+    [vw_DetallesPaciente].[sexo] AS [sexo], 
+    [vw_DetallesPaciente].[color] AS [color], 
+    [vw_DetallesPaciente].[longitud] AS [longitud], 
+    [vw_DetallesPaciente].[peso] AS [peso], 
+    [vw_DetallesPaciente].[conducta] AS [conducta], 
+    [vw_DetallesPaciente].[nutricion] AS [nutricion], 
+    [vw_DetallesPaciente].[actividad] AS [actividad], 
+    [vw_DetallesPaciente].[observaciones] AS [observaciones], 
+    [vw_DetallesPaciente].[detalles_observaciones] AS [detalles_observaciones], 
+    [vw_DetallesPaciente].[estado] AS [estado]
+    FROM [dbo].[vw_DetallesPaciente] AS [vw_DetallesPaciente]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_ProveedorActivo" EntityType="Self.vw_ProveedorActivo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_ProveedorActivo].[cod_prov] AS [cod_prov], 
+    [vw_ProveedorActivo].[nom_prov] AS [nom_prov], 
+    [vw_ProveedorActivo].[ruc_prov] AS [ruc_prov], 
+    [vw_ProveedorActivo].[direccion_prov] AS [direccion_prov], 
+    [vw_ProveedorActivo].[tel_prov] AS [tel_prov], 
+    [vw_ProveedorActivo].[email_prov] AS [email_prov], 
+    [vw_ProveedorActivo].[rep_ven_prov] AS [rep_ven_prov], 
+    [vw_ProveedorActivo].[usu_reg_prov] AS [usu_reg_prov], 
+    [vw_ProveedorActivo].[fec_reg_prov] AS [fec_reg_prov], 
+    [vw_ProveedorActivo].[usu_ult_modificacion_prov] AS [usu_ult_modificacion_prov], 
+    [vw_ProveedorActivo].[fecha_ult_modificacion_prov] AS [fecha_ult_modificacion_prov], 
+    [vw_ProveedorActivo].[estado_prov] AS [estado_prov]
+    FROM [dbo].[vw_ProveedorActivo] AS [vw_ProveedorActivo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_ProveedorMedicina" EntityType="Self.vw_ProveedorMedicina" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_ProveedorMedicina].[cod_prov] AS [cod_prov], 
+    [vw_ProveedorMedicina].[nom_prov] AS [nom_prov], 
+    [vw_ProveedorMedicina].[ruc_prov] AS [ruc_prov], 
+    [vw_ProveedorMedicina].[direccion_prov] AS [direccion_prov], 
+    [vw_ProveedorMedicina].[tel_prov] AS [tel_prov], 
+    [vw_ProveedorMedicina].[email_prov] AS [email_prov], 
+    [vw_ProveedorMedicina].[rep_ven_prov] AS [rep_ven_prov], 
+    [vw_ProveedorMedicina].[fec_reg_prov] AS [fec_reg_prov], 
+    [vw_ProveedorMedicina].[estado_prov] AS [estado_prov], 
+    [vw_ProveedorMedicina].[cod_med] AS [cod_med], 
+    [vw_ProveedorMedicina].[nombre_medicina] AS [nombre_medicina], 
+    [vw_ProveedorMedicina].[tipo_medicina] AS [tipo_medicina]
+    FROM [dbo].[vw_ProveedorMedicina] AS [vw_ProveedorMedicina]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -192,9 +394,6 @@
           <FunctionImport Name="usp_EliminarEmpleado">
           <Parameter Name="vcod_emp" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="Tb_Medicina" EntityType="HundeDBModel.Tb_Medicina" />
-          <EntitySet Name="Tb_Paciente" EntityType="HundeDBModel.Tb_Paciente" />
-          <EntitySet Name="Tb_Proveedor" EntityType="HundeDBModel.Tb_Proveedor" />
           <FunctionImport Name="usp_ListarEstadoProveedorMedicina" ReturnType="Collection(HundeDBModel.usp_ListarEstadoProveedorMedicina_Result)">
             <Parameter Name="estado_prov" Mode="In" Type="Int32" />
             <Parameter Name="tipo_medicina" Mode="In" Type="String" />
@@ -244,59 +443,94 @@
           <FunctionImport Name="usp_ListarPacientePorTratamiento" ReturnType="Collection(HundeDBModel.usp_ListarPacientePorTratamiento_Result)">
           <Parameter Name="tipo_tratamiento" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="Tb_Cliente" EntityType="HundeDBModel.Tb_Cliente" />
-          <EntitySet Name="Tb_Empleado" EntityType="HundeDBModel.Tb_Empleado" />
           <FunctionImport Name="usp_ListarPacientesPorRaza1" ReturnType="Collection(HundeDBModel.usp_ListarPacientesPorRaza1_Result)">
           <Parameter Name="vraza" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_ListarPacientePorTratamiento1" ReturnType="Collection(HundeDBModel.usp_ListarPacientePorTratamiento1_Result)">
           <Parameter Name="tipo_tratamiento" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="usp_ListarProveedor" ReturnType="Collection(HundeDBModel.usp_ListarProveedor_Result)">
+            <Parameter Name="cod_prov" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarEmpleado" ReturnType="Collection(HundeDBModel.usp_ListarEmpleado_Result)" />
+          <EntitySet Name="Tb_Cliente" EntityType="HundeDBModel.Tb_Cliente" />
+          <EntitySet Name="Tb_Empleado" EntityType="HundeDBModel.Tb_Empleado" />
+          <EntitySet Name="Tb_Medicina" EntityType="HundeDBModel.Tb_Medicina" />
+          <EntitySet Name="Tb_Paciente" EntityType="HundeDBModel.Tb_Paciente" />
+          <EntitySet Name="Tb_Proveedor" EntityType="HundeDBModel.Tb_Proveedor" />
+          <EntitySet Name="vw_DetallesPaciente" EntityType="HundeDBModel.vw_DetallesPaciente" />
+          <EntitySet Name="vw_ProveedorActivo" EntityType="HundeDBModel.vw_ProveedorActivo" />
+          <EntitySet Name="vw_ProveedorMedicina" EntityType="HundeDBModel.vw_ProveedorMedicina" />
+          <FunctionImport Name="usp_ActualizarPaciente">
+            <Parameter Name="vnom_pac" Mode="In" Type="String" />
+            <Parameter Name="vtipo_pac" Mode="In" Type="String" />
+            <Parameter Name="vraza" Mode="In" Type="String" />
+            <Parameter Name="vfec_nac_pac" Mode="In" Type="DateTime" />
+            <Parameter Name="vsexo" Mode="In" Type="Int32" />
+            <Parameter Name="vcolor" Mode="In" Type="String" />
+            <Parameter Name="vlongitud" Mode="In" Type="Double" />
+            <Parameter Name="vpeso" Mode="In" Type="Double" />
+            <Parameter Name="vult_vis_pac" Mode="In" Type="DateTime" />
+            <Parameter Name="vfoto" Mode="In" Type="String" />
+            <Parameter Name="vobservaciones_pac" Mode="In" Type="String" />
+            <Parameter Name="vest_pac" Mode="In" Type="Int32" />
+            <Parameter Name="vcod_pac" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ActualizarProveedor">
+            <Parameter Name="vnom_prov" Mode="In" Type="String" />
+            <Parameter Name="vruc_prov" Mode="In" Type="String" />
+            <Parameter Name="vdireccion_prov" Mode="In" Type="String" />
+            <Parameter Name="vtel_prov" Mode="In" Type="String" />
+            <Parameter Name="vemail_prov" Mode="In" Type="String" />
+            <Parameter Name="vrep_ven_prov" Mode="In" Type="String" />
+            <Parameter Name="vusu_ult_mod" Mode="In" Type="String" />
+            <Parameter Name="vfecha_ult_mod" Mode="In" Type="DateTime" />
+            <Parameter Name="vestado_prov" Mode="In" Type="Int32" />
+            <Parameter Name="vcod_prov" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarPaciente">
+            <Parameter Name="vcod_pac" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarProveedor">
+            <Parameter Name="vcod_prov" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarPaciente">
+            <Parameter Name="vnom_pac" Mode="In" Type="String" />
+            <Parameter Name="vtipo_pac" Mode="In" Type="String" />
+            <Parameter Name="vraza" Mode="In" Type="String" />
+            <Parameter Name="vfec_nac_pac" Mode="In" Type="DateTime" />
+            <Parameter Name="vsexo" Mode="In" Type="Int32" />
+            <Parameter Name="vcolor" Mode="In" Type="String" />
+            <Parameter Name="vlongitud" Mode="In" Type="Double" />
+            <Parameter Name="vpeso" Mode="In" Type="Double" />
+            <Parameter Name="vult_vis_pac" Mode="In" Type="DateTime" />
+            <Parameter Name="vfoto" Mode="In" Type="String" />
+            <Parameter Name="vobservaciones_pac" Mode="In" Type="String" />
+            <Parameter Name="vest_pac" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarProveedor">
+            <Parameter Name="vnom_prov" Mode="In" Type="String" />
+            <Parameter Name="vruc_prov" Mode="In" Type="String" />
+            <Parameter Name="vdireccion_prov" Mode="In" Type="String" />
+            <Parameter Name="vtel_prov" Mode="In" Type="String" />
+            <Parameter Name="vemail_prov" Mode="In" Type="String" />
+            <Parameter Name="vrep_ven_prov" Mode="In" Type="String" />
+            <Parameter Name="vusu_reg_prov" Mode="In" Type="String" />
+            <Parameter Name="vestado_prov" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarClientes" ReturnType="Collection(HundeDBModel.usp_ListarClientes_Result)" />
+          <FunctionImport Name="usp_ListarPacientePorTratamiento2" ReturnType="Collection(HundeDBModel.usp_ListarPacientePorTratamiento2_Result)">
+            <Parameter Name="tipo_tratamiento" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarPacientes" ReturnType="Collection(HundeDBModel.usp_ListarPacientes_Result)" />
+          <FunctionImport Name="usp_ListarPacientesPorCliente" ReturnType="Collection(HundeDBModel.usp_ListarPacientesPorCliente_Result)">
+            <Parameter Name="vcod_cli" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarPacientesPorRaza2" ReturnType="Collection(HundeDBModel.usp_ListarPacientesPorRaza2_Result)">
+            <Parameter Name="vraza" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarProveedores" ReturnType="Collection(HundeDBModel.usp_ListarProveedores_Result)" />
         </EntityContainer>
-        <EntityType Name="Tb_Medicina">
-          <Key>
-            <PropertyRef Name="cod_med" />
-          </Key>
-          <Property Name="cod_med" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="tipo_medicina" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="nombre_medicina" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="cod_uni_med" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Tb_Paciente">
-          <Key>
-            <PropertyRef Name="cod_pac" />
-          </Key>
-          <Property Name="cod_pac" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="nom_pac" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tipo_pac" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="raza" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="fec_nac_pac" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="sexo" Type="Int32" Nullable="false" />
-          <Property Name="color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="longitud" Type="Double" Nullable="false" />
-          <Property Name="peso" Type="Double" Nullable="false" />
-          <Property Name="ult_vis_pac" Type="DateTime" Precision="0" />
-          <Property Name="foto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="observaciones_pac" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Name="est_pac" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Tb_Proveedor">
-          <Key>
-            <PropertyRef Name="cod_prov" />
-          </Key>
-          <Property Name="cod_prov" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="nom_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ruc_prov" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
-          <Property Name="direccion_prov" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="tel_prov" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
-          <Property Name="email_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="rep_ven_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="usu_reg_prov" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="fec_reg_prov" Type="DateTime" Precision="3" />
-          <Property Name="usu_ult_modificacion_prov" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="fecha_ult_modificacion_prov" Type="DateTime" Precision="3" />
-          <Property Name="estado_prov" Type="Int32" />
-        </EntityType>
         <ComplexType Name="usp_ListarEstadoProveedorMedicina_Result">
           <Property Type="String" Name="cod_prov" Nullable="false" MaxLength="4" />
           <Property Type="String" Name="cod_med" Nullable="false" MaxLength="4" />
@@ -351,6 +585,63 @@
           <Property Type="String" Name="tipo_trat" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="estado_trat" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="usp_ListarPacientesPorRaza1_Result">
+          <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tipo_pac" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="raza" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
+          <Property Type="Int32" Name="sexo" Nullable="false" />
+          <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
+          <Property Type="Double" Name="longitud" Nullable="false" />
+          <Property Type="Double" Name="peso" Nullable="false" />
+          <Property Type="DateTime" Name="ult_vis_pac" Nullable="true" />
+          <Property Type="String" Name="foto" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="observaciones_pac" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="est_pac" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarPacientePorTratamiento1_Result">
+          <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tipo_pac" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="raza" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
+          <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="sexo" Nullable="false" />
+          <Property Type="Double" Name="longitud" Nullable="false" />
+          <Property Type="Double" Name="peso" Nullable="false" />
+          <Property Type="DateTime" Name="ult_vis_pac" Nullable="true" />
+          <Property Type="String" Name="observaciones_pac" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="est_pac" Nullable="false" />
+          <Property Type="Int32" Name="cod_trat" Nullable="false" />
+          <Property Type="String" Name="nombre_trat" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tipo_trat" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="estado_trat" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarProveedor_Result">
+          <Property Type="String" Name="cod_prov" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="nom_prov" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ruc_prov" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="direccion_prov" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="tel_prov" Nullable="false" MaxLength="9" />
+          <Property Type="String" Name="email_prov" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="rep_ven_prov" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fec_reg_prov" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="estado_prov" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarEmpleado_Result">
+          <Property Type="String" Name="cod_emp" Nullable="false" MaxLength="4" />
+          <Property Type="Int32" Name="rol_emp" Nullable="false" />
+          <Property Type="String" Name="nom_empleado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ape_empleado" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ingreso" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="sueldo" Nullable="true" Precision="19" />
+          <Property Type="String" Name="email_emp" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="cod_supervisor" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="usu_ult_modificacion_emp" Nullable="true" MaxLength="4" />
+          <Property Type="DateTime" Name="fecha_ult_modificacion_emp" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="estado_emp" Nullable="false" />
+        </ComplexType>
         <EntityType Name="Tb_Cliente">
           <Key>
             <PropertyRef Name="cod_cli" />
@@ -388,22 +679,150 @@
           <Property Name="fecha_ult_modificacion_emp" Type="DateTime" Precision="3" />
           <Property Name="estado_emp" Type="Int32" Nullable="false" />
         </EntityType>
-        <ComplexType Name="usp_ListarPacientesPorRaza1_Result">
-          <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
-          <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="tipo_pac" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="raza" Nullable="false" MaxLength="50" />
-          <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
-          <Property Type="Int32" Name="sexo" Nullable="false" />
-          <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
-          <Property Type="Double" Name="longitud" Nullable="false" />
-          <Property Type="Double" Name="peso" Nullable="false" />
-          <Property Type="DateTime" Name="ult_vis_pac" Nullable="true" />
-          <Property Type="String" Name="foto" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="observaciones_pac" Nullable="true" MaxLength="300" />
-          <Property Type="Int32" Name="est_pac" Nullable="false" />
+        <EntityType Name="Tb_Medicina">
+          <Key>
+            <PropertyRef Name="cod_med" />
+          </Key>
+          <Property Name="cod_med" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_medicina" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombre_medicina" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cod_uni_med" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Paciente">
+          <Key>
+            <PropertyRef Name="cod_pac" />
+          </Key>
+          <Property Name="cod_pac" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="nom_pac" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_pac" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="raza" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fec_nac_pac" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="sexo" Type="Int32" Nullable="false" />
+          <Property Name="color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="longitud" Type="Double" Nullable="false" />
+          <Property Name="peso" Type="Double" Nullable="false" />
+          <Property Name="ult_vis_pac" Type="DateTime" Precision="0" />
+          <Property Name="foto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="observaciones_pac" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="est_pac" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Proveedor">
+          <Key>
+            <PropertyRef Name="cod_prov" />
+          </Key>
+          <Property Name="cod_prov" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="nom_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ruc_prov" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="direccion_prov" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tel_prov" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="email_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rep_ven_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usu_reg_prov" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="fec_reg_prov" Type="DateTime" Precision="3" />
+          <Property Name="usu_ult_modificacion_prov" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ult_modificacion_prov" Type="DateTime" Precision="3" />
+          <Property Name="estado_prov" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_DetallesPaciente">
+          <Key>
+            <PropertyRef Name="codigo" />
+            <PropertyRef Name="nombre" />
+            <PropertyRef Name="tipo_paciente" />
+            <PropertyRef Name="raza" />
+            <PropertyRef Name="fecha_nacimiento" />
+            <PropertyRef Name="sexo" />
+            <PropertyRef Name="color" />
+            <PropertyRef Name="longitud" />
+            <PropertyRef Name="peso" />
+            <PropertyRef Name="conducta" />
+            <PropertyRef Name="nutricion" />
+            <PropertyRef Name="actividad" />
+            <PropertyRef Name="estado" />
+          </Key>
+          <Property Name="codigo" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_paciente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="raza" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_nacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="sexo" Type="Int32" Nullable="false" />
+          <Property Name="color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="longitud" Type="Double" Nullable="false" />
+          <Property Name="peso" Type="Double" Nullable="false" />
+          <Property Name="conducta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nutricion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="actividad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="observaciones" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="detalles_observaciones" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_ProveedorActivo">
+          <Key>
+            <PropertyRef Name="cod_prov" />
+            <PropertyRef Name="nom_prov" />
+            <PropertyRef Name="ruc_prov" />
+            <PropertyRef Name="direccion_prov" />
+            <PropertyRef Name="tel_prov" />
+            <PropertyRef Name="email_prov" />
+            <PropertyRef Name="rep_ven_prov" />
+          </Key>
+          <Property Name="cod_prov" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="nom_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ruc_prov" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="direccion_prov" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tel_prov" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="email_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rep_ven_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usu_reg_prov" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="fec_reg_prov" Type="DateTime" Precision="3" />
+          <Property Name="usu_ult_modificacion_prov" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ult_modificacion_prov" Type="DateTime" Precision="3" />
+          <Property Name="estado_prov" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_ProveedorMedicina">
+          <Key>
+            <PropertyRef Name="cod_prov" />
+            <PropertyRef Name="nom_prov" />
+            <PropertyRef Name="ruc_prov" />
+            <PropertyRef Name="direccion_prov" />
+            <PropertyRef Name="tel_prov" />
+            <PropertyRef Name="email_prov" />
+            <PropertyRef Name="rep_ven_prov" />
+            <PropertyRef Name="cod_med" />
+            <PropertyRef Name="nombre_medicina" />
+            <PropertyRef Name="tipo_medicina" />
+          </Key>
+          <Property Name="cod_prov" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="nom_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ruc_prov" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="direccion_prov" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tel_prov" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="email_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rep_ven_prov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fec_reg_prov" Type="DateTime" Precision="3" />
+          <Property Name="estado_prov" Type="Int32" />
+          <Property Name="cod_med" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="nombre_medicina" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_medicina" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="usp_ListarClientes_Result">
+          <Property Type="String" Name="cod_cli" Nullable="false" MaxLength="4" />
+          <Property Type="Int32" Name="Tipo_cliente" Nullable="false" />
+          <Property Type="String" Name="nom_cliente" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ape_pat_cliente" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ape_mat_cliente" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="direccion_cliente" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="cel_cliente" Nullable="false" MaxLength="9" />
+          <Property Type="String" Name="email_cliente" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="es_dueno" Nullable="false" />
+          <Property Type="String" Name="id_ubigeo" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="dni_cliente" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="usu_reg_cli" Nullable="true" MaxLength="4" />
+          <Property Type="DateTime" Name="fec_reg_cli" Nullable="true" Precision="23" />
+          <Property Type="String" Name="usu_ult_modificacion_cli" Nullable="true" MaxLength="4" />
+          <Property Type="DateTime" Name="fecha_ult_modificacion_cli" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="estado_cli" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="usp_ListarPacientePorTratamiento1_Result">
+        <ComplexType Name="usp_ListarPacientePorTratamiento2_Result">
           <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
           <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="tipo_pac" Nullable="false" MaxLength="50" />
@@ -421,6 +840,66 @@
           <Property Type="String" Name="tipo_trat" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="estado_trat" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="usp_ListarPacientes_Result">
+          <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tipo_pac" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="raza" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
+          <Property Type="Int32" Name="sexo" Nullable="false" />
+          <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
+          <Property Type="Double" Name="longitud" Nullable="false" />
+          <Property Type="Double" Name="peso" Nullable="false" />
+          <Property Type="DateTime" Name="ult_vis_pac" Nullable="true" />
+          <Property Type="String" Name="foto" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="observaciones_pac" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="est_pac" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarPacientesPorCliente_Result">
+          <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tipo_pac" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="raza" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
+          <Property Type="Int32" Name="sexo" Nullable="false" />
+          <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
+          <Property Type="Double" Name="longitud" Nullable="false" />
+          <Property Type="Double" Name="peso" Nullable="false" />
+          <Property Type="DateTime" Name="ult_vis_pac" Nullable="true" />
+          <Property Type="String" Name="foto" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="observaciones_pac" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="est_pac" Nullable="false" />
+          <Property Type="String" Name="cod_cli" Nullable="true" MaxLength="4" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarPacientesPorRaza2_Result">
+          <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tipo_pac" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="raza" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
+          <Property Type="Int32" Name="sexo" Nullable="false" />
+          <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
+          <Property Type="Double" Name="longitud" Nullable="false" />
+          <Property Type="Double" Name="peso" Nullable="false" />
+          <Property Type="DateTime" Name="ult_vis_pac" Nullable="true" />
+          <Property Type="String" Name="foto" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="observaciones_pac" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="est_pac" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarProveedores_Result">
+          <Property Type="String" Name="cod_prov" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="nom_prov" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ruc_prov" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="direccion_prov" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="tel_prov" Nullable="false" MaxLength="9" />
+          <Property Type="String" Name="email_prov" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="rep_ven_prov" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="usu_reg_prov" Nullable="true" MaxLength="4" />
+          <Property Type="DateTime" Name="fec_reg_prov" Nullable="true" Precision="23" />
+          <Property Type="String" Name="usu_ult_modificacion_prov" Nullable="true" MaxLength="4" />
+          <Property Type="DateTime" Name="fecha_ult_modificacion_prov" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="estado_prov" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -430,6 +909,78 @@
           <FunctionImportMapping FunctionImportName="usp_ActualizarEmpleado" FunctionName="HundeDBModel.Store.usp_ActualizarEmpleado" />
           <FunctionImportMapping FunctionImportName="usp_InsertarEmpleado" FunctionName="HundeDBModel.Store.usp_InsertarEmpleado" />
           <FunctionImportMapping FunctionImportName="usp_EliminarEmpleado" FunctionName="HundeDBModel.Store.usp_EliminarEmpleado" />
+          <FunctionImportMapping FunctionImportName="usp_ListarTipoMedicinaProveedor" FunctionName="HundeDBModel.Store.usp_ListarTipoMedicinaProveedor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarTipoMedicinaProveedor_Result">
+                <ScalarProperty Name="cod_prov" ColumnName="cod_prov" />
+                <ScalarProperty Name="cod_med" ColumnName="cod_med" />
+                <ScalarProperty Name="nom_prov" ColumnName="nom_prov" />
+                <ScalarProperty Name="email_prov" ColumnName="email_prov" />
+                <ScalarProperty Name="tel_prov" ColumnName="tel_prov" />
+                <ScalarProperty Name="nombre_medicina" ColumnName="nombre_medicina" />
+                <ScalarProperty Name="tipo_medicina" ColumnName="tipo_medicina" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ActualizarCliente" FunctionName="HundeDBModel.Store.usp_ActualizarCliente" />
+          <FunctionImportMapping FunctionImportName="usp_EliminarCliente" FunctionName="HundeDBModel.Store.usp_EliminarCliente" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarCliente" FunctionName="HundeDBModel.Store.usp_InsertarCliente" />
+          <FunctionImportMapping FunctionImportName="usp_ListarEmpleado" FunctionName="HundeDBModel.Store.usp_ListarEmpleado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarEmpleado_Result">
+                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+                <ScalarProperty Name="rol_emp" ColumnName="rol_emp" />
+                <ScalarProperty Name="nom_empleado" ColumnName="nom_empleado" />
+                <ScalarProperty Name="ape_empleado" ColumnName="ape_empleado" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+                <ScalarProperty Name="email_emp" ColumnName="email_emp" />
+                <ScalarProperty Name="cod_supervisor" ColumnName="cod_supervisor" />
+                <ScalarProperty Name="usu_ult_modificacion_emp" ColumnName="usu_ult_modificacion_emp" />
+                <ScalarProperty Name="fecha_ult_modificacion_emp" ColumnName="fecha_ult_modificacion_emp" />
+                <ScalarProperty Name="estado_emp" ColumnName="estado_emp" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Tb_Cliente">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Cliente">
+              <MappingFragment StoreEntitySet="Tb_Cliente">
+                <ScalarProperty Name="estado_cli" ColumnName="estado_cli" />
+                <ScalarProperty Name="fecha_ult_modificacion_cli" ColumnName="fecha_ult_modificacion_cli" />
+                <ScalarProperty Name="usu_ult_modificacion_cli" ColumnName="usu_ult_modificacion_cli" />
+                <ScalarProperty Name="fec_reg_cli" ColumnName="fec_reg_cli" />
+                <ScalarProperty Name="usu_reg_cli" ColumnName="usu_reg_cli" />
+                <ScalarProperty Name="dni_cliente" ColumnName="dni_cliente" />
+                <ScalarProperty Name="id_ubigeo" ColumnName="id_ubigeo" />
+                <ScalarProperty Name="es_dueno" ColumnName="es_dueno" />
+                <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
+                <ScalarProperty Name="cel_cliente" ColumnName="cel_cliente" />
+                <ScalarProperty Name="direccion_cliente" ColumnName="direccion_cliente" />
+                <ScalarProperty Name="ape_mat_cliente" ColumnName="ape_mat_cliente" />
+                <ScalarProperty Name="ape_pat_cliente" ColumnName="ape_pat_cliente" />
+                <ScalarProperty Name="nom_cliente" ColumnName="nom_cliente" />
+                <ScalarProperty Name="Tipo_cliente" ColumnName="Tipo_cliente" />
+                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Empleado">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Empleado">
+              <MappingFragment StoreEntitySet="Tb_Empleado">
+                <ScalarProperty Name="estado_emp" ColumnName="estado_emp" />
+                <ScalarProperty Name="fecha_ult_modificacion_emp" ColumnName="fecha_ult_modificacion_emp" />
+                <ScalarProperty Name="usu_ult_modificacion_emp" ColumnName="usu_ult_modificacion_emp" />
+                <ScalarProperty Name="cod_supervisor" ColumnName="cod_supervisor" />
+                <ScalarProperty Name="email_emp" ColumnName="email_emp" />
+                <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="ape_empleado" ColumnName="ape_empleado" />
+                <ScalarProperty Name="nom_empleado" ColumnName="nom_empleado" />
+                <ScalarProperty Name="rol_emp" ColumnName="rol_emp" />
+                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Tb_Medicina">
             <EntityTypeMapping TypeName="HundeDBModel.Tb_Medicina">
               <MappingFragment StoreEntitySet="Tb_Medicina">
@@ -477,83 +1028,94 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="usp_ListarTipoMedicinaProveedor" FunctionName="HundeDBModel.Store.usp_ListarTipoMedicinaProveedor">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarTipoMedicinaProveedor_Result">
-                <ScalarProperty Name="cod_prov" ColumnName="cod_prov" />
-                <ScalarProperty Name="cod_med" ColumnName="cod_med" />
-                <ScalarProperty Name="nom_prov" ColumnName="nom_prov" />
+          <EntitySetMapping Name="vw_DetallesPaciente">
+            <EntityTypeMapping TypeName="HundeDBModel.vw_DetallesPaciente">
+              <MappingFragment StoreEntitySet="vw_DetallesPaciente">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="detalles_observaciones" ColumnName="detalles_observaciones" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="actividad" ColumnName="actividad" />
+                <ScalarProperty Name="nutricion" ColumnName="nutricion" />
+                <ScalarProperty Name="conducta" ColumnName="conducta" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+                <ScalarProperty Name="raza" ColumnName="raza" />
+                <ScalarProperty Name="tipo_paciente" ColumnName="tipo_paciente" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_ProveedorActivo">
+            <EntityTypeMapping TypeName="HundeDBModel.vw_ProveedorActivo">
+              <MappingFragment StoreEntitySet="vw_ProveedorActivo">
+                <ScalarProperty Name="estado_prov" ColumnName="estado_prov" />
+                <ScalarProperty Name="fecha_ult_modificacion_prov" ColumnName="fecha_ult_modificacion_prov" />
+                <ScalarProperty Name="usu_ult_modificacion_prov" ColumnName="usu_ult_modificacion_prov" />
+                <ScalarProperty Name="fec_reg_prov" ColumnName="fec_reg_prov" />
+                <ScalarProperty Name="usu_reg_prov" ColumnName="usu_reg_prov" />
+                <ScalarProperty Name="rep_ven_prov" ColumnName="rep_ven_prov" />
                 <ScalarProperty Name="email_prov" ColumnName="email_prov" />
                 <ScalarProperty Name="tel_prov" ColumnName="tel_prov" />
-                <ScalarProperty Name="nombre_medicina" ColumnName="nombre_medicina" />
+                <ScalarProperty Name="direccion_prov" ColumnName="direccion_prov" />
+                <ScalarProperty Name="ruc_prov" ColumnName="ruc_prov" />
+                <ScalarProperty Name="nom_prov" ColumnName="nom_prov" />
+                <ScalarProperty Name="cod_prov" ColumnName="cod_prov" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_ProveedorMedicina">
+            <EntityTypeMapping TypeName="HundeDBModel.vw_ProveedorMedicina">
+              <MappingFragment StoreEntitySet="vw_ProveedorMedicina">
                 <ScalarProperty Name="tipo_medicina" ColumnName="tipo_medicina" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_ActualizarCliente" FunctionName="HundeDBModel.Store.usp_ActualizarCliente" />
-          <FunctionImportMapping FunctionImportName="usp_EliminarCliente" FunctionName="HundeDBModel.Store.usp_EliminarCliente" />
-          <FunctionImportMapping FunctionImportName="usp_InsertarCliente" FunctionName="HundeDBModel.Store.usp_InsertarCliente" />
-          <EntitySetMapping Name="Tb_Cliente">
-            <EntityTypeMapping TypeName="HundeDBModel.Tb_Cliente">
-              <MappingFragment StoreEntitySet="Tb_Cliente">
-                <ScalarProperty Name="estado_cli" ColumnName="estado_cli" />
-                <ScalarProperty Name="fecha_ult_modificacion_cli" ColumnName="fecha_ult_modificacion_cli" />
-                <ScalarProperty Name="usu_ult_modificacion_cli" ColumnName="usu_ult_modificacion_cli" />
-                <ScalarProperty Name="fec_reg_cli" ColumnName="fec_reg_cli" />
-                <ScalarProperty Name="usu_reg_cli" ColumnName="usu_reg_cli" />
-                <ScalarProperty Name="dni_cliente" ColumnName="dni_cliente" />
-                <ScalarProperty Name="id_ubigeo" ColumnName="id_ubigeo" />
-                <ScalarProperty Name="es_dueno" ColumnName="es_dueno" />
-                <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
-                <ScalarProperty Name="cel_cliente" ColumnName="cel_cliente" />
-                <ScalarProperty Name="direccion_cliente" ColumnName="direccion_cliente" />
-                <ScalarProperty Name="ape_mat_cliente" ColumnName="ape_mat_cliente" />
-                <ScalarProperty Name="ape_pat_cliente" ColumnName="ape_pat_cliente" />
-                <ScalarProperty Name="nom_cliente" ColumnName="nom_cliente" />
-                <ScalarProperty Name="Tipo_cliente" ColumnName="Tipo_cliente" />
+                <ScalarProperty Name="nombre_medicina" ColumnName="nombre_medicina" />
+                <ScalarProperty Name="cod_med" ColumnName="cod_med" />
+                <ScalarProperty Name="estado_prov" ColumnName="estado_prov" />
+                <ScalarProperty Name="fec_reg_prov" ColumnName="fec_reg_prov" />
+                <ScalarProperty Name="rep_ven_prov" ColumnName="rep_ven_prov" />
+                <ScalarProperty Name="email_prov" ColumnName="email_prov" />
+                <ScalarProperty Name="tel_prov" ColumnName="tel_prov" />
+                <ScalarProperty Name="direccion_prov" ColumnName="direccion_prov" />
+                <ScalarProperty Name="ruc_prov" ColumnName="ruc_prov" />
+                <ScalarProperty Name="nom_prov" ColumnName="nom_prov" />
+                <ScalarProperty Name="cod_prov" ColumnName="cod_prov" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_ActualizarPaciente" FunctionName="HundeDBModel.Store.usp_ActualizarPaciente" />
+          <FunctionImportMapping FunctionImportName="usp_ActualizarProveedor" FunctionName="HundeDBModel.Store.usp_ActualizarProveedor" />
+          <FunctionImportMapping FunctionImportName="usp_EliminarPaciente" FunctionName="HundeDBModel.Store.usp_EliminarPaciente" />
+          <FunctionImportMapping FunctionImportName="usp_EliminarProveedor" FunctionName="HundeDBModel.Store.usp_EliminarProveedor" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarPaciente" FunctionName="HundeDBModel.Store.usp_InsertarPaciente" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarProveedor" FunctionName="HundeDBModel.Store.usp_InsertarProveedor" />
+          <FunctionImportMapping FunctionImportName="usp_ListarClientes" FunctionName="HundeDBModel.Store.usp_ListarClientes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarClientes_Result">
                 <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tb_Empleado">
-            <EntityTypeMapping TypeName="HundeDBModel.Tb_Empleado">
-              <MappingFragment StoreEntitySet="Tb_Empleado">
-                <ScalarProperty Name="estado_emp" ColumnName="estado_emp" />
-                <ScalarProperty Name="fecha_ult_modificacion_emp" ColumnName="fecha_ult_modificacion_emp" />
-                <ScalarProperty Name="usu_ult_modificacion_emp" ColumnName="usu_ult_modificacion_emp" />
-                <ScalarProperty Name="cod_supervisor" ColumnName="cod_supervisor" />
-                <ScalarProperty Name="email_emp" ColumnName="email_emp" />
-                <ScalarProperty Name="sueldo" ColumnName="sueldo" />
-                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
-                <ScalarProperty Name="ape_empleado" ColumnName="ape_empleado" />
-                <ScalarProperty Name="nom_empleado" ColumnName="nom_empleado" />
-                <ScalarProperty Name="rol_emp" ColumnName="rol_emp" />
-                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="usp_ListarPacientesPorRaza1" FunctionName="HundeDBModel.Store.usp_ListarPacientesPorRaza">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientesPorRaza1_Result">
-                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
-                <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
-                <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
-                <ScalarProperty Name="raza" ColumnName="raza" />
-                <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
-                <ScalarProperty Name="sexo" ColumnName="sexo" />
-                <ScalarProperty Name="color" ColumnName="color" />
-                <ScalarProperty Name="longitud" ColumnName="longitud" />
-                <ScalarProperty Name="peso" ColumnName="peso" />
-                <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
-                <ScalarProperty Name="foto" ColumnName="foto" />
-                <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
-                <ScalarProperty Name="est_pac" ColumnName="est_pac" />
+                <ScalarProperty Name="Tipo_cliente" ColumnName="Tipo_cliente" />
+                <ScalarProperty Name="nom_cliente" ColumnName="nom_cliente" />
+                <ScalarProperty Name="ape_pat_cliente" ColumnName="ape_pat_cliente" />
+                <ScalarProperty Name="ape_mat_cliente" ColumnName="ape_mat_cliente" />
+                <ScalarProperty Name="direccion_cliente" ColumnName="direccion_cliente" />
+                <ScalarProperty Name="cel_cliente" ColumnName="cel_cliente" />
+                <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
+                <ScalarProperty Name="es_dueno" ColumnName="es_dueno" />
+                <ScalarProperty Name="id_ubigeo" ColumnName="id_ubigeo" />
+                <ScalarProperty Name="dni_cliente" ColumnName="dni_cliente" />
+                <ScalarProperty Name="usu_reg_cli" ColumnName="usu_reg_cli" />
+                <ScalarProperty Name="fec_reg_cli" ColumnName="fec_reg_cli" />
+                <ScalarProperty Name="usu_ult_modificacion_cli" ColumnName="usu_ult_modificacion_cli" />
+                <ScalarProperty Name="fecha_ult_modificacion_cli" ColumnName="fecha_ult_modificacion_cli" />
+                <ScalarProperty Name="estado_cli" ColumnName="estado_cli" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_ListarPacientePorTratamiento1" FunctionName="HundeDBModel.Store.usp_ListarPacientePorTratamiento">
+          <FunctionImportMapping FunctionImportName="usp_ListarPacientePorTratamiento2" FunctionName="HundeDBModel.Store.usp_ListarPacientePorTratamiento">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientePorTratamiento1_Result">
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientePorTratamiento2_Result">
                 <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
                 <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
                 <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
@@ -570,6 +1132,82 @@
                 <ScalarProperty Name="nombre_trat" ColumnName="nombre_trat" />
                 <ScalarProperty Name="tipo_trat" ColumnName="tipo_trat" />
                 <ScalarProperty Name="estado_trat" ColumnName="estado_trat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarPacientes" FunctionName="HundeDBModel.Store.usp_ListarPacientes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientes_Result">
+                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+                <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
+                <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
+                <ScalarProperty Name="raza" ColumnName="raza" />
+                <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
+                <ScalarProperty Name="est_pac" ColumnName="est_pac" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarPacientesPorCliente" FunctionName="HundeDBModel.Store.usp_ListarPacientesPorCliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientesPorCliente_Result">
+                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+                <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
+                <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
+                <ScalarProperty Name="raza" ColumnName="raza" />
+                <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
+                <ScalarProperty Name="est_pac" ColumnName="est_pac" />
+                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarPacientesPorRaza2" FunctionName="HundeDBModel.Store.usp_ListarPacientesPorRaza">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientesPorRaza2_Result">
+                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+                <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
+                <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
+                <ScalarProperty Name="raza" ColumnName="raza" />
+                <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
+                <ScalarProperty Name="est_pac" ColumnName="est_pac" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarProveedores" FunctionName="HundeDBModel.Store.usp_ListarProveedores">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarProveedores_Result">
+                <ScalarProperty Name="cod_prov" ColumnName="cod_prov" />
+                <ScalarProperty Name="nom_prov" ColumnName="nom_prov" />
+                <ScalarProperty Name="ruc_prov" ColumnName="ruc_prov" />
+                <ScalarProperty Name="direccion_prov" ColumnName="direccion_prov" />
+                <ScalarProperty Name="tel_prov" ColumnName="tel_prov" />
+                <ScalarProperty Name="email_prov" ColumnName="email_prov" />
+                <ScalarProperty Name="rep_ven_prov" ColumnName="rep_ven_prov" />
+                <ScalarProperty Name="usu_reg_prov" ColumnName="usu_reg_prov" />
+                <ScalarProperty Name="fec_reg_prov" ColumnName="fec_reg_prov" />
+                <ScalarProperty Name="usu_ult_modificacion_prov" ColumnName="usu_ult_modificacion_prov" />
+                <ScalarProperty Name="fecha_ult_modificacion_prov" ColumnName="fecha_ult_modificacion_prov" />
+                <ScalarProperty Name="estado_prov" ColumnName="estado_prov" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

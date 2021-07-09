@@ -81,6 +81,93 @@
     <Property Name="fecha_ult_modificacion_prov" Type="datetime" />
     <Property Name="estado_prov" Type="int" />
   </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vw_DetallesPaciente">
+    <Key>
+      <PropertyRef Name="codigo" />
+      <PropertyRef Name="nombre" />
+      <PropertyRef Name="tipo_paciente" />
+      <PropertyRef Name="raza" />
+      <PropertyRef Name="fecha_nacimiento" />
+      <PropertyRef Name="sexo" />
+      <PropertyRef Name="color" />
+      <PropertyRef Name="longitud" />
+      <PropertyRef Name="peso" />
+      <PropertyRef Name="conducta" />
+      <PropertyRef Name="nutricion" />
+      <PropertyRef Name="actividad" />
+      <PropertyRef Name="estado" />
+    </Key>
+    <Property Name="codigo" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="tipo_paciente" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="raza" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fecha_nacimiento" Type="date" Nullable="false" />
+    <Property Name="sexo" Type="int" Nullable="false" />
+    <Property Name="color" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="longitud" Type="float" Nullable="false" />
+    <Property Name="peso" Type="float" Nullable="false" />
+    <Property Name="conducta" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="nutricion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="actividad" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="observaciones" Type="varchar" MaxLength="300" />
+    <Property Name="detalles_observaciones" Type="varchar" MaxLength="300" />
+    <Property Name="estado" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorActivo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vw_ProveedorActivo">
+    <Key>
+      <PropertyRef Name="cod_prov" />
+      <PropertyRef Name="nom_prov" />
+      <PropertyRef Name="ruc_prov" />
+      <PropertyRef Name="direccion_prov" />
+      <PropertyRef Name="tel_prov" />
+      <PropertyRef Name="email_prov" />
+      <PropertyRef Name="rep_ven_prov" />
+    </Key>
+    <Property Name="cod_prov" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="nom_prov" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ruc_prov" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="direccion_prov" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="tel_prov" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="email_prov" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="rep_ven_prov" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="usu_reg_prov" Type="varchar" MaxLength="4" />
+    <Property Name="fec_reg_prov" Type="datetime" />
+    <Property Name="usu_ult_modificacion_prov" Type="varchar" MaxLength="4" />
+    <Property Name="fecha_ult_modificacion_prov" Type="datetime" />
+    <Property Name="estado_prov" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorMedicina' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vw_ProveedorMedicina">
+    <Key>
+      <PropertyRef Name="cod_prov" />
+      <PropertyRef Name="nom_prov" />
+      <PropertyRef Name="ruc_prov" />
+      <PropertyRef Name="direccion_prov" />
+      <PropertyRef Name="tel_prov" />
+      <PropertyRef Name="email_prov" />
+      <PropertyRef Name="rep_ven_prov" />
+      <PropertyRef Name="cod_med" />
+      <PropertyRef Name="nombre_medicina" />
+      <PropertyRef Name="tipo_medicina" />
+    </Key>
+    <Property Name="cod_prov" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="nom_prov" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ruc_prov" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="direccion_prov" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="tel_prov" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="email_prov" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="rep_ven_prov" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fec_reg_prov" Type="datetime" />
+    <Property Name="estado_prov" Type="int" />
+    <Property Name="cod_med" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="nombre_medicina" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="tipo_medicina" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <Function Name="usp_ActualizarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="vtipo_cliente" Type="int" Mode="In" />
     <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
@@ -110,11 +197,44 @@
     <Parameter Name="vestado_emp" Type="int" Mode="In" />
     <Parameter Name="vcod_emp" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="usp_ActualizarPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vnom_pac" Type="varchar" Mode="In" />
+    <Parameter Name="vtipo_pac" Type="varchar" Mode="In" />
+    <Parameter Name="vraza" Type="varchar" Mode="In" />
+    <Parameter Name="vfec_nac_pac" Type="date" Mode="In" />
+    <Parameter Name="vsexo" Type="int" Mode="In" />
+    <Parameter Name="vcolor" Type="varchar" Mode="In" />
+    <Parameter Name="vlongitud" Type="float" Mode="In" />
+    <Parameter Name="vpeso" Type="float" Mode="In" />
+    <Parameter Name="vult_vis_pac" Type="date" Mode="In" />
+    <Parameter Name="vfoto" Type="varchar" Mode="In" />
+    <Parameter Name="vobservaciones_pac" Type="varchar" Mode="In" />
+    <Parameter Name="vest_pac" Type="int" Mode="In" />
+    <Parameter Name="vcod_pac" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="usp_ActualizarProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vnom_prov" Type="varchar" Mode="In" />
+    <Parameter Name="vruc_prov" Type="varchar" Mode="In" />
+    <Parameter Name="vdireccion_prov" Type="varchar" Mode="In" />
+    <Parameter Name="vtel_prov" Type="varchar" Mode="In" />
+    <Parameter Name="vemail_prov" Type="varchar" Mode="In" />
+    <Parameter Name="vrep_ven_prov" Type="varchar" Mode="In" />
+    <Parameter Name="vusu_ult_mod" Type="varchar" Mode="In" />
+    <Parameter Name="vfecha_ult_mod" Type="datetime" Mode="In" />
+    <Parameter Name="vestado_prov" Type="int" Mode="In" />
+    <Parameter Name="vcod_prov" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="usp_EliminarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="vcod_cli" Type="varchar" Mode="In" />
   </Function>
   <Function Name="usp_EliminarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="vcod_emp" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="usp_EliminarPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vcod_pac" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="usp_EliminarProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vcod_prov" Type="varchar" Mode="In" />
   </Function>
   <Function Name="usp_InsertarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="vtipo_cliente" Type="int" Mode="In" />
@@ -140,12 +260,43 @@
     <Parameter Name="vcod_supervisor" Type="varchar" Mode="In" />
     <Parameter Name="vestado_emp" Type="int" Mode="In" />
   </Function>
+  <Function Name="usp_InsertarPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vnom_pac" Type="varchar" Mode="In" />
+    <Parameter Name="vtipo_pac" Type="varchar" Mode="In" />
+    <Parameter Name="vraza" Type="varchar" Mode="In" />
+    <Parameter Name="vfec_nac_pac" Type="date" Mode="In" />
+    <Parameter Name="vsexo" Type="int" Mode="In" />
+    <Parameter Name="vcolor" Type="varchar" Mode="In" />
+    <Parameter Name="vlongitud" Type="float" Mode="In" />
+    <Parameter Name="vpeso" Type="float" Mode="In" />
+    <Parameter Name="vult_vis_pac" Type="date" Mode="In" />
+    <Parameter Name="vfoto" Type="varchar" Mode="In" />
+    <Parameter Name="vobservaciones_pac" Type="varchar" Mode="In" />
+    <Parameter Name="vest_pac" Type="int" Mode="In" />
+  </Function>
+  <Function Name="usp_InsertarProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vnom_prov" Type="varchar" Mode="In" />
+    <Parameter Name="vruc_prov" Type="varchar" Mode="In" />
+    <Parameter Name="vdireccion_prov" Type="varchar" Mode="In" />
+    <Parameter Name="vtel_prov" Type="varchar" Mode="In" />
+    <Parameter Name="vemail_prov" Type="varchar" Mode="In" />
+    <Parameter Name="vrep_ven_prov" Type="varchar" Mode="In" />
+    <Parameter Name="vusu_reg_prov" Type="varchar" Mode="In" />
+    <Parameter Name="vestado_prov" Type="int" Mode="In" />
+  </Function>
+  <Function Name="usp_ListarClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_ListarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="usp_ListarPacientePorTratamiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="tipo_tratamiento" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="usp_ListarPacientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_ListarPacientesPorCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vcod_cli" Type="varchar" Mode="In" />
   </Function>
   <Function Name="usp_ListarPacientesPorRaza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="vraza" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="usp_ListarProveedores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="usp_ListarTipoMedicinaProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="tipo_medicina" Type="varchar" Mode="In" />
   </Function>
@@ -155,5 +306,56 @@
     <EntitySet Name="Tb_Medicina" EntityType="Self.Tb_Medicina" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tb_Paciente" EntityType="Self.Tb_Paciente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tb_Proveedor" EntityType="Self.Tb_Proveedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vw_DetallesPaciente" EntityType="Self.vw_DetallesPaciente" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_DetallesPaciente].[codigo] AS [codigo], 
+    [vw_DetallesPaciente].[nombre] AS [nombre], 
+    [vw_DetallesPaciente].[tipo_paciente] AS [tipo_paciente], 
+    [vw_DetallesPaciente].[raza] AS [raza], 
+    [vw_DetallesPaciente].[fecha_nacimiento] AS [fecha_nacimiento], 
+    [vw_DetallesPaciente].[sexo] AS [sexo], 
+    [vw_DetallesPaciente].[color] AS [color], 
+    [vw_DetallesPaciente].[longitud] AS [longitud], 
+    [vw_DetallesPaciente].[peso] AS [peso], 
+    [vw_DetallesPaciente].[conducta] AS [conducta], 
+    [vw_DetallesPaciente].[nutricion] AS [nutricion], 
+    [vw_DetallesPaciente].[actividad] AS [actividad], 
+    [vw_DetallesPaciente].[observaciones] AS [observaciones], 
+    [vw_DetallesPaciente].[detalles_observaciones] AS [detalles_observaciones], 
+    [vw_DetallesPaciente].[estado] AS [estado]
+    FROM [dbo].[vw_DetallesPaciente] AS [vw_DetallesPaciente]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_ProveedorActivo" EntityType="Self.vw_ProveedorActivo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_ProveedorActivo].[cod_prov] AS [cod_prov], 
+    [vw_ProveedorActivo].[nom_prov] AS [nom_prov], 
+    [vw_ProveedorActivo].[ruc_prov] AS [ruc_prov], 
+    [vw_ProveedorActivo].[direccion_prov] AS [direccion_prov], 
+    [vw_ProveedorActivo].[tel_prov] AS [tel_prov], 
+    [vw_ProveedorActivo].[email_prov] AS [email_prov], 
+    [vw_ProveedorActivo].[rep_ven_prov] AS [rep_ven_prov], 
+    [vw_ProveedorActivo].[usu_reg_prov] AS [usu_reg_prov], 
+    [vw_ProveedorActivo].[fec_reg_prov] AS [fec_reg_prov], 
+    [vw_ProveedorActivo].[usu_ult_modificacion_prov] AS [usu_ult_modificacion_prov], 
+    [vw_ProveedorActivo].[fecha_ult_modificacion_prov] AS [fecha_ult_modificacion_prov], 
+    [vw_ProveedorActivo].[estado_prov] AS [estado_prov]
+    FROM [dbo].[vw_ProveedorActivo] AS [vw_ProveedorActivo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_ProveedorMedicina" EntityType="Self.vw_ProveedorMedicina" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_ProveedorMedicina].[cod_prov] AS [cod_prov], 
+    [vw_ProveedorMedicina].[nom_prov] AS [nom_prov], 
+    [vw_ProveedorMedicina].[ruc_prov] AS [ruc_prov], 
+    [vw_ProveedorMedicina].[direccion_prov] AS [direccion_prov], 
+    [vw_ProveedorMedicina].[tel_prov] AS [tel_prov], 
+    [vw_ProveedorMedicina].[email_prov] AS [email_prov], 
+    [vw_ProveedorMedicina].[rep_ven_prov] AS [rep_ven_prov], 
+    [vw_ProveedorMedicina].[fec_reg_prov] AS [fec_reg_prov], 
+    [vw_ProveedorMedicina].[estado_prov] AS [estado_prov], 
+    [vw_ProveedorMedicina].[cod_med] AS [cod_med], 
+    [vw_ProveedorMedicina].[nombre_medicina] AS [nombre_medicina], 
+    [vw_ProveedorMedicina].[tipo_medicina] AS [tipo_medicina]
+    FROM [dbo].[vw_ProveedorMedicina] AS [vw_ProveedorMedicina]</DefiningQuery>
+    </EntitySet>
   </EntityContainer>
 </Schema>

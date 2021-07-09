@@ -4,45 +4,41 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Data.Entity.Core;
 
 namespace WCF_Hunde
 {
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "ServicioProveedor" en el código y en el archivo de configuración a la vez.
     public class ServicioProveedor : IServicioProveedor
     {
-        public ProveedorBE ConsultarProveedor(string strCod)
+        public List<ProveedorBE> ConsultarProveedor(string strCod)
         {
             HundeDBEntities misProveedores = new HundeDBEntities();
+            List<ProveedorBE> objListProveedor = new List<ProveedorBE>();
             try
             {
-                Tb_Proveedor objConsulta = (from objProv in misProveedores.Tb_Proveedor
-                                            where objProv.cod_prov == strCod
-                                            select objProv).FirstOrDefault();
-
-                ProveedorBE objProveedorBE = new ProveedorBE();
-
-                objProveedorBE.cod_prov = objConsulta.cod_prov;
-                objProveedorBE.nom_prov = objConsulta.nom_prov;
-                objProveedorBE.ruc_prov = objConsulta.ruc_prov;
-                objProveedorBE.direccion_prov = objConsulta.direccion_prov;
-                objProveedorBE.tel_prov = objConsulta.tel_prov;
-                objProveedorBE.email_prov = objConsulta.email_prov;
-                objProveedorBE.rep_ven_prov = objConsulta.rep_ven_prov;
-                objProveedorBE.fec_reg_prov = Convert.ToDateTime(objConsulta.fec_reg_prov);
-                objProveedorBE.estado_prov = Convert.ToInt16(objConsulta.estado_prov);
-
-
-                if (objConsulta.estado_prov == 1)
+                var query = misProveedores.usp_ListarProveedor(strCod);
+                foreach (var rs in query)
                 {
-                    objProveedorBE.estado_prov = 1;
-                }
-                else
-                {
-                    objProveedorBE.estado_prov = 0;
+
+                    ProveedorBE objProveedorBE = new ProveedorBE();
+
+                    objProveedorBE.cod_prov = rs.cod_prov;
+                    objProveedorBE.nom_prov = rs.nom_prov;
+                    objProveedorBE.ruc_prov = rs.ruc_prov;
+                    objProveedorBE.direccion_prov = rs.direccion_prov;
+                    objProveedorBE.tel_prov = rs.tel_prov;
+                    objProveedorBE.email_prov = rs.email_prov;
+                    objProveedorBE.rep_ven_prov = rs.rep_ven_prov;
+                    objProveedorBE.fec_reg_prov = Convert.ToDateTime(rs.fec_reg_prov);
+                    objProveedorBE.estado_prov = Convert.ToInt16(rs.estado_prov);
+
+                    objListProveedor.Add(objProveedorBE);
                 }
 
 
-                return objProveedorBE;
+
+                return objListProveedor;
 
 
             }
@@ -53,30 +49,37 @@ namespace WCF_Hunde
         }
 
 
-        public List<ProveedorBE> ConsultarSupervisor(string strRepVenProv)
+        public List<ProveedorBE> ConsultarSupervisor()
         {
 
-            HundeDBEntities misProveedores = new HundeDBEntities();
-            List<ProveedorBE> objListaProveedor = new List<ProveedorBE>();
-
+            HundeDBEntities Supervisador = new HundeDBEntities();
+            List<ProveedorBE> objListaSupervisor = new List<ProveedorBE>();
+             
             try
             {
+                var query = (from objSup in Supervisador.Tb_Proveedor
+                             select objSup);
 
-                var query = misProveedores.usp_RepresentanteProveedor(strRepVenProv);
-                foreach (var rs in query)
+                foreach (var objSuper in query)
                 {
-                    ProveedorBE objListaProveedores = new ProveedorBE();
-                    objListaProveedores.cod_prov = rs.cod_prov;
-                    objListaProveedores.rep_ven_prov = rs.rep_ven_prov;
-                    objListaProveedores.nom_prov = rs.nom_prov;
+                    //Creamos una instancia del vendedor para retornar el resultado
+                    ProveedorBE objSuperBE = new ProveedorBE();
 
-                    objListaProveedor.Add(objListaProveedores);
+                    objSuperBE.cod_prov = objSuper.cod_prov;
+                    objSuperBE.nom_prov = objSuper.nom_prov;
+                    objSuperBE.email_prov = objSuper.email_prov;
+                    objSuperBE.direccion_prov = objSuper.direccion_prov;
+                    objSuperBE.fec_reg_prov = Convert.ToDateTime(objSuper.fec_reg_prov);
+                    objSuperBE.rep_ven_prov = objSuper.rep_ven_prov;
 
+                    objSuperBE.ruc_prov = objSuper.ruc_prov;
+                    objSuperBE.tel_prov = objSuper.tel_prov;
+
+                    objListaSupervisor.Add(objSuperBE);
                 }
-                return objListaProveedor;
-
+                return objListaSupervisor;
             }
-            catch (Exception ex)
+            catch (EntityException ex)
             {
                 throw new Exception(ex.Message);
             }

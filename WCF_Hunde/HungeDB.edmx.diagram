@@ -4,12 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8bcbf7b7351f417796d81c7194b2a439" Name="Diagram1" ZoomLevel="88">
-        <EntityTypeShape EntityType="HundeDBModel.Tb_Medicina" Width="1.5" PointX="5.75" PointY="0.75" />
-        <EntityTypeShape EntityType="HundeDBModel.Tb_Paciente" Width="1.5" PointX="2.75" PointY="5.75" />
-        <EntityTypeShape EntityType="HundeDBModel.Tb_Proveedor" Width="1.5" PointX="5.75" PointY="3.75" />
+      <Diagram DiagramId="8bcbf7b7351f417796d81c7194b2a439" Name="Diagram1" ZoomLevel="71">
         <EntityTypeShape EntityType="HundeDBModel.Tb_Cliente" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="HundeDBModel.Tb_Empleado" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Medicina" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Paciente" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Proveedor" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="HundeDBModel.vw_DetallesPaciente" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HundeDBModel.vw_ProveedorActivo" Width="1.5" PointX="6.75" PointY="5.75" />
+        <EntityTypeShape EntityType="HundeDBModel.vw_ProveedorMedicina" Width="1.5" PointX="8.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

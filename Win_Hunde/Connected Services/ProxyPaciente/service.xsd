@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WCF_Hunde" />
+  <xs:element name="ConsultarPacientesPorRaza">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="strRazaPaciente" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarPacientesPorRazaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WCF_Hunde" minOccurs="0" name="ConsultarPacientesPorRazaResult" nillable="true" type="q1:ArrayOfPacienteBE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarPacientesPorFecha">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="strCod" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fecini" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="fecfin" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarPacientesPorFechaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WCF_Hunde" minOccurs="0" name="ConsultarPacientesPorFechaResult" nillable="true" type="q2:ArrayOfPacienteBE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarPacientesPorTratamiento">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="strTipoTratamiento" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarPacientesPorTratamientoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WCF_Hunde" minOccurs="0" name="ConsultarPacientesPorTratamientoResult" nillable="true" type="q3:ArrayOfPacienteBE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

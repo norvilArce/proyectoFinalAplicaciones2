@@ -93,25 +93,58 @@
     <Compile Include="Tb_Proveedor.cs">
       <DependentUpon>HungeDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="usp_ListarClientes_Result.cs">
+      <DependentUpon>HungeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarEmpleado_Result.cs">
+      <DependentUpon>HungeDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="usp_ListarEstadoProveedorMedicina_Result.cs">
       <DependentUpon>HungeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="usp_ListarPacientePorTratamiento1_Result.cs">
       <DependentUpon>HungeDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="usp_ListarPacientePorTratamiento2_Result.cs">
+      <DependentUpon>HungeDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="usp_ListarPacientePorTratamiento_Result.cs">
+      <DependentUpon>HungeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarPacientesPorCliente_Result.cs">
       <DependentUpon>HungeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="usp_ListarPacientesPorRaza1_Result.cs">
       <DependentUpon>HungeDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="usp_ListarPacientesPorRaza2_Result.cs">
+      <DependentUpon>HungeDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="usp_ListarPacientesPorRaza_Result.cs">
+      <DependentUpon>HungeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarPacientes_Result.cs">
+      <DependentUpon>HungeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarProveedores_Result.cs">
+      <DependentUpon>HungeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarProveedor_Result.cs">
       <DependentUpon>HungeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="usp_ListarTipoMedicinaProveedor_Result.cs">
       <DependentUpon>HungeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="usp_RepresentanteProveedor_Result.cs">
+      <DependentUpon>HungeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_DetallesPaciente.cs">
+      <DependentUpon>HungeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_ProveedorActivo.cs">
+      <DependentUpon>HungeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_ProveedorMedicina.cs">
       <DependentUpon>HungeDB.tt</DependentUpon>
     </Compile>
   </ItemGroup>

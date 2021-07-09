@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web_Hunde", "Web_Hunde\Web_
 		{C94DCFFD-38F2-4C04-8AFE-BAFA02887BF4} = {C94DCFFD-38F2-4C04-8AFE-BAFA02887BF4}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win_Hunde", "Win_Hunde\Win_Hunde.csproj", "{98D57F8C-7BD8-46BA-83B1-26958984B8B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win_Hunde", "Win_Hunde\Win_Hunde.csproj", "{3F1EB7E5-2574-43D9-9164-33ED5C433B49}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C94DCFFD-38F2-4C04-8AFE-BAFA02887BF4} = {C94DCFFD-38F2-4C04-8AFE-BAFA02887BF4}
 	EndProjectSection
@@ -29,10 +29,10 @@ Global
 		{892C2627-6E22-4279-A110-2601EE7C24AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{892C2627-6E22-4279-A110-2601EE7C24AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{892C2627-6E22-4279-A110-2601EE7C24AF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{98D57F8C-7BD8-46BA-83B1-26958984B8B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{98D57F8C-7BD8-46BA-83B1-26958984B8B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{98D57F8C-7BD8-46BA-83B1-26958984B8B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{98D57F8C-7BD8-46BA-83B1-26958984B8B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F1EB7E5-2574-43D9-9164-33ED5C433B49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F1EB7E5-2574-43D9-9164-33ED5C433B49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F1EB7E5-2574-43D9-9164-33ED5C433B49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F1EB7E5-2574-43D9-9164-33ED5C433B49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
