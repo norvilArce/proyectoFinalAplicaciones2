@@ -1,0 +1,12 @@
+D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\proyectoFinalAplicaciones2\Win_Hunde\bin\Debug\Win_Hunde.exe.config
+D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\proyectoFinalAplicaciones2\Win_Hunde\bin\Debug\Win_Hunde.exe
+D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\proyectoFinalAplicaciones2\Win_Hunde\bin\Debug\Win_Hunde.pdb
+D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\proyectoFinalAplicaciones2\Win_Hunde\obj\Debug\Win_Hunde.csprojAssemblyReference.cache
+D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\proyectoFinalAplicaciones2\Win_Hunde\obj\Debug\Win_Hunde.EmpleadoActualizar.resources
+D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\proyectoFinalAplicaciones2\Win_Hunde\obj\Debug\Win_Hunde.EmpleadoAgregar.resources
+D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\proyectoFinalAplicaciones2\Win_Hunde\obj\Debug\Win_Hunde.EmpleadoLista.resources
+D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\proyectoFinalAplicaciones2\Win_Hunde\obj\Debug\Win_Hunde.Properties.Resources.resources
+D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\proyectoFinalAplicaciones2\Win_Hunde\obj\Debug\Win_Hunde.csproj.GenerateResource.cache
+D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\proyectoFinalAplicaciones2\Win_Hunde\obj\Debug\Win_Hunde.csproj.CoreCompileInputs.cache
+D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\proyectoFinalAplicaciones2\Win_Hunde\obj\Debug\Win_Hunde.exe
+D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\proyectoFinalAplicaciones2\Win_Hunde\obj\Debug\Win_Hunde.pdb

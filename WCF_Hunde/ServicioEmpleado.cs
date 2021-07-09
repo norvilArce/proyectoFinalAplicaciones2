@@ -70,6 +70,7 @@ namespace WCF_Hunde
                     empleado.fecha_ingreso, empleado.sueldo, empleado.email_emp,
                     empleado.cod_supervisor, empleado.usu_ult_modificacion_emp, empleado.fecha_ult_modificacion_emp,
                     Convert.ToInt16(empleado.estado_emp), empleado.cod_emp);
+
                 return true;
             }
             catch (EntityException ex)
