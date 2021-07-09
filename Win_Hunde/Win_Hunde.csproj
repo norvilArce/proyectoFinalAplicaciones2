@@ -46,6 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmpleadoActualizar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpleadoActualizar.Designer.cs">
+      <DependentUpon>EmpleadoActualizar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmpleadoAgregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpleadoAgregar.Designer.cs">
+      <DependentUpon>EmpleadoAgregar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmpleadoLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpleadoLista.Designer.cs">
+      <DependentUpon>EmpleadoLista.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +72,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EmpleadoLista.resx">
+      <DependentUpon>EmpleadoLista.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
