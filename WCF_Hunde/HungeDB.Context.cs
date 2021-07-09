@@ -27,12 +27,11 @@ namespace WCF_Hunde
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Tb_Cliente> Tb_Cliente { get; set; }
-        public virtual DbSet<Tb_Empleado> Tb_Empleado { get; set; }
         public virtual DbSet<Tb_Medicina> Tb_Medicina { get; set; }
         public virtual DbSet<Tb_Paciente> Tb_Paciente { get; set; }
         public virtual DbSet<Tb_Proveedor> Tb_Proveedor { get; set; }
-        public virtual DbSet<vw_ClientesSonEmpleados> vw_ClientesSonEmpleados { get; set; }
+        public virtual DbSet<Tb_Cliente> Tb_Cliente { get; set; }
+        public virtual DbSet<Tb_Empleado> Tb_Empleado { get; set; }
     
         public virtual int usp_ActualizarEmpleado(Nullable<int> vrol_emp, string vnom_empleado, string vape_empleado, Nullable<System.DateTime> vfecha_ingreso, Nullable<decimal> vsueldo, string vemail_emp, string vcod_supervisor, string vusu_ult_mod, Nullable<System.DateTime> vfec_ult_mod, Nullable<int> vestado_emp, string vcod_emp)
         {

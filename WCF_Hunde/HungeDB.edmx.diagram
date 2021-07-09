@@ -4,14 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8bcbf7b7351f417796d81c7194b2a439" Name="Diagram1" ZoomLevel="100">
-        <EntityTypeShape EntityType="HundeDBModel.Tb_Cliente" Width="1.5" PointX="0.75" PointY="1" />
-        <EntityTypeShape EntityType="HundeDBModel.Tb_Empleado" Width="1.5" PointX="3" PointY="1.75" />
+      <Diagram DiagramId="8bcbf7b7351f417796d81c7194b2a439" Name="Diagram1" ZoomLevel="88">
         <EntityTypeShape EntityType="HundeDBModel.Tb_Medicina" Width="1.5" PointX="5.75" PointY="0.75" />
         <EntityTypeShape EntityType="HundeDBModel.Tb_Paciente" Width="1.5" PointX="2.75" PointY="5.75" />
         <EntityTypeShape EntityType="HundeDBModel.Tb_Proveedor" Width="1.5" PointX="5.75" PointY="3.75" />
-        <EntityTypeShape EntityType="HundeDBModel.vw_ClientesSonEmpleados" Width="1.5" PointX="7.75" PointY="0.75" />
-        <AssociationConnector Association="HundeDBModel.FK_Empleado_user" />
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Cliente" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Empleado" Width="1.5" PointX="2.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -14,12 +14,6 @@ namespace WCF_Hunde
     
     public partial class Tb_Cliente
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tb_Cliente()
-        {
-            this.Tb_Empleado = new HashSet<Tb_Empleado>();
-        }
-    
         public string cod_cli { get; set; }
         public int Tipo_cliente { get; set; }
         public string nom_cliente { get; set; }
@@ -29,7 +23,6 @@ namespace WCF_Hunde
         public string cel_cliente { get; set; }
         public string email_cliente { get; set; }
         public int es_dueno { get; set; }
-        public int es_empleado { get; set; }
         public string id_ubigeo { get; set; }
         public string dni_cliente { get; set; }
         public string usu_reg_cli { get; set; }
@@ -37,8 +30,5 @@ namespace WCF_Hunde
         public string usu_ult_modificacion_cli { get; set; }
         public Nullable<System.DateTime> fecha_ult_modificacion_cli { get; set; }
         public Nullable<int> estado_cli { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tb_Empleado> Tb_Empleado { get; set; }
     }
 }

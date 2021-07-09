@@ -108,9 +108,6 @@
     <Compile Include="usp_RepresentanteProveedor_Result.cs">
       <DependentUpon>HungeDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="vw_ClientesSonEmpleados.cs">
-      <DependentUpon>HungeDB.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
