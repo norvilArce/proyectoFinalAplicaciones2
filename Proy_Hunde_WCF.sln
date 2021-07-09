@@ -10,11 +10,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web_Hunde", "Web_Hunde\Web_
 		{C94DCFFD-38F2-4C04-8AFE-BAFA02887BF4} = {C94DCFFD-38F2-4C04-8AFE-BAFA02887BF4}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win_Hunde", "Win_Hunde\Win_Hunde.csproj", "{8BE5FDED-CDFE-484B-8471-83174D5CBF3A}"
-	ProjectSection(ProjectDependencies) = postProject
-		{C94DCFFD-38F2-4C04-8AFE-BAFA02887BF4} = {C94DCFFD-38F2-4C04-8AFE-BAFA02887BF4}
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
