@@ -2,42 +2,25 @@
 <Schema Namespace="HundeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="HundeDBEntities" annotation:LazyLoadingEnabled="true">
     <FunctionImport Name="usp_ActualizarEmpleado">
-      <Parameter Name="vtipo_ciente" Mode="In" Type="Int32" />
-      <Parameter Name="vnom_cliente" Mode="In" Type="String" />
-      <Parameter Name="vape_pat_cli" Mode="In" Type="String" />
-      <Parameter Name="vape_mat_cli" Mode="In" Type="String" />
-      <Parameter Name="vdir_cli" Mode="In" Type="String" />
-      <Parameter Name="vcel_cli" Mode="In" Type="String" />
-      <Parameter Name="vemail_cli" Mode="In" Type="String" />
-      <Parameter Name="ves_dueno" Mode="In" Type="Int32" />
-      <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
-      <Parameter Name="vdni_cli" Mode="In" Type="String" />
-      <Parameter Name="vusu_ult_mod" Mode="In" Type="String" />
-      <Parameter Name="vfec_ult_mod" Mode="In" Type="DateTime" />
-      <Parameter Name="vestado_cli" Mode="In" Type="Int32" />
       <Parameter Name="vrol_emp" Mode="In" Type="Int32" />
+      <Parameter Name="vnom_empleado" Mode="In" Type="String" />
+      <Parameter Name="vape_empleado" Mode="In" Type="String" />
       <Parameter Name="vfecha_ingreso" Mode="In" Type="DateTime" />
       <Parameter Name="vsueldo" Mode="In" Type="Decimal" />
+      <Parameter Name="vemail_emp" Mode="In" Type="String" />
       <Parameter Name="vcod_supervisor" Mode="In" Type="String" />
+      <Parameter Name="vusu_ult_mod" Mode="In" Type="String" />
+      <Parameter Name="vfec_ult_mod" Mode="In" Type="DateTime" />
       <Parameter Name="vestado_emp" Mode="In" Type="Int32" />
       <Parameter Name="vcod_emp" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="usp_InsertarEmpleado">
-      <Parameter Name="vtipo_ciente" Mode="In" Type="Int32" />
-      <Parameter Name="vnom_cliente" Mode="In" Type="String" />
-      <Parameter Name="vape_pat_cli" Mode="In" Type="String" />
-      <Parameter Name="vape_mat_cli" Mode="In" Type="String" />
-      <Parameter Name="vdir_cli" Mode="In" Type="String" />
-      <Parameter Name="vcel_cli" Mode="In" Type="String" />
-      <Parameter Name="vemail_cli" Mode="In" Type="String" />
-      <Parameter Name="ves_dueno" Mode="In" Type="Int32" />
-      <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
-      <Parameter Name="vdni_cli" Mode="In" Type="String" />
-      <Parameter Name="vusu_reg" Mode="In" Type="String" />
-      <Parameter Name="vestado_cli" Mode="In" Type="Int32" />
       <Parameter Name="vrol_emp" Mode="In" Type="Int32" />
+      <Parameter Name="vnom_empleado" Mode="In" Type="String" />
+      <Parameter Name="vape_empleado" Mode="In" Type="String" />
       <Parameter Name="vfecha_ingreso" Mode="In" Type="DateTime" />
       <Parameter Name="vsueldo" Mode="In" Type="Decimal" />
+      <Parameter Name="vemail_emp" Mode="In" Type="String" />
       <Parameter Name="vcod_supervisor" Mode="In" Type="String" />
       <Parameter Name="vestado_emp" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -65,7 +48,7 @@
       <Parameter Name="rep_ven_prov" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="usp_ActualizarCliente">
-      <Parameter Name="vtipo_ciente" Mode="In" Type="Int32" />
+      <Parameter Name="vtipo_cliente" Mode="In" Type="Int32" />
       <Parameter Name="vnom_cliente" Mode="In" Type="String" />
       <Parameter Name="vape_pat_cli" Mode="In" Type="String" />
       <Parameter Name="vape_mat_cli" Mode="In" Type="String" />
@@ -73,7 +56,6 @@
       <Parameter Name="vcel_cli" Mode="In" Type="String" />
       <Parameter Name="vemail_cli" Mode="In" Type="String" />
       <Parameter Name="ves_dueno" Mode="In" Type="Int32" />
-      <Parameter Name="ves_empleado" Mode="In" Type="Int32" />
       <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
       <Parameter Name="vdni_cli" Mode="In" Type="String" />
       <Parameter Name="vusu_ult_mod" Mode="In" Type="String" />
@@ -93,7 +75,6 @@
       <Parameter Name="vcel_cli" Mode="In" Type="String" />
       <Parameter Name="vemail_cli" Mode="In" Type="String" />
       <Parameter Name="ves_dueno" Mode="In" Type="Int32" />
-      <Parameter Name="ves_empleado" Mode="In" Type="Int32" />
       <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
       <Parameter Name="vdni_cli" Mode="In" Type="String" />
       <Parameter Name="vusu_reg_cli" Mode="In" Type="String" />
@@ -120,7 +101,7 @@
     <Property Name="email_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="es_dueno" Type="Int32" Nullable="false" />
     <Property Name="es_empleado" Type="Int32" Nullable="false" />
-    <Property Name="id_ubigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="id_ubigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="dni_cliente" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
     <Property Name="usu_reg_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
     <Property Name="fec_reg_cli" Type="DateTime" Precision="3" />
@@ -144,6 +125,8 @@
     <Property Name="fecha_ult_modificacion_emp" Type="DateTime" Precision="3" />
     <Property Name="estado_emp" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Tb_Cliente" Relationship="HundeDBModel.FK_Empleado_user" FromRole="Tb_Empleado" ToRole="Tb_Cliente" />
+    <Property Name="nom_empleado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ape_empleado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Tb_Medicina">
     <Key>

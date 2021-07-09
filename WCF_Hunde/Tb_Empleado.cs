@@ -24,6 +24,8 @@ namespace WCF_Hunde
         public string usu_ult_modificacion_emp { get; set; }
         public Nullable<System.DateTime> fecha_ult_modificacion_emp { get; set; }
         public int estado_emp { get; set; }
+        public string nom_empleado { get; set; }
+        public string ape_empleado { get; set; }
     
         public virtual Tb_Cliente Tb_Cliente { get; set; }
     }

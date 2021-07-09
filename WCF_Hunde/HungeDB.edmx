@@ -18,8 +18,7 @@
           <Property Name="cel_cliente" Type="varchar" MaxLength="9" Nullable="false" />
           <Property Name="email_cliente" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="es_dueno" Type="int" Nullable="false" />
-          <Property Name="es_empleado" Type="int" Nullable="false" />
-          <Property Name="id_ubigeo" Type="varchar" MaxLength="6" />
+          <Property Name="id_ubigeo" Type="varchar" MaxLength="6" Nullable="false" />
           <Property Name="dni_cliente" Type="char" MaxLength="8" Nullable="false" />
           <Property Name="usu_reg_cli" Type="varchar" MaxLength="4" />
           <Property Name="fec_reg_cli" Type="datetime" />
@@ -33,11 +32,12 @@
           </Key>
           <Property Name="cod_emp" Type="varchar" MaxLength="4" Nullable="false" />
           <Property Name="rol_emp" Type="int" Nullable="false" />
+          <Property Name="nom_empleado" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ape_empleado" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="fecha_ingreso" Type="datetime" Nullable="false" />
           <Property Name="sueldo" Type="money" />
           <Property Name="email_emp" Type="varchar" MaxLength="50" />
           <Property Name="cod_supervisor" Type="varchar" MaxLength="4" />
-          <Property Name="cod_cli" Type="varchar" MaxLength="4" />
           <Property Name="usu_ult_modificacion_emp" Type="varchar" MaxLength="4" />
           <Property Name="fecha_ult_modificacion_emp" Type="datetime" />
           <Property Name="estado_emp" Type="int" Nullable="false" />
@@ -86,67 +86,8 @@
           <Property Name="fecha_ult_modificacion_prov" Type="datetime" />
           <Property Name="estado_prov" Type="int" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="vw_ClientesSonEmpleados">
-          <Key>
-            <PropertyRef Name="cod_emp" />
-            <PropertyRef Name="rol_emp" />
-            <PropertyRef Name="fecha_ingreso" />
-            <PropertyRef Name="estado_emp" />
-            <PropertyRef Name="Tipo_cliente" />
-            <PropertyRef Name="nom_cliente" />
-            <PropertyRef Name="ape_pat_cliente" />
-            <PropertyRef Name="ape_mat_cliente" />
-            <PropertyRef Name="direccion_cliente" />
-            <PropertyRef Name="cel_cliente" />
-            <PropertyRef Name="email_cliente" />
-            <PropertyRef Name="es_dueno" />
-            <PropertyRef Name="es_empleado" />
-            <PropertyRef Name="dni_cliente" />
-            <PropertyRef Name="id_ubigeo" />
-          </Key>
-          <Property Name="cod_emp" Type="varchar" MaxLength="4" Nullable="false" />
-          <Property Name="rol_emp" Type="int" Nullable="false" />
-          <Property Name="fecha_ingreso" Type="datetime" Nullable="false" />
-          <Property Name="sueldo" Type="money" />
-          <Property Name="email_emp" Type="varchar" MaxLength="50" />
-          <Property Name="cod_supervisor" Type="varchar" MaxLength="4" />
-          <Property Name="cod_cli" Type="varchar" MaxLength="4" />
-          <Property Name="usu_ult_modificacion_emp" Type="varchar" MaxLength="4" />
-          <Property Name="fecha_ult_modificacion_emp" Type="datetime" />
-          <Property Name="estado_emp" Type="int" Nullable="false" />
-          <Property Name="Tipo_cliente" Type="int" Nullable="false" />
-          <Property Name="nom_cliente" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ape_pat_cliente" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ape_mat_cliente" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="direccion_cliente" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="cel_cliente" Type="varchar" MaxLength="9" Nullable="false" />
-          <Property Name="email_cliente" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="es_dueno" Type="int" Nullable="false" />
-          <Property Name="es_empleado" Type="int" Nullable="false" />
-          <Property Name="id_ubigeo" Type="varchar" MaxLength="6" Nullable="false" />
-          <Property Name="dni_cliente" Type="char" MaxLength="8" Nullable="false" />
-          <Property Name="usu_reg_cli" Type="varchar" MaxLength="4" />
-          <Property Name="fec_reg_cli" Type="datetime" />
-          <Property Name="usu_ult_modificacion_cli" Type="varchar" MaxLength="4" />
-          <Property Name="fecha_ult_modificacion_cli" Type="datetime" />
-          <Property Name="estado_cli" Type="int" />
-        </EntityType>
-        <Association Name="FK_Empleado_user">
-          <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="0..1" />
-          <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tb_Cliente">
-              <PropertyRef Name="cod_cli" />
-            </Principal>
-            <Dependent Role="Tb_Empleado">
-              <PropertyRef Name="cod_cli" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Function Name="usp_ActualizarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="vtipo_ciente" Type="int" Mode="In" />
+          <Parameter Name="vtipo_cliente" Type="int" Mode="In" />
           <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
           <Parameter Name="vape_pat_cli" Type="varchar" Mode="In" />
           <Parameter Name="vape_mat_cli" Type="varchar" Mode="In" />
@@ -154,7 +95,6 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
           <Parameter Name="vcel_cli" Type="varchar" Mode="In" />
           <Parameter Name="vemail_cli" Type="varchar" Mode="In" />
           <Parameter Name="ves_dueno" Type="int" Mode="In" />
-          <Parameter Name="ves_empleado" Type="int" Mode="In" />
           <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
           <Parameter Name="vdni_cli" Type="char" Mode="In" />
           <Parameter Name="vusu_ult_mod" Type="varchar" Mode="In" />
@@ -163,23 +103,15 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
           <Parameter Name="vcod_cli" Type="varchar" Mode="In" />
         </Function>
         <Function Name="usp_ActualizarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="vtipo_ciente" Type="int" Mode="In" />
-          <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
-          <Parameter Name="vape_pat_cli" Type="varchar" Mode="In" />
-          <Parameter Name="vape_mat_cli" Type="varchar" Mode="In" />
-          <Parameter Name="vdir_cli" Type="varchar" Mode="In" />
-          <Parameter Name="vcel_cli" Type="varchar" Mode="In" />
-          <Parameter Name="vemail_cli" Type="varchar" Mode="In" />
-          <Parameter Name="ves_dueno" Type="int" Mode="In" />
-          <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
-          <Parameter Name="vdni_cli" Type="char" Mode="In" />
-          <Parameter Name="vusu_ult_mod" Type="varchar" Mode="In" />
-          <Parameter Name="vfec_ult_mod" Type="datetime" Mode="In" />
-          <Parameter Name="vestado_cli" Type="int" Mode="In" />
           <Parameter Name="vrol_emp" Type="int" Mode="In" />
+          <Parameter Name="vnom_empleado" Type="varchar" Mode="In" />
+          <Parameter Name="vape_empleado" Type="varchar" Mode="In" />
           <Parameter Name="vfecha_ingreso" Type="datetime" Mode="In" />
           <Parameter Name="vsueldo" Type="money" Mode="In" />
+          <Parameter Name="vemail_emp" Type="varchar" Mode="In" />
           <Parameter Name="vcod_supervisor" Type="varchar" Mode="In" />
+          <Parameter Name="vusu_ult_mod" Type="varchar" Mode="In" />
+          <Parameter Name="vfec_ult_mod" Type="datetime" Mode="In" />
           <Parameter Name="vestado_emp" Type="int" Mode="In" />
           <Parameter Name="vcod_emp" Type="varchar" Mode="In" />
         </Function>
@@ -198,46 +130,23 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
           <Parameter Name="vcel_cli" Type="varchar" Mode="In" />
           <Parameter Name="vemail_cli" Type="varchar" Mode="In" />
           <Parameter Name="ves_dueno" Type="int" Mode="In" />
-          <Parameter Name="ves_empleado" Type="int" Mode="In" />
           <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
           <Parameter Name="vdni_cli" Type="char" Mode="In" />
           <Parameter Name="vusu_reg_cli" Type="varchar" Mode="In" />
           <Parameter Name="vestado_cli" Type="int" Mode="In" />
         </Function>
         <Function Name="usp_InsertarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="vtipo_ciente" Type="int" Mode="In" />
-          <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
-          <Parameter Name="vape_pat_cli" Type="varchar" Mode="In" />
-          <Parameter Name="vape_mat_cli" Type="varchar" Mode="In" />
-          <Parameter Name="vdir_cli" Type="varchar" Mode="In" />
-          <Parameter Name="vcel_cli" Type="varchar" Mode="In" />
-          <Parameter Name="vemail_cli" Type="varchar" Mode="In" />
-          <Parameter Name="ves_dueno" Type="int" Mode="In" />
-          <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
-          <Parameter Name="vdni_cli" Type="char" Mode="In" />
-          <Parameter Name="vusu_reg" Type="varchar" Mode="In" />
-          <Parameter Name="vestado_cli" Type="int" Mode="In" />
           <Parameter Name="vrol_emp" Type="int" Mode="In" />
+          <Parameter Name="vnom_empleado" Type="varchar" Mode="In" />
+          <Parameter Name="vape_empleado" Type="varchar" Mode="In" />
           <Parameter Name="vfecha_ingreso" Type="datetime" Mode="In" />
           <Parameter Name="vsueldo" Type="money" Mode="In" />
+          <Parameter Name="vemail_emp" Type="varchar" Mode="In" />
           <Parameter Name="vcod_supervisor" Type="varchar" Mode="In" />
           <Parameter Name="vestado_emp" Type="int" Mode="In" />
         </Function>
-        <Function Name="usp_ListarEstadoProveedorMedicina" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="estado_prov" Type="int" Mode="In" />
-          <Parameter Name="tipo_medicina" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="usp_ListarPacientePorTratamiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="tipo_tratamiento" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="usp_ListarPacientesPorRaza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="vraza" Type="varchar" Mode="In" />
-        </Function>
         <Function Name="usp_ListarTipoMedicinaProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tipo_medicina" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="usp_RepresentanteProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="rep_ven_prov" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="HundeDBModelStoreContainer">
           <EntitySet Name="Tb_Cliente" EntityType="Self.Tb_Cliente" Schema="dbo" store:Type="Tables" />
@@ -245,40 +154,6 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
           <EntitySet Name="Tb_Medicina" EntityType="Self.Tb_Medicina" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Paciente" EntityType="Self.Tb_Paciente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Proveedor" EntityType="Self.Tb_Proveedor" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="vw_ClientesSonEmpleados" EntityType="Self.vw_ClientesSonEmpleados" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [vw_ClientesSonEmpleados].[cod_emp] AS [cod_emp], 
-    [vw_ClientesSonEmpleados].[rol_emp] AS [rol_emp], 
-    [vw_ClientesSonEmpleados].[fecha_ingreso] AS [fecha_ingreso], 
-    [vw_ClientesSonEmpleados].[sueldo] AS [sueldo], 
-    [vw_ClientesSonEmpleados].[email_emp] AS [email_emp], 
-    [vw_ClientesSonEmpleados].[cod_supervisor] AS [cod_supervisor], 
-    [vw_ClientesSonEmpleados].[cod_cli] AS [cod_cli], 
-    [vw_ClientesSonEmpleados].[usu_ult_modificacion_emp] AS [usu_ult_modificacion_emp], 
-    [vw_ClientesSonEmpleados].[fecha_ult_modificacion_emp] AS [fecha_ult_modificacion_emp], 
-    [vw_ClientesSonEmpleados].[estado_emp] AS [estado_emp], 
-    [vw_ClientesSonEmpleados].[Tipo_cliente] AS [Tipo_cliente], 
-    [vw_ClientesSonEmpleados].[nom_cliente] AS [nom_cliente], 
-    [vw_ClientesSonEmpleados].[ape_pat_cliente] AS [ape_pat_cliente], 
-    [vw_ClientesSonEmpleados].[ape_mat_cliente] AS [ape_mat_cliente], 
-    [vw_ClientesSonEmpleados].[direccion_cliente] AS [direccion_cliente], 
-    [vw_ClientesSonEmpleados].[cel_cliente] AS [cel_cliente], 
-    [vw_ClientesSonEmpleados].[email_cliente] AS [email_cliente], 
-    [vw_ClientesSonEmpleados].[es_dueno] AS [es_dueno], 
-    [vw_ClientesSonEmpleados].[es_empleado] AS [es_empleado], 
-    [vw_ClientesSonEmpleados].[id_ubigeo] AS [id_ubigeo], 
-    [vw_ClientesSonEmpleados].[dni_cliente] AS [dni_cliente], 
-    [vw_ClientesSonEmpleados].[usu_reg_cli] AS [usu_reg_cli], 
-    [vw_ClientesSonEmpleados].[fec_reg_cli] AS [fec_reg_cli], 
-    [vw_ClientesSonEmpleados].[usu_ult_modificacion_cli] AS [usu_ult_modificacion_cli], 
-    [vw_ClientesSonEmpleados].[fecha_ult_modificacion_cli] AS [fecha_ult_modificacion_cli], 
-    [vw_ClientesSonEmpleados].[estado_cli] AS [estado_cli]
-    FROM [dbo].[vw_ClientesSonEmpleados] AS [vw_ClientesSonEmpleados]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK_Empleado_user" Association="Self.FK_Empleado_user">
-            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
-            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -286,42 +161,25 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
       <Schema Namespace="HundeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="HundeDBEntities" annotation:LazyLoadingEnabled="true">
           <FunctionImport Name="usp_ActualizarEmpleado">
-            <Parameter Name="vtipo_ciente" Mode="In" Type="Int32" />
-            <Parameter Name="vnom_cliente" Mode="In" Type="String" />
-            <Parameter Name="vape_pat_cli" Mode="In" Type="String" />
-            <Parameter Name="vape_mat_cli" Mode="In" Type="String" />
-            <Parameter Name="vdir_cli" Mode="In" Type="String" />
-            <Parameter Name="vcel_cli" Mode="In" Type="String" />
-            <Parameter Name="vemail_cli" Mode="In" Type="String" />
-            <Parameter Name="ves_dueno" Mode="In" Type="Int32" />
-            <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
-            <Parameter Name="vdni_cli" Mode="In" Type="String" />
-            <Parameter Name="vusu_ult_mod" Mode="In" Type="String" />
-            <Parameter Name="vfec_ult_mod" Mode="In" Type="DateTime" />
-            <Parameter Name="vestado_cli" Mode="In" Type="Int32" />
             <Parameter Name="vrol_emp" Mode="In" Type="Int32" />
+            <Parameter Name="vnom_empleado" Mode="In" Type="String" />
+            <Parameter Name="vape_empleado" Mode="In" Type="String" />
             <Parameter Name="vfecha_ingreso" Mode="In" Type="DateTime" />
             <Parameter Name="vsueldo" Mode="In" Type="Decimal" />
+            <Parameter Name="vemail_emp" Mode="In" Type="String" />
             <Parameter Name="vcod_supervisor" Mode="In" Type="String" />
+            <Parameter Name="vusu_ult_mod" Mode="In" Type="String" />
+            <Parameter Name="vfec_ult_mod" Mode="In" Type="DateTime" />
             <Parameter Name="vestado_emp" Mode="In" Type="Int32" />
             <Parameter Name="vcod_emp" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_InsertarEmpleado">
-            <Parameter Name="vtipo_ciente" Mode="In" Type="Int32" />
-            <Parameter Name="vnom_cliente" Mode="In" Type="String" />
-            <Parameter Name="vape_pat_cli" Mode="In" Type="String" />
-            <Parameter Name="vape_mat_cli" Mode="In" Type="String" />
-            <Parameter Name="vdir_cli" Mode="In" Type="String" />
-            <Parameter Name="vcel_cli" Mode="In" Type="String" />
-            <Parameter Name="vemail_cli" Mode="In" Type="String" />
-            <Parameter Name="ves_dueno" Mode="In" Type="Int32" />
-            <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
-            <Parameter Name="vdni_cli" Mode="In" Type="String" />
-            <Parameter Name="vusu_reg" Mode="In" Type="String" />
-            <Parameter Name="vestado_cli" Mode="In" Type="Int32" />
             <Parameter Name="vrol_emp" Mode="In" Type="Int32" />
+            <Parameter Name="vnom_empleado" Mode="In" Type="String" />
+            <Parameter Name="vape_empleado" Mode="In" Type="String" />
             <Parameter Name="vfecha_ingreso" Mode="In" Type="DateTime" />
             <Parameter Name="vsueldo" Mode="In" Type="Decimal" />
+            <Parameter Name="vemail_emp" Mode="In" Type="String" />
             <Parameter Name="vcod_supervisor" Mode="In" Type="String" />
             <Parameter Name="vestado_emp" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -349,7 +207,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
           <Parameter Name="rep_ven_prov" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_ActualizarCliente">
-            <Parameter Name="vtipo_ciente" Mode="In" Type="Int32" />
+            <Parameter Name="vtipo_cliente" Mode="In" Type="Int32" />
             <Parameter Name="vnom_cliente" Mode="In" Type="String" />
             <Parameter Name="vape_pat_cli" Mode="In" Type="String" />
             <Parameter Name="vape_mat_cli" Mode="In" Type="String" />
@@ -357,7 +215,6 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
             <Parameter Name="vcel_cli" Mode="In" Type="String" />
             <Parameter Name="vemail_cli" Mode="In" Type="String" />
             <Parameter Name="ves_dueno" Mode="In" Type="Int32" />
-            <Parameter Name="ves_empleado" Mode="In" Type="Int32" />
             <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
             <Parameter Name="vdni_cli" Mode="In" Type="String" />
             <Parameter Name="vusu_ult_mod" Mode="In" Type="String" />
@@ -377,7 +234,6 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
             <Parameter Name="vcel_cli" Mode="In" Type="String" />
             <Parameter Name="vemail_cli" Mode="In" Type="String" />
             <Parameter Name="ves_dueno" Mode="In" Type="Int32" />
-            <Parameter Name="ves_empleado" Mode="In" Type="Int32" />
             <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
             <Parameter Name="vdni_cli" Mode="In" Type="String" />
             <Parameter Name="vusu_reg_cli" Mode="In" Type="String" />
@@ -404,7 +260,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
           <Property Name="email_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="es_dueno" Type="Int32" Nullable="false" />
           <Property Name="es_empleado" Type="Int32" Nullable="false" />
-          <Property Name="id_ubigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="id_ubigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="dni_cliente" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
           <Property Name="usu_reg_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="fec_reg_cli" Type="DateTime" Precision="3" />
@@ -428,6 +284,8 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
           <Property Name="fecha_ult_modificacion_emp" Type="DateTime" Precision="3" />
           <Property Name="estado_emp" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Tb_Cliente" Relationship="HundeDBModel.FK_Empleado_user" FromRole="Tb_Empleado" ToRole="Tb_Cliente" />
+          <Property Name="nom_empleado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ape_empleado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Tb_Medicina">
           <Key>
@@ -603,7 +461,6 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
                 <ScalarProperty Name="usu_reg_cli" ColumnName="usu_reg_cli" />
                 <ScalarProperty Name="dni_cliente" ColumnName="dni_cliente" />
                 <ScalarProperty Name="id_ubigeo" ColumnName="id_ubigeo" />
-                <ScalarProperty Name="es_empleado" ColumnName="es_empleado" />
                 <ScalarProperty Name="es_dueno" ColumnName="es_dueno" />
                 <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
                 <ScalarProperty Name="cel_cliente" ColumnName="cel_cliente" />
@@ -619,10 +476,11 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
           <EntitySetMapping Name="Tb_Empleado">
             <EntityTypeMapping TypeName="HundeDBModel.Tb_Empleado">
               <MappingFragment StoreEntitySet="Tb_Empleado">
+                <ScalarProperty Name="ape_empleado" ColumnName="ape_empleado" />
+                <ScalarProperty Name="nom_empleado" ColumnName="nom_empleado" />
                 <ScalarProperty Name="estado_emp" ColumnName="estado_emp" />
                 <ScalarProperty Name="fecha_ult_modificacion_emp" ColumnName="fecha_ult_modificacion_emp" />
                 <ScalarProperty Name="usu_ult_modificacion_emp" ColumnName="usu_ult_modificacion_emp" />
-                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
                 <ScalarProperty Name="cod_supervisor" ColumnName="cod_supervisor" />
                 <ScalarProperty Name="email_emp" ColumnName="email_emp" />
                 <ScalarProperty Name="sueldo" ColumnName="sueldo" />
@@ -679,50 +537,6 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="vw_ClientesSonEmpleados">
-            <EntityTypeMapping TypeName="HundeDBModel.vw_ClientesSonEmpleados">
-              <MappingFragment StoreEntitySet="vw_ClientesSonEmpleados">
-                <ScalarProperty Name="estado_cli" ColumnName="estado_cli" />
-                <ScalarProperty Name="fecha_ult_modificacion_cli" ColumnName="fecha_ult_modificacion_cli" />
-                <ScalarProperty Name="usu_ult_modificacion_cli" ColumnName="usu_ult_modificacion_cli" />
-                <ScalarProperty Name="fec_reg_cli" ColumnName="fec_reg_cli" />
-                <ScalarProperty Name="usu_reg_cli" ColumnName="usu_reg_cli" />
-                <ScalarProperty Name="dni_cliente" ColumnName="dni_cliente" />
-                <ScalarProperty Name="id_ubigeo" ColumnName="id_ubigeo" />
-                <ScalarProperty Name="es_empleado" ColumnName="es_empleado" />
-                <ScalarProperty Name="es_dueno" ColumnName="es_dueno" />
-                <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
-                <ScalarProperty Name="cel_cliente" ColumnName="cel_cliente" />
-                <ScalarProperty Name="direccion_cliente" ColumnName="direccion_cliente" />
-                <ScalarProperty Name="ape_mat_cliente" ColumnName="ape_mat_cliente" />
-                <ScalarProperty Name="ape_pat_cliente" ColumnName="ape_pat_cliente" />
-                <ScalarProperty Name="nom_cliente" ColumnName="nom_cliente" />
-                <ScalarProperty Name="Tipo_cliente" ColumnName="Tipo_cliente" />
-                <ScalarProperty Name="estado_emp" ColumnName="estado_emp" />
-                <ScalarProperty Name="fecha_ult_modificacion_emp" ColumnName="fecha_ult_modificacion_emp" />
-                <ScalarProperty Name="usu_ult_modificacion_emp" ColumnName="usu_ult_modificacion_emp" />
-                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
-                <ScalarProperty Name="cod_supervisor" ColumnName="cod_supervisor" />
-                <ScalarProperty Name="email_emp" ColumnName="email_emp" />
-                <ScalarProperty Name="sueldo" ColumnName="sueldo" />
-                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
-                <ScalarProperty Name="rol_emp" ColumnName="rol_emp" />
-                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="usp_ListarEstadoProveedorMedicina" FunctionName="HundeDBModel.Store.usp_ListarEstadoProveedorMedicina">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarEstadoProveedorMedicina_Result">
-                <ScalarProperty Name="cod_prov" ColumnName="cod_prov" />
-                <ScalarProperty Name="cod_med" ColumnName="cod_med" />
-                <ScalarProperty Name="nom_prov" ColumnName="nom_prov" />
-                <ScalarProperty Name="estado_prov" ColumnName="estado_prov" />
-                <ScalarProperty Name="nombre_medicina" ColumnName="nombre_medicina" />
-                <ScalarProperty Name="tipo_medicina" ColumnName="tipo_medicina" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="usp_ListarTipoMedicinaProveedor" FunctionName="HundeDBModel.Store.usp_ListarTipoMedicinaProveedor">
             <ResultMapping>
               <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarTipoMedicinaProveedor_Result">
@@ -736,59 +550,10 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonEmpleados' no tien
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_RepresentanteProveedor" FunctionName="HundeDBModel.Store.usp_RepresentanteProveedor">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="HundeDBModel.usp_RepresentanteProveedor_Result">
-                <ScalarProperty Name="cod_prov" ColumnName="cod_prov" />
-                <ScalarProperty Name="nom_prov" ColumnName="nom_prov" />
-                <ScalarProperty Name="rep_ven_prov" ColumnName="rep_ven_prov" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="usp_ActualizarCliente" FunctionName="HundeDBModel.Store.usp_ActualizarCliente" />
           <FunctionImportMapping FunctionImportName="usp_EliminarCliente" FunctionName="HundeDBModel.Store.usp_EliminarCliente" />
           <FunctionImportMapping FunctionImportName="usp_InsertarCliente" FunctionName="HundeDBModel.Store.usp_InsertarCliente" />
-          <FunctionImportMapping FunctionImportName="usp_ListarPacientesPorRaza" FunctionName="HundeDBModel.Store.usp_ListarPacientesPorRaza">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientesPorRaza_Result">
-                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
-                <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
-                <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
-                <ScalarProperty Name="raza" ColumnName="raza" />
-                <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
-                <ScalarProperty Name="sexo" ColumnName="sexo" />
-                <ScalarProperty Name="color" ColumnName="color" />
-                <ScalarProperty Name="longitud" ColumnName="longitud" />
-                <ScalarProperty Name="peso" ColumnName="peso" />
-                <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
-                <ScalarProperty Name="foto" ColumnName="foto" />
-                <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
-                <ScalarProperty Name="est_pac" ColumnName="est_pac" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_ListarPacientePorTratamiento" FunctionName="HundeDBModel.Store.usp_ListarPacientePorTratamiento">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientePorTratamiento_Result">
-                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
-                <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
-                <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
-                <ScalarProperty Name="raza" ColumnName="raza" />
-                <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
-                <ScalarProperty Name="sexo" ColumnName="sexo" />
-                <ScalarProperty Name="longitud" ColumnName="longitud" />
-                <ScalarProperty Name="peso" ColumnName="peso" />
-                <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
-                <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
-                <ScalarProperty Name="est_pac" ColumnName="est_pac" />
-                <ScalarProperty Name="cod_trat" ColumnName="cod_trat" />
-                <ScalarProperty Name="nombre_trat" ColumnName="nombre_trat" />
-                <ScalarProperty Name="tipo_trat" ColumnName="tipo_trat" />
-                <ScalarProperty Name="estado_trat" ColumnName="estado_trat" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
