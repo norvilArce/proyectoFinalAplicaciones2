@@ -12,16 +12,18 @@ namespace WCF_Hunde
     public interface IServicioProveedor
     {
         [OperationContract]
-        ProveedorBE ConsultarProveedor(String strCod);
+        List<ProveedorBE> ConsultarProveedor(String strCod);
 
         [OperationContract]
-        List<ProveedorBE> ConsultarSupervisor(String strRepVenProv);
+        List<ProveedorBE> ConsultarSupervisador();
 
         [OperationContract]
         List<ProveedorBE> ConsultarMedicinaProveedor(String srtTipoMedicina);
 
         [OperationContract]
         List<EstadosBE> ConsultarEstadoProveedorMedicina(Int16 strEstadoProveedor, String strTipoMedicina);
+
+    
     }
 
     // Creamos la data contractual de Proveedores
@@ -41,6 +43,13 @@ namespace WCF_Hunde
         private String mvarcod_med;
         private String mvartipo_medicina;
         private String mvarnombre_medicina;
+
+        [DataMember]
+        public int Estado
+        {
+            get { return mvarestado_prov; }
+            set { mvarestado_prov = value; }
+        }
 
         [DataMember]
         public String cod_prov

@@ -10,6 +10,7 @@
         <EntityTypeShape EntityType="HundeDBModel.Tb_Proveedor" Width="1.5" PointX="5.75" PointY="3.75" />
         <EntityTypeShape EntityType="HundeDBModel.Tb_Cliente" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="HundeDBModel.Tb_Empleado" Width="1.5" PointX="2.75" PointY="0.75" />
+        <AssociationConnector Association="HundeDBModel.FK_Empleado_user" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

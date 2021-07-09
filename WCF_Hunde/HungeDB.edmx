@@ -18,6 +18,7 @@
           <Property Name="cel_cliente" Type="varchar" MaxLength="9" Nullable="false" />
           <Property Name="email_cliente" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="es_dueno" Type="int" Nullable="false" />
+          <Property Name="es_empleado" Type="int" Nullable="false" />
           <Property Name="id_ubigeo" Type="varchar" MaxLength="6" Nullable="false" />
           <Property Name="dni_cliente" Type="char" MaxLength="8" Nullable="false" />
           <Property Name="usu_reg_cli" Type="varchar" MaxLength="4" />
@@ -32,12 +33,11 @@
           </Key>
           <Property Name="cod_emp" Type="varchar" MaxLength="4" Nullable="false" />
           <Property Name="rol_emp" Type="int" Nullable="false" />
-          <Property Name="nom_empleado" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ape_empleado" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="fecha_ingreso" Type="datetime" Nullable="false" />
           <Property Name="sueldo" Type="money" />
           <Property Name="email_emp" Type="varchar" MaxLength="50" />
           <Property Name="cod_supervisor" Type="varchar" MaxLength="4" />
+          <Property Name="cod_cli" Type="varchar" MaxLength="4" />
           <Property Name="usu_ult_modificacion_emp" Type="varchar" MaxLength="4" />
           <Property Name="fecha_ult_modificacion_emp" Type="datetime" />
           <Property Name="estado_emp" Type="int" Nullable="false" />
@@ -86,6 +86,18 @@
           <Property Name="fecha_ult_modificacion_prov" Type="datetime" />
           <Property Name="estado_prov" Type="int" />
         </EntityType>
+        <Association Name="FK_Empleado_user">
+          <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="0..1" />
+          <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Cliente">
+              <PropertyRef Name="cod_cli" />
+            </Principal>
+            <Dependent Role="Tb_Empleado">
+              <PropertyRef Name="cod_cli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="usp_ActualizarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="vtipo_cliente" Type="int" Mode="In" />
           <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
@@ -95,6 +107,7 @@
           <Parameter Name="vcel_cli" Type="varchar" Mode="In" />
           <Parameter Name="vemail_cli" Type="varchar" Mode="In" />
           <Parameter Name="ves_dueno" Type="int" Mode="In" />
+          <Parameter Name="ves_empleado" Type="int" Mode="In" />
           <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
           <Parameter Name="vdni_cli" Type="char" Mode="In" />
           <Parameter Name="vusu_ult_mod" Type="varchar" Mode="In" />
@@ -103,16 +116,26 @@
           <Parameter Name="vcod_cli" Type="varchar" Mode="In" />
         </Function>
         <Function Name="usp_ActualizarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="vrol_emp" Type="int" Mode="In" />
-          <Parameter Name="vnom_empleado" Type="varchar" Mode="In" />
-          <Parameter Name="vape_empleado" Type="varchar" Mode="In" />
-          <Parameter Name="vfecha_ingreso" Type="datetime" Mode="In" />
-          <Parameter Name="vsueldo" Type="money" Mode="In" />
-          <Parameter Name="vemail_emp" Type="varchar" Mode="In" />
-          <Parameter Name="vcod_supervisor" Type="varchar" Mode="In" />
+          <Parameter Name="vtipo_cliente" Type="int" Mode="In" />
+          <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
+          <Parameter Name="vape_pat_cli" Type="varchar" Mode="In" />
+          <Parameter Name="vape_mat_cli" Type="varchar" Mode="In" />
+          <Parameter Name="vdir_cli" Type="varchar" Mode="In" />
+          <Parameter Name="vcel_cli" Type="varchar" Mode="In" />
+          <Parameter Name="vemail_cli" Type="varchar" Mode="In" />
+          <Parameter Name="ves_dueno" Type="int" Mode="In" />
+          <Parameter Name="ves_empleado" Type="int" Mode="In" />
+          <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
+          <Parameter Name="vdni_cli" Type="char" Mode="In" />
           <Parameter Name="vusu_ult_mod" Type="varchar" Mode="In" />
           <Parameter Name="vfec_ult_mod" Type="datetime" Mode="In" />
+          <Parameter Name="vestado_cli" Type="int" Mode="In" />
+          <Parameter Name="vrol_emp" Type="int" Mode="In" />
+          <Parameter Name="vfecha_ingreso" Type="datetime" Mode="In" />
+          <Parameter Name="vsueldo" Type="money" Mode="In" />
+          <Parameter Name="vcod_supervisor" Type="varchar" Mode="In" />
           <Parameter Name="vestado_emp" Type="int" Mode="In" />
+          <Parameter Name="vcod_cli" Type="varchar" Mode="In" />
           <Parameter Name="vcod_emp" Type="varchar" Mode="In" />
         </Function>
         <Function Name="usp_EliminarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -130,26 +153,34 @@
           <Parameter Name="vcel_cli" Type="varchar" Mode="In" />
           <Parameter Name="vemail_cli" Type="varchar" Mode="In" />
           <Parameter Name="ves_dueno" Type="int" Mode="In" />
+          <Parameter Name="ves_empleado" Type="int" Mode="In" />
           <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
           <Parameter Name="vdni_cli" Type="char" Mode="In" />
           <Parameter Name="vusu_reg_cli" Type="varchar" Mode="In" />
           <Parameter Name="vestado_cli" Type="int" Mode="In" />
         </Function>
         <Function Name="usp_InsertarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vtipo_cliente" Type="int" Mode="In" />
+          <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
+          <Parameter Name="vape_pat_cli" Type="varchar" Mode="In" />
+          <Parameter Name="vape_mat_cli" Type="varchar" Mode="In" />
+          <Parameter Name="vdir_cli" Type="varchar" Mode="In" />
+          <Parameter Name="vcel_cli" Type="varchar" Mode="In" />
+          <Parameter Name="vemail_cli" Type="varchar" Mode="In" />
+          <Parameter Name="ves_dueno" Type="int" Mode="In" />
+          <Parameter Name="ves_empleado" Type="int" Mode="In" />
+          <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
+          <Parameter Name="vdni_cli" Type="char" Mode="In" />
+          <Parameter Name="vusu_reg_cli" Type="varchar" Mode="In" />
+          <Parameter Name="vestado_cli" Type="int" Mode="In" />
           <Parameter Name="vrol_emp" Type="int" Mode="In" />
-          <Parameter Name="vnom_empleado" Type="varchar" Mode="In" />
-          <Parameter Name="vape_empleado" Type="varchar" Mode="In" />
           <Parameter Name="vfecha_ingreso" Type="datetime" Mode="In" />
           <Parameter Name="vsueldo" Type="money" Mode="In" />
-          <Parameter Name="vemail_emp" Type="varchar" Mode="In" />
           <Parameter Name="vcod_supervisor" Type="varchar" Mode="In" />
           <Parameter Name="vestado_emp" Type="int" Mode="In" />
         </Function>
-        <Function Name="usp_ListarPacientePorTratamiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="tipo_tratamiento" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="usp_ListarPacientesPorRaza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="vraza" Type="varchar" Mode="In" />
+        <Function Name="usp_ListarProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cod_prov" Type="varchar" Mode="In" />
         </Function>
         <Function Name="usp_ListarTipoMedicinaProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tipo_medicina" Type="varchar" Mode="In" />
@@ -160,6 +191,10 @@
           <EntitySet Name="Tb_Medicina" EntityType="Self.Tb_Medicina" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Paciente" EntityType="Self.Tb_Paciente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Proveedor" EntityType="Self.Tb_Proveedor" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Empleado_user" Association="Self.FK_Empleado_user">
+            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -167,25 +202,45 @@
       <Schema Namespace="HundeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="HundeDBEntities" annotation:LazyLoadingEnabled="true">
           <FunctionImport Name="usp_ActualizarEmpleado">
-            <Parameter Name="vrol_emp" Mode="In" Type="Int32" />
-            <Parameter Name="vnom_empleado" Mode="In" Type="String" />
-            <Parameter Name="vape_empleado" Mode="In" Type="String" />
-            <Parameter Name="vfecha_ingreso" Mode="In" Type="DateTime" />
-            <Parameter Name="vsueldo" Mode="In" Type="Decimal" />
-            <Parameter Name="vemail_emp" Mode="In" Type="String" />
-            <Parameter Name="vcod_supervisor" Mode="In" Type="String" />
+            <Parameter Name="vtipo_cliente" Mode="In" Type="Int32" />
+            <Parameter Name="vnom_cliente" Mode="In" Type="String" />
+            <Parameter Name="vape_pat_cli" Mode="In" Type="String" />
+            <Parameter Name="vape_mat_cli" Mode="In" Type="String" />
+            <Parameter Name="vdir_cli" Mode="In" Type="String" />
+            <Parameter Name="vcel_cli" Mode="In" Type="String" />
+            <Parameter Name="vemail_cli" Mode="In" Type="String" />
+            <Parameter Name="ves_dueno" Mode="In" Type="Int32" />
+            <Parameter Name="ves_empleado" Mode="In" Type="Int32" />
+            <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
+            <Parameter Name="vdni_cli" Mode="In" Type="String" />
             <Parameter Name="vusu_ult_mod" Mode="In" Type="String" />
             <Parameter Name="vfec_ult_mod" Mode="In" Type="DateTime" />
+            <Parameter Name="vestado_cli" Mode="In" Type="Int32" />
+            <Parameter Name="vrol_emp" Mode="In" Type="Int32" />
+            <Parameter Name="vfecha_ingreso" Mode="In" Type="DateTime" />
+            <Parameter Name="vsueldo" Mode="In" Type="Decimal" />
+            <Parameter Name="vcod_supervisor" Mode="In" Type="String" />
             <Parameter Name="vestado_emp" Mode="In" Type="Int32" />
+            <Parameter Name="vcod_cli" Mode="In" Type="String" />
             <Parameter Name="vcod_emp" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_InsertarEmpleado">
+            <Parameter Name="vtipo_cliente" Mode="In" Type="Int32" />
+            <Parameter Name="vnom_cliente" Mode="In" Type="String" />
+            <Parameter Name="vape_pat_cli" Mode="In" Type="String" />
+            <Parameter Name="vape_mat_cli" Mode="In" Type="String" />
+            <Parameter Name="vdir_cli" Mode="In" Type="String" />
+            <Parameter Name="vcel_cli" Mode="In" Type="String" />
+            <Parameter Name="vemail_cli" Mode="In" Type="String" />
+            <Parameter Name="ves_dueno" Mode="In" Type="Int32" />
+            <Parameter Name="ves_empleado" Mode="In" Type="Int32" />
+            <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
+            <Parameter Name="vdni_cli" Mode="In" Type="String" />
+            <Parameter Name="vusu_reg_cli" Mode="In" Type="String" />
+            <Parameter Name="vestado_cli" Mode="In" Type="Int32" />
             <Parameter Name="vrol_emp" Mode="In" Type="Int32" />
-            <Parameter Name="vnom_empleado" Mode="In" Type="String" />
-            <Parameter Name="vape_empleado" Mode="In" Type="String" />
             <Parameter Name="vfecha_ingreso" Mode="In" Type="DateTime" />
             <Parameter Name="vsueldo" Mode="In" Type="Decimal" />
-            <Parameter Name="vemail_emp" Mode="In" Type="String" />
             <Parameter Name="vcod_supervisor" Mode="In" Type="String" />
             <Parameter Name="vestado_emp" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -214,6 +269,7 @@
             <Parameter Name="vcel_cli" Mode="In" Type="String" />
             <Parameter Name="vemail_cli" Mode="In" Type="String" />
             <Parameter Name="ves_dueno" Mode="In" Type="Int32" />
+            <Parameter Name="ves_empleado" Mode="In" Type="Int32" />
             <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
             <Parameter Name="vdni_cli" Mode="In" Type="String" />
             <Parameter Name="vusu_ult_mod" Mode="In" Type="String" />
@@ -233,6 +289,7 @@
             <Parameter Name="vcel_cli" Mode="In" Type="String" />
             <Parameter Name="vemail_cli" Mode="In" Type="String" />
             <Parameter Name="ves_dueno" Mode="In" Type="Int32" />
+            <Parameter Name="ves_empleado" Mode="In" Type="Int32" />
             <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
             <Parameter Name="vdni_cli" Mode="In" Type="String" />
             <Parameter Name="vusu_reg_cli" Mode="In" Type="String" />
@@ -251,6 +308,13 @@
           </FunctionImport>
           <FunctionImport Name="usp_ListarPacientePorTratamiento1" ReturnType="Collection(HundeDBModel.usp_ListarPacientePorTratamiento1_Result)">
           <Parameter Name="tipo_tratamiento" Mode="In" Type="String" />
+          </FunctionImport>
+          <AssociationSet Name="FK_Empleado_user" Association="HundeDBModel.FK_Empleado_user">
+            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+          </AssociationSet>
+          <FunctionImport Name="usp_ListarProveedor" ReturnType="Collection(HundeDBModel.usp_ListarProveedor_Result)">
+            <Parameter Name="cod_prov" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="Tb_Medicina">
@@ -371,6 +435,8 @@
           <Property Name="usu_ult_modificacion_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="fecha_ult_modificacion_cli" Type="DateTime" Precision="3" />
           <Property Name="estado_cli" Type="Int32" />
+          <Property Name="es_empleado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tb_Empleado" Relationship="HundeDBModel.FK_Empleado_user" FromRole="Tb_Cliente" ToRole="Tb_Empleado" />
         </EntityType>
         <EntityType Name="Tb_Empleado">
           <Key>
@@ -387,6 +453,8 @@
           <Property Name="usu_ult_modificacion_emp" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="fecha_ult_modificacion_emp" Type="DateTime" Precision="3" />
           <Property Name="estado_emp" Type="Int32" Nullable="false" />
+          <Property Name="cod_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Cliente" Relationship="HundeDBModel.FK_Empleado_user" FromRole="Tb_Empleado" ToRole="Tb_Cliente" />
         </EntityType>
         <ComplexType Name="usp_ListarPacientesPorRaza1_Result">
           <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
@@ -420,6 +488,29 @@
           <Property Type="String" Name="nombre_trat" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="tipo_trat" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="estado_trat" Nullable="true" />
+        </ComplexType>
+        <Association Name="FK_Empleado_user">
+          <End Type="HundeDBModel.Tb_Cliente" Role="Tb_Cliente" Multiplicity="0..1" />
+          <End Type="HundeDBModel.Tb_Empleado" Role="Tb_Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Cliente">
+              <PropertyRef Name="cod_cli" />
+            </Principal>
+            <Dependent Role="Tb_Empleado">
+              <PropertyRef Name="cod_cli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="usp_ListarProveedor_Result">
+          <Property Type="String" Name="cod_prov" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="nom_prov" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ruc_prov" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="direccion_prov" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="tel_prov" Nullable="false" MaxLength="9" />
+          <Property Type="String" Name="email_prov" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="rep_ven_prov" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fec_reg_prov" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="estado_prov" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -496,6 +587,7 @@
           <EntitySetMapping Name="Tb_Cliente">
             <EntityTypeMapping TypeName="HundeDBModel.Tb_Cliente">
               <MappingFragment StoreEntitySet="Tb_Cliente">
+                <ScalarProperty Name="es_empleado" ColumnName="es_empleado" />
                 <ScalarProperty Name="estado_cli" ColumnName="estado_cli" />
                 <ScalarProperty Name="fecha_ult_modificacion_cli" ColumnName="fecha_ult_modificacion_cli" />
                 <ScalarProperty Name="usu_ult_modificacion_cli" ColumnName="usu_ult_modificacion_cli" />
@@ -518,6 +610,7 @@
           <EntitySetMapping Name="Tb_Empleado">
             <EntityTypeMapping TypeName="HundeDBModel.Tb_Empleado">
               <MappingFragment StoreEntitySet="Tb_Empleado">
+                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
                 <ScalarProperty Name="estado_emp" ColumnName="estado_emp" />
                 <ScalarProperty Name="fecha_ult_modificacion_emp" ColumnName="fecha_ult_modificacion_emp" />
                 <ScalarProperty Name="usu_ult_modificacion_emp" ColumnName="usu_ult_modificacion_emp" />
@@ -525,51 +618,23 @@
                 <ScalarProperty Name="email_emp" ColumnName="email_emp" />
                 <ScalarProperty Name="sueldo" ColumnName="sueldo" />
                 <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
-                <ScalarProperty Name="ape_empleado" ColumnName="ape_empleado" />
-                <ScalarProperty Name="nom_empleado" ColumnName="nom_empleado" />
                 <ScalarProperty Name="rol_emp" ColumnName="rol_emp" />
                 <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="usp_ListarPacientesPorRaza1" FunctionName="HundeDBModel.Store.usp_ListarPacientesPorRaza">
+          <FunctionImportMapping FunctionImportName="usp_ListarProveedor" FunctionName="HundeDBModel.Store.usp_ListarProveedor">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientesPorRaza1_Result">
-                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
-                <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
-                <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
-                <ScalarProperty Name="raza" ColumnName="raza" />
-                <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
-                <ScalarProperty Name="sexo" ColumnName="sexo" />
-                <ScalarProperty Name="color" ColumnName="color" />
-                <ScalarProperty Name="longitud" ColumnName="longitud" />
-                <ScalarProperty Name="peso" ColumnName="peso" />
-                <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
-                <ScalarProperty Name="foto" ColumnName="foto" />
-                <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
-                <ScalarProperty Name="est_pac" ColumnName="est_pac" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_ListarPacientePorTratamiento1" FunctionName="HundeDBModel.Store.usp_ListarPacientePorTratamiento">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientePorTratamiento1_Result">
-                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
-                <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
-                <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
-                <ScalarProperty Name="raza" ColumnName="raza" />
-                <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
-                <ScalarProperty Name="color" ColumnName="color" />
-                <ScalarProperty Name="sexo" ColumnName="sexo" />
-                <ScalarProperty Name="longitud" ColumnName="longitud" />
-                <ScalarProperty Name="peso" ColumnName="peso" />
-                <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
-                <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
-                <ScalarProperty Name="est_pac" ColumnName="est_pac" />
-                <ScalarProperty Name="cod_trat" ColumnName="cod_trat" />
-                <ScalarProperty Name="nombre_trat" ColumnName="nombre_trat" />
-                <ScalarProperty Name="tipo_trat" ColumnName="tipo_trat" />
-                <ScalarProperty Name="estado_trat" ColumnName="estado_trat" />
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarProveedor_Result">
+                <ScalarProperty Name="cod_prov" ColumnName="cod_prov" />
+                <ScalarProperty Name="nom_prov" ColumnName="nom_prov" />
+                <ScalarProperty Name="ruc_prov" ColumnName="ruc_prov" />
+                <ScalarProperty Name="direccion_prov" ColumnName="direccion_prov" />
+                <ScalarProperty Name="tel_prov" ColumnName="tel_prov" />
+                <ScalarProperty Name="email_prov" ColumnName="email_prov" />
+                <ScalarProperty Name="rep_ven_prov" ColumnName="rep_ven_prov" />
+                <ScalarProperty Name="fec_reg_prov" ColumnName="fec_reg_prov" />
+                <ScalarProperty Name="estado_prov" ColumnName="estado_prov" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

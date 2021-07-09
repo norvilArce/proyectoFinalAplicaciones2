@@ -108,6 +108,9 @@
     <Compile Include="usp_ListarPacientesPorRaza_Result.cs">
       <DependentUpon>HungeDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="usp_ListarProveedor_Result.cs">
+      <DependentUpon>HungeDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="usp_ListarTipoMedicinaProveedor_Result.cs">
       <DependentUpon>HungeDB.tt</DependentUpon>
     </Compile>

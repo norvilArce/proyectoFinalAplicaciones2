@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Web_Hunde.ProxyProveedor {
+namespace Win_Hunde.ProxyProveedor {
     using System.Runtime.Serialization;
     using System;
     
@@ -364,37 +364,37 @@ namespace Web_Hunde.ProxyProveedor {
     public interface IServicioProveedor {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioProveedor/ConsultarProveedor", ReplyAction="http://tempuri.org/IServicioProveedor/ConsultarProveedorResponse")]
-        Web_Hunde.ProxyProveedor.ProveedorBE ConsultarProveedor(string strCod);
+        Win_Hunde.ProxyProveedor.ProveedorBE ConsultarProveedor(string strCod);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioProveedor/ConsultarProveedor", ReplyAction="http://tempuri.org/IServicioProveedor/ConsultarProveedorResponse")]
-        System.Threading.Tasks.Task<Web_Hunde.ProxyProveedor.ProveedorBE> ConsultarProveedorAsync(string strCod);
+        System.Threading.Tasks.Task<Win_Hunde.ProxyProveedor.ProveedorBE> ConsultarProveedorAsync(string strCod);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioProveedor/ConsultarSupervisor", ReplyAction="http://tempuri.org/IServicioProveedor/ConsultarSupervisorResponse")]
-        Web_Hunde.ProxyProveedor.ProveedorBE[] ConsultarSupervisor(string strRepVenProv);
+        Win_Hunde.ProxyProveedor.ProveedorBE[] ConsultarSupervisor(string strRepVenProv);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioProveedor/ConsultarSupervisor", ReplyAction="http://tempuri.org/IServicioProveedor/ConsultarSupervisorResponse")]
-        System.Threading.Tasks.Task<Web_Hunde.ProxyProveedor.ProveedorBE[]> ConsultarSupervisorAsync(string strRepVenProv);
+        System.Threading.Tasks.Task<Win_Hunde.ProxyProveedor.ProveedorBE[]> ConsultarSupervisorAsync(string strRepVenProv);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioProveedor/ConsultarMedicinaProveedor", ReplyAction="http://tempuri.org/IServicioProveedor/ConsultarMedicinaProveedorResponse")]
-        Web_Hunde.ProxyProveedor.ProveedorBE[] ConsultarMedicinaProveedor(string srtTipoMedicina);
+        Win_Hunde.ProxyProveedor.ProveedorBE[] ConsultarMedicinaProveedor(string srtTipoMedicina);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioProveedor/ConsultarMedicinaProveedor", ReplyAction="http://tempuri.org/IServicioProveedor/ConsultarMedicinaProveedorResponse")]
-        System.Threading.Tasks.Task<Web_Hunde.ProxyProveedor.ProveedorBE[]> ConsultarMedicinaProveedorAsync(string srtTipoMedicina);
+        System.Threading.Tasks.Task<Win_Hunde.ProxyProveedor.ProveedorBE[]> ConsultarMedicinaProveedorAsync(string srtTipoMedicina);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioProveedor/ConsultarEstadoProveedorMedicina", ReplyAction="http://tempuri.org/IServicioProveedor/ConsultarEstadoProveedorMedicinaResponse")]
-        Web_Hunde.ProxyProveedor.EstadosBE[] ConsultarEstadoProveedorMedicina(short strEstadoProveedor, string strTipoMedicina);
+        Win_Hunde.ProxyProveedor.EstadosBE[] ConsultarEstadoProveedorMedicina(short strEstadoProveedor, string strTipoMedicina);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioProveedor/ConsultarEstadoProveedorMedicina", ReplyAction="http://tempuri.org/IServicioProveedor/ConsultarEstadoProveedorMedicinaResponse")]
-        System.Threading.Tasks.Task<Web_Hunde.ProxyProveedor.EstadosBE[]> ConsultarEstadoProveedorMedicinaAsync(short strEstadoProveedor, string strTipoMedicina);
+        System.Threading.Tasks.Task<Win_Hunde.ProxyProveedor.EstadosBE[]> ConsultarEstadoProveedorMedicinaAsync(short strEstadoProveedor, string strTipoMedicina);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServicioProveedorChannel : Web_Hunde.ProxyProveedor.IServicioProveedor, System.ServiceModel.IClientChannel {
+    public interface IServicioProveedorChannel : Win_Hunde.ProxyProveedor.IServicioProveedor, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServicioProveedorClient : System.ServiceModel.ClientBase<Web_Hunde.ProxyProveedor.IServicioProveedor>, Web_Hunde.ProxyProveedor.IServicioProveedor {
+    public partial class ServicioProveedorClient : System.ServiceModel.ClientBase<Win_Hunde.ProxyProveedor.IServicioProveedor>, Win_Hunde.ProxyProveedor.IServicioProveedor {
         
         public ServicioProveedorClient() {
         }
@@ -415,35 +415,33 @@ namespace Web_Hunde.ProxyProveedor {
                 base(binding, remoteAddress) {
         }
         
-        public Web_Hunde.ProxyProveedor.ProveedorBE ConsultarProveedor(string strCod) {
+        public Win_Hunde.ProxyProveedor.ProveedorBE ConsultarProveedor(string strCod) {
             return base.Channel.ConsultarProveedor(strCod);
         }
         
-        public System.Threading.Tasks.Task<Web_Hunde.ProxyProveedor.ProveedorBE> ConsultarProveedorAsync(string strCod) {
+        public System.Threading.Tasks.Task<Win_Hunde.ProxyProveedor.ProveedorBE> ConsultarProveedorAsync(string strCod) {
             return base.Channel.ConsultarProveedorAsync(strCod);
         }
         
-        public Web_Hunde.ProxyProveedor.ProveedorBE[] ConsultarSupervisor(string strRepVenProv) {
-            return base.Channel.ConsultarSupervisor(strRepVenProv);
-        }
+      
         
-        public System.Threading.Tasks.Task<Web_Hunde.ProxyProveedor.ProveedorBE[]> ConsultarSupervisorAsync(string strRepVenProv) {
+        public System.Threading.Tasks.Task<Win_Hunde.ProxyProveedor.ProveedorBE[]> ConsultarSupervisorAsync(string strRepVenProv) {
             return base.Channel.ConsultarSupervisorAsync(strRepVenProv);
         }
         
-        public Web_Hunde.ProxyProveedor.ProveedorBE[] ConsultarMedicinaProveedor(string srtTipoMedicina) {
+        public Win_Hunde.ProxyProveedor.ProveedorBE[] ConsultarMedicinaProveedor(string srtTipoMedicina) {
             return base.Channel.ConsultarMedicinaProveedor(srtTipoMedicina);
         }
         
-        public System.Threading.Tasks.Task<Web_Hunde.ProxyProveedor.ProveedorBE[]> ConsultarMedicinaProveedorAsync(string srtTipoMedicina) {
+        public System.Threading.Tasks.Task<Win_Hunde.ProxyProveedor.ProveedorBE[]> ConsultarMedicinaProveedorAsync(string srtTipoMedicina) {
             return base.Channel.ConsultarMedicinaProveedorAsync(srtTipoMedicina);
         }
         
-        public Web_Hunde.ProxyProveedor.EstadosBE[] ConsultarEstadoProveedorMedicina(short strEstadoProveedor, string strTipoMedicina) {
+        public Win_Hunde.ProxyProveedor.EstadosBE[] ConsultarEstadoProveedorMedicina(short strEstadoProveedor, string strTipoMedicina) {
             return base.Channel.ConsultarEstadoProveedorMedicina(strEstadoProveedor, strTipoMedicina);
         }
         
-        public System.Threading.Tasks.Task<Web_Hunde.ProxyProveedor.EstadosBE[]> ConsultarEstadoProveedorMedicinaAsync(short strEstadoProveedor, string strTipoMedicina) {
+        public System.Threading.Tasks.Task<Win_Hunde.ProxyProveedor.EstadosBE[]> ConsultarEstadoProveedorMedicinaAsync(short strEstadoProveedor, string strTipoMedicina) {
             return base.Channel.ConsultarEstadoProveedorMedicinaAsync(strEstadoProveedor, strTipoMedicina);
         }
     }
