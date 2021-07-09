@@ -59,7 +59,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\ProxyProveedor\Reference.cs">
+    <Compile Include="Connected Services\ProxyProveedor1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -175,20 +175,20 @@
     <None Include="Connected Services\ProxyPaciente\Win_Hunde.ProxyPaciente.PacienteBE.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ProxyProveedor\service.wsdl" />
-    <None Include="Connected Services\ProxyProveedor\service.xsd">
+    <None Include="Connected Services\ProxyProveedor1\service.wsdl" />
+    <None Include="Connected Services\ProxyProveedor1\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ProxyProveedor\service1.xsd">
+    <None Include="Connected Services\ProxyProveedor1\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ProxyProveedor\WCF_Hunde.xsd">
+    <None Include="Connected Services\ProxyProveedor1\WCF_Hunde.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ProxyProveedor\Win_Hunde.ProxyProveedor.EstadosBE.datasource">
+    <None Include="Connected Services\ProxyProveedor1\Win_Hunde.ProxyProveedor1.EstadosBE.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ProxyProveedor\Win_Hunde.ProxyProveedor.ProveedorBE.datasource">
+    <None Include="Connected Services\ProxyProveedor1\Win_Hunde.ProxyProveedor1.ProveedorBE.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ProxyUsuario\service.wsdl" />
@@ -223,7 +223,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ProxyEmpleado\" />
     <WCFMetadataStorage Include="Connected Services\ProxyPaciente\" />
-    <WCFMetadataStorage Include="Connected Services\ProxyProveedor\" />
+    <WCFMetadataStorage Include="Connected Services\ProxyProveedor1\" />
     <WCFMetadataStorage Include="Connected Services\ProxyUsuario\" />
   </ItemGroup>
   <ItemGroup>
@@ -234,18 +234,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ProxyEmpleado\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ProxyProveedor\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ProxyProveedor\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ProxyProveedor\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -270,6 +258,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ProxyUsuario\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProxyProveedor1\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProxyProveedor1\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProxyProveedor1\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

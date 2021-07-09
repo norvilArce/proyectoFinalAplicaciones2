@@ -11,13 +11,15 @@ namespace WCF_Hunde
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "ServicioProveedor" en el código y en el archivo de configuración a la vez.
     public class ServicioProveedor : IServicioProveedor
     {
-        public List<ProveedorBE> ConsultarProveedor(string strCod)
+        public List<ProveedorBE> ConsultarProveedores()
         {
             HundeDBEntities misProveedores = new HundeDBEntities();
             List<ProveedorBE> objListProveedor = new List<ProveedorBE>();
             try
             {
-                var query = misProveedores.usp_ListarProveedor(strCod);
+                var query = (from prov in misProveedores.Tb_Proveedor
+                             select prov);
+
                 foreach (var rs in query)
                 {
 
@@ -35,11 +37,38 @@ namespace WCF_Hunde
 
                     objListProveedor.Add(objProveedorBE);
                 }
-
-
-
                 return objListProveedor;
 
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public ProveedorBE ConsultarProveedorPorCodigo(String strCod)
+        {
+            HundeDBEntities misProveedores = new HundeDBEntities();
+
+            try
+            {
+            Tb_Proveedor rs = (from prov in misProveedores.Tb_Proveedor
+                               where prov.cod_prov == strCod
+                               select prov).FirstOrDefault();
+
+            ProveedorBE objProveedorBE = new ProveedorBE();
+
+            objProveedorBE.cod_prov = rs.cod_prov;
+            objProveedorBE.nom_prov = rs.nom_prov;
+            objProveedorBE.ruc_prov = rs.ruc_prov;
+            objProveedorBE.direccion_prov = rs.direccion_prov;
+            objProveedorBE.tel_prov = rs.tel_prov;
+            objProveedorBE.email_prov = rs.email_prov;
+            objProveedorBE.rep_ven_prov = rs.rep_ven_prov;
+            objProveedorBE.fec_reg_prov = Convert.ToDateTime(rs.fec_reg_prov);
+            objProveedorBE.estado_prov = Convert.ToInt16(rs.estado_prov);
+
+            return objProveedorBE;
 
             }
             catch (Exception ex)

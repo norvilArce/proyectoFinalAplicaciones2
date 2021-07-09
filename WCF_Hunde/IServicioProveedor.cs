@@ -12,7 +12,9 @@ namespace WCF_Hunde
     public interface IServicioProveedor
     {
         [OperationContract]
-        List<ProveedorBE> ConsultarProveedor(String strCod);
+        List<ProveedorBE> ConsultarProveedores();
+        [OperationContract]
+        ProveedorBE ConsultarProveedorPorCodigo(String strCodigo);
 
         [OperationContract]
         List<ProveedorBE> ConsultarSupervisor();

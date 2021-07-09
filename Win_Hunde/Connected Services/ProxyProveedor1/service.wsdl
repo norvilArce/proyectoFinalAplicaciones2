@@ -7,11 +7,17 @@
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCF_Hunde" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IServicioProveedor_ConsultarProveedor_InputMessage">
-    <wsdl:part name="parameters" element="tns:ConsultarProveedor" />
+  <wsdl:message name="IServicioProveedor_ConsultarProveedores_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarProveedores" />
   </wsdl:message>
-  <wsdl:message name="IServicioProveedor_ConsultarProveedor_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ConsultarProveedorResponse" />
+  <wsdl:message name="IServicioProveedor_ConsultarProveedores_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarProveedoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioProveedor_ConsultarProveedorPorCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarProveedorPorCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IServicioProveedor_ConsultarProveedorPorCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarProveedorPorCodigoResponse" />
   </wsdl:message>
   <wsdl:message name="IServicioProveedor_ConsultarSupervisor_InputMessage">
     <wsdl:part name="parameters" element="tns:ConsultarSupervisor" />
@@ -32,9 +38,13 @@
     <wsdl:part name="parameters" element="tns:ConsultarEstadoProveedorMedicinaResponse" />
   </wsdl:message>
   <wsdl:portType name="IServicioProveedor">
-    <wsdl:operation name="ConsultarProveedor">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServicioProveedor/ConsultarProveedor" message="tns:IServicioProveedor_ConsultarProveedor_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServicioProveedor/ConsultarProveedorResponse" message="tns:IServicioProveedor_ConsultarProveedor_OutputMessage" />
+    <wsdl:operation name="ConsultarProveedores">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioProveedor/ConsultarProveedores" message="tns:IServicioProveedor_ConsultarProveedores_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioProveedor/ConsultarProveedoresResponse" message="tns:IServicioProveedor_ConsultarProveedores_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarProveedorPorCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioProveedor/ConsultarProveedorPorCodigo" message="tns:IServicioProveedor_ConsultarProveedorPorCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioProveedor/ConsultarProveedorPorCodigoResponse" message="tns:IServicioProveedor_ConsultarProveedorPorCodigo_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ConsultarSupervisor">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioProveedor/ConsultarSupervisor" message="tns:IServicioProveedor_ConsultarSupervisor_InputMessage" />
@@ -51,8 +61,17 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServicioProveedor" type="tns:IServicioProveedor">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="ConsultarProveedor">
-      <soap:operation soapAction="http://tempuri.org/IServicioProveedor/ConsultarProveedor" style="document" />
+    <wsdl:operation name="ConsultarProveedores">
+      <soap:operation soapAction="http://tempuri.org/IServicioProveedor/ConsultarProveedores" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarProveedorPorCodigo">
+      <soap:operation soapAction="http://tempuri.org/IServicioProveedor/ConsultarProveedorPorCodigo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

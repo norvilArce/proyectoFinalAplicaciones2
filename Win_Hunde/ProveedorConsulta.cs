@@ -21,12 +21,12 @@ namespace Win_Hunde
         {
             try
             {
-                ProxyProveedor.ServicioProveedorClient objServProv = new ProxyProveedor.ServicioProveedorClient();
-                ProxyProveedor.ProveedorBE objProveedorBE = new ProxyProveedor.ProveedorBE();
+                ProxyProveedor1.ServicioProveedorClient objServProv = new ProxyProveedor1.ServicioProveedorClient();
+                ProxyProveedor1.ProveedorBE objProveedorBE = new ProxyProveedor1.ProveedorBE();
 
                 //invocamos a las operaciones
                 //consultamos el cliente
-                objProveedorBE = objServProv.ConsultarProveedor(txtCod.Text.Trim());
+                objProveedorBE = objServProv.ConsultarProveedorPorCodigo(txtCod.Text.Trim());
                 lblNM.Text = objProveedorBE.nom_prov;
                 lblDir.Text = objProveedorBE.direccion_prov;
                 lblRUC.Text = objProveedorBE.ruc_prov;

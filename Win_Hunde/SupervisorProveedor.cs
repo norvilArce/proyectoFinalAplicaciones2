@@ -13,7 +13,7 @@ namespace Win_Hunde
     public partial class SupervisorProveedor : Form
     {
 
-        ProxyProveedor.ServicioProveedorClient objServProv = new ProxyProveedor.ServicioProveedorClient();
+        ProxyProveedor1.ServicioProveedorClient objServProv = new ProxyProveedor1.ServicioProveedorClient();
         public SupervisorProveedor()
         {
             InitializeComponent();
@@ -25,8 +25,8 @@ namespace Win_Hunde
             try
             {
 
-                dtgSupervisor.DataSource = objServProv.ConsultarSupervisor
-                    (cboSupervisor.SelectedValue.ToString());
+                dtgSupervisor.DataSource = objServProv.ConsultarSupervisor();
+                    //(cboSupervisor.SelectedValue.ToString());
 
                 if (dtgSupervisor.Rows.Count == 0)
                 {
@@ -43,7 +43,7 @@ namespace Win_Hunde
         {
             try
             {
-                cboSupervisor.DataSource = objServProv.ConsultarSupervisor("");
+                cboSupervisor.DataSource = objServProv.ConsultarSupervisor();
                 cboSupervisor.ValueMember = "cod_prov";
                 cboSupervisor.DisplayMember = "rep_ven_prov";
             }

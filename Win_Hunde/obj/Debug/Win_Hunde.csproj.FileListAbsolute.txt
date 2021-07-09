@@ -12,3 +12,5 @@ D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\
 D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\proyectoFinalAplicaciones2\Win_Hunde\bin\Debug\Win_Hunde.pdb
 D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\proyectoFinalAplicaciones2\Win_Hunde\obj\Debug\Win_Hunde.exe
 D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\proyectoFinalAplicaciones2\Win_Hunde\obj\Debug\Win_Hunde.pdb
+D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\proyectoFinalAplicaciones2\Win_Hunde\obj\Debug\Win_Hunde.FrmLogin.resources
+D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\proyectoFinalAplicaciones2\Win_Hunde\obj\Debug\Win_Hubde.MDIPrincipal.resources
