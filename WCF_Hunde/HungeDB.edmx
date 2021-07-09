@@ -145,6 +145,12 @@
           <Parameter Name="vcod_supervisor" Type="varchar" Mode="In" />
           <Parameter Name="vestado_emp" Type="int" Mode="In" />
         </Function>
+        <Function Name="usp_ListarPacientePorTratamiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tipo_tratamiento" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ListarPacientesPorRaza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vraza" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="usp_ListarTipoMedicinaProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tipo_medicina" Type="varchar" Mode="In" />
         </Function>
@@ -240,6 +246,12 @@
           </FunctionImport>
           <EntitySet Name="Tb_Cliente" EntityType="HundeDBModel.Tb_Cliente" />
           <EntitySet Name="Tb_Empleado" EntityType="HundeDBModel.Tb_Empleado" />
+          <FunctionImport Name="usp_ListarPacientesPorRaza1" ReturnType="Collection(HundeDBModel.usp_ListarPacientesPorRaza1_Result)">
+          <Parameter Name="vraza" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarPacientePorTratamiento1" ReturnType="Collection(HundeDBModel.usp_ListarPacientePorTratamiento1_Result)">
+          <Parameter Name="tipo_tratamiento" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Tb_Medicina">
           <Key>
@@ -376,6 +388,39 @@
           <Property Name="fecha_ult_modificacion_emp" Type="DateTime" Precision="3" />
           <Property Name="estado_emp" Type="Int32" Nullable="false" />
         </EntityType>
+        <ComplexType Name="usp_ListarPacientesPorRaza1_Result">
+          <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tipo_pac" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="raza" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
+          <Property Type="Int32" Name="sexo" Nullable="false" />
+          <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
+          <Property Type="Double" Name="longitud" Nullable="false" />
+          <Property Type="Double" Name="peso" Nullable="false" />
+          <Property Type="DateTime" Name="ult_vis_pac" Nullable="true" />
+          <Property Type="String" Name="foto" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="observaciones_pac" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="est_pac" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarPacientePorTratamiento1_Result">
+          <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tipo_pac" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="raza" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
+          <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="sexo" Nullable="false" />
+          <Property Type="Double" Name="longitud" Nullable="false" />
+          <Property Type="Double" Name="peso" Nullable="false" />
+          <Property Type="DateTime" Name="ult_vis_pac" Nullable="true" />
+          <Property Type="String" Name="observaciones_pac" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="est_pac" Nullable="false" />
+          <Property Type="Int32" Name="cod_trat" Nullable="false" />
+          <Property Type="String" Name="nombre_trat" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tipo_trat" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="estado_trat" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -487,6 +532,47 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarPacientesPorRaza1" FunctionName="HundeDBModel.Store.usp_ListarPacientesPorRaza">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientesPorRaza1_Result">
+                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+                <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
+                <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
+                <ScalarProperty Name="raza" ColumnName="raza" />
+                <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
+                <ScalarProperty Name="est_pac" ColumnName="est_pac" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarPacientePorTratamiento1" FunctionName="HundeDBModel.Store.usp_ListarPacientePorTratamiento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientePorTratamiento1_Result">
+                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+                <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
+                <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
+                <ScalarProperty Name="raza" ColumnName="raza" />
+                <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
+                <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
+                <ScalarProperty Name="est_pac" ColumnName="est_pac" />
+                <ScalarProperty Name="cod_trat" ColumnName="cod_trat" />
+                <ScalarProperty Name="nombre_trat" ColumnName="nombre_trat" />
+                <ScalarProperty Name="tipo_trat" ColumnName="tipo_trat" />
+                <ScalarProperty Name="estado_trat" ColumnName="estado_trat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

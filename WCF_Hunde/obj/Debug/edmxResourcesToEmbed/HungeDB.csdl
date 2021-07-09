@@ -81,6 +81,12 @@
     </FunctionImport>
     <EntitySet Name="Tb_Cliente" EntityType="HundeDBModel.Tb_Cliente" />
     <EntitySet Name="Tb_Empleado" EntityType="HundeDBModel.Tb_Empleado" />
+    <FunctionImport Name="usp_ListarPacientesPorRaza1" ReturnType="Collection(HundeDBModel.usp_ListarPacientesPorRaza1_Result)">
+      <Parameter Name="vraza" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_ListarPacientePorTratamiento1" ReturnType="Collection(HundeDBModel.usp_ListarPacientePorTratamiento1_Result)">
+      <Parameter Name="tipo_tratamiento" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="Tb_Medicina">
     <Key>
@@ -217,4 +223,37 @@
     <Property Name="fecha_ult_modificacion_emp" Type="DateTime" Precision="3" />
     <Property Name="estado_emp" Type="Int32" Nullable="false" />
   </EntityType>
+  <ComplexType Name="usp_ListarPacientesPorRaza1_Result">
+    <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+    <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="tipo_pac" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="raza" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
+    <Property Type="Int32" Name="sexo" Nullable="false" />
+    <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
+    <Property Type="Double" Name="longitud" Nullable="false" />
+    <Property Type="Double" Name="peso" Nullable="false" />
+    <Property Type="DateTime" Name="ult_vis_pac" Nullable="true" />
+    <Property Type="String" Name="foto" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="observaciones_pac" Nullable="true" MaxLength="300" />
+    <Property Type="Int32" Name="est_pac" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_ListarPacientePorTratamiento1_Result">
+    <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+    <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="tipo_pac" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="raza" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
+    <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="sexo" Nullable="false" />
+    <Property Type="Double" Name="longitud" Nullable="false" />
+    <Property Type="Double" Name="peso" Nullable="false" />
+    <Property Type="DateTime" Name="ult_vis_pac" Nullable="true" />
+    <Property Type="String" Name="observaciones_pac" Nullable="true" MaxLength="300" />
+    <Property Type="Int32" Name="est_pac" Nullable="false" />
+    <Property Type="Int32" Name="cod_trat" Nullable="false" />
+    <Property Type="String" Name="nombre_trat" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="tipo_trat" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="estado_trat" Nullable="true" />
+  </ComplexType>
 </Schema>
