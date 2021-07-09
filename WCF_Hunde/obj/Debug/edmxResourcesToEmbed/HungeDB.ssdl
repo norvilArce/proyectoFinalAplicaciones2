@@ -81,6 +81,18 @@
     <Property Name="fecha_ult_modificacion_prov" Type="datetime" />
     <Property Name="estado_prov" Type="int" />
   </EntityType>
+  <EntityType Name="Tb_Usuario">
+    <Key>
+      <PropertyRef Name="login_usuario" />
+    </Key>
+    <Property Name="login_usuario" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="pass_usuario" Type="varchar" MaxLength="20" />
+    <Property Name="niv_usuario" Type="int" />
+    <Property Name="est_usuario" Type="int" />
+    <Property Name="fec_registro" Type="datetime" />
+    <Property Name="usu_reg_usu" Type="varchar" MaxLength="4" />
+    <Property Name="cod_emp" Type="varchar" MaxLength="4" />
+  </EntityType>
   <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
   <EntityType Name="vw_DetallesPaciente">
@@ -168,6 +180,18 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorMedicina' no tiene d
     <Property Name="nombre_medicina" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="tipo_medicina" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <Association Name="FK_Usuario_user">
+    <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="0..1" />
+    <End Role="Tb_Usuario" Type="Self.Tb_Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tb_Empleado">
+        <PropertyRef Name="cod_emp" />
+      </Principal>
+      <Dependent Role="Tb_Usuario">
+        <PropertyRef Name="cod_emp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Function Name="usp_ActualizarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="vtipo_cliente" Type="int" Mode="In" />
     <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
@@ -306,6 +330,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorMedicina' no tiene d
     <EntitySet Name="Tb_Medicina" EntityType="Self.Tb_Medicina" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tb_Paciente" EntityType="Self.Tb_Paciente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tb_Proveedor" EntityType="Self.Tb_Proveedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tb_Usuario" EntityType="Self.Tb_Usuario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vw_DetallesPaciente" EntityType="Self.vw_DetallesPaciente" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [vw_DetallesPaciente].[codigo] AS [codigo], 
@@ -357,5 +382,9 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorMedicina' no tiene d
     [vw_ProveedorMedicina].[tipo_medicina] AS [tipo_medicina]
     FROM [dbo].[vw_ProveedorMedicina] AS [vw_ProveedorMedicina]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="FK_Usuario_user" Association="Self.FK_Usuario_user">
+      <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+      <End Role="Tb_Usuario" EntitySet="Tb_Usuario" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

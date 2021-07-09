@@ -86,6 +86,18 @@
           <Property Name="fecha_ult_modificacion_prov" Type="datetime" />
           <Property Name="estado_prov" Type="int" />
         </EntityType>
+        <EntityType Name="Tb_Usuario">
+          <Key>
+            <PropertyRef Name="login_usuario" />
+          </Key>
+          <Property Name="login_usuario" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="pass_usuario" Type="varchar" MaxLength="20" />
+          <Property Name="niv_usuario" Type="int" />
+          <Property Name="est_usuario" Type="int" />
+          <Property Name="fec_registro" Type="datetime" />
+          <Property Name="usu_reg_usu" Type="varchar" MaxLength="4" />
+          <Property Name="cod_emp" Type="varchar" MaxLength="4" />
+        </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="vw_DetallesPaciente">
@@ -173,6 +185,18 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorMedicina' no tiene d
           <Property Name="nombre_medicina" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="tipo_medicina" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Usuario_user">
+          <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="0..1" />
+          <End Role="Tb_Usuario" Type="Self.Tb_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Empleado">
+              <PropertyRef Name="cod_emp" />
+            </Principal>
+            <Dependent Role="Tb_Usuario">
+              <PropertyRef Name="cod_emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="usp_ActualizarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="vtipo_cliente" Type="int" Mode="In" />
           <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
@@ -311,6 +335,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorMedicina' no tiene d
           <EntitySet Name="Tb_Medicina" EntityType="Self.Tb_Medicina" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Paciente" EntityType="Self.Tb_Paciente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Proveedor" EntityType="Self.Tb_Proveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Usuario" EntityType="Self.Tb_Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="vw_DetallesPaciente" EntityType="Self.vw_DetallesPaciente" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vw_DetallesPaciente].[codigo] AS [codigo], 
@@ -362,6 +387,10 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorMedicina' no tiene d
     [vw_ProveedorMedicina].[tipo_medicina] AS [tipo_medicina]
     FROM [dbo].[vw_ProveedorMedicina] AS [vw_ProveedorMedicina]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_Usuario_user" Association="Self.FK_Usuario_user">
+            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+            <End Role="Tb_Usuario" EntitySet="Tb_Usuario" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -489,10 +518,10 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorMedicina' no tiene d
             <Parameter Name="vcod_prov" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_EliminarPaciente">
-            <Parameter Name="vcod_pac" Mode="In" Type="String" />
+          <Parameter Name="vcod_pac" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_EliminarProveedor">
-            <Parameter Name="vcod_prov" Mode="In" Type="String" />
+          <Parameter Name="vcod_prov" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_InsertarPaciente">
             <Parameter Name="vnom_pac" Mode="In" Type="String" />
@@ -520,16 +549,21 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorMedicina' no tiene d
           </FunctionImport>
           <FunctionImport Name="usp_ListarClientes" ReturnType="Collection(HundeDBModel.usp_ListarClientes_Result)" />
           <FunctionImport Name="usp_ListarPacientePorTratamiento2" ReturnType="Collection(HundeDBModel.usp_ListarPacientePorTratamiento2_Result)">
-            <Parameter Name="tipo_tratamiento" Mode="In" Type="String" />
+          <Parameter Name="tipo_tratamiento" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_ListarPacientes" ReturnType="Collection(HundeDBModel.usp_ListarPacientes_Result)" />
           <FunctionImport Name="usp_ListarPacientesPorCliente" ReturnType="Collection(HundeDBModel.usp_ListarPacientesPorCliente_Result)">
-            <Parameter Name="vcod_cli" Mode="In" Type="String" />
+          <Parameter Name="vcod_cli" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_ListarPacientesPorRaza2" ReturnType="Collection(HundeDBModel.usp_ListarPacientesPorRaza2_Result)">
-            <Parameter Name="vraza" Mode="In" Type="String" />
+          <Parameter Name="vraza" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_ListarProveedores" ReturnType="Collection(HundeDBModel.usp_ListarProveedores_Result)" />
+          <EntitySet Name="Tb_Usuario" EntityType="HundeDBModel.Tb_Usuario" />
+          <AssociationSet Name="FK_Usuario_user" Association="HundeDBModel.FK_Usuario_user">
+            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+            <End Role="Tb_Usuario" EntitySet="Tb_Usuario" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="usp_ListarEstadoProveedorMedicina_Result">
           <Property Type="String" Name="cod_prov" Nullable="false" MaxLength="4" />
@@ -678,6 +712,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorMedicina' no tiene d
           <Property Name="usu_ult_modificacion_emp" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="fecha_ult_modificacion_emp" Type="DateTime" Precision="3" />
           <Property Name="estado_emp" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tb_Usuario" Relationship="HundeDBModel.FK_Usuario_user" FromRole="Tb_Empleado" ToRole="Tb_Usuario" />
         </EntityType>
         <EntityType Name="Tb_Medicina">
           <Key>
@@ -900,6 +935,31 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorMedicina' no tiene d
           <Property Type="DateTime" Name="fecha_ult_modificacion_prov" Nullable="true" Precision="23" />
           <Property Type="Int32" Name="estado_prov" Nullable="true" />
         </ComplexType>
+        <EntityType Name="Tb_Usuario">
+          <Key>
+            <PropertyRef Name="login_usuario" />
+          </Key>
+          <Property Name="login_usuario" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="pass_usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="niv_usuario" Type="Int32" />
+          <Property Name="est_usuario" Type="Int32" />
+          <Property Name="fec_registro" Type="DateTime" Precision="3" />
+          <Property Name="usu_reg_usu" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="cod_emp" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Empleado" Relationship="HundeDBModel.FK_Usuario_user" FromRole="Tb_Usuario" ToRole="Tb_Empleado" />
+        </EntityType>
+        <Association Name="FK_Usuario_user">
+          <End Type="HundeDBModel.Tb_Empleado" Role="Tb_Empleado" Multiplicity="0..1" />
+          <End Type="HundeDBModel.Tb_Usuario" Role="Tb_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Empleado">
+              <PropertyRef Name="cod_emp" />
+            </Principal>
+            <Dependent Role="Tb_Usuario">
+              <PropertyRef Name="cod_emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1211,6 +1271,19 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorMedicina' no tiene d
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Tb_Usuario">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Usuario">
+              <MappingFragment StoreEntitySet="Tb_Usuario">
+                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+                <ScalarProperty Name="usu_reg_usu" ColumnName="usu_reg_usu" />
+                <ScalarProperty Name="fec_registro" ColumnName="fec_registro" />
+                <ScalarProperty Name="est_usuario" ColumnName="est_usuario" />
+                <ScalarProperty Name="niv_usuario" ColumnName="niv_usuario" />
+                <ScalarProperty Name="pass_usuario" ColumnName="pass_usuario" />
+                <ScalarProperty Name="login_usuario" ColumnName="login_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

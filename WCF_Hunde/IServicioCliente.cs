@@ -31,7 +31,6 @@ namespace WCF_Hunde
 
     [DataContract]
     [Serializable]
-
     public class ClienteBE
     {
 

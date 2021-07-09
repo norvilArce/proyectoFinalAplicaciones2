@@ -14,6 +14,12 @@ namespace WCF_Hunde
     
     public partial class Tb_Empleado
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Tb_Empleado()
+        {
+            this.Tb_Usuario = new HashSet<Tb_Usuario>();
+        }
+    
         public string cod_emp { get; set; }
         public int rol_emp { get; set; }
         public string nom_empleado { get; set; }
@@ -25,5 +31,8 @@ namespace WCF_Hunde
         public string usu_ult_modificacion_emp { get; set; }
         public Nullable<System.DateTime> fecha_ult_modificacion_emp { get; set; }
         public int estado_emp { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tb_Usuario> Tb_Usuario { get; set; }
     }
 }

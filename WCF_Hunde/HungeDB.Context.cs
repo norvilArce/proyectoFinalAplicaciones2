@@ -35,6 +35,7 @@ namespace WCF_Hunde
         public virtual DbSet<vw_DetallesPaciente> vw_DetallesPaciente { get; set; }
         public virtual DbSet<vw_ProveedorActivo> vw_ProveedorActivo { get; set; }
         public virtual DbSet<vw_ProveedorMedicina> vw_ProveedorMedicina { get; set; }
+        public virtual DbSet<Tb_Usuario> Tb_Usuario { get; set; }
     
         public virtual int usp_ActualizarEmpleado(Nullable<int> vrol_emp, string vnom_empleado, string vape_empleado, Nullable<System.DateTime> vfecha_ingreso, Nullable<decimal> vsueldo, string vemail_emp, string vcod_supervisor, string vusu_ult_mod, Nullable<System.DateTime> vfec_ult_mod, Nullable<int> vestado_emp, string vcod_emp)
         {

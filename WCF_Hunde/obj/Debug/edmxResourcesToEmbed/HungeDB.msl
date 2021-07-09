@@ -306,5 +306,18 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="Tb_Usuario">
+      <EntityTypeMapping TypeName="HundeDBModel.Tb_Usuario">
+        <MappingFragment StoreEntitySet="Tb_Usuario">
+          <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+          <ScalarProperty Name="usu_reg_usu" ColumnName="usu_reg_usu" />
+          <ScalarProperty Name="fec_registro" ColumnName="fec_registro" />
+          <ScalarProperty Name="est_usuario" ColumnName="est_usuario" />
+          <ScalarProperty Name="niv_usuario" ColumnName="niv_usuario" />
+          <ScalarProperty Name="pass_usuario" ColumnName="pass_usuario" />
+          <ScalarProperty Name="login_usuario" ColumnName="login_usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

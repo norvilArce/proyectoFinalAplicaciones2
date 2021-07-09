@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsCredenciales.cs" />
     <Compile Include="Connected Services\ProxyEmpleado\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -59,6 +60,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Connected Services\ProxyProveedor\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ProxyUsuario\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -87,6 +93,18 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDIPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIPrincipal.designer.cs">
+      <DependentUpon>MDIPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorConsulta.cs">
@@ -109,6 +127,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EmpleadoLista.resx">
       <DependentUpon>EmpleadoLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIPrincipal.resx">
+      <DependentUpon>MDIPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -167,6 +191,19 @@
     <None Include="Connected Services\ProxyProveedor\Win_Hunde.ProxyProveedor.ProveedorBE.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ProxyUsuario\service.wsdl" />
+    <None Include="Connected Services\ProxyUsuario\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProxyUsuario\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProxyUsuario\WCF_Hunde.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProxyUsuario\Win_Hunde.ProxyUsuario.Usuario.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -187,6 +224,7 @@
     <WCFMetadataStorage Include="Connected Services\ProxyEmpleado\" />
     <WCFMetadataStorage Include="Connected Services\ProxyPaciente\" />
     <WCFMetadataStorage Include="Connected Services\ProxyProveedor\" />
+    <WCFMetadataStorage Include="Connected Services\ProxyUsuario\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ProxyEmpleado\configuration91.svcinfo" />
@@ -220,6 +258,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ProxyPaciente\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProxyUsuario\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProxyUsuario\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProxyUsuario\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
