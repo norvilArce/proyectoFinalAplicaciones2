@@ -110,7 +110,6 @@ D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\Web_Hu
 D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\Web_Hunde\bin\roslyn\VBCSCompiler.exe.config
 D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\Web_Hunde\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\Web_Hunde\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\Web_Hunde\obj\Debug\Web_Hunde.csproj.AssemblyReference.cache
 D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\Web_Hunde\obj\Debug\Web_Hunde.csproj.CoreCompileInputs.cache
 D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\Web_Hunde\obj\Debug\Web_Hunde.csproj.CopyComplete
 D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\Web_Hunde\obj\Debug\Web_Hunde.dll

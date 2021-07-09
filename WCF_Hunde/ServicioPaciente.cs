@@ -20,7 +20,7 @@ namespace WCF_Hunde
             try
             {
 
-                var query = misPacientes.usp_ListarPacientesPorRaza(srtRazaPaciente);
+                var query = misPacientes.usp_ListarPacientesPorRaza1(srtRazaPaciente);
                 foreach (var objPacienteRaza in query)
                 {
                     PacienteBE objPacienteRazaBE = new PacienteBE();
@@ -97,7 +97,7 @@ namespace WCF_Hunde
 
             try
             {
-                var query = misPacientes.usp_ListarPacientePorTratamiento(srtTipoTratamiento);
+                var query = misPacientes.usp_ListarPacientePorTratamiento1(srtTipoTratamiento);
                 foreach (var resultado in query)
                 {
                     PacienteBE objPacienteBE = new PacienteBE();

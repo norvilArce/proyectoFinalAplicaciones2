@@ -299,5 +299,23 @@ namespace WCF_Hunde
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ListarPacientePorTratamiento_Result>("usp_ListarPacientePorTratamiento", tipo_tratamientoParameter);
         }
+    
+        public virtual ObjectResult<usp_ListarPacientesPorRaza1_Result> usp_ListarPacientesPorRaza1(string vraza)
+        {
+            var vrazaParameter = vraza != null ?
+                new ObjectParameter("vraza", vraza) :
+                new ObjectParameter("vraza", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ListarPacientesPorRaza1_Result>("usp_ListarPacientesPorRaza1", vrazaParameter);
+        }
+    
+        public virtual ObjectResult<usp_ListarPacientePorTratamiento1_Result> usp_ListarPacientePorTratamiento1(string tipo_tratamiento)
+        {
+            var tipo_tratamientoParameter = tipo_tratamiento != null ?
+                new ObjectParameter("tipo_tratamiento", tipo_tratamiento) :
+                new ObjectParameter("tipo_tratamiento", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ListarPacientePorTratamiento1_Result>("usp_ListarPacientePorTratamiento1", tipo_tratamientoParameter);
+        }
     }
 }
