@@ -16,7 +16,11 @@ namespace Win_Hunde
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< HEAD
             Application.Run(new SupervisorProveedor());
+=======
+            Application.Run(new EmpleadoLista());
+>>>>>>> 862ce448ed46138457dc4d0253b95660bc5e1971
         }
     }
 }

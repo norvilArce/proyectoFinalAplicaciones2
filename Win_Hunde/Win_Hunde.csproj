@@ -48,7 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Connected Services\ProxyProveedor\Reference.cs">
+=======
+    <Compile Include="Connected Services\ProxyEmpleado\Reference.cs">
+>>>>>>> 862ce448ed46138457dc4d0253b95660bc5e1971
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -79,6 +83,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
     <Compile Include="ProveedorConsulta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +96,14 @@
     <Compile Include="SupervisorProveedor.Designer.cs">
       <DependentUpon>SupervisorProveedor.cs</DependentUpon>
     </Compile>
+=======
+    <EmbeddedResource Include="EmpleadoActualizar.resx">
+      <DependentUpon>EmpleadoActualizar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpleadoAgregar.resx">
+      <DependentUpon>EmpleadoAgregar.cs</DependentUpon>
+    </EmbeddedResource>
+>>>>>>> 862ce448ed46138457dc4d0253b95660bc5e1971
     <EmbeddedResource Include="EmpleadoLista.resx">
       <DependentUpon>EmpleadoLista.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +116,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <EmbeddedResource Include="ProveedorConsulta.resx">
       <DependentUpon>ProveedorConsulta.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,6 +137,19 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ProxyProveedor\Win_Hunde.ProxyProveedor.ProveedorBE.datasource">
+=======
+    <None Include="Connected Services\ProxyEmpleado\service.wsdl" />
+    <None Include="Connected Services\ProxyEmpleado\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProxyEmpleado\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProxyEmpleado\WCF_Hunde.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProxyEmpleado\Win_Hunde.ProxyEmpleado.Empleado.datasource">
+>>>>>>> 862ce448ed46138457dc4d0253b95660bc5e1971
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
@@ -142,6 +169,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <WCFMetadataStorage Include="Connected Services\ProxyProveedor\" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +180,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ProxyProveedor\Reference.svcmap">
+=======
+    <WCFMetadataStorage Include="Connected Services\ProxyEmpleado\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProxyEmpleado\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProxyEmpleado\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProxyEmpleado\Reference.svcmap">
+>>>>>>> 862ce448ed46138457dc4d0253b95660bc5e1971
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
