@@ -21,7 +21,7 @@ namespace WCF_Hunde
                 MisClientes.usp_InsertarCliente(objClienteBE.Tipo_cliente, objClienteBE.nom_cliente,
                     objClienteBE.ape_pat_cliente, objClienteBE.ape_mat_cliente, objClienteBE.direccion_cliente,
                     objClienteBE.cel_cliente, objClienteBE.email_cliente, objClienteBE.es_dueno,
-                    objClienteBE.es_empleado, objClienteBE.id_ubigeo, objClienteBE.dni_cliente,
+                    objClienteBE.id_ubigeo, objClienteBE.dni_cliente,
                     objClienteBE.usu_reg_cli, objClienteBE.estado_cli);
                 return true;
             }
@@ -69,14 +69,6 @@ namespace WCF_Hunde
                     objCliente.dueno = "Familiar";
                 }
 
-                if (objConsulta.es_empleado == 1)
-                {
-                    objCliente.empleado = "Empleado";
-                }
-                else
-                {
-                    objCliente.empleado = "Cliente";
-                }
 
                 objCliente.dni_cliente = objConsulta.dni_cliente;
 
@@ -110,7 +102,7 @@ namespace WCF_Hunde
                 MisClientes.usp_ActualizarCliente(objClienteBE.Tipo_cliente, objClienteBE.nom_cliente,
                     objClienteBE.ape_pat_cliente, objClienteBE.ape_mat_cliente, objClienteBE.direccion_cliente,
                     objClienteBE.cel_cliente, objClienteBE.email_cliente, objClienteBE.es_dueno,
-                    objClienteBE.es_empleado, objClienteBE.id_ubigeo, objClienteBE.dni_cliente,
+                    objClienteBE.id_ubigeo, objClienteBE.dni_cliente,
                     objClienteBE.usu_ult_modificacion_cli, objClienteBE.fecha_ult_modificacion_cli,
                     objClienteBE.estado_cli, objClienteBE.cod_cli);
                 return true;

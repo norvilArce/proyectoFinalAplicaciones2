@@ -54,9 +54,6 @@ namespace WCF_Hunde
         //Adiccion campo especial para dueño
         private String mvarduenopaciente;
 
-        private Int16 mvares_empleado;
-        //Adiccion campo especial para empleado
-        private String mvarcliente_empleado;
 
         private String mvarid_ubigeo;
         private String mvardni_cliente;
@@ -131,12 +128,6 @@ namespace WCF_Hunde
             set { mvares_dueno = value; }
         }
 
-        [DataMember]
-        public Int16 es_empleado
-        {
-            get { return mvares_empleado; }
-            set { mvares_empleado = value; }
-        }
 
         [DataMember]
         public String id_ubigeo
@@ -202,12 +193,6 @@ namespace WCF_Hunde
             set { mvarduenopaciente = value; }
         }
 
-        [DataMember]
-        public String empleado
-        {
-            get { return mvarcliente_empleado; }
-            set { mvarcliente_empleado = value; }
-        }
 
         [DataMember]
         public String estado

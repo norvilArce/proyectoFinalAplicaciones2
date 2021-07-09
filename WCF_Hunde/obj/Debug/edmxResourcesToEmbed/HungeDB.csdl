@@ -27,16 +27,9 @@
     <FunctionImport Name="usp_EliminarEmpleado">
       <Parameter Name="vcod_emp" Mode="In" Type="String" />
     </FunctionImport>
-    <EntitySet Name="Tb_Cliente" EntityType="HundeDBModel.Tb_Cliente" />
-    <EntitySet Name="Tb_Empleado" EntityType="HundeDBModel.Tb_Empleado" />
     <EntitySet Name="Tb_Medicina" EntityType="HundeDBModel.Tb_Medicina" />
     <EntitySet Name="Tb_Paciente" EntityType="HundeDBModel.Tb_Paciente" />
     <EntitySet Name="Tb_Proveedor" EntityType="HundeDBModel.Tb_Proveedor" />
-    <EntitySet Name="vw_ClientesSonEmpleados" EntityType="HundeDBModel.vw_ClientesSonEmpleados" />
-    <AssociationSet Name="FK_Empleado_user" Association="HundeDBModel.FK_Empleado_user">
-      <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
-      <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
-    </AssociationSet>
     <FunctionImport Name="usp_ListarEstadoProveedorMedicina" ReturnType="Collection(HundeDBModel.usp_ListarEstadoProveedorMedicina_Result)">
       <Parameter Name="estado_prov" Mode="In" Type="Int32" />
       <Parameter Name="tipo_medicina" Mode="In" Type="String" />
@@ -86,48 +79,9 @@
     <FunctionImport Name="usp_ListarPacientePorTratamiento" ReturnType="Collection(HundeDBModel.usp_ListarPacientePorTratamiento_Result)">
       <Parameter Name="tipo_tratamiento" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="Tb_Cliente" EntityType="HundeDBModel.Tb_Cliente" />
+    <EntitySet Name="Tb_Empleado" EntityType="HundeDBModel.Tb_Empleado" />
   </EntityContainer>
-  <EntityType Name="Tb_Cliente">
-    <Key>
-      <PropertyRef Name="cod_cli" />
-    </Key>
-    <Property Name="cod_cli" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="Tipo_cliente" Type="Int32" Nullable="false" />
-    <Property Name="nom_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ape_pat_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ape_mat_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="direccion_cliente" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="cel_cliente" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
-    <Property Name="email_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="es_dueno" Type="Int32" Nullable="false" />
-    <Property Name="es_empleado" Type="Int32" Nullable="false" />
-    <Property Name="id_ubigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="dni_cliente" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
-    <Property Name="usu_reg_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="fec_reg_cli" Type="DateTime" Precision="3" />
-    <Property Name="usu_ult_modificacion_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="fecha_ult_modificacion_cli" Type="DateTime" Precision="3" />
-    <Property Name="estado_cli" Type="Int32" />
-    <NavigationProperty Name="Tb_Empleado" Relationship="HundeDBModel.FK_Empleado_user" FromRole="Tb_Cliente" ToRole="Tb_Empleado" />
-  </EntityType>
-  <EntityType Name="Tb_Empleado">
-    <Key>
-      <PropertyRef Name="cod_emp" />
-    </Key>
-    <Property Name="cod_emp" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="rol_emp" Type="Int32" Nullable="false" />
-    <Property Name="fecha_ingreso" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="sueldo" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="email_emp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cod_supervisor" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="cod_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="usu_ult_modificacion_emp" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="fecha_ult_modificacion_emp" Type="DateTime" Precision="3" />
-    <Property Name="estado_emp" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Tb_Cliente" Relationship="HundeDBModel.FK_Empleado_user" FromRole="Tb_Empleado" ToRole="Tb_Cliente" />
-    <Property Name="nom_empleado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ape_empleado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
   <EntityType Name="Tb_Medicina">
     <Key>
       <PropertyRef Name="cod_med" />
@@ -172,63 +126,6 @@
     <Property Name="fecha_ult_modificacion_prov" Type="DateTime" Precision="3" />
     <Property Name="estado_prov" Type="Int32" />
   </EntityType>
-  <EntityType Name="vw_ClientesSonEmpleados">
-    <Key>
-      <PropertyRef Name="cod_emp" />
-      <PropertyRef Name="rol_emp" />
-      <PropertyRef Name="fecha_ingreso" />
-      <PropertyRef Name="estado_emp" />
-      <PropertyRef Name="Tipo_cliente" />
-      <PropertyRef Name="nom_cliente" />
-      <PropertyRef Name="ape_pat_cliente" />
-      <PropertyRef Name="ape_mat_cliente" />
-      <PropertyRef Name="direccion_cliente" />
-      <PropertyRef Name="cel_cliente" />
-      <PropertyRef Name="email_cliente" />
-      <PropertyRef Name="es_dueno" />
-      <PropertyRef Name="es_empleado" />
-      <PropertyRef Name="id_ubigeo" />
-      <PropertyRef Name="dni_cliente" />
-    </Key>
-    <Property Name="cod_emp" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="rol_emp" Type="Int32" Nullable="false" />
-    <Property Name="fecha_ingreso" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="sueldo" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="email_emp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cod_supervisor" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="cod_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="usu_ult_modificacion_emp" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="fecha_ult_modificacion_emp" Type="DateTime" Precision="3" />
-    <Property Name="estado_emp" Type="Int32" Nullable="false" />
-    <Property Name="Tipo_cliente" Type="Int32" Nullable="false" />
-    <Property Name="nom_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ape_pat_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ape_mat_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="direccion_cliente" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="cel_cliente" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
-    <Property Name="email_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="es_dueno" Type="Int32" Nullable="false" />
-    <Property Name="es_empleado" Type="Int32" Nullable="false" />
-    <Property Name="id_ubigeo" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
-    <Property Name="dni_cliente" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
-    <Property Name="usu_reg_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="fec_reg_cli" Type="DateTime" Precision="3" />
-    <Property Name="usu_ult_modificacion_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="fecha_ult_modificacion_cli" Type="DateTime" Precision="3" />
-    <Property Name="estado_cli" Type="Int32" />
-  </EntityType>
-  <Association Name="FK_Empleado_user">
-    <End Type="HundeDBModel.Tb_Cliente" Role="Tb_Cliente" Multiplicity="0..1" />
-    <End Type="HundeDBModel.Tb_Empleado" Role="Tb_Empleado" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Tb_Cliente">
-        <PropertyRef Name="cod_cli" />
-      </Principal>
-      <Dependent Role="Tb_Empleado">
-        <PropertyRef Name="cod_cli" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <ComplexType Name="usp_ListarEstadoProveedorMedicina_Result">
     <Property Type="String" Name="cod_prov" Nullable="false" MaxLength="4" />
     <Property Type="String" Name="cod_med" Nullable="false" MaxLength="4" />
@@ -283,4 +180,41 @@
     <Property Type="String" Name="tipo_trat" Nullable="false" MaxLength="50" />
     <Property Type="Int32" Name="estado_trat" Nullable="true" />
   </ComplexType>
+  <EntityType Name="Tb_Cliente">
+    <Key>
+      <PropertyRef Name="cod_cli" />
+    </Key>
+    <Property Name="cod_cli" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo_cliente" Type="Int32" Nullable="false" />
+    <Property Name="nom_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ape_pat_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ape_mat_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="direccion_cliente" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="cel_cliente" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="email_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="es_dueno" Type="Int32" Nullable="false" />
+    <Property Name="id_ubigeo" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="dni_cliente" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Name="usu_reg_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="fec_reg_cli" Type="DateTime" Precision="3" />
+    <Property Name="usu_ult_modificacion_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_ult_modificacion_cli" Type="DateTime" Precision="3" />
+    <Property Name="estado_cli" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tb_Empleado">
+    <Key>
+      <PropertyRef Name="cod_emp" />
+    </Key>
+    <Property Name="cod_emp" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="rol_emp" Type="Int32" Nullable="false" />
+    <Property Name="nom_empleado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ape_empleado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_ingreso" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="sueldo" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="email_emp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cod_supervisor" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="usu_ult_modificacion_emp" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_ult_modificacion_emp" Type="DateTime" Precision="3" />
+    <Property Name="estado_emp" Type="Int32" Nullable="false" />
+  </EntityType>
 </Schema>

@@ -158,6 +158,7 @@
   <ItemGroup>
     <Folder Include="Consultas\" />
     <Folder Include="CSS\" />
+    <Folder Include="Mantenimientos\Clientes\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
