@@ -56,7 +56,7 @@ namespace Win_Hunde
             try
             {
 
-                dtgProveedor.DataSource = objServProv.ConsultarProveedores();
+                dtgProveedor.DataSource = objServProv.ConsultarEstadoProveedorMedicina();
                 //(cboSupervisor.SelectedValue.ToString());
 
                 if (dtgProveedor.Rows.Count == 0)
