@@ -20,10 +20,10 @@ namespace WCF_Hunde
         List<ProveedorBE> ConsultarSupervisor();
 
         [OperationContract]
-        List<ProveedorBE> ConsultarMedicinaProveedor(String srtTipoMedicina);
+        ProveedorBE ConsultarMedicinaProveedor(String srtTipoMedicina);
 
         [OperationContract]
-        List<EstadosBE> ConsultarEstadoProveedorMedicina(Int16 strEstadoProveedor, String strTipoMedicina);
+        List<EstadosBE> ConsultarEstadoProveedorMedicina();
 
     
     }

@@ -113,6 +113,12 @@
     <Compile Include="ProveedorConsulta.designer.cs">
       <DependentUpon>ProveedorConsulta.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProveedorMedicinas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProveedorMedicinas.Designer.cs">
+      <DependentUpon>ProveedorMedicinas.cs</DependentUpon>
+    </Compile>
     <Compile Include="SupervisorProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,9 @@
     </Compile>
     <EmbeddedResource Include="ProveedorConsulta.resx">
       <DependentUpon>ProveedorConsulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProveedorMedicinas.resx">
+      <DependentUpon>ProveedorMedicinas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SupervisorProveedor.resx">
       <DependentUpon>SupervisorProveedor.cs</DependentUpon>

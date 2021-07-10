@@ -31,8 +31,10 @@ namespace WCF_Hunde
         public string usu_ult_modificacion_emp { get; set; }
         public Nullable<System.DateTime> fecha_ult_modificacion_emp { get; set; }
         public int estado_emp { get; set; }
+        public string cod_cli { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tb_Usuario> Tb_Usuario { get; set; }
+        public virtual Tb_Cliente Tb_Cliente { get; set; }
     }
 }

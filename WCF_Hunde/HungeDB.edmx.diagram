@@ -15,6 +15,7 @@
         <EntityTypeShape EntityType="HundeDBModel.vw_ProveedorMedicina" Width="1.5" PointX="8.75" PointY="0.75" />
         <EntityTypeShape EntityType="HundeDBModel.Tb_Usuario" Width="1.5" PointX="5" PointY="10.125" />
         <AssociationConnector Association="HundeDBModel.FK_Usuario_user" />
+        <AssociationConnector Association="HundeDBModel.FK_Empleado_user" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

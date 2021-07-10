@@ -398,10 +398,10 @@ namespace Win_Hunde.ProxyProveedor1 {
         System.Threading.Tasks.Task<Win_Hunde.ProxyProveedor1.ProveedorBE[]> ConsultarSupervisorAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioProveedor/ConsultarMedicinaProveedor", ReplyAction="http://tempuri.org/IServicioProveedor/ConsultarMedicinaProveedorResponse")]
-        Win_Hunde.ProxyProveedor1.ProveedorBE[] ConsultarMedicinaProveedor(string srtTipoMedicina);
+        Win_Hunde.ProxyProveedor1.ProveedorBE ConsultarMedicinaProveedor(string srtTipoMedicina);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioProveedor/ConsultarMedicinaProveedor", ReplyAction="http://tempuri.org/IServicioProveedor/ConsultarMedicinaProveedorResponse")]
-        System.Threading.Tasks.Task<Win_Hunde.ProxyProveedor1.ProveedorBE[]> ConsultarMedicinaProveedorAsync(string srtTipoMedicina);
+        System.Threading.Tasks.Task<Win_Hunde.ProxyProveedor1.ProveedorBE> ConsultarMedicinaProveedorAsync(string srtTipoMedicina);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioProveedor/ConsultarEstadoProveedorMedicina", ReplyAction="http://tempuri.org/IServicioProveedor/ConsultarEstadoProveedorMedicinaResponse")]
         Win_Hunde.ProxyProveedor1.EstadosBE[] ConsultarEstadoProveedorMedicina(short strEstadoProveedor, string strTipoMedicina);
@@ -461,11 +461,11 @@ namespace Win_Hunde.ProxyProveedor1 {
             return base.Channel.ConsultarSupervisorAsync();
         }
         
-        public Win_Hunde.ProxyProveedor1.ProveedorBE[] ConsultarMedicinaProveedor(string srtTipoMedicina) {
+        public Win_Hunde.ProxyProveedor1.ProveedorBE ConsultarMedicinaProveedor(string srtTipoMedicina) {
             return base.Channel.ConsultarMedicinaProveedor(srtTipoMedicina);
         }
         
-        public System.Threading.Tasks.Task<Win_Hunde.ProxyProveedor1.ProveedorBE[]> ConsultarMedicinaProveedorAsync(string srtTipoMedicina) {
+        public System.Threading.Tasks.Task<Win_Hunde.ProxyProveedor1.ProveedorBE> ConsultarMedicinaProveedorAsync(string srtTipoMedicina) {
             return base.Channel.ConsultarMedicinaProveedorAsync(srtTipoMedicina);
         }
         

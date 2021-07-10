@@ -49,7 +49,7 @@
   <xs:element name="ConsultarMedicinaProveedorResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WCF_Hunde" minOccurs="0" name="ConsultarMedicinaProveedorResult" nillable="true" type="q4:ArrayOfProveedorBE" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WCF_Hunde" minOccurs="0" name="ConsultarMedicinaProveedorResult" nillable="true" type="q4:ProveedorBE" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

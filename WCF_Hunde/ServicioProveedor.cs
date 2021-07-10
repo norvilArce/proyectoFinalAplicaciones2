@@ -77,7 +77,32 @@ namespace WCF_Hunde
             }
         }
 
+        public ProveedorBE ConsultarMedicinaProveedor(string srtTipoMedicina)
+        {
+            HundeDBEntities misProveedores = new HundeDBEntities();
 
+            try
+            {
+                Tb_Medicina rs = (from prov in misProveedores.Tb_Medicina
+                                   where prov.tipo_medicina == srtTipoMedicina
+                                   
+                                  select prov).FirstOrDefault();
+
+                ProveedorBE objMedcinaBE = new ProveedorBE();
+                    objMedcinaBE.tipo_medicina = rs.tipo_medicina;
+                    objMedcinaBE.cod_med = rs.cod_med;
+                    objMedcinaBE.nombre_medicina = rs.nombre_medicina;
+
+
+                
+                return objMedcinaBE;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public List<ProveedorBE> ConsultarSupervisor()
         {
 
@@ -115,40 +140,10 @@ namespace WCF_Hunde
         }
 
 
-        public List<ProveedorBE> ConsultarMedicinaProveedor(string srtTipoMedicina)
-        {
-            HundeDBEntities misProveedores = new HundeDBEntities();
-            List<ProveedorBE> objListaMedicinaBE = new List<ProveedorBE>();
-
-            try
-            {
-
-                var query = misProveedores.usp_ListarTipoMedicinaProveedor(srtTipoMedicina);
-                foreach (var rs in query)
-                {
-                    ProveedorBE objMedcinaBE = new ProveedorBE();
-                    objMedcinaBE.cod_prov = rs.cod_prov;
-                    objMedcinaBE.cod_med = rs.cod_med;
-                    objMedcinaBE.nom_prov = rs.nom_prov;
-                    objMedcinaBE.email_prov = rs.email_prov;
-                    objMedcinaBE.tel_prov = rs.tel_prov;
-                    objMedcinaBE.nombre_medicina = rs.nombre_medicina;
-                    objMedcinaBE.tipo_medicina = rs.tipo_medicina;
-
-                    objListaMedicinaBE.Add(objMedcinaBE);
-
-                }
-                return objListaMedicinaBE;
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+        
 
 
-        public List<EstadosBE> ConsultarEstadoProveedorMedicina(short strEstadoProveedor, string strTipoMedicina)
+        public List<EstadosBE> ConsultarEstadoProveedorMedicina()
         {
 
             HundeDBEntities misProveedores = new HundeDBEntities();
@@ -156,18 +151,20 @@ namespace WCF_Hunde
 
             try
             {
-                var query = misProveedores.usp_ListarEstadoProveedorMedicina(strEstadoProveedor, strTipoMedicina);
+                var query = (from objSup in misProveedores.Tb_Medicina
+                             select objSup);
+
+
                 foreach (var rs in query)
                 {
-                    EstadosBE objEstado = new EstadosBE();
-                    objEstado.cod_prov = rs.cod_prov;
-                    objEstado.cod_med = rs.cod_med;
-                    objEstado.nom_prov = rs.nom_prov;
-                    objEstado.nombre_medicina = rs.nombre_medicina;
-                    objEstado.tipo_medicina = rs.tipo_medicina;
-                    objEstado.estado_prov = Convert.ToInt16(rs.estado_prov);
 
-                    objListEstado.Add(objEstado);
+
+                    EstadosBE objMedcinaBE = new EstadosBE();
+                    objMedcinaBE.tipo_medicina = rs.tipo_medicina;
+                    objMedcinaBE.cod_med = rs.cod_med;
+                    objMedcinaBE.nombre_medicina = rs.nombre_medicina;
+
+                    objListEstado.Add(objMedcinaBE);
 
                 }
                 return objListEstado;

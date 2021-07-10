@@ -13,6 +13,7 @@
     <Property Name="cel_cliente" Type="varchar" MaxLength="9" Nullable="false" />
     <Property Name="email_cliente" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="es_dueno" Type="int" Nullable="false" />
+    <Property Name="es_empleado" Type="int" Nullable="false" />
     <Property Name="id_ubigeo" Type="varchar" MaxLength="6" Nullable="false" />
     <Property Name="dni_cliente" Type="char" MaxLength="8" Nullable="false" />
     <Property Name="usu_reg_cli" Type="varchar" MaxLength="4" />
@@ -27,12 +28,11 @@
     </Key>
     <Property Name="cod_emp" Type="varchar" MaxLength="4" Nullable="false" />
     <Property Name="rol_emp" Type="int" Nullable="false" />
-    <Property Name="nom_empleado" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="ape_empleado" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="fecha_ingreso" Type="datetime" Nullable="false" />
     <Property Name="sueldo" Type="money" />
     <Property Name="email_emp" Type="varchar" MaxLength="50" />
     <Property Name="cod_supervisor" Type="varchar" MaxLength="4" />
+    <Property Name="cod_cli" Type="varchar" MaxLength="4" />
     <Property Name="usu_ult_modificacion_emp" Type="varchar" MaxLength="4" />
     <Property Name="fecha_ult_modificacion_emp" Type="datetime" />
     <Property Name="estado_emp" Type="int" Nullable="false" />
@@ -81,6 +81,12 @@
     <Property Name="fecha_ult_modificacion_prov" Type="datetime" />
     <Property Name="estado_prov" Type="int" />
   </EntityType>
+  <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'HundeDB.dbo.Tb_Proveedor_Medicina' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Tb_Proveedor_Medicina">
+          <Property Name="cod_prov" Type="varchar" MaxLength="4" />
+          <Property Name="cod_med" Type="varchar" MaxLength="4" />
+        </EntityType>-->
   <EntityType Name="Tb_Usuario">
     <Key>
       <PropertyRef Name="login_usuario" />
@@ -94,92 +100,23 @@
     <Property Name="cod_emp" Type="varchar" MaxLength="4" />
   </EntityType>
   <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-  <EntityType Name="vw_DetallesPaciente">
-    <Key>
-      <PropertyRef Name="codigo" />
-      <PropertyRef Name="nombre" />
-      <PropertyRef Name="tipo_paciente" />
-      <PropertyRef Name="raza" />
-      <PropertyRef Name="fecha_nacimiento" />
-      <PropertyRef Name="sexo" />
-      <PropertyRef Name="color" />
-      <PropertyRef Name="longitud" />
-      <PropertyRef Name="peso" />
-      <PropertyRef Name="conducta" />
-      <PropertyRef Name="nutricion" />
-      <PropertyRef Name="actividad" />
-      <PropertyRef Name="estado" />
-    </Key>
-    <Property Name="codigo" Type="varchar" MaxLength="4" Nullable="false" />
-    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="tipo_paciente" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="raza" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="fecha_nacimiento" Type="date" Nullable="false" />
-    <Property Name="sexo" Type="int" Nullable="false" />
-    <Property Name="color" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="longitud" Type="float" Nullable="false" />
-    <Property Name="peso" Type="float" Nullable="false" />
-    <Property Name="conducta" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="nutricion" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="actividad" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="observaciones" Type="varchar" MaxLength="300" />
-    <Property Name="detalles_observaciones" Type="varchar" MaxLength="300" />
-    <Property Name="estado" Type="int" Nullable="false" />
-  </EntityType>
+error 6004: Una relación hace referencia a la tabla 'HundeDB.dbo.Tb_Proveedor_Medicina', pero no se encuentra la tabla.
+        <Association Name="FK__Tb_Provee__cod_m__75A278F5" />-->
+  <Association Name="FK_Empleado_user">
+    <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="0..1" />
+    <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tb_Cliente">
+        <PropertyRef Name="cod_cli" />
+      </Principal>
+      <Dependent Role="Tb_Empleado">
+        <PropertyRef Name="cod_cli" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorActivo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-  <EntityType Name="vw_ProveedorActivo">
-    <Key>
-      <PropertyRef Name="cod_prov" />
-      <PropertyRef Name="nom_prov" />
-      <PropertyRef Name="ruc_prov" />
-      <PropertyRef Name="direccion_prov" />
-      <PropertyRef Name="tel_prov" />
-      <PropertyRef Name="email_prov" />
-      <PropertyRef Name="rep_ven_prov" />
-    </Key>
-    <Property Name="cod_prov" Type="varchar" MaxLength="4" Nullable="false" />
-    <Property Name="nom_prov" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="ruc_prov" Type="varchar" MaxLength="11" Nullable="false" />
-    <Property Name="direccion_prov" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="tel_prov" Type="varchar" MaxLength="9" Nullable="false" />
-    <Property Name="email_prov" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="rep_ven_prov" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="usu_reg_prov" Type="varchar" MaxLength="4" />
-    <Property Name="fec_reg_prov" Type="datetime" />
-    <Property Name="usu_ult_modificacion_prov" Type="varchar" MaxLength="4" />
-    <Property Name="fecha_ult_modificacion_prov" Type="datetime" />
-    <Property Name="estado_prov" Type="int" />
-  </EntityType>
-  <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorMedicina' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-  <EntityType Name="vw_ProveedorMedicina">
-    <Key>
-      <PropertyRef Name="cod_prov" />
-      <PropertyRef Name="nom_prov" />
-      <PropertyRef Name="ruc_prov" />
-      <PropertyRef Name="direccion_prov" />
-      <PropertyRef Name="tel_prov" />
-      <PropertyRef Name="email_prov" />
-      <PropertyRef Name="rep_ven_prov" />
-      <PropertyRef Name="cod_med" />
-      <PropertyRef Name="nombre_medicina" />
-      <PropertyRef Name="tipo_medicina" />
-    </Key>
-    <Property Name="cod_prov" Type="varchar" MaxLength="4" Nullable="false" />
-    <Property Name="nom_prov" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="ruc_prov" Type="varchar" MaxLength="11" Nullable="false" />
-    <Property Name="direccion_prov" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="tel_prov" Type="varchar" MaxLength="9" Nullable="false" />
-    <Property Name="email_prov" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="rep_ven_prov" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="fec_reg_prov" Type="datetime" />
-    <Property Name="estado_prov" Type="int" />
-    <Property Name="cod_med" Type="varchar" MaxLength="4" Nullable="false" />
-    <Property Name="nombre_medicina" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="tipo_medicina" Type="varchar" MaxLength="50" Nullable="false" />
-  </EntityType>
+error 6004: Una relación hace referencia a la tabla 'HundeDB.dbo.Tb_Proveedor_Medicina', pero no se encuentra la tabla.
+        <Association Name="Fk_Proveedor_medicina" />-->
   <Association Name="FK_Usuario_user">
     <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="0..1" />
     <End Role="Tb_Usuario" Type="Self.Tb_Usuario" Multiplicity="*" />
@@ -201,6 +138,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorMedicina' no tiene d
     <Parameter Name="vcel_cli" Type="varchar" Mode="In" />
     <Parameter Name="vemail_cli" Type="varchar" Mode="In" />
     <Parameter Name="ves_dueno" Type="int" Mode="In" />
+    <Parameter Name="ves_empleado" Type="int" Mode="In" />
     <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
     <Parameter Name="vdni_cli" Type="char" Mode="In" />
     <Parameter Name="vusu_ult_mod" Type="varchar" Mode="In" />
@@ -209,16 +147,26 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorMedicina' no tiene d
     <Parameter Name="vcod_cli" Type="varchar" Mode="In" />
   </Function>
   <Function Name="usp_ActualizarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="vrol_emp" Type="int" Mode="In" />
-    <Parameter Name="vnom_empleado" Type="varchar" Mode="In" />
-    <Parameter Name="vape_empleado" Type="varchar" Mode="In" />
-    <Parameter Name="vfecha_ingreso" Type="datetime" Mode="In" />
-    <Parameter Name="vsueldo" Type="money" Mode="In" />
-    <Parameter Name="vemail_emp" Type="varchar" Mode="In" />
-    <Parameter Name="vcod_supervisor" Type="varchar" Mode="In" />
+    <Parameter Name="vtipo_cliente" Type="int" Mode="In" />
+    <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
+    <Parameter Name="vape_pat_cli" Type="varchar" Mode="In" />
+    <Parameter Name="vape_mat_cli" Type="varchar" Mode="In" />
+    <Parameter Name="vdir_cli" Type="varchar" Mode="In" />
+    <Parameter Name="vcel_cli" Type="varchar" Mode="In" />
+    <Parameter Name="vemail_cli" Type="varchar" Mode="In" />
+    <Parameter Name="ves_dueno" Type="int" Mode="In" />
+    <Parameter Name="ves_empleado" Type="int" Mode="In" />
+    <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
+    <Parameter Name="vdni_cli" Type="char" Mode="In" />
     <Parameter Name="vusu_ult_mod" Type="varchar" Mode="In" />
     <Parameter Name="vfec_ult_mod" Type="datetime" Mode="In" />
+    <Parameter Name="vestado_cli" Type="int" Mode="In" />
+    <Parameter Name="vrol_emp" Type="int" Mode="In" />
+    <Parameter Name="vfecha_ingreso" Type="datetime" Mode="In" />
+    <Parameter Name="vsueldo" Type="money" Mode="In" />
+    <Parameter Name="vcod_supervisor" Type="varchar" Mode="In" />
     <Parameter Name="vestado_emp" Type="int" Mode="In" />
+    <Parameter Name="vcod_cli" Type="varchar" Mode="In" />
     <Parameter Name="vcod_emp" Type="varchar" Mode="In" />
   </Function>
   <Function Name="usp_ActualizarPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -269,18 +217,29 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorMedicina' no tiene d
     <Parameter Name="vcel_cli" Type="varchar" Mode="In" />
     <Parameter Name="vemail_cli" Type="varchar" Mode="In" />
     <Parameter Name="ves_dueno" Type="int" Mode="In" />
+    <Parameter Name="ves_empleado" Type="int" Mode="In" />
     <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
     <Parameter Name="vdni_cli" Type="char" Mode="In" />
     <Parameter Name="vusu_reg_cli" Type="varchar" Mode="In" />
     <Parameter Name="vestado_cli" Type="int" Mode="In" />
   </Function>
   <Function Name="usp_InsertarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vtipo_cliente" Type="int" Mode="In" />
+    <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
+    <Parameter Name="vape_pat_cli" Type="varchar" Mode="In" />
+    <Parameter Name="vape_mat_cli" Type="varchar" Mode="In" />
+    <Parameter Name="vdir_cli" Type="varchar" Mode="In" />
+    <Parameter Name="vcel_cli" Type="varchar" Mode="In" />
+    <Parameter Name="vemail_cli" Type="varchar" Mode="In" />
+    <Parameter Name="ves_dueno" Type="int" Mode="In" />
+    <Parameter Name="ves_empleado" Type="int" Mode="In" />
+    <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
+    <Parameter Name="vdni_cli" Type="char" Mode="In" />
+    <Parameter Name="vusu_reg_cli" Type="varchar" Mode="In" />
+    <Parameter Name="vestado_cli" Type="int" Mode="In" />
     <Parameter Name="vrol_emp" Type="int" Mode="In" />
-    <Parameter Name="vnom_empleado" Type="varchar" Mode="In" />
-    <Parameter Name="vape_empleado" Type="varchar" Mode="In" />
     <Parameter Name="vfecha_ingreso" Type="datetime" Mode="In" />
     <Parameter Name="vsueldo" Type="money" Mode="In" />
-    <Parameter Name="vemail_emp" Type="varchar" Mode="In" />
     <Parameter Name="vcod_supervisor" Type="varchar" Mode="In" />
     <Parameter Name="vestado_emp" Type="int" Mode="In" />
   </Function>
@@ -310,15 +269,9 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorMedicina' no tiene d
   </Function>
   <Function Name="usp_ListarClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="usp_ListarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="usp_ListarPacientePorTratamiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="tipo_tratamiento" Type="varchar" Mode="In" />
-  </Function>
   <Function Name="usp_ListarPacientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="usp_ListarPacientesPorCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="vcod_cli" Type="varchar" Mode="In" />
-  </Function>
-  <Function Name="usp_ListarPacientesPorRaza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="vraza" Type="varchar" Mode="In" />
   </Function>
   <Function Name="usp_ListarProveedores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="usp_ListarTipoMedicinaProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -331,57 +284,10 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ProveedorMedicina' no tiene d
     <EntitySet Name="Tb_Paciente" EntityType="Self.Tb_Paciente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tb_Proveedor" EntityType="Self.Tb_Proveedor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tb_Usuario" EntityType="Self.Tb_Usuario" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="vw_DetallesPaciente" EntityType="Self.vw_DetallesPaciente" store:Type="Views" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [vw_DetallesPaciente].[codigo] AS [codigo], 
-    [vw_DetallesPaciente].[nombre] AS [nombre], 
-    [vw_DetallesPaciente].[tipo_paciente] AS [tipo_paciente], 
-    [vw_DetallesPaciente].[raza] AS [raza], 
-    [vw_DetallesPaciente].[fecha_nacimiento] AS [fecha_nacimiento], 
-    [vw_DetallesPaciente].[sexo] AS [sexo], 
-    [vw_DetallesPaciente].[color] AS [color], 
-    [vw_DetallesPaciente].[longitud] AS [longitud], 
-    [vw_DetallesPaciente].[peso] AS [peso], 
-    [vw_DetallesPaciente].[conducta] AS [conducta], 
-    [vw_DetallesPaciente].[nutricion] AS [nutricion], 
-    [vw_DetallesPaciente].[actividad] AS [actividad], 
-    [vw_DetallesPaciente].[observaciones] AS [observaciones], 
-    [vw_DetallesPaciente].[detalles_observaciones] AS [detalles_observaciones], 
-    [vw_DetallesPaciente].[estado] AS [estado]
-    FROM [dbo].[vw_DetallesPaciente] AS [vw_DetallesPaciente]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="vw_ProveedorActivo" EntityType="Self.vw_ProveedorActivo" store:Type="Views" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [vw_ProveedorActivo].[cod_prov] AS [cod_prov], 
-    [vw_ProveedorActivo].[nom_prov] AS [nom_prov], 
-    [vw_ProveedorActivo].[ruc_prov] AS [ruc_prov], 
-    [vw_ProveedorActivo].[direccion_prov] AS [direccion_prov], 
-    [vw_ProveedorActivo].[tel_prov] AS [tel_prov], 
-    [vw_ProveedorActivo].[email_prov] AS [email_prov], 
-    [vw_ProveedorActivo].[rep_ven_prov] AS [rep_ven_prov], 
-    [vw_ProveedorActivo].[usu_reg_prov] AS [usu_reg_prov], 
-    [vw_ProveedorActivo].[fec_reg_prov] AS [fec_reg_prov], 
-    [vw_ProveedorActivo].[usu_ult_modificacion_prov] AS [usu_ult_modificacion_prov], 
-    [vw_ProveedorActivo].[fecha_ult_modificacion_prov] AS [fecha_ult_modificacion_prov], 
-    [vw_ProveedorActivo].[estado_prov] AS [estado_prov]
-    FROM [dbo].[vw_ProveedorActivo] AS [vw_ProveedorActivo]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="vw_ProveedorMedicina" EntityType="Self.vw_ProveedorMedicina" store:Type="Views" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [vw_ProveedorMedicina].[cod_prov] AS [cod_prov], 
-    [vw_ProveedorMedicina].[nom_prov] AS [nom_prov], 
-    [vw_ProveedorMedicina].[ruc_prov] AS [ruc_prov], 
-    [vw_ProveedorMedicina].[direccion_prov] AS [direccion_prov], 
-    [vw_ProveedorMedicina].[tel_prov] AS [tel_prov], 
-    [vw_ProveedorMedicina].[email_prov] AS [email_prov], 
-    [vw_ProveedorMedicina].[rep_ven_prov] AS [rep_ven_prov], 
-    [vw_ProveedorMedicina].[fec_reg_prov] AS [fec_reg_prov], 
-    [vw_ProveedorMedicina].[estado_prov] AS [estado_prov], 
-    [vw_ProveedorMedicina].[cod_med] AS [cod_med], 
-    [vw_ProveedorMedicina].[nombre_medicina] AS [nombre_medicina], 
-    [vw_ProveedorMedicina].[tipo_medicina] AS [tipo_medicina]
-    FROM [dbo].[vw_ProveedorMedicina] AS [vw_ProveedorMedicina]</DefiningQuery>
-    </EntitySet>
+    <AssociationSet Name="FK_Empleado_user" Association="Self.FK_Empleado_user">
+      <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+      <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+    </AssociationSet>
     <AssociationSet Name="FK_Usuario_user" Association="Self.FK_Usuario_user">
       <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
       <End Role="Tb_Usuario" EntitySet="Tb_Usuario" />
