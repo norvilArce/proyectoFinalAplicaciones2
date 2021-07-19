@@ -14,10 +14,8 @@ namespace WCF_Hunde
     public partial class usp_ListarClientes_Result
     {
         public string cod_cli { get; set; }
-        public int Tipo_cliente { get; set; }
         public string nom_cliente { get; set; }
-        public string ape_pat_cliente { get; set; }
-        public string ape_mat_cliente { get; set; }
+        public string ape_cliente { get; set; }
         public string direccion_cliente { get; set; }
         public string cel_cliente { get; set; }
         public string email_cliente { get; set; }

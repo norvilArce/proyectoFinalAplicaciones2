@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgEmpleado = new System.Windows.Forms.DataGridView();
             this.cod_emp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rol_emp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nom_empleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ape_empleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sueldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha_ingreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cod_supervisor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado_emp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sup = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblRegistros = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
@@ -51,20 +51,20 @@
             // 
             this.dtgEmpleado.AllowUserToAddRows = false;
             this.dtgEmpleado.AllowUserToDeleteRows = false;
-            this.dtgEmpleado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dtgEmpleado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgEmpleado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgEmpleado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgEmpleado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cod_emp,
-            this.rol_emp,
+            this.rol,
             this.nom_empleado,
             this.ape_empleado,
             this.sueldo,
             this.fecha_ingreso,
-            this.cod_supervisor,
-            this.estado_emp});
+            this.sup,
+            this.estado});
             this.dtgEmpleado.Location = new System.Drawing.Point(12, 12);
             this.dtgEmpleado.Name = "dtgEmpleado";
             this.dtgEmpleado.ReadOnly = true;
@@ -81,23 +81,23 @@
             this.cod_emp.Name = "cod_emp";
             this.cod_emp.ReadOnly = true;
             // 
-            // rol_emp
+            // rol
             // 
-            this.rol_emp.DataPropertyName = "rol_emp";
-            this.rol_emp.HeaderText = "Rol";
-            this.rol_emp.Name = "rol_emp";
-            this.rol_emp.ReadOnly = true;
+            this.rol.DataPropertyName = "rol";
+            this.rol.HeaderText = "Rol";
+            this.rol.Name = "rol";
+            this.rol.ReadOnly = true;
             // 
             // nom_empleado
             // 
-            this.nom_empleado.DataPropertyName = "nom_empleado";
-            this.nom_empleado.HeaderText = " Nombres";
+            this.nom_empleado.DataPropertyName = "nom_emp";
+            this.nom_empleado.HeaderText = "Nombres";
             this.nom_empleado.Name = "nom_empleado";
             this.nom_empleado.ReadOnly = true;
             // 
             // ape_empleado
             // 
-            this.ape_empleado.DataPropertyName = "ape_empleado";
+            this.ape_empleado.DataPropertyName = "ape_emp";
             this.ape_empleado.HeaderText = "Apellidos";
             this.ape_empleado.Name = "ape_empleado";
             this.ape_empleado.ReadOnly = true;
@@ -105,10 +105,10 @@
             // sueldo
             // 
             this.sueldo.DataPropertyName = "sueldo";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "N2";
-            dataGridViewCellStyle9.NullValue = null;
-            this.sueldo.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.sueldo.DefaultCellStyle = dataGridViewCellStyle1;
             this.sueldo.HeaderText = "Sueldo (S/.)";
             this.sueldo.Name = "sueldo";
             this.sueldo.ReadOnly = true;
@@ -116,27 +116,27 @@
             // fecha_ingreso
             // 
             this.fecha_ingreso.DataPropertyName = "fecha_ingreso";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "d";
-            dataGridViewCellStyle10.NullValue = null;
-            this.fecha_ingreso.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.fecha_ingreso.DefaultCellStyle = dataGridViewCellStyle2;
             this.fecha_ingreso.HeaderText = "Fec. Ingreso";
             this.fecha_ingreso.Name = "fecha_ingreso";
             this.fecha_ingreso.ReadOnly = true;
             // 
-            // cod_supervisor
+            // sup
             // 
-            this.cod_supervisor.DataPropertyName = "cod_supervisor";
-            this.cod_supervisor.HeaderText = "Cod. Supervisor";
-            this.cod_supervisor.Name = "cod_supervisor";
-            this.cod_supervisor.ReadOnly = true;
+            this.sup.DataPropertyName = "sup";
+            this.sup.HeaderText = "Supervisor";
+            this.sup.Name = "sup";
+            this.sup.ReadOnly = true;
             // 
-            // estado_emp
+            // estado
             // 
-            this.estado_emp.DataPropertyName = "estado_emp";
-            this.estado_emp.HeaderText = "Estado";
-            this.estado_emp.Name = "estado_emp";
-            this.estado_emp.ReadOnly = true;
+            this.estado.DataPropertyName = "estado";
+            this.estado.HeaderText = "Estado";
+            this.estado.Name = "estado";
+            this.estado.ReadOnly = true;
             // 
             // lblRegistros
             // 
@@ -202,6 +202,7 @@
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.dtgEmpleado);
             this.Name = "EmpleadoLista";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EmpleadoLista";
             this.Load += new System.EventHandler(this.EmpleadoLista_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgEmpleado)).EndInit();
@@ -219,12 +220,12 @@
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.DataGridViewTextBoxColumn cod_emp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rol_emp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rol;
         private System.Windows.Forms.DataGridViewTextBoxColumn nom_empleado;
         private System.Windows.Forms.DataGridViewTextBoxColumn ape_empleado;
         private System.Windows.Forms.DataGridViewTextBoxColumn sueldo;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha_ingreso;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cod_supervisor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estado_emp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sup;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estado;
     }
 }

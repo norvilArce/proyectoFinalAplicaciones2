@@ -35,10 +35,17 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mantenimientosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.buscarPorCodigoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pacientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pacientesPorRazaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.citasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.porMascotaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.porMedicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pacientesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -81,7 +88,9 @@
             // mantenimientosToolStripMenuItem
             // 
             this.mantenimientosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.empleadosToolStripMenuItem});
+            this.empleadosToolStripMenuItem,
+            this.clientesToolStripMenuItem,
+            this.pacientesToolStripMenuItem1});
             this.mantenimientosToolStripMenuItem.Name = "mantenimientosToolStripMenuItem";
             this.mantenimientosToolStripMenuItem.Size = new System.Drawing.Size(106, 20);
             this.mantenimientosToolStripMenuItem.Text = "Mantenimientos";
@@ -93,21 +102,75 @@
             this.empleadosToolStripMenuItem.Text = "Empleados";
             this.empleadosToolStripMenuItem.Click += new System.EventHandler(this.empleadosToolStripMenuItem_Click);
             // 
+            // clientesToolStripMenuItem
+            // 
+            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clientesToolStripMenuItem.Text = "Clientes";
+            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
+            // 
             // consultasToolStripMenuItem
             // 
             this.consultasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.proveedorToolStripMenuItem,
-            this.pacientesToolStripMenuItem});
+            this.pacientesToolStripMenuItem,
+            this.citasToolStripMenuItem});
             this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
             this.consultasToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.consultasToolStripMenuItem.Text = "Consultas";
             // 
             // proveedorToolStripMenuItem
             // 
+            this.proveedorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.buscarPorCodigoToolStripMenuItem});
             this.proveedorToolStripMenuItem.Name = "proveedorToolStripMenuItem";
-            this.proveedorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.proveedorToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.proveedorToolStripMenuItem.Text = "Proveedores";
-            this.proveedorToolStripMenuItem.Click += new System.EventHandler(this.proveedorToolStripMenuItem_Click);
+            // 
+            // buscarPorCodigoToolStripMenuItem
+            // 
+            this.buscarPorCodigoToolStripMenuItem.Name = "buscarPorCodigoToolStripMenuItem";
+            this.buscarPorCodigoToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.buscarPorCodigoToolStripMenuItem.Text = "Medicinas por Proveedor";
+            this.buscarPorCodigoToolStripMenuItem.Click += new System.EventHandler(this.buscarPorCodigoToolStripMenuItem_Click);
+            // 
+            // pacientesToolStripMenuItem
+            // 
+            this.pacientesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pacientesPorRazaToolStripMenuItem});
+            this.pacientesToolStripMenuItem.Name = "pacientesToolStripMenuItem";
+            this.pacientesToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.pacientesToolStripMenuItem.Text = "Pacientes";
+            // 
+            // pacientesPorRazaToolStripMenuItem
+            // 
+            this.pacientesPorRazaToolStripMenuItem.Name = "pacientesPorRazaToolStripMenuItem";
+            this.pacientesPorRazaToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.pacientesPorRazaToolStripMenuItem.Text = "Pacientes Por Raza";
+            this.pacientesPorRazaToolStripMenuItem.Click += new System.EventHandler(this.pacientesPorRazaToolStripMenuItem_Click);
+            // 
+            // citasToolStripMenuItem
+            // 
+            this.citasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.porMascotaToolStripMenuItem,
+            this.porMedicoToolStripMenuItem});
+            this.citasToolStripMenuItem.Name = "citasToolStripMenuItem";
+            this.citasToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.citasToolStripMenuItem.Text = "Citas";
+            // 
+            // porMascotaToolStripMenuItem
+            // 
+            this.porMascotaToolStripMenuItem.Name = "porMascotaToolStripMenuItem";
+            this.porMascotaToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.porMascotaToolStripMenuItem.Text = "Por Medico";
+            this.porMascotaToolStripMenuItem.Click += new System.EventHandler(this.porMascotaToolStripMenuItem_Click);
+            // 
+            // porMedicoToolStripMenuItem
+            // 
+            this.porMedicoToolStripMenuItem.Name = "porMedicoToolStripMenuItem";
+            this.porMedicoToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.porMedicoToolStripMenuItem.Text = "Por Mascota";
+            this.porMedicoToolStripMenuItem.Click += new System.EventHandler(this.porMedicoToolStripMenuItem_Click);
             // 
             // timer1
             // 
@@ -115,11 +178,12 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // pacientesToolStripMenuItem
+            // pacientesToolStripMenuItem1
             // 
-            this.pacientesToolStripMenuItem.Name = "pacientesToolStripMenuItem";
-            this.pacientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.pacientesToolStripMenuItem.Text = "Pacientes";
+            this.pacientesToolStripMenuItem1.Name = "pacientesToolStripMenuItem1";
+            this.pacientesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.pacientesToolStripMenuItem1.Text = "Pacientes";
+            this.pacientesToolStripMenuItem1.Click += new System.EventHandler(this.pacientesToolStripMenuItem1_Click);
             // 
             // MDIPrincipal
             // 
@@ -158,5 +222,12 @@
         private System.Windows.Forms.ToolStripMenuItem consultasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem proveedorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pacientesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem buscarPorCodigoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pacientesPorRazaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem citasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem porMascotaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem porMedicoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pacientesToolStripMenuItem1;
     }
 }

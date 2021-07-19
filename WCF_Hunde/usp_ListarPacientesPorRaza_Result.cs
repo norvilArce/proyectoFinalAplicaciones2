@@ -15,16 +15,22 @@ namespace WCF_Hunde
     {
         public string cod_pac { get; set; }
         public string nom_pac { get; set; }
-        public string tipo_pac { get; set; }
-        public string raza { get; set; }
+        public Nullable<int> cod_raza { get; set; }
         public System.DateTime fec_nac_pac { get; set; }
         public int sexo { get; set; }
-        public string color { get; set; }
+        public int cod_color { get; set; }
         public double longitud { get; set; }
         public double peso { get; set; }
         public Nullable<System.DateTime> ult_vis_pac { get; set; }
-        public string foto { get; set; }
+        public byte[] foto { get; set; }
         public string observaciones_pac { get; set; }
         public int est_pac { get; set; }
+        public int cod_raza1 { get; set; }
+        public string nom_raza { get; set; }
+        public Nullable<int> cod_tipo { get; set; }
+        public int cod_color1 { get; set; }
+        public string nom_color { get; set; }
+        public int cod_tipo1 { get; set; }
+        public string nom_tipo { get; set; }
     }
 }

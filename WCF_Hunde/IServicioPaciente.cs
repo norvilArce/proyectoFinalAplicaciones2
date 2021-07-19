@@ -12,15 +12,20 @@ namespace WCF_Hunde
     public interface IServicioPaciente
     {
         [OperationContract]
-        List<PacienteBE> ConsultarPacientesPorRaza(String strRazaPaciente);
-
+        PacienteBE ConsultarPacientes(String strCodPaciente);
         [OperationContract]
-        List<PacienteBE> ConsultarPacientesPorFecha(String strCod, DateTime fecini, DateTime fecfin);
-
+        List<PacienteBE> ConsultarPacientesPorRaza(Int16 codRaza);
         [OperationContract]
-        List<PacienteBE> ConsultarPacientesPorTratamiento(String strTipoTratamiento);
+        List<PacienteBE> ConsultarPacientesPorTratamiento(Int16 codTratamiento);
+        [OperationContract]
+        List<PacienteBE> ListarPacientesDetallados();
+        [OperationContract]
+        List<PacienteBE> ListarPacientes();
+        [OperationContract]
+        Boolean InsertarPaciente(PacienteBE pacienteBE);
+        [OperationContract]
+        Boolean ActualizarPaciente(PacienteBE pacienteBE);
     }
-
 
     [DataContract]
     [Serializable]
@@ -28,108 +33,129 @@ namespace WCF_Hunde
     {
         private String mvarcod_pac;
         private String mvarnom_pac;
-        private String mvartipo_pac;
-        private String mvarraza;
+        private Int16 mvarcod_raza;
         private DateTime mvarfec_nac_pac;
-        private int mvarsexo;
-        private String mvarcolor;
-        private Decimal mvarlongitud;
-        private Decimal mvarpeso;
+        private Int16 mvarsexo;
+        private Int16 mvarcod_color;
+        private Double mvarlongitud;
+        private Double mvarpeso;
         private DateTime mvarult_vis_pac;
-        private String mvarfoto;
-        private String mvarobservaciones_pac;
+        private Byte[] mvarfoto;
+        private String mvarobs_pac;
         private int mvarest_pac;
 
+        //campos especiales
+        private String mvarraza;
+        private String mvarcolor;
+        private String mvartipo;
+        private String mvarsexo_str;
 
         [DataMember]
-        public String Cod_pac
+        public String cod_pac
         {
             get { return mvarcod_pac; }
             set { mvarcod_pac = value; }
         }
 
         [DataMember]
-        public String Nom_pac
+        public String nom_pac
         {
             get { return mvarnom_pac; }
             set { mvarnom_pac = value; }
         }
 
         [DataMember]
-        public String Tipo_pac
+        public Int16 cod_raza
         {
-            get { return mvartipo_pac; }
-            set { mvartipo_pac = value; }
+            get { return mvarcod_raza; }
+            set { mvarcod_raza = value; }
         }
 
         [DataMember]
-        public String Raza
-        {
-            get { return mvarraza; }
-            set { mvarraza = value; }
-        }
-
-        [DataMember]
-        public DateTime Fec_nac_pac
+        public DateTime fec_nac_pac
         {
             get { return mvarfec_nac_pac; }
             set { mvarfec_nac_pac = value; }
         }
 
         [DataMember]
-        public int Sexo
+        public Int16 sexo
         {
             get { return mvarsexo; }
             set { mvarsexo = value; }
         }
 
         [DataMember]
-        public String Color
+        public Int16 cod_color
         {
-            get { return mvarcolor; }
-            set { mvarcolor = value; }
+            get { return mvarcod_color; }
+            set { mvarcod_color = value; }
         }
 
         [DataMember]
-        public Decimal Longitud
+        public Double longitud
         {
             get { return mvarlongitud; }
             set { mvarlongitud = value; }
         }
 
         [DataMember]
-        public Decimal Peso
+        public Double peso
         {
             get { return mvarpeso; }
             set { mvarpeso = value; }
         }
 
         [DataMember]
-        public DateTime Ult_vis_pac
+        public DateTime ult_vis_pac
         {
             get { return mvarult_vis_pac; }
             set { mvarult_vis_pac = value; }
         }
 
         [DataMember]
-        public String Foto
+        public Byte[] foto
         {
             get { return mvarfoto; }
             set { mvarfoto = value; }
         }
 
         [DataMember]
-        public String Observaciones
+        public String observaciones
         {
-            get { return mvarobservaciones_pac; }
-            set { mvarobservaciones_pac = value; }
+            get { return mvarobs_pac; }
+            set { mvarobs_pac = value; }
         }
 
         [DataMember]
-        public int Est_pac
+        public int est_pac
         {
             get { return mvarest_pac; }
             set { mvarest_pac = value; }
+        }
+        [DataMember]
+        public String raza
+        {
+            get { return mvarraza; }
+            set { mvarraza = value; }
+        }
+        [DataMember]
+        public String color
+        {
+            get { return mvarcolor; }
+            set { mvarcolor = value; }
+        }
+        [DataMember]
+        public String tipo
+        {
+            get { return mvartipo; }
+            set { mvartipo = value; }
+        }
+        [DataMember]
+        public String str_sexo
+        {
+            get { return mvarsexo_str; }
+            set { mvarsexo_str = value; }
         }
     }
 }

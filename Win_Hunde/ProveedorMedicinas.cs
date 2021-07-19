@@ -13,7 +13,7 @@ namespace Win_Hunde
     public partial class ProveedorMedicinas : Form
     {
 
-        ProxyProveedor1.ServicioProveedorClient objServProv = new ProxyProveedor1.ServicioProveedorClient();
+        ProxyProveedor.ServicioProveedorClient objServProv = new ProxyProveedor.ServicioProveedorClient();
 
         public ProveedorMedicinas()
         {
@@ -24,16 +24,13 @@ namespace Win_Hunde
         {
             try
             {
-                ProxyProveedor1.ServicioProveedorClient objServProv = new ProxyProveedor1.ServicioProveedorClient();
-                ProxyProveedor1.ProveedorBE objProveedorBE = new ProxyProveedor1.ProveedorBE();
+                ProxyProveedor.ServicioProveedorClient objServProv = new ProxyProveedor.ServicioProveedorClient();
+                ProxyProveedor.ProveedorBE objProveedorBE = new ProxyProveedor.ProveedorBE();
 
 
-                objProveedorBE = objServProv.ConsultarMedicinaProveedor(txtTipo.Text.Trim());
-                lblMedicina.Text = objProveedorBE.cod_med;
-                lblNomMed.Text = objProveedorBE.nombre_medicina;
 
 
-                dtgProveedor.DataSource = objServProv.ConsultarEstadoProveedorMedicina();
+                dtgProveedor.DataSource = objServProv.ConsultarProveedores();
                 //(cboSupervisor.SelectedValue.ToString());
 
                 if (dtgProveedor.Rows.Count == 0)
@@ -51,32 +48,13 @@ namespace Win_Hunde
             }
         }
 
-        private void btnConsultar2_Click(object sender, EventArgs e) //ignorar
-        {
-            try
-            {
-
-                dtgProveedor.DataSource = objServProv.ConsultarEstadoProveedorMedicina();
-                //(cboSupervisor.SelectedValue.ToString());
-
-                if (dtgProveedor.Rows.Count == 0)
-                {
-                    throw new Exception("El proveedor no registra datos");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error:" + ex.Message);
-            }
-        }
-
         private void ProveedorMedicinas_Load(object sender, EventArgs e)
         {
             try
             {
                 cboProveedor.DataSource = objServProv.ConsultarProveedores();
-                cboProveedor.ValueMember = "cod_med";
-                cboProveedor.DisplayMember = "estado_medicina";
+                cboProveedor.ValueMember = "cod_prov";
+                cboProveedor.DisplayMember = "rep_ven_prov";
             }
             catch (Exception ex)
             {

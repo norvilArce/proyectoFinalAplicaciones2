@@ -54,11 +54,60 @@ namespace Win_Hubde
             empleadoLista.Show();
         }
 
-        private void proveedorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void pacientesPorFechaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ProveedorConsulta proveedorConsulta = new ProveedorConsulta();
+            pacienteFechas pacienteFecha = new pacienteFechas();
+            pacienteFecha.MdiParent = this;
+            pacienteFecha.Show();
+        }
+
+        private void buscarPorCodigoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            medicinasPorProveedor proveedorConsulta = new medicinasPorProveedor();
             proveedorConsulta.MdiParent = this;
             proveedorConsulta.Show();
+        }
+
+        private void pacientesPorRazaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PacientePorRaza pacientePorRaza = new PacientePorRaza();
+            pacientePorRaza.MdiParent = this;
+            pacientePorRaza.Show();
+        }
+
+        private void porMascotaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MedicosFecha medicosFecha = new MedicosFecha();
+            medicosFecha.MdiParent = this;
+            medicosFecha.Show();
+        }
+
+        private void medicinasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProveedorMedicinas proveedorMedicinas = new ProveedorMedicinas();
+            proveedorMedicinas.MdiParent = this;
+            proveedorMedicinas.Show();
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clientes clientes = new Clientes();
+            clientes.MdiParent = this;
+            clientes.Show();
+        }
+
+        private void porMedicoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pacienteFechas pacienteFechas = new pacienteFechas();
+            pacienteFechas.MdiParent = this;
+            pacienteFechas.Show();
+        }
+
+        private void pacientesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Pacientes pacientes = new Pacientes();
+            pacientes.MdiParent = this;
+            pacientes.Show();
         }
     }
 }

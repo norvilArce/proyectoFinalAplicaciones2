@@ -23,43 +23,52 @@ namespace Win_Hunde.ProxyPaciente {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Cod_pacField;
+        private short cod_colorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ColorField;
+        private string cod_pacField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Est_pacField;
+        private short cod_razaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime Fec_nac_pacField;
+        private string colorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FotoField;
+        private int est_pacField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal LongitudField;
+        private System.DateTime fec_nac_pacField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Nom_pacField;
+        private byte[] fotoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ObservacionesField;
+        private double longitudField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal PesoField;
+        private string nom_pacField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RazaField;
+        private string observacionesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int SexoField;
+        private double pesoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Tipo_pacField;
+        private string razaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime Ult_vis_pacField;
+        private short sexoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string str_sexoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string tipoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime ult_vis_pacField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -72,170 +81,209 @@ namespace Win_Hunde.ProxyPaciente {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Cod_pac {
+        public short cod_color {
             get {
-                return this.Cod_pacField;
+                return this.cod_colorField;
             }
             set {
-                if ((object.ReferenceEquals(this.Cod_pacField, value) != true)) {
-                    this.Cod_pacField = value;
-                    this.RaisePropertyChanged("Cod_pac");
+                if ((this.cod_colorField.Equals(value) != true)) {
+                    this.cod_colorField = value;
+                    this.RaisePropertyChanged("cod_color");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Color {
+        public string cod_pac {
             get {
-                return this.ColorField;
+                return this.cod_pacField;
             }
             set {
-                if ((object.ReferenceEquals(this.ColorField, value) != true)) {
-                    this.ColorField = value;
-                    this.RaisePropertyChanged("Color");
+                if ((object.ReferenceEquals(this.cod_pacField, value) != true)) {
+                    this.cod_pacField = value;
+                    this.RaisePropertyChanged("cod_pac");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Est_pac {
+        public short cod_raza {
             get {
-                return this.Est_pacField;
+                return this.cod_razaField;
             }
             set {
-                if ((this.Est_pacField.Equals(value) != true)) {
-                    this.Est_pacField = value;
-                    this.RaisePropertyChanged("Est_pac");
+                if ((this.cod_razaField.Equals(value) != true)) {
+                    this.cod_razaField = value;
+                    this.RaisePropertyChanged("cod_raza");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime Fec_nac_pac {
+        public string color {
             get {
-                return this.Fec_nac_pacField;
+                return this.colorField;
             }
             set {
-                if ((this.Fec_nac_pacField.Equals(value) != true)) {
-                    this.Fec_nac_pacField = value;
-                    this.RaisePropertyChanged("Fec_nac_pac");
+                if ((object.ReferenceEquals(this.colorField, value) != true)) {
+                    this.colorField = value;
+                    this.RaisePropertyChanged("color");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Foto {
+        public int est_pac {
             get {
-                return this.FotoField;
+                return this.est_pacField;
             }
             set {
-                if ((object.ReferenceEquals(this.FotoField, value) != true)) {
-                    this.FotoField = value;
-                    this.RaisePropertyChanged("Foto");
+                if ((this.est_pacField.Equals(value) != true)) {
+                    this.est_pacField = value;
+                    this.RaisePropertyChanged("est_pac");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal Longitud {
+        public System.DateTime fec_nac_pac {
             get {
-                return this.LongitudField;
+                return this.fec_nac_pacField;
             }
             set {
-                if ((this.LongitudField.Equals(value) != true)) {
-                    this.LongitudField = value;
-                    this.RaisePropertyChanged("Longitud");
+                if ((this.fec_nac_pacField.Equals(value) != true)) {
+                    this.fec_nac_pacField = value;
+                    this.RaisePropertyChanged("fec_nac_pac");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Nom_pac {
+        public byte[] foto {
             get {
-                return this.Nom_pacField;
+                return this.fotoField;
             }
             set {
-                if ((object.ReferenceEquals(this.Nom_pacField, value) != true)) {
-                    this.Nom_pacField = value;
-                    this.RaisePropertyChanged("Nom_pac");
+                if ((object.ReferenceEquals(this.fotoField, value) != true)) {
+                    this.fotoField = value;
+                    this.RaisePropertyChanged("foto");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Observaciones {
+        public double longitud {
             get {
-                return this.ObservacionesField;
+                return this.longitudField;
             }
             set {
-                if ((object.ReferenceEquals(this.ObservacionesField, value) != true)) {
-                    this.ObservacionesField = value;
-                    this.RaisePropertyChanged("Observaciones");
+                if ((this.longitudField.Equals(value) != true)) {
+                    this.longitudField = value;
+                    this.RaisePropertyChanged("longitud");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal Peso {
+        public string nom_pac {
             get {
-                return this.PesoField;
+                return this.nom_pacField;
             }
             set {
-                if ((this.PesoField.Equals(value) != true)) {
-                    this.PesoField = value;
-                    this.RaisePropertyChanged("Peso");
+                if ((object.ReferenceEquals(this.nom_pacField, value) != true)) {
+                    this.nom_pacField = value;
+                    this.RaisePropertyChanged("nom_pac");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Raza {
+        public string observaciones {
             get {
-                return this.RazaField;
+                return this.observacionesField;
             }
             set {
-                if ((object.ReferenceEquals(this.RazaField, value) != true)) {
-                    this.RazaField = value;
-                    this.RaisePropertyChanged("Raza");
+                if ((object.ReferenceEquals(this.observacionesField, value) != true)) {
+                    this.observacionesField = value;
+                    this.RaisePropertyChanged("observaciones");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Sexo {
+        public double peso {
             get {
-                return this.SexoField;
+                return this.pesoField;
             }
             set {
-                if ((this.SexoField.Equals(value) != true)) {
-                    this.SexoField = value;
-                    this.RaisePropertyChanged("Sexo");
+                if ((this.pesoField.Equals(value) != true)) {
+                    this.pesoField = value;
+                    this.RaisePropertyChanged("peso");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Tipo_pac {
+        public string raza {
             get {
-                return this.Tipo_pacField;
+                return this.razaField;
             }
             set {
-                if ((object.ReferenceEquals(this.Tipo_pacField, value) != true)) {
-                    this.Tipo_pacField = value;
-                    this.RaisePropertyChanged("Tipo_pac");
+                if ((object.ReferenceEquals(this.razaField, value) != true)) {
+                    this.razaField = value;
+                    this.RaisePropertyChanged("raza");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime Ult_vis_pac {
+        public short sexo {
             get {
-                return this.Ult_vis_pacField;
+                return this.sexoField;
             }
             set {
-                if ((this.Ult_vis_pacField.Equals(value) != true)) {
-                    this.Ult_vis_pacField = value;
-                    this.RaisePropertyChanged("Ult_vis_pac");
+                if ((this.sexoField.Equals(value) != true)) {
+                    this.sexoField = value;
+                    this.RaisePropertyChanged("sexo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string str_sexo {
+            get {
+                return this.str_sexoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.str_sexoField, value) != true)) {
+                    this.str_sexoField = value;
+                    this.RaisePropertyChanged("str_sexo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string tipo {
+            get {
+                return this.tipoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.tipoField, value) != true)) {
+                    this.tipoField = value;
+                    this.RaisePropertyChanged("tipo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime ult_vis_pac {
+            get {
+                return this.ult_vis_pacField;
+            }
+            set {
+                if ((this.ult_vis_pacField.Equals(value) != true)) {
+                    this.ult_vis_pacField = value;
+                    this.RaisePropertyChanged("ult_vis_pac");
                 }
             }
         }
@@ -254,23 +302,47 @@ namespace Win_Hunde.ProxyPaciente {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProxyPaciente.IServicioPaciente")]
     public interface IServicioPaciente {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioPaciente/ConsultarPacientesPorRaza", ReplyAction="http://tempuri.org/IServicioPaciente/ConsultarPacientesPorRazaResponse")]
-        Win_Hunde.ProxyPaciente.PacienteBE[] ConsultarPacientesPorRaza(string strRazaPaciente);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioPaciente/ConsultarPacientes", ReplyAction="http://tempuri.org/IServicioPaciente/ConsultarPacientesResponse")]
+        Win_Hunde.ProxyPaciente.PacienteBE ConsultarPacientes(string strCodPaciente);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioPaciente/ConsultarPacientes", ReplyAction="http://tempuri.org/IServicioPaciente/ConsultarPacientesResponse")]
+        System.Threading.Tasks.Task<Win_Hunde.ProxyPaciente.PacienteBE> ConsultarPacientesAsync(string strCodPaciente);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioPaciente/ConsultarPacientesPorRaza", ReplyAction="http://tempuri.org/IServicioPaciente/ConsultarPacientesPorRazaResponse")]
-        System.Threading.Tasks.Task<Win_Hunde.ProxyPaciente.PacienteBE[]> ConsultarPacientesPorRazaAsync(string strRazaPaciente);
+        Win_Hunde.ProxyPaciente.PacienteBE[] ConsultarPacientesPorRaza(short codRaza);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioPaciente/ConsultarPacientesPorFecha", ReplyAction="http://tempuri.org/IServicioPaciente/ConsultarPacientesPorFechaResponse")]
-        Win_Hunde.ProxyPaciente.PacienteBE[] ConsultarPacientesPorFecha(string strCod, System.DateTime fecini, System.DateTime fecfin);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioPaciente/ConsultarPacientesPorFecha", ReplyAction="http://tempuri.org/IServicioPaciente/ConsultarPacientesPorFechaResponse")]
-        System.Threading.Tasks.Task<Win_Hunde.ProxyPaciente.PacienteBE[]> ConsultarPacientesPorFechaAsync(string strCod, System.DateTime fecini, System.DateTime fecfin);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioPaciente/ConsultarPacientesPorRaza", ReplyAction="http://tempuri.org/IServicioPaciente/ConsultarPacientesPorRazaResponse")]
+        System.Threading.Tasks.Task<Win_Hunde.ProxyPaciente.PacienteBE[]> ConsultarPacientesPorRazaAsync(short codRaza);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioPaciente/ConsultarPacientesPorTratamiento", ReplyAction="http://tempuri.org/IServicioPaciente/ConsultarPacientesPorTratamientoResponse")]
-        Win_Hunde.ProxyPaciente.PacienteBE[] ConsultarPacientesPorTratamiento(string strTipoTratamiento);
+        Win_Hunde.ProxyPaciente.PacienteBE[] ConsultarPacientesPorTratamiento(short codTratamiento);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioPaciente/ConsultarPacientesPorTratamiento", ReplyAction="http://tempuri.org/IServicioPaciente/ConsultarPacientesPorTratamientoResponse")]
-        System.Threading.Tasks.Task<Win_Hunde.ProxyPaciente.PacienteBE[]> ConsultarPacientesPorTratamientoAsync(string strTipoTratamiento);
+        System.Threading.Tasks.Task<Win_Hunde.ProxyPaciente.PacienteBE[]> ConsultarPacientesPorTratamientoAsync(short codTratamiento);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioPaciente/ListarPacientesDetallados", ReplyAction="http://tempuri.org/IServicioPaciente/ListarPacientesDetalladosResponse")]
+        Win_Hunde.ProxyPaciente.PacienteBE[] ListarPacientesDetallados();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioPaciente/ListarPacientesDetallados", ReplyAction="http://tempuri.org/IServicioPaciente/ListarPacientesDetalladosResponse")]
+        System.Threading.Tasks.Task<Win_Hunde.ProxyPaciente.PacienteBE[]> ListarPacientesDetalladosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioPaciente/ListarPacientes", ReplyAction="http://tempuri.org/IServicioPaciente/ListarPacientesResponse")]
+        Win_Hunde.ProxyPaciente.PacienteBE[] ListarPacientes();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioPaciente/ListarPacientes", ReplyAction="http://tempuri.org/IServicioPaciente/ListarPacientesResponse")]
+        System.Threading.Tasks.Task<Win_Hunde.ProxyPaciente.PacienteBE[]> ListarPacientesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioPaciente/InsertarPaciente", ReplyAction="http://tempuri.org/IServicioPaciente/InsertarPacienteResponse")]
+        bool InsertarPaciente(Win_Hunde.ProxyPaciente.PacienteBE pacienteBE);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioPaciente/InsertarPaciente", ReplyAction="http://tempuri.org/IServicioPaciente/InsertarPacienteResponse")]
+        System.Threading.Tasks.Task<bool> InsertarPacienteAsync(Win_Hunde.ProxyPaciente.PacienteBE pacienteBE);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioPaciente/ActualizarPaciente", ReplyAction="http://tempuri.org/IServicioPaciente/ActualizarPacienteResponse")]
+        bool ActualizarPaciente(Win_Hunde.ProxyPaciente.PacienteBE pacienteBE);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioPaciente/ActualizarPaciente", ReplyAction="http://tempuri.org/IServicioPaciente/ActualizarPacienteResponse")]
+        System.Threading.Tasks.Task<bool> ActualizarPacienteAsync(Win_Hunde.ProxyPaciente.PacienteBE pacienteBE);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -300,28 +372,60 @@ namespace Win_Hunde.ProxyPaciente {
                 base(binding, remoteAddress) {
         }
         
-        public Win_Hunde.ProxyPaciente.PacienteBE[] ConsultarPacientesPorRaza(string strRazaPaciente) {
-            return base.Channel.ConsultarPacientesPorRaza(strRazaPaciente);
+        public Win_Hunde.ProxyPaciente.PacienteBE ConsultarPacientes(string strCodPaciente) {
+            return base.Channel.ConsultarPacientes(strCodPaciente);
         }
         
-        public System.Threading.Tasks.Task<Win_Hunde.ProxyPaciente.PacienteBE[]> ConsultarPacientesPorRazaAsync(string strRazaPaciente) {
-            return base.Channel.ConsultarPacientesPorRazaAsync(strRazaPaciente);
+        public System.Threading.Tasks.Task<Win_Hunde.ProxyPaciente.PacienteBE> ConsultarPacientesAsync(string strCodPaciente) {
+            return base.Channel.ConsultarPacientesAsync(strCodPaciente);
         }
         
-        public Win_Hunde.ProxyPaciente.PacienteBE[] ConsultarPacientesPorFecha(string strCod, System.DateTime fecini, System.DateTime fecfin) {
-            return base.Channel.ConsultarPacientesPorFecha(strCod, fecini, fecfin);
+        public Win_Hunde.ProxyPaciente.PacienteBE[] ConsultarPacientesPorRaza(short codRaza) {
+            return base.Channel.ConsultarPacientesPorRaza(codRaza);
         }
         
-        public System.Threading.Tasks.Task<Win_Hunde.ProxyPaciente.PacienteBE[]> ConsultarPacientesPorFechaAsync(string strCod, System.DateTime fecini, System.DateTime fecfin) {
-            return base.Channel.ConsultarPacientesPorFechaAsync(strCod, fecini, fecfin);
+        public System.Threading.Tasks.Task<Win_Hunde.ProxyPaciente.PacienteBE[]> ConsultarPacientesPorRazaAsync(short codRaza) {
+            return base.Channel.ConsultarPacientesPorRazaAsync(codRaza);
         }
         
-        public Win_Hunde.ProxyPaciente.PacienteBE[] ConsultarPacientesPorTratamiento(string strTipoTratamiento) {
-            return base.Channel.ConsultarPacientesPorTratamiento(strTipoTratamiento);
+        public Win_Hunde.ProxyPaciente.PacienteBE[] ConsultarPacientesPorTratamiento(short codTratamiento) {
+            return base.Channel.ConsultarPacientesPorTratamiento(codTratamiento);
         }
         
-        public System.Threading.Tasks.Task<Win_Hunde.ProxyPaciente.PacienteBE[]> ConsultarPacientesPorTratamientoAsync(string strTipoTratamiento) {
-            return base.Channel.ConsultarPacientesPorTratamientoAsync(strTipoTratamiento);
+        public System.Threading.Tasks.Task<Win_Hunde.ProxyPaciente.PacienteBE[]> ConsultarPacientesPorTratamientoAsync(short codTratamiento) {
+            return base.Channel.ConsultarPacientesPorTratamientoAsync(codTratamiento);
+        }
+        
+        public Win_Hunde.ProxyPaciente.PacienteBE[] ListarPacientesDetallados() {
+            return base.Channel.ListarPacientesDetallados();
+        }
+        
+        public System.Threading.Tasks.Task<Win_Hunde.ProxyPaciente.PacienteBE[]> ListarPacientesDetalladosAsync() {
+            return base.Channel.ListarPacientesDetalladosAsync();
+        }
+        
+        public Win_Hunde.ProxyPaciente.PacienteBE[] ListarPacientes() {
+            return base.Channel.ListarPacientes();
+        }
+        
+        public System.Threading.Tasks.Task<Win_Hunde.ProxyPaciente.PacienteBE[]> ListarPacientesAsync() {
+            return base.Channel.ListarPacientesAsync();
+        }
+        
+        public bool InsertarPaciente(Win_Hunde.ProxyPaciente.PacienteBE pacienteBE) {
+            return base.Channel.InsertarPaciente(pacienteBE);
+        }
+        
+        public System.Threading.Tasks.Task<bool> InsertarPacienteAsync(Win_Hunde.ProxyPaciente.PacienteBE pacienteBE) {
+            return base.Channel.InsertarPacienteAsync(pacienteBE);
+        }
+        
+        public bool ActualizarPaciente(Win_Hunde.ProxyPaciente.PacienteBE pacienteBE) {
+            return base.Channel.ActualizarPaciente(pacienteBE);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ActualizarPacienteAsync(Win_Hunde.ProxyPaciente.PacienteBE pacienteBE) {
+            return base.Channel.ActualizarPacienteAsync(pacienteBE);
         }
     }
 }

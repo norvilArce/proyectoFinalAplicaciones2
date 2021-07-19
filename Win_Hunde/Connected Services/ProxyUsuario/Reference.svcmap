@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8633d2cb-0204-4e50-a30a-aa61f9aa6f80" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="338969de-a8df-46dd-83a8-6c02399117a9" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,10 +22,10 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/WCF_Hunde/ServicioUsuario/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="4c60c4db-de8f-4dbc-9470-c883b8b94e80" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCF_Hunde/ServicioUsuario/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="7dd7be43-cb3b-4897-9803-561b69c02e53" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCF_Hunde/ServicioUsuario/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="09a55e63-1b10-4cc0-b333-e5c24c9447f5" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCF_Hunde/ServicioUsuario/mex" />
-    <MetadataFile FileName="WCF_Hunde.xsd" MetadataType="Schema" ID="babd7563-f4e5-47a2-a17c-324012d3270b" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCF_Hunde/ServicioUsuario/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="91990b4c-17de-42b6-85d1-78b3b0b21836" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCF_Hunde/ServicioUsuario/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="49c0857a-63b9-496a-bd11-8ad7288486e6" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCF_Hunde/ServicioUsuario/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="6876d66e-a762-4746-a92b-cca99be142ab" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCF_Hunde/ServicioUsuario/mex" />
+    <MetadataFile FileName="WCF_Hunde.xsd" MetadataType="Schema" ID="c2d2bf6f-cf80-4003-9a73-45abf56d107a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCF_Hunde/ServicioUsuario/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -16,18 +16,19 @@ namespace WCF_Hunde
     {
         public string codigo { get; set; }
         public string nombre { get; set; }
-        public string tipo_paciente { get; set; }
-        public string raza { get; set; }
-        public System.DateTime fecha_nacimiento { get; set; }
-        public int sexo { get; set; }
+        public string tipo { get; set; }
+        public string nom_raza { get; set; }
+        public Nullable<System.DateTime> fec_nac_pac { get; set; }
+        public Nullable<int> sexo { get; set; }
         public string color { get; set; }
-        public double longitud { get; set; }
-        public double peso { get; set; }
+        public Nullable<double> longitud { get; set; }
+        public Nullable<double> peso { get; set; }
         public string conducta { get; set; }
         public string nutricion { get; set; }
         public string actividad { get; set; }
         public string observaciones { get; set; }
-        public string detalles_observaciones { get; set; }
-        public int estado { get; set; }
+        public string det_obs { get; set; }
+        public Nullable<int> estado { get; set; }
+        public byte[] foto { get; set; }
     }
 }

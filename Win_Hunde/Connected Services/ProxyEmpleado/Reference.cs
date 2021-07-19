@@ -23,16 +23,31 @@ namespace Win_Hunde.ProxyEmpleado {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ape_empleadoField;
+        private string ape_empField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string cod_empField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short cod_rolField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string cod_supervisorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string departamentoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string dir_empField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string distritoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string email_empField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string estadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool estado_empField;
@@ -41,16 +56,37 @@ namespace Win_Hunde.ProxyEmpleado {
         private System.DateTime fecha_ingresoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime fecha_reg_empField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime fecha_ult_modificacion_empField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string nom_empleadoField;
+        private string id_ubigeoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private short rol_empField;
+        private string nom_apeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nom_empField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string provinciaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string rolField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private short sueldoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string supField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short tipo_empField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string us_ureg_empField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string usu_ult_modificacion_empField;
@@ -66,14 +102,14 @@ namespace Win_Hunde.ProxyEmpleado {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ape_empleado {
+        public string ape_emp {
             get {
-                return this.ape_empleadoField;
+                return this.ape_empField;
             }
             set {
-                if ((object.ReferenceEquals(this.ape_empleadoField, value) != true)) {
-                    this.ape_empleadoField = value;
-                    this.RaisePropertyChanged("ape_empleado");
+                if ((object.ReferenceEquals(this.ape_empField, value) != true)) {
+                    this.ape_empField = value;
+                    this.RaisePropertyChanged("ape_emp");
                 }
             }
         }
@@ -92,6 +128,19 @@ namespace Win_Hunde.ProxyEmpleado {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public short cod_rol {
+            get {
+                return this.cod_rolField;
+            }
+            set {
+                if ((this.cod_rolField.Equals(value) != true)) {
+                    this.cod_rolField = value;
+                    this.RaisePropertyChanged("cod_rol");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string cod_supervisor {
             get {
                 return this.cod_supervisorField;
@@ -105,6 +154,45 @@ namespace Win_Hunde.ProxyEmpleado {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string departamento {
+            get {
+                return this.departamentoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.departamentoField, value) != true)) {
+                    this.departamentoField = value;
+                    this.RaisePropertyChanged("departamento");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string dir_emp {
+            get {
+                return this.dir_empField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.dir_empField, value) != true)) {
+                    this.dir_empField = value;
+                    this.RaisePropertyChanged("dir_emp");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string distrito {
+            get {
+                return this.distritoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.distritoField, value) != true)) {
+                    this.distritoField = value;
+                    this.RaisePropertyChanged("distrito");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string email_emp {
             get {
                 return this.email_empField;
@@ -113,6 +201,19 @@ namespace Win_Hunde.ProxyEmpleado {
                 if ((object.ReferenceEquals(this.email_empField, value) != true)) {
                     this.email_empField = value;
                     this.RaisePropertyChanged("email_emp");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string estado {
+            get {
+                return this.estadoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.estadoField, value) != true)) {
+                    this.estadoField = value;
+                    this.RaisePropertyChanged("estado");
                 }
             }
         }
@@ -144,6 +245,19 @@ namespace Win_Hunde.ProxyEmpleado {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime fecha_reg_emp {
+            get {
+                return this.fecha_reg_empField;
+            }
+            set {
+                if ((this.fecha_reg_empField.Equals(value) != true)) {
+                    this.fecha_reg_empField = value;
+                    this.RaisePropertyChanged("fecha_reg_emp");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.DateTime fecha_ult_modificacion_emp {
             get {
                 return this.fecha_ult_modificacion_empField;
@@ -157,27 +271,66 @@ namespace Win_Hunde.ProxyEmpleado {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string nom_empleado {
+        public string id_ubigeo {
             get {
-                return this.nom_empleadoField;
+                return this.id_ubigeoField;
             }
             set {
-                if ((object.ReferenceEquals(this.nom_empleadoField, value) != true)) {
-                    this.nom_empleadoField = value;
-                    this.RaisePropertyChanged("nom_empleado");
+                if ((object.ReferenceEquals(this.id_ubigeoField, value) != true)) {
+                    this.id_ubigeoField = value;
+                    this.RaisePropertyChanged("id_ubigeo");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public short rol_emp {
+        public string nom_ape {
             get {
-                return this.rol_empField;
+                return this.nom_apeField;
             }
             set {
-                if ((this.rol_empField.Equals(value) != true)) {
-                    this.rol_empField = value;
-                    this.RaisePropertyChanged("rol_emp");
+                if ((object.ReferenceEquals(this.nom_apeField, value) != true)) {
+                    this.nom_apeField = value;
+                    this.RaisePropertyChanged("nom_ape");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nom_emp {
+            get {
+                return this.nom_empField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nom_empField, value) != true)) {
+                    this.nom_empField = value;
+                    this.RaisePropertyChanged("nom_emp");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string provincia {
+            get {
+                return this.provinciaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.provinciaField, value) != true)) {
+                    this.provinciaField = value;
+                    this.RaisePropertyChanged("provincia");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string rol {
+            get {
+                return this.rolField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.rolField, value) != true)) {
+                    this.rolField = value;
+                    this.RaisePropertyChanged("rol");
                 }
             }
         }
@@ -191,6 +344,45 @@ namespace Win_Hunde.ProxyEmpleado {
                 if ((this.sueldoField.Equals(value) != true)) {
                     this.sueldoField = value;
                     this.RaisePropertyChanged("sueldo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string sup {
+            get {
+                return this.supField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.supField, value) != true)) {
+                    this.supField = value;
+                    this.RaisePropertyChanged("sup");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short tipo_emp {
+            get {
+                return this.tipo_empField;
+            }
+            set {
+                if ((this.tipo_empField.Equals(value) != true)) {
+                    this.tipo_empField = value;
+                    this.RaisePropertyChanged("tipo_emp");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string us_ureg_emp {
+            get {
+                return this.us_ureg_empField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.us_ureg_empField, value) != true)) {
+                    this.us_ureg_empField = value;
+                    this.RaisePropertyChanged("us_ureg_emp");
                 }
             }
         }
@@ -251,6 +443,18 @@ namespace Win_Hunde.ProxyEmpleado {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioEmpleado/ListarEmpleados", ReplyAction="http://tempuri.org/IServicioEmpleado/ListarEmpleadosResponse")]
         System.Threading.Tasks.Task<Win_Hunde.ProxyEmpleado.Empleado[]> ListarEmpleadosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioEmpleado/ListarSupervisores", ReplyAction="http://tempuri.org/IServicioEmpleado/ListarSupervisoresResponse")]
+        Win_Hunde.ProxyEmpleado.Empleado[] ListarSupervisores();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioEmpleado/ListarSupervisores", ReplyAction="http://tempuri.org/IServicioEmpleado/ListarSupervisoresResponse")]
+        System.Threading.Tasks.Task<Win_Hunde.ProxyEmpleado.Empleado[]> ListarSupervisoresAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioEmpleado/EmpleadosPorDepartamento", ReplyAction="http://tempuri.org/IServicioEmpleado/EmpleadosPorDepartamentoResponse")]
+        Win_Hunde.ProxyEmpleado.Empleado[] EmpleadosPorDepartamento(string idDepa);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioEmpleado/EmpleadosPorDepartamento", ReplyAction="http://tempuri.org/IServicioEmpleado/EmpleadosPorDepartamentoResponse")]
+        System.Threading.Tasks.Task<Win_Hunde.ProxyEmpleado.Empleado[]> EmpleadosPorDepartamentoAsync(string idDepa);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -318,6 +522,22 @@ namespace Win_Hunde.ProxyEmpleado {
         
         public System.Threading.Tasks.Task<Win_Hunde.ProxyEmpleado.Empleado[]> ListarEmpleadosAsync() {
             return base.Channel.ListarEmpleadosAsync();
+        }
+        
+        public Win_Hunde.ProxyEmpleado.Empleado[] ListarSupervisores() {
+            return base.Channel.ListarSupervisores();
+        }
+        
+        public System.Threading.Tasks.Task<Win_Hunde.ProxyEmpleado.Empleado[]> ListarSupervisoresAsync() {
+            return base.Channel.ListarSupervisoresAsync();
+        }
+        
+        public Win_Hunde.ProxyEmpleado.Empleado[] EmpleadosPorDepartamento(string idDepa) {
+            return base.Channel.EmpleadosPorDepartamento(idDepa);
+        }
+        
+        public System.Threading.Tasks.Task<Win_Hunde.ProxyEmpleado.Empleado[]> EmpleadosPorDepartamentoAsync(string idDepa) {
+            return base.Channel.EmpleadosPorDepartamentoAsync(idDepa);
         }
     }
 }

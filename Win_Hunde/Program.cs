@@ -1,5 +1,4 @@
-﻿using Win_Hubde;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,7 +16,7 @@ namespace Win_Hunde
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MDIPrincipal());
+            Application.Run(new FrmLogin());
         }
     }
 }

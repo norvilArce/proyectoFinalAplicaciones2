@@ -25,44 +25,51 @@ namespace Win_Hunde
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (txtLogin.Text.Trim() != "" & txtPassword.Text.Trim() != "")
+            try
             {
-                usuario = servicioUsuarioClient.ConsultarUsuario(txtLogin.Text);
-
-                if (usuario.login_usuario == null)
+                if (txtLogin.Text.Trim() != "" & txtPassword.Text.Trim() != "")
                 {
-                    MessageBox.Show("Usuario no existe no no no",
-                    "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    intentos += 1;
-                    ValidaAccesos(intentos);
-                }
+                    usuario = servicioUsuarioClient.ConsultarUsuario(txtLogin.Text);
 
-                if (txtLogin.Text == usuario.login_usuario & txtPassword.Text == usuario.pass_usuario)
-                {
-                    
-                    this.Hide();
-                    timer1.Enabled = false;
-                    clsCredenciales.Usuario = usuario.login_usuario;
-                    clsCredenciales.Password = usuario.pass_usuario;
-                    clsCredenciales.Nivel = usuario.niv_usuario;
-                    MDIPrincipal mdi = new MDIPrincipal();
-                    mdi.ShowDialog();
+                    if (usuario.login_usuario == null) 
+                    {
+                        MessageBox.Show("Usuario no existe",
+                        "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        intentos += 1;
+                        ValidaAccesos(intentos);
+                    }
+                    else
+                    {
+                        if (txtLogin.Text == usuario.login_usuario & txtPassword.Text == usuario.pass_usuario) 
+                        {
+                            this.Hide();
+                            timer1.Enabled = false;
+                            clsCredenciales.Usuario = usuario.login_usuario;
+                            clsCredenciales.Password = usuario.pass_usuario;
+                            clsCredenciales.Nivel = usuario.niv_usuario;
+                            MDIPrincipal mdi = new MDIPrincipal();
+                            mdi.ShowDialog();
+                        } 
+                        else
+                        {
+                            MessageBox.Show("Usuario o Password incorrectos",
+                                "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            intentos += 1;
+                            ValidaAccesos(intentos);
+                        }
+                    }                    
                 }
                 else
                 {
-                    MessageBox.Show("Usuario o Password incorrectos",
-                    "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Los campos no pueden estar vacios",
+                        "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     intentos += 1;
                     ValidaAccesos(intentos);
-
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Los campos no pueden estar vacios",
-                    "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                intentos += 1;
-                ValidaAccesos(intentos);
+                MessageBox.Show(ex.Message);
             }
 
         }

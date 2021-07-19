@@ -37,6 +37,18 @@
   <wsdl:message name="IServicioEmpleado_ListarEmpleados_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListarEmpleadosResponse" />
   </wsdl:message>
+  <wsdl:message name="IServicioEmpleado_ListarSupervisores_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarSupervisores" />
+  </wsdl:message>
+  <wsdl:message name="IServicioEmpleado_ListarSupervisores_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarSupervisoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioEmpleado_EmpleadosPorDepartamento_InputMessage">
+    <wsdl:part name="parameters" element="tns:EmpleadosPorDepartamento" />
+  </wsdl:message>
+  <wsdl:message name="IServicioEmpleado_EmpleadosPorDepartamento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EmpleadosPorDepartamentoResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServicioEmpleado">
     <wsdl:operation name="InsertarEmpleado">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioEmpleado/InsertarEmpleado" message="tns:IServicioEmpleado_InsertarEmpleado_InputMessage" />
@@ -57,6 +69,14 @@
     <wsdl:operation name="ListarEmpleados">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioEmpleado/ListarEmpleados" message="tns:IServicioEmpleado_ListarEmpleados_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicioEmpleado/ListarEmpleadosResponse" message="tns:IServicioEmpleado_ListarEmpleados_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarSupervisores">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioEmpleado/ListarSupervisores" message="tns:IServicioEmpleado_ListarSupervisores_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioEmpleado/ListarSupervisoresResponse" message="tns:IServicioEmpleado_ListarSupervisores_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EmpleadosPorDepartamento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioEmpleado/EmpleadosPorDepartamento" message="tns:IServicioEmpleado_EmpleadosPorDepartamento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioEmpleado/EmpleadosPorDepartamentoResponse" message="tns:IServicioEmpleado_EmpleadosPorDepartamento_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServicioEmpleado" type="tns:IServicioEmpleado">
@@ -99,6 +119,24 @@
     </wsdl:operation>
     <wsdl:operation name="ListarEmpleados">
       <soap:operation soapAction="http://tempuri.org/IServicioEmpleado/ListarEmpleados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarSupervisores">
+      <soap:operation soapAction="http://tempuri.org/IServicioEmpleado/ListarSupervisores" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EmpleadosPorDepartamento">
+      <soap:operation soapAction="http://tempuri.org/IServicioEmpleado/EmpleadosPorDepartamento" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
