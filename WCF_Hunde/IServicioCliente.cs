@@ -12,8 +12,6 @@ namespace WCF_Hunde
     public interface IServicioCliente
     {
         [OperationContract]
-        
-        //comentario cliente
         Boolean InsertarCliente(ClienteBE objClienteBE);
 
         [OperationContract]
@@ -31,19 +29,13 @@ namespace WCF_Hunde
 
     [DataContract]
     [Serializable]
-
     public class ClienteBE
     {
-
         //Datos privados de la tabla Tb_Cliente
         private String mvarcod_cli;
-        private Int16 mvartipo_cliente;
-        //Adicion tipo especial para cliente
-        private String mvartipo_cli;
-
         private String mvarnom_cliente;
-        private String mvarape_pat_cliente;
-        private String mvarape_mat_cliente;
+        private String mvarape_cliente;
+
         //Adiccion campo especial para nombres
         private String mvarapellidos_nombre;
 
@@ -51,9 +43,9 @@ namespace WCF_Hunde
         private String mvarcel_cliente;
         private String mvaremail_cliente;
         private Int16 mvares_dueno;
+
         //Adiccion campo especial para dueño
         private String mvarduenopaciente;
-
 
         private String mvarid_ubigeo;
         private String mvardni_cliente;
@@ -62,6 +54,7 @@ namespace WCF_Hunde
         private String mvarusu_ult_modificacion_cli;
         private DateTime mvarfecha_ult_modificacion_cli;
         private Int16 mvarestado_cli;
+
         //Adiccion campo especial para empleado
         private String mvarestadocliente;
 
@@ -73,13 +66,6 @@ namespace WCF_Hunde
         }
 
         [DataMember]
-        public Int16 Tipo_cliente
-        {
-            get { return mvartipo_cliente; }
-            set { mvartipo_cliente = value; }
-        }
-
-        [DataMember]
         public String nom_cliente
         {
             get { return mvarnom_cliente; }
@@ -87,17 +73,10 @@ namespace WCF_Hunde
         }
 
         [DataMember]
-        public String ape_pat_cliente
+        public String ape_cliente
         {
-            get { return mvarape_pat_cliente; }
-            set { mvarape_pat_cliente = value; }
-        }
-
-        [DataMember]
-        public String ape_mat_cliente
-        {
-            get { return mvarape_mat_cliente; }
-            set { mvarape_mat_cliente = value; }
+            get { return mvarape_cliente; }
+            set { mvarape_cliente = value; }
         }
 
         [DataMember]
@@ -176,14 +155,6 @@ namespace WCF_Hunde
         {
             get { return mvarestado_cli; }
             set { mvarestado_cli = value; }
-        }
-
-        //Campos especiales
-        [DataMember]
-        public String tipo
-        {
-            get { return mvartipo_cli; }
-            set { mvartipo_cli = value; }
         }
 
         [DataMember]

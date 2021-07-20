@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WCF_Hunde" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WCF_Hunde" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Usuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cod_emp" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="est_usuario" type="xs:short" />
+      <xs:element minOccurs="0" name="fec_registro" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="login_usuario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="niv_usuario" type="xs:short" />
+      <xs:element minOccurs="0" name="pass_usuario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="usu_reg_usu" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Usuario" nillable="true" type="tns:Usuario" />
+</xs:schema>

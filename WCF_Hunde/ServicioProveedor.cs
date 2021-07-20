@@ -10,135 +10,75 @@ namespace WCF_Hunde
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "ServicioProveedor" en el código y en el archivo de configuración a la vez.
     public class ServicioProveedor : IServicioProveedor
     {
-        public ProveedorBE ConsultarProveedor(string strCod)
+        HundeDBEntities misProveedores = new HundeDBEntities();
+        public List<ProveedorBE> ConsultarProveedores()
         {
-            HundeDBEntities misProveedores = new HundeDBEntities();
+            List<ProveedorBE> objListProveedor = new List<ProveedorBE>();
             try
             {
-                Tb_Proveedor objConsulta = (from objProv in misProveedores.Tb_Proveedor
-                                            where objProv.cod_prov == strCod
-                                            select objProv).FirstOrDefault();
+                var query = (from prov in misProveedores.Tb_Proveedor
+                             select prov);
 
-                ProveedorBE objProveedorBE = new ProveedorBE();
-
-                objProveedorBE.cod_prov = objConsulta.cod_prov;
-                objProveedorBE.nom_prov = objConsulta.nom_prov;
-                objProveedorBE.ruc_prov = objConsulta.ruc_prov;
-                objProveedorBE.direccion_prov = objConsulta.direccion_prov;
-                objProveedorBE.tel_prov = objConsulta.tel_prov;
-                objProveedorBE.email_prov = objConsulta.email_prov;
-                objProveedorBE.rep_ven_prov = objConsulta.rep_ven_prov;
-                objProveedorBE.fec_reg_prov = Convert.ToDateTime(objConsulta.fec_reg_prov);
-                objProveedorBE.estado_prov = Convert.ToInt16(objConsulta.estado_prov);
-
-
-                if (objConsulta.estado_prov == 1)
+                foreach (var rs in query)
                 {
-                    objProveedorBE.estado_prov = 1;
+
+                    ProveedorBE objProveedorBE = new ProveedorBE();
+
+                    objProveedorBE.cod_prov = rs.cod_prov;
+                    objProveedorBE.raz_soc = rs.raz_soc;
+                    objProveedorBE.ruc_prov = rs.ruc_prov;
+                    objProveedorBE.dir_prov = rs.direccion_prov;
+                    objProveedorBE.id_ubigeo = rs.id_ubigeo;
+                    objProveedorBE.tel_prov = rs.tel_prov;
+                    objProveedorBE.email_prov = rs.email_prov;
+                    objProveedorBE.rep_ven_prov = rs.rep_ven_prov;
+                    objProveedorBE.usu_reg = rs.usu_reg_prov;
+                    objProveedorBE.fec_reg_prov = Convert.ToDateTime(rs.fec_reg_prov);
+                    objProveedorBE.usu_ult_mod = rs.usu_ult_modificacion_prov;
+                    objProveedorBE.fec_ult_mod = Convert.ToDateTime(rs.fecha_ult_modificacion_prov);
+                    objProveedorBE.estado_prov = Convert.ToInt16(rs.estado_prov);
+
+                    objListProveedor.Add(objProveedorBE);
                 }
-                else
+                return objListProveedor;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public ProveedorBE ConsultarProveedorPorCodigo(String strCod)
+        {
+            ProveedorBE objProveedorBE = new ProveedorBE();
+            try
+            {
+                Tb_Proveedor rs = (from prov in misProveedores.Tb_Proveedor
+                                   where prov.cod_prov == strCod
+                                   select prov).FirstOrDefault();
+                if (rs != null)
                 {
-                    objProveedorBE.estado_prov = 0;
+                    objProveedorBE.cod_prov = rs.cod_prov;
+                    objProveedorBE.raz_soc = rs.raz_soc;
+                    objProveedorBE.ruc_prov = rs.ruc_prov;
+                    objProveedorBE.dir_prov = rs.direccion_prov;
+                    objProveedorBE.id_ubigeo = rs.id_ubigeo;
+                    objProveedorBE.tel_prov = rs.tel_prov;
+                    objProveedorBE.email_prov = rs.email_prov;
+                    objProveedorBE.rep_ven_prov = rs.rep_ven_prov;
+                    objProveedorBE.usu_reg = rs.usu_reg_prov;
+                    objProveedorBE.fec_reg_prov = Convert.ToDateTime(rs.fec_reg_prov);
+                    objProveedorBE.usu_ult_mod = rs.usu_ult_modificacion_prov;
+                    objProveedorBE.fec_ult_mod = Convert.ToDateTime(rs.fecha_ult_modificacion_prov);
+                    objProveedorBE.estado_prov = Convert.ToInt16(rs.estado_prov);
                 }
-
-
                 return objProveedorBE;
 
-
             }
-            catch (Exception ex)
+            catch (NullReferenceException)
             {
-                throw new Exception(ex.Message);
-            }
-        }
-
-
-        public List<ProveedorBE> ConsultarSupervisor(string strRepVenProv)
-        {
-
-            HundeDBEntities misProveedores = new HundeDBEntities();
-            List<ProveedorBE> objListaProveedor = new List<ProveedorBE>();
-
-            try
-            {
-
-                var query = misProveedores.usp_RepresentanteProveedor(strRepVenProv);
-                foreach (var rs in query)
-                {
-                    ProveedorBE objListaProveedores = new ProveedorBE();
-                    objListaProveedores.cod_prov = rs.cod_prov;
-                    objListaProveedores.rep_ven_prov = rs.rep_ven_prov;
-                    objListaProveedores.nom_prov = rs.nom_prov;
-
-                    objListaProveedor.Add(objListaProveedores);
-
-                }
-                return objListaProveedor;
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-
-        public List<ProveedorBE> ConsultarMedicinaProveedor(string srtTipoMedicina)
-        {
-            HundeDBEntities misProveedores = new HundeDBEntities();
-            List<ProveedorBE> objListaMedicinaBE = new List<ProveedorBE>();
-
-            try
-            {
-
-                var query = misProveedores.usp_ListarTipoMedicinaProveedor(srtTipoMedicina);
-                foreach (var rs in query)
-                {
-                    ProveedorBE objMedcinaBE = new ProveedorBE();
-                    objMedcinaBE.cod_prov = rs.cod_prov;
-                    objMedcinaBE.cod_med = rs.cod_med;
-                    objMedcinaBE.nom_prov = rs.nom_prov;
-                    objMedcinaBE.email_prov = rs.email_prov;
-                    objMedcinaBE.tel_prov = rs.tel_prov;
-                    objMedcinaBE.nombre_medicina = rs.nombre_medicina;
-                    objMedcinaBE.tipo_medicina = rs.tipo_medicina;
-
-                    objListaMedicinaBE.Add(objMedcinaBE);
-
-                }
-                return objListaMedicinaBE;
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-
-        public List<EstadosBE> ConsultarEstadoProveedorMedicina(short strEstadoProveedor, string strTipoMedicina)
-        {
-
-            HundeDBEntities misProveedores = new HundeDBEntities();
-            List<EstadosBE> objListEstado = new List<EstadosBE>();
-
-            try
-            {
-                var query = misProveedores.usp_ListarEstadoProveedorMedicina(strEstadoProveedor, strTipoMedicina);
-                foreach (var rs in query)
-                {
-                    EstadosBE objEstado = new EstadosBE();
-                    objEstado.cod_prov = rs.cod_prov;
-                    objEstado.cod_med = rs.cod_med;
-                    objEstado.nom_prov = rs.nom_prov;
-                    objEstado.nombre_medicina = rs.nombre_medicina;
-                    objEstado.tipo_medicina = rs.tipo_medicina;
-                    objEstado.estado_prov = Convert.ToInt16(rs.estado_prov);
-
-                    objListEstado.Add(objEstado);
-
-                }
-                return objListEstado;
+                return objProveedorBE;
             }
             catch (Exception ex)
             {

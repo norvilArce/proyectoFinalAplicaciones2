@@ -14,9 +14,8 @@ namespace WCF_Hunde
     
     public partial class Tb_Medicina
     {
-        public string cod_med { get; set; }
-        public string tipo_medicina { get; set; }
+        public int cod_med { get; set; }
         public string nombre_medicina { get; set; }
-        public int cod_uni_med { get; set; }
+        public decimal precio { get; set; }
     }
 }

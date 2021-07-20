@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Data.Entity.Core;
 using System.Text;
 
 namespace WCF_Hunde
@@ -11,15 +11,13 @@ namespace WCF_Hunde
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "ServicioCliente" en el código y en el archivo de configuración a la vez.
     public class ServicioCliente : IServicioCliente
     {
+        HundeDBEntities MisClientes = new HundeDBEntities();
         public bool InsertarCliente(ClienteBE objClienteBE)
         {
-            //Instanciamos el modelo
-            HundeDBEntities MisClientes = new HundeDBEntities();
             try
             {
-                //usp
-                MisClientes.usp_InsertarCliente(objClienteBE.Tipo_cliente, objClienteBE.nom_cliente,
-                    objClienteBE.ape_pat_cliente, objClienteBE.ape_mat_cliente, objClienteBE.direccion_cliente,
+                MisClientes.usp_InsertarCliente(objClienteBE.nom_cliente,
+                    objClienteBE.ape_cliente, objClienteBE.direccion_cliente,
                     objClienteBE.cel_cliente, objClienteBE.email_cliente, objClienteBE.es_dueno,
                     objClienteBE.id_ubigeo, objClienteBE.dni_cliente,
                     objClienteBE.usu_reg_cli, objClienteBE.estado_cli);
@@ -27,7 +25,6 @@ namespace WCF_Hunde
             }
             catch (EntityException ex)
             {
-
                 throw new Exception(ex.Message);
             }
         }
@@ -35,42 +32,39 @@ namespace WCF_Hunde
 
         public ClienteBE ConsultarCliente(string strCod)
         {
-            HundeDBEntities MisClientes = new HundeDBEntities();
             try
             {
-                //Obtiene la istancia de cliente con LINQ
                 Tb_Cliente objConsulta = (from objCli in MisClientes.Tb_Cliente
                                           where objCli.cod_cli == strCod
                                           select objCli).FirstOrDefault();
-                //Crea una instancia del clienteBE para traer sus resultados
+
                 ClienteBE objCliente = new ClienteBE();
 
                 objCliente.cod_cli = objConsulta.cod_cli;
 
-                if (objConsulta.Tipo_cliente == 1)
-                {
-                    objCliente.tipo = "Persona Natural";
-                }
-                else
-                {
-                    objCliente.tipo = "Persona Juridica";
-                }
                 objCliente.nom_cliente = objConsulta.nom_cliente;
-                objCliente.ape_pat_cliente = objConsulta.ape_pat_cliente;
-                objCliente.ape_mat_cliente = objConsulta.ape_mat_cliente;
+                objCliente.ape_cliente = objConsulta.ape_cliente;
+                objCliente.dni_cliente = objConsulta.dni_cliente;
                 objCliente.direccion_cliente = objConsulta.direccion_cliente;
+                objCliente.cel_cliente = objConsulta.cel_cliente;
                 objCliente.email_cliente = objConsulta.email_cliente;
+                objCliente.id_ubigeo = objConsulta.id_ubigeo;
+                objCliente.estado_cli = Convert.ToInt16(objConsulta.estado_cli);
+                objCliente.es_dueno = Convert.ToInt16(objConsulta.es_dueno);
+
                 if (objConsulta.es_dueno == 1)
                 {
                     objCliente.dueno = "Dueño";
                 }
-                else
+                else if (objConsulta.es_dueno == 2)
                 {
                     objCliente.dueno = "Familiar";
                 }
 
-
-                objCliente.dni_cliente = objConsulta.dni_cliente;
+                objCliente.usu_reg_cli = objConsulta.usu_reg_cli;
+                objCliente.fec_reg_cli = Convert.ToDateTime(objConsulta.fec_reg_cli);
+                objCliente.usu_ult_modificacion_cli = objConsulta.usu_ult_modificacion_cli;
+                objCliente.fecha_ult_modificacion_cli = Convert.ToDateTime(objConsulta.fecha_ult_modificacion_cli);
 
                 if (objConsulta.estado_cli == 1)
                 {
@@ -80,13 +74,10 @@ namespace WCF_Hunde
                 {
                     objCliente.estado = "Inactivo";
                 }
-
                 return objCliente;
-
             }
             catch (EntityException ex)
             {
-
                 throw new Exception(ex.Message);
             }
         }
@@ -94,16 +85,14 @@ namespace WCF_Hunde
 
         public bool ActualizarCliente(ClienteBE objClienteBE)
         {
-            HundeDBEntities MisClientes = new HundeDBEntities();
 
             try
             {
-                //usp
-                MisClientes.usp_ActualizarCliente(objClienteBE.Tipo_cliente, objClienteBE.nom_cliente,
-                    objClienteBE.ape_pat_cliente, objClienteBE.ape_mat_cliente, objClienteBE.direccion_cliente,
+                MisClientes.usp_ActualizarCliente(objClienteBE.nom_cliente,
+                    objClienteBE.ape_cliente, objClienteBE.direccion_cliente,
                     objClienteBE.cel_cliente, objClienteBE.email_cliente, objClienteBE.es_dueno,
                     objClienteBE.id_ubigeo, objClienteBE.dni_cliente,
-                    objClienteBE.usu_ult_modificacion_cli, objClienteBE.fecha_ult_modificacion_cli,
+                    objClienteBE.usu_ult_modificacion_cli,
                     objClienteBE.estado_cli, objClienteBE.cod_cli);
                 return true;
             }
@@ -113,15 +102,11 @@ namespace WCF_Hunde
             }
         }
 
-
         public bool EliminarCliente(string strCod)
         {
-            HundeDBEntities MisClientes = new HundeDBEntities();
             try
             {
-                //usp
                 MisClientes.usp_EliminarCliente(strCod);
-
                 return true;
             }
             catch (EntityException ex)
@@ -130,10 +115,8 @@ namespace WCF_Hunde
             }
         }
 
-     
         public List<ClienteBE> ListarClientes()
         {
-            HundeDBEntities MisClientes = new HundeDBEntities();
             try
             {
                 List<ClienteBE> objListaCliente = new List<ClienteBE>();
@@ -142,16 +125,16 @@ namespace WCF_Hunde
 
                 foreach (var objCliente in query)
                 {
-                    //Creamos una instancia del cliente para retornar el resultado
                     ClienteBE objClienteBE = new ClienteBE();
 
                     objClienteBE.cod_cli = objCliente.cod_cli;
-                    objClienteBE.apellidos_nombre = objCliente.ape_pat_cliente + "," + objCliente.ape_mat_cliente + " , " + objCliente.nom_cliente;
+                    objClienteBE.apellidos_nombre = objCliente.nom_cliente + ", " + objCliente.ape_cliente;
                     objClienteBE.direccion_cliente = objCliente.direccion_cliente;
                     objClienteBE.cel_cliente = objCliente.cel_cliente;
                     objClienteBE.email_cliente = objCliente.email_cliente;
-                    //objClienteBE.dueno = objCliente.es_dueno;
-                    if (objClienteBE.es_dueno == 1)
+                    objClienteBE.id_ubigeo = objCliente.id_ubigeo;
+                    objClienteBE.es_dueno = Convert.ToInt16(objCliente.es_dueno);
+                    if (objCliente.es_dueno == 1)
                     {
                         objClienteBE.dueno = "Dueño";
                     }
@@ -160,6 +143,7 @@ namespace WCF_Hunde
                         objClienteBE.dueno = "Familiar";
                     }
                     objClienteBE.dni_cliente = objCliente.dni_cliente;
+                    objClienteBE.usu_reg_cli = objCliente.usu_reg_cli;
                     objClienteBE.estado_cli = Convert.ToInt16(objCliente.estado_cli);
                     if (objClienteBE.estado_cli == 1)
                     {
@@ -181,5 +165,6 @@ namespace WCF_Hunde
                 throw new Exception(ex.Message);
             }
         }
+
     }
 }

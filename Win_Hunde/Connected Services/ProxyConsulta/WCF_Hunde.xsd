@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/WCF_Hunde" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WCF_Hunde" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfConsulta">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Consulta" nillable="true" type="tns:Consulta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfConsulta" nillable="true" type="tns:ArrayOfConsulta" />
+  <xs:complexType name="Consulta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="actividad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cod_cita" type="xs:short" />
+      <xs:element minOccurs="0" name="cod_cli" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cod_emp" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cod_pac" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="color_pac" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="conduta" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="est_nutricional" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fec_consulta" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="hora_consulta" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nom_cli" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nom_emp" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nom_pac" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="observaciones" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="raza_pac" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tipo_pac" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Consulta" nillable="true" type="tns:Consulta" />
+  <xs:complexType name="Cita">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cod_cita" type="xs:short" />
+      <xs:element minOccurs="0" name="cod_cli" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="est_cita" type="xs:short" />
+      <xs:element minOccurs="0" name="fec_cita" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fec_reserva" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="hor_cita" type="ser:duration" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Cita" nillable="true" type="tns:Cita" />
+</xs:schema>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WCF_Hunde" />
+  <xs:element name="UbigeoDepartamentos">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UbigeoDepartamentosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WCF_Hunde" minOccurs="0" name="UbigeoDepartamentosResult" nillable="true" type="q1:ArrayOfUbigeo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Ubigeo_ProvinciasDepartamento">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idDepa" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Ubigeo_ProvinciasDepartamentoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WCF_Hunde" minOccurs="0" name="Ubigeo_ProvinciasDepartamentoResult" nillable="true" type="q2:ArrayOfUbigeo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Ubigeo_DistritosProvinciaDepartamento">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idDepa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idProv" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Ubigeo_DistritosProvinciaDepartamentoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WCF_Hunde" minOccurs="0" name="Ubigeo_DistritosProvinciaDepartamentoResult" nillable="true" type="q3:ArrayOfUbigeo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,1941 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HundeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tb_Cliente">
+          <Key>
+            <PropertyRef Name="cod_cli" />
+          </Key>
+          <Property Name="cod_cli" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="nom_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ape_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="direccion_cliente" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cel_cliente" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="email_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="es_dueno" Type="int" Nullable="false" />
+          <Property Name="id_ubigeo" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="dni_cliente" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="usu_reg_cli" Type="varchar" MaxLength="15" />
+          <Property Name="fec_reg_cli" Type="datetime" />
+          <Property Name="usu_ult_modificacion_cli" Type="varchar" MaxLength="15" />
+          <Property Name="fecha_ult_modificacion_cli" Type="datetime" />
+          <Property Name="estado_cli" Type="int" />
+        </EntityType>
+        <EntityType Name="Tb_Color">
+          <Key>
+            <PropertyRef Name="cod_color" />
+          </Key>
+          <Property Name="cod_color" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_color" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Tb_Empleado">
+          <Key>
+            <PropertyRef Name="cod_emp" />
+          </Key>
+          <Property Name="cod_emp" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="cod_rol" Type="int" Nullable="false" />
+          <Property Name="tipo_emp" Type="int" Nullable="false" />
+          <Property Name="nom_empleado" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ape_empleado" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="direccion_empleado" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="id_ubigeo" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="fecha_ingreso" Type="datetime" Nullable="false" />
+          <Property Name="sueldo" Type="money" />
+          <Property Name="email_emp" Type="varchar" MaxLength="50" />
+          <Property Name="cod_supervisor" Type="varchar" MaxLength="4" />
+          <Property Name="usu_reg_cli" Type="varchar" MaxLength="15" />
+          <Property Name="fec_reg_cli" Type="datetime" />
+          <Property Name="usu_ult_modificacion_emp" Type="varchar" MaxLength="15" />
+          <Property Name="fecha_ult_modificacion_emp" Type="datetime" />
+          <Property Name="estado_emp" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Estado">
+          <Key>
+            <PropertyRef Name="cod_estado" />
+          </Key>
+          <Property Name="cod_estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="conducta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="est_nutricional" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="actividad" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Medicina">
+          <Key>
+            <PropertyRef Name="cod_med" />
+          </Key>
+          <Property Name="cod_med" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_medicina" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="precio" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Paciente">
+          <Key>
+            <PropertyRef Name="cod_pac" />
+          </Key>
+          <Property Name="cod_pac" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="nom_pac" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cod_raza" Type="int" />
+          <Property Name="fec_nac_pac" Type="date" Nullable="false" />
+          <Property Name="sexo" Type="int" Nullable="false" />
+          <Property Name="cod_color" Type="int" Nullable="false" />
+          <Property Name="longitud" Type="float" Nullable="false" />
+          <Property Name="peso" Type="float" Nullable="false" />
+          <Property Name="ult_vis_pac" Type="date" />
+          <Property Name="foto" Type="image" />
+          <Property Name="observaciones_pac" Type="varchar" MaxLength="300" />
+          <Property Name="est_pac" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Proveedor">
+          <Key>
+            <PropertyRef Name="cod_prov" />
+          </Key>
+          <Property Name="cod_prov" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="raz_soc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ruc_prov" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="direccion_prov" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="id_ubigeo" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="tel_prov" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="email_prov" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="rep_ven_prov" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usu_reg_prov" Type="varchar" MaxLength="15" />
+          <Property Name="fec_reg_prov" Type="datetime" />
+          <Property Name="usu_ult_modificacion_prov" Type="varchar" MaxLength="15" />
+          <Property Name="fecha_ult_modificacion_prov" Type="datetime" />
+          <Property Name="estado_prov" Type="int" />
+        </EntityType>
+        <EntityType Name="Tb_Raza">
+          <Key>
+            <PropertyRef Name="cod_raza" />
+          </Key>
+          <Property Name="cod_raza" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_raza" Type="varchar" MaxLength="40" />
+          <Property Name="cod_tipo" Type="int" />
+        </EntityType>
+        <EntityType Name="Tb_Rol">
+          <Key>
+            <PropertyRef Name="cod_rol" />
+          </Key>
+          <Property Name="cod_rol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_rol" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Tipo_Paciente">
+          <Key>
+            <PropertyRef Name="cod_tipo" />
+          </Key>
+          <Property Name="cod_tipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_tipo" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Tb_Tratamiento">
+          <Key>
+            <PropertyRef Name="cod_trat" />
+          </Key>
+          <Property Name="cod_trat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_trat" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="estado_trat" Type="int" />
+        </EntityType>
+        <EntityType Name="Tb_Ubigeo">
+          <Key>
+            <PropertyRef Name="Id_Ubigeo" />
+          </Key>
+          <Property Name="Id_Ubigeo" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="IdDepa" Type="nvarchar" MaxLength="255" />
+          <Property Name="IdProv" Type="nvarchar" MaxLength="255" />
+          <Property Name="IdDist" Type="nvarchar" MaxLength="255" />
+          <Property Name="Departamento" Type="nvarchar" MaxLength="255" />
+          <Property Name="Provincia" Type="nvarchar" MaxLength="255" />
+          <Property Name="Distrito" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Tb_Usuario">
+          <Key>
+            <PropertyRef Name="login_usuario" />
+          </Key>
+          <Property Name="login_usuario" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="pass_usuario" Type="varchar" MaxLength="20" />
+          <Property Name="niv_usuario" Type="int" />
+          <Property Name="est_usuario" Type="int" />
+          <Property Name="fec_registro" Type="datetime" />
+          <Property Name="usu_reg_usu" Type="varchar" MaxLength="4" />
+          <Property Name="cod_emp" Type="varchar" MaxLength="4" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_Consultas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_Consultas">
+          <Key>
+            <PropertyRef Name="cod_cita" />
+            <PropertyRef Name="fecha" />
+            <PropertyRef Name="hora" />
+            <PropertyRef Name="cod_emp" />
+            <PropertyRef Name="medico" />
+            <PropertyRef Name="cod_pac" />
+            <PropertyRef Name="mascota" />
+            <PropertyRef Name="cod_cli" />
+            <PropertyRef Name="lo_trajo" />
+            <PropertyRef Name="conducta" />
+            <PropertyRef Name="est_nutricional" />
+            <PropertyRef Name="actividad" />
+          </Key>
+          <Property Name="cod_cita" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="hora" Type="time" Precision="7" Nullable="false" />
+          <Property Name="cod_emp" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="medico" Type="varchar" MaxLength="101" Nullable="false" />
+          <Property Name="cod_pac" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="mascota" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="40" />
+          <Property Name="raza" Type="varchar" MaxLength="40" />
+          <Property Name="color" Type="varchar" MaxLength="40" />
+          <Property Name="cod_cli" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="lo_trajo" Type="varchar" MaxLength="101" Nullable="false" />
+          <Property Name="conducta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="est_nutricional" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="actividad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="observaciones" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_DetallesPaciente">
+          <Key>
+            <PropertyRef Name="conducta" />
+            <PropertyRef Name="nutricion" />
+            <PropertyRef Name="actividad" />
+          </Key>
+          <Property Name="codigo" Type="varchar" MaxLength="4" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="tipo" Type="varchar" MaxLength="40" />
+          <Property Name="nom_raza" Type="varchar" MaxLength="40" />
+          <Property Name="fec_nac_pac" Type="date" />
+          <Property Name="sexo" Type="int" />
+          <Property Name="color" Type="varchar" MaxLength="40" />
+          <Property Name="longitud" Type="float" />
+          <Property Name="peso" Type="float" />
+          <Property Name="conducta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nutricion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="actividad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="observaciones" Type="varchar" MaxLength="300" />
+          <Property Name="det_obs" Type="varchar" MaxLength="300" />
+          <Property Name="estado" Type="int" />
+          <Property Name="foto" Type="image" />
+        </EntityType>
+        <Association Name="FK_Cliente_Ubigeo">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="1" />
+          <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Cliente">
+              <PropertyRef Name="id_ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COLOR_PACIENTE">
+          <End Role="Tb_Color" Type="Self.Tb_Color" Multiplicity="1" />
+          <End Role="Tb_Paciente" Type="Self.Tb_Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Color">
+              <PropertyRef Name="cod_color" />
+            </Principal>
+            <Dependent Role="Tb_Paciente">
+              <PropertyRef Name="cod_color" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Supervisor">
+          <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="0..1" />
+          <End Role="Tb_Empleado1" Type="Self.Tb_Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Empleado">
+              <PropertyRef Name="cod_emp" />
+            </Principal>
+            <Dependent Role="Tb_Empleado1">
+              <PropertyRef Name="cod_supervisor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Ubigeo">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="1" />
+          <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Empleado">
+              <PropertyRef Name="id_ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PACIENTE_RAZA">
+          <End Role="Tb_Raza" Type="Self.Tb_Raza" Multiplicity="0..1" />
+          <End Role="Tb_Paciente" Type="Self.Tb_Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Raza">
+              <PropertyRef Name="cod_raza" />
+            </Principal>
+            <Dependent Role="Tb_Paciente">
+              <PropertyRef Name="cod_raza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proveedor_Ubigeo">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="1" />
+          <End Role="Tb_Proveedor" Type="Self.Tb_Proveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Proveedor">
+              <PropertyRef Name="id_ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROL_EMPLEADO">
+          <End Role="Tb_Rol" Type="Self.Tb_Rol" Multiplicity="1" />
+          <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Rol">
+              <PropertyRef Name="cod_rol" />
+            </Principal>
+            <Dependent Role="Tb_Empleado">
+              <PropertyRef Name="cod_rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TIPO_RAZA">
+          <End Role="Tb_Tipo_Paciente" Type="Self.Tb_Tipo_Paciente" Multiplicity="0..1" />
+          <End Role="Tb_Raza" Type="Self.Tb_Raza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Tipo_Paciente">
+              <PropertyRef Name="cod_tipo" />
+            </Principal>
+            <Dependent Role="Tb_Raza">
+              <PropertyRef Name="cod_tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_user">
+          <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="0..1" />
+          <End Role="Tb_Usuario" Type="Self.Tb_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Empleado">
+              <PropertyRef Name="cod_emp" />
+            </Principal>
+            <Dependent Role="Tb_Usuario">
+              <PropertyRef Name="cod_emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="usp_ActualizarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
+          <Parameter Name="vape_cli" Type="varchar" Mode="In" />
+          <Parameter Name="vdir_cli" Type="varchar" Mode="In" />
+          <Parameter Name="vcel_cli" Type="varchar" Mode="In" />
+          <Parameter Name="vemail_cli" Type="varchar" Mode="In" />
+          <Parameter Name="ves_dueno" Type="int" Mode="In" />
+          <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
+          <Parameter Name="vdni_cli" Type="char" Mode="In" />
+          <Parameter Name="vusu_ult_mod" Type="varchar" Mode="In" />
+          <Parameter Name="vestado_cli" Type="int" Mode="In" />
+          <Parameter Name="vcod_cli" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ActualizarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_rol" Type="int" Mode="In" />
+          <Parameter Name="vtipo_emp" Type="int" Mode="In" />
+          <Parameter Name="vnom_emp" Type="varchar" Mode="In" />
+          <Parameter Name="vape_emp" Type="varchar" Mode="In" />
+          <Parameter Name="vdir_emp" Type="varchar" Mode="In" />
+          <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
+          <Parameter Name="vfecha_ingreso" Type="datetime" Mode="In" />
+          <Parameter Name="vsueldo" Type="money" Mode="In" />
+          <Parameter Name="vemail_emp" Type="varchar" Mode="In" />
+          <Parameter Name="vcod_sup" Type="varchar" Mode="In" />
+          <Parameter Name="vusu_ult_mod" Type="varchar" Mode="In" />
+          <Parameter Name="vestado_emp" Type="int" Mode="In" />
+          <Parameter Name="vcod_emp" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ActualizarPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vnom_pac" Type="varchar" Mode="In" />
+          <Parameter Name="vcod_raza" Type="int" Mode="In" />
+          <Parameter Name="vfec_nac_pac" Type="date" Mode="In" />
+          <Parameter Name="vsexo" Type="int" Mode="In" />
+          <Parameter Name="vcod_color" Type="int" Mode="In" />
+          <Parameter Name="vlongitud" Type="float" Mode="In" />
+          <Parameter Name="vpeso" Type="float" Mode="In" />
+          <Parameter Name="vfoto" Type="image" Mode="In" />
+          <Parameter Name="vobservaciones_pac" Type="varchar" Mode="In" />
+          <Parameter Name="vest_pac" Type="int" Mode="In" />
+          <Parameter Name="vcod_pac" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ActualizarReservarCita" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vfec_cita" Type="date" Mode="In" />
+          <Parameter Name="vhor_cita" Type="time" Mode="In" />
+          <Parameter Name="vcod_cli" Type="varchar" Mode="In" />
+          <Parameter Name="vcod_cita" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_AgregarDetallesDeConsulta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_cons" Type="int" Mode="In" />
+          <Parameter Name="vcod_trat" Type="int" Mode="In" />
+          <Parameter Name="vcod_estado" Type="int" Mode="In" />
+          <Parameter Name="vcod_med" Type="int" Mode="In" />
+          <Parameter Name="vobs_det_cons" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_CancelarConsulta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_cons" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_CancelarReserva" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_cita" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultasEntreFechas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vfec_ini" Type="date" Mode="In" />
+          <Parameter Name="vfec_fin" Type="date" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultasPorFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vfec_con" Type="date" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultasPorMascota" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_pac" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultasPorMascotaEntreFechas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_pac" Type="char" Mode="In" />
+          <Parameter Name="vfec_ini" Type="date" Mode="In" />
+          <Parameter Name="vfec_fin" Type="date" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultasPorMedico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_emp" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultasPorMedicoEntreFechas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_emp" Type="char" Mode="In" />
+          <Parameter Name="vfec_ini" Type="date" Mode="In" />
+          <Parameter Name="vfec_fin" Type="date" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_cli" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_EliminarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_emp" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_EmpleadosPorDepartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vdep" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_GenerarConsulta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_pac" Type="varchar" Mode="In" />
+          <Parameter Name="vcod_emp" Type="varchar" Mode="In" />
+          <Parameter Name="vcod_cita" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
+          <Parameter Name="vape_cli" Type="varchar" Mode="In" />
+          <Parameter Name="vdir_cli" Type="varchar" Mode="In" />
+          <Parameter Name="vcel_cli" Type="varchar" Mode="In" />
+          <Parameter Name="vemail_cli" Type="varchar" Mode="In" />
+          <Parameter Name="ves_dueno" Type="int" Mode="In" />
+          <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
+          <Parameter Name="vdni_cli" Type="char" Mode="In" />
+          <Parameter Name="vusu_reg_cli" Type="varchar" Mode="In" />
+          <Parameter Name="vestado_cli" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_rol" Type="int" Mode="In" />
+          <Parameter Name="vtipo_emp" Type="int" Mode="In" />
+          <Parameter Name="vnom_emp" Type="varchar" Mode="In" />
+          <Parameter Name="vape_emp" Type="varchar" Mode="In" />
+          <Parameter Name="vdir_emp" Type="varchar" Mode="In" />
+          <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
+          <Parameter Name="vfecha_ingreso" Type="datetime" Mode="In" />
+          <Parameter Name="vsueldo" Type="money" Mode="In" />
+          <Parameter Name="vemail_emp" Type="varchar" Mode="In" />
+          <Parameter Name="vcod_sup" Type="varchar" Mode="In" />
+          <Parameter Name="vusu_reg" Type="varchar" Mode="In" />
+          <Parameter Name="vestado_emp" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vnom_pac" Type="varchar" Mode="In" />
+          <Parameter Name="vcod_raza" Type="int" Mode="In" />
+          <Parameter Name="vfec_nac_pac" Type="date" Mode="In" />
+          <Parameter Name="vsexo" Type="int" Mode="In" />
+          <Parameter Name="vcod_color" Type="int" Mode="In" />
+          <Parameter Name="vlongitud" Type="float" Mode="In" />
+          <Parameter Name="vpeso" Type="float" Mode="In" />
+          <Parameter Name="vult_vis_pac" Type="date" Mode="In" />
+          <Parameter Name="vfoto" Type="image" Mode="In" />
+          <Parameter Name="vobservaciones_pac" Type="varchar" Mode="In" />
+          <Parameter Name="vest_pac" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ListarClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarMedicinasPorProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_prov" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ListarPacientePorTratamiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_trat" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ListarPacientesPorRaza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_raza" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_MedicinasPorProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_prov" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_PacientesPorRaza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vcod_raza" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ReservarCita" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vfec_cita" Type="date" Mode="In" />
+          <Parameter Name="vhor_cita" Type="time" Mode="In" />
+          <Parameter Name="vcod_cli" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_Ubigeo_DistritosProvinciaDepartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdDepa" Type="char" Mode="In" />
+          <Parameter Name="IdProv" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_Ubigeo_ProvinciasDepartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdDepa" Type="char" Mode="In" />
+        </Function>
+        <Function Name="usp_UbigeoDepartamentos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="HundeDBModelStoreContainer">
+          <EntitySet Name="Tb_Cliente" EntityType="Self.Tb_Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Color" EntityType="Self.Tb_Color" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Empleado" EntityType="Self.Tb_Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Estado" EntityType="Self.Tb_Estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Medicina" EntityType="Self.Tb_Medicina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Paciente" EntityType="Self.Tb_Paciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Proveedor" EntityType="Self.Tb_Proveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Raza" EntityType="Self.Tb_Raza" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Rol" EntityType="Self.Tb_Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Tipo_Paciente" EntityType="Self.Tb_Tipo_Paciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Tratamiento" EntityType="Self.Tb_Tratamiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Ubigeo" EntityType="Self.Tb_Ubigeo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Usuario" EntityType="Self.Tb_Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_Consultas" EntityType="Self.vw_Consultas" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Consultas].[cod_cita] AS [cod_cita], 
+    [vw_Consultas].[fecha] AS [fecha], 
+    [vw_Consultas].[hora] AS [hora], 
+    [vw_Consultas].[cod_emp] AS [cod_emp], 
+    [vw_Consultas].[medico] AS [medico], 
+    [vw_Consultas].[cod_pac] AS [cod_pac], 
+    [vw_Consultas].[mascota] AS [mascota], 
+    [vw_Consultas].[tipo] AS [tipo], 
+    [vw_Consultas].[raza] AS [raza], 
+    [vw_Consultas].[color] AS [color], 
+    [vw_Consultas].[cod_cli] AS [cod_cli], 
+    [vw_Consultas].[lo_trajo] AS [lo_trajo], 
+    [vw_Consultas].[conducta] AS [conducta], 
+    [vw_Consultas].[est_nutricional] AS [est_nutricional], 
+    [vw_Consultas].[actividad] AS [actividad], 
+    [vw_Consultas].[observaciones] AS [observaciones]
+    FROM [dbo].[vw_Consultas] AS [vw_Consultas]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_DetallesPaciente" EntityType="Self.vw_DetallesPaciente" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_DetallesPaciente].[codigo] AS [codigo], 
+    [vw_DetallesPaciente].[nombre] AS [nombre], 
+    [vw_DetallesPaciente].[tipo] AS [tipo], 
+    [vw_DetallesPaciente].[nom_raza] AS [nom_raza], 
+    [vw_DetallesPaciente].[fec_nac_pac] AS [fec_nac_pac], 
+    [vw_DetallesPaciente].[sexo] AS [sexo], 
+    [vw_DetallesPaciente].[color] AS [color], 
+    [vw_DetallesPaciente].[longitud] AS [longitud], 
+    [vw_DetallesPaciente].[peso] AS [peso], 
+    [vw_DetallesPaciente].[conducta] AS [conducta], 
+    [vw_DetallesPaciente].[nutricion] AS [nutricion], 
+    [vw_DetallesPaciente].[actividad] AS [actividad], 
+    [vw_DetallesPaciente].[observaciones] AS [observaciones], 
+    [vw_DetallesPaciente].[det_obs] AS [det_obs], 
+    [vw_DetallesPaciente].[estado] AS [estado], 
+    [vw_DetallesPaciente].[foto] AS [foto]
+    FROM [dbo].[vw_DetallesPaciente] AS [vw_DetallesPaciente]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Cliente_Ubigeo" Association="Self.FK_Cliente_Ubigeo">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COLOR_PACIENTE" Association="Self.FK_COLOR_PACIENTE">
+            <End Role="Tb_Color" EntitySet="Tb_Color" />
+            <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Supervisor" Association="Self.FK_Empleado_Supervisor">
+            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+            <End Role="Tb_Empleado1" EntitySet="Tb_Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Ubigeo" Association="Self.FK_Empleado_Ubigeo">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PACIENTE_RAZA" Association="Self.FK_PACIENTE_RAZA">
+            <End Role="Tb_Raza" EntitySet="Tb_Raza" />
+            <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proveedor_Ubigeo" Association="Self.FK_Proveedor_Ubigeo">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Proveedor" EntitySet="Tb_Proveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROL_EMPLEADO" Association="Self.FK_ROL_EMPLEADO">
+            <End Role="Tb_Rol" EntitySet="Tb_Rol" />
+            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TIPO_RAZA" Association="Self.FK_TIPO_RAZA">
+            <End Role="Tb_Tipo_Paciente" EntitySet="Tb_Tipo_Paciente" />
+            <End Role="Tb_Raza" EntitySet="Tb_Raza" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_user" Association="Self.FK_Usuario_user">
+            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+            <End Role="Tb_Usuario" EntitySet="Tb_Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HundeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tb_Cliente">
+          <Key>
+            <PropertyRef Name="cod_cli" />
+          </Key>
+          <Property Name="cod_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nom_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ape_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion_cliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cel_cliente" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="es_dueno" Type="Int32" Nullable="false" />
+          <Property Name="id_ubigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dni_cliente" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="usu_reg_cli" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="fec_reg_cli" Type="DateTime" Precision="3" />
+          <Property Name="usu_ult_modificacion_cli" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ult_modificacion_cli" Type="DateTime" Precision="3" />
+          <Property Name="estado_cli" Type="Int32" />
+          <NavigationProperty Name="Tb_Ubigeo" Relationship="Self.FK_Cliente_Ubigeo" FromRole="Tb_Cliente" ToRole="Tb_Ubigeo" />
+        </EntityType>
+        <EntityType Name="Tb_Color">
+          <Key>
+            <PropertyRef Name="cod_color" />
+          </Key>
+          <Property Name="cod_color" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_color" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Paciente" Relationship="Self.FK_COLOR_PACIENTE" FromRole="Tb_Color" ToRole="Tb_Paciente" />
+        </EntityType>
+        <EntityType Name="Tb_Empleado">
+          <Key>
+            <PropertyRef Name="cod_emp" />
+          </Key>
+          <Property Name="cod_emp" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cod_rol" Type="Int32" Nullable="false" />
+          <Property Name="tipo_emp" Type="Int32" Nullable="false" />
+          <Property Name="nom_empleado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ape_empleado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion_empleado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_ubigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_ingreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="sueldo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="email_emp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cod_supervisor" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="usu_reg_cli" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="fec_reg_cli" Type="DateTime" Precision="3" />
+          <Property Name="usu_ult_modificacion_emp" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ult_modificacion_emp" Type="DateTime" Precision="3" />
+          <Property Name="estado_emp" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tb_Empleado1" Relationship="Self.FK_Empleado_Supervisor" FromRole="Tb_Empleado" ToRole="Tb_Empleado1" />
+          <NavigationProperty Name="Tb_Empleado2" Relationship="Self.FK_Empleado_Supervisor" FromRole="Tb_Empleado1" ToRole="Tb_Empleado" />
+          <NavigationProperty Name="Tb_Ubigeo" Relationship="Self.FK_Empleado_Ubigeo" FromRole="Tb_Empleado" ToRole="Tb_Ubigeo" />
+          <NavigationProperty Name="Tb_Rol" Relationship="Self.FK_ROL_EMPLEADO" FromRole="Tb_Empleado" ToRole="Tb_Rol" />
+          <NavigationProperty Name="Tb_Usuario" Relationship="Self.FK_Usuario_user" FromRole="Tb_Empleado" ToRole="Tb_Usuario" />
+        </EntityType>
+        <EntityType Name="Tb_Estado">
+          <Key>
+            <PropertyRef Name="cod_estado" />
+          </Key>
+          <Property Name="cod_estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="conducta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="est_nutricional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="actividad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tb_Medicina">
+          <Key>
+            <PropertyRef Name="cod_med" />
+          </Key>
+          <Property Name="cod_med" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_medicina" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="precio" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="Tb_Paciente">
+          <Key>
+            <PropertyRef Name="cod_pac" />
+          </Key>
+          <Property Name="cod_pac" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nom_pac" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cod_raza" Type="Int32" />
+          <Property Name="fec_nac_pac" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="sexo" Type="Int32" Nullable="false" />
+          <Property Name="cod_color" Type="Int32" Nullable="false" />
+          <Property Name="longitud" Type="Double" Nullable="false" />
+          <Property Name="peso" Type="Double" Nullable="false" />
+          <Property Name="ult_vis_pac" Type="DateTime" Precision="0" />
+          <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="observaciones_pac" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="est_pac" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tb_Color" Relationship="Self.FK_COLOR_PACIENTE" FromRole="Tb_Paciente" ToRole="Tb_Color" />
+          <NavigationProperty Name="Tb_Raza" Relationship="Self.FK_PACIENTE_RAZA" FromRole="Tb_Paciente" ToRole="Tb_Raza" />
+        </EntityType>
+        <EntityType Name="Tb_Proveedor">
+          <Key>
+            <PropertyRef Name="cod_prov" />
+          </Key>
+          <Property Name="cod_prov" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="raz_soc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ruc_prov" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="direccion_prov" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_ubigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tel_prov" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email_prov" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rep_ven_prov" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usu_reg_prov" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="fec_reg_prov" Type="DateTime" Precision="3" />
+          <Property Name="usu_ult_modificacion_prov" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ult_modificacion_prov" Type="DateTime" Precision="3" />
+          <Property Name="estado_prov" Type="Int32" />
+          <NavigationProperty Name="Tb_Ubigeo" Relationship="Self.FK_Proveedor_Ubigeo" FromRole="Tb_Proveedor" ToRole="Tb_Ubigeo" />
+        </EntityType>
+        <EntityType Name="Tb_Raza">
+          <Key>
+            <PropertyRef Name="cod_raza" />
+          </Key>
+          <Property Name="cod_raza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_raza" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="cod_tipo" Type="Int32" />
+          <NavigationProperty Name="Tb_Paciente" Relationship="Self.FK_PACIENTE_RAZA" FromRole="Tb_Raza" ToRole="Tb_Paciente" />
+          <NavigationProperty Name="Tb_Tipo_Paciente" Relationship="Self.FK_TIPO_RAZA" FromRole="Tb_Raza" ToRole="Tb_Tipo_Paciente" />
+        </EntityType>
+        <EntityType Name="Tb_Rol">
+          <Key>
+            <PropertyRef Name="cod_rol" />
+          </Key>
+          <Property Name="cod_rol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_rol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tb_Empleado" Relationship="Self.FK_ROL_EMPLEADO" FromRole="Tb_Rol" ToRole="Tb_Empleado" />
+        </EntityType>
+        <EntityType Name="Tb_Tipo_Paciente">
+          <Key>
+            <PropertyRef Name="cod_tipo" />
+          </Key>
+          <Property Name="cod_tipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_tipo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Raza" Relationship="Self.FK_TIPO_RAZA" FromRole="Tb_Tipo_Paciente" ToRole="Tb_Raza" />
+        </EntityType>
+        <EntityType Name="Tb_Tratamiento">
+          <Key>
+            <PropertyRef Name="cod_trat" />
+          </Key>
+          <Property Name="cod_trat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_trat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado_trat" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tb_Ubigeo">
+          <Key>
+            <PropertyRef Name="Id_Ubigeo" />
+          </Key>
+          <Property Name="Id_Ubigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdDepa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IdProv" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IdDist" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Departamento" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Provincia" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Distrito" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tb_Cliente" Relationship="Self.FK_Cliente_Ubigeo" FromRole="Tb_Ubigeo" ToRole="Tb_Cliente" />
+          <NavigationProperty Name="Tb_Empleado" Relationship="Self.FK_Empleado_Ubigeo" FromRole="Tb_Ubigeo" ToRole="Tb_Empleado" />
+          <NavigationProperty Name="Tb_Proveedor" Relationship="Self.FK_Proveedor_Ubigeo" FromRole="Tb_Ubigeo" ToRole="Tb_Proveedor" />
+        </EntityType>
+        <EntityType Name="Tb_Usuario">
+          <Key>
+            <PropertyRef Name="login_usuario" />
+          </Key>
+          <Property Name="login_usuario" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pass_usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="niv_usuario" Type="Int32" />
+          <Property Name="est_usuario" Type="Int32" />
+          <Property Name="fec_registro" Type="DateTime" Precision="3" />
+          <Property Name="usu_reg_usu" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="cod_emp" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Empleado" Relationship="Self.FK_Usuario_user" FromRole="Tb_Usuario" ToRole="Tb_Empleado" />
+        </EntityType>
+        <EntityType Name="vw_Consultas">
+          <Key>
+            <PropertyRef Name="cod_cita" />
+            <PropertyRef Name="fecha" />
+            <PropertyRef Name="hora" />
+            <PropertyRef Name="cod_emp" />
+            <PropertyRef Name="medico" />
+            <PropertyRef Name="cod_pac" />
+            <PropertyRef Name="mascota" />
+            <PropertyRef Name="cod_cli" />
+            <PropertyRef Name="lo_trajo" />
+            <PropertyRef Name="conducta" />
+            <PropertyRef Name="est_nutricional" />
+            <PropertyRef Name="actividad" />
+          </Key>
+          <Property Name="cod_cita" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="hora" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="cod_emp" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="medico" Type="String" MaxLength="101" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cod_pac" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mascota" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="raza" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="color" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="cod_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lo_trajo" Type="String" MaxLength="101" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="conducta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="est_nutricional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="actividad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="observaciones" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_DetallesPaciente">
+          <Key>
+            <PropertyRef Name="conducta" />
+            <PropertyRef Name="nutricion" />
+            <PropertyRef Name="actividad" />
+          </Key>
+          <Property Name="codigo" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="nom_raza" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="fec_nac_pac" Type="DateTime" Precision="0" />
+          <Property Name="sexo" Type="Int32" />
+          <Property Name="color" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="longitud" Type="Double" />
+          <Property Name="peso" Type="Double" />
+          <Property Name="conducta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nutricion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="actividad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="observaciones" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="det_obs" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Cliente_Ubigeo">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="1" />
+          <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Cliente">
+              <PropertyRef Name="id_ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COLOR_PACIENTE">
+          <End Role="Tb_Color" Type="Self.Tb_Color" Multiplicity="1" />
+          <End Role="Tb_Paciente" Type="Self.Tb_Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Color">
+              <PropertyRef Name="cod_color" />
+            </Principal>
+            <Dependent Role="Tb_Paciente">
+              <PropertyRef Name="cod_color" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Supervisor">
+          <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="0..1" />
+          <End Role="Tb_Empleado1" Type="Self.Tb_Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Empleado">
+              <PropertyRef Name="cod_emp" />
+            </Principal>
+            <Dependent Role="Tb_Empleado1">
+              <PropertyRef Name="cod_supervisor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Ubigeo">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="1" />
+          <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Empleado">
+              <PropertyRef Name="id_ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROL_EMPLEADO">
+          <End Role="Tb_Rol" Type="Self.Tb_Rol" Multiplicity="1" />
+          <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Rol">
+              <PropertyRef Name="cod_rol" />
+            </Principal>
+            <Dependent Role="Tb_Empleado">
+              <PropertyRef Name="cod_rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_user">
+          <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="0..1" />
+          <End Role="Tb_Usuario" Type="Self.Tb_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Empleado">
+              <PropertyRef Name="cod_emp" />
+            </Principal>
+            <Dependent Role="Tb_Usuario">
+              <PropertyRef Name="cod_emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PACIENTE_RAZA">
+          <End Role="Tb_Raza" Type="Self.Tb_Raza" Multiplicity="0..1" />
+          <End Role="Tb_Paciente" Type="Self.Tb_Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Raza">
+              <PropertyRef Name="cod_raza" />
+            </Principal>
+            <Dependent Role="Tb_Paciente">
+              <PropertyRef Name="cod_raza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proveedor_Ubigeo">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="1" />
+          <End Role="Tb_Proveedor" Type="Self.Tb_Proveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Proveedor">
+              <PropertyRef Name="id_ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TIPO_RAZA">
+          <End Role="Tb_Tipo_Paciente" Type="Self.Tb_Tipo_Paciente" Multiplicity="0..1" />
+          <End Role="Tb_Raza" Type="Self.Tb_Raza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Tipo_Paciente">
+              <PropertyRef Name="cod_tipo" />
+            </Principal>
+            <Dependent Role="Tb_Raza">
+              <PropertyRef Name="cod_tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HundeDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tb_Cliente" EntityType="Self.Tb_Cliente" />
+          <EntitySet Name="Tb_Color" EntityType="Self.Tb_Color" />
+          <EntitySet Name="Tb_Empleado" EntityType="Self.Tb_Empleado" />
+          <EntitySet Name="Tb_Estado" EntityType="Self.Tb_Estado" />
+          <EntitySet Name="Tb_Medicina" EntityType="Self.Tb_Medicina" />
+          <EntitySet Name="Tb_Paciente" EntityType="Self.Tb_Paciente" />
+          <EntitySet Name="Tb_Proveedor" EntityType="Self.Tb_Proveedor" />
+          <EntitySet Name="Tb_Raza" EntityType="Self.Tb_Raza" />
+          <EntitySet Name="Tb_Rol" EntityType="Self.Tb_Rol" />
+          <EntitySet Name="Tb_Tipo_Paciente" EntityType="Self.Tb_Tipo_Paciente" />
+          <EntitySet Name="Tb_Tratamiento" EntityType="Self.Tb_Tratamiento" />
+          <EntitySet Name="Tb_Ubigeo" EntityType="Self.Tb_Ubigeo" />
+          <EntitySet Name="Tb_Usuario" EntityType="Self.Tb_Usuario" />
+          <EntitySet Name="vw_Consultas" EntityType="Self.vw_Consultas" />
+          <EntitySet Name="vw_DetallesPaciente" EntityType="Self.vw_DetallesPaciente" />
+          <AssociationSet Name="FK_Cliente_Ubigeo" Association="Self.FK_Cliente_Ubigeo">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COLOR_PACIENTE" Association="Self.FK_COLOR_PACIENTE">
+            <End Role="Tb_Color" EntitySet="Tb_Color" />
+            <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Supervisor" Association="Self.FK_Empleado_Supervisor">
+            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+            <End Role="Tb_Empleado1" EntitySet="Tb_Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Ubigeo" Association="Self.FK_Empleado_Ubigeo">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROL_EMPLEADO" Association="Self.FK_ROL_EMPLEADO">
+            <End Role="Tb_Rol" EntitySet="Tb_Rol" />
+            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_user" Association="Self.FK_Usuario_user">
+            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+            <End Role="Tb_Usuario" EntitySet="Tb_Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PACIENTE_RAZA" Association="Self.FK_PACIENTE_RAZA">
+            <End Role="Tb_Raza" EntitySet="Tb_Raza" />
+            <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proveedor_Ubigeo" Association="Self.FK_Proveedor_Ubigeo">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Proveedor" EntitySet="Tb_Proveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TIPO_RAZA" Association="Self.FK_TIPO_RAZA">
+            <End Role="Tb_Tipo_Paciente" EntitySet="Tb_Tipo_Paciente" />
+            <End Role="Tb_Raza" EntitySet="Tb_Raza" />
+          </AssociationSet>
+          <FunctionImport Name="usp_ActualizarCliente">
+            <Parameter Name="vnom_cliente" Mode="In" Type="String" />
+            <Parameter Name="vape_cli" Mode="In" Type="String" />
+            <Parameter Name="vdir_cli" Mode="In" Type="String" />
+            <Parameter Name="vcel_cli" Mode="In" Type="String" />
+            <Parameter Name="vemail_cli" Mode="In" Type="String" />
+            <Parameter Name="ves_dueno" Mode="In" Type="Int32" />
+            <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
+            <Parameter Name="vdni_cli" Mode="In" Type="String" />
+            <Parameter Name="vusu_ult_mod" Mode="In" Type="String" />
+            <Parameter Name="vestado_cli" Mode="In" Type="Int32" />
+            <Parameter Name="vcod_cli" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ActualizarEmpleado">
+            <Parameter Name="vcod_rol" Mode="In" Type="Int32" />
+            <Parameter Name="vtipo_emp" Mode="In" Type="Int32" />
+            <Parameter Name="vnom_emp" Mode="In" Type="String" />
+            <Parameter Name="vape_emp" Mode="In" Type="String" />
+            <Parameter Name="vdir_emp" Mode="In" Type="String" />
+            <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
+            <Parameter Name="vfecha_ingreso" Mode="In" Type="DateTime" />
+            <Parameter Name="vsueldo" Mode="In" Type="Decimal" />
+            <Parameter Name="vemail_emp" Mode="In" Type="String" />
+            <Parameter Name="vcod_sup" Mode="In" Type="String" />
+            <Parameter Name="vusu_ult_mod" Mode="In" Type="String" />
+            <Parameter Name="vestado_emp" Mode="In" Type="Int32" />
+            <Parameter Name="vcod_emp" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ActualizarPaciente">
+            <Parameter Name="vnom_pac" Mode="In" Type="String" />
+            <Parameter Name="vcod_raza" Mode="In" Type="Int32" />
+            <Parameter Name="vfec_nac_pac" Mode="In" Type="DateTime" />
+            <Parameter Name="vsexo" Mode="In" Type="Int32" />
+            <Parameter Name="vcod_color" Mode="In" Type="Int32" />
+            <Parameter Name="vlongitud" Mode="In" Type="Double" />
+            <Parameter Name="vpeso" Mode="In" Type="Double" />
+            <Parameter Name="vfoto" Mode="In" Type="Binary" />
+            <Parameter Name="vobservaciones_pac" Mode="In" Type="String" />
+            <Parameter Name="vest_pac" Mode="In" Type="Int32" />
+            <Parameter Name="vcod_pac" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ActualizarReservarCita">
+            <Parameter Name="vfec_cita" Mode="In" Type="DateTime" />
+            <Parameter Name="vhor_cita" Mode="In" Type="Time" />
+            <Parameter Name="vcod_cli" Mode="In" Type="String" />
+            <Parameter Name="vcod_cita" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_AgregarDetallesDeConsulta">
+            <Parameter Name="vcod_cons" Mode="In" Type="Int32" />
+            <Parameter Name="vcod_trat" Mode="In" Type="Int32" />
+            <Parameter Name="vcod_estado" Mode="In" Type="Int32" />
+            <Parameter Name="vcod_med" Mode="In" Type="Int32" />
+            <Parameter Name="vobs_det_cons" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_CancelarConsulta">
+          <Parameter Name="vcod_cons" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_CancelarReserva">
+          <Parameter Name="vcod_cita" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultasEntreFechas" ReturnType="Collection(HundeDBModel.usp_ConsultasEntreFechas_Result)">
+            <Parameter Name="vfec_ini" Mode="In" Type="DateTime" />
+            <Parameter Name="vfec_fin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultasPorFecha" ReturnType="Collection(HundeDBModel.usp_ConsultasPorFecha_Result)">
+          <Parameter Name="vfec_con" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultasPorMascota" ReturnType="Collection(HundeDBModel.usp_ConsultasPorMascota_Result)">
+          <Parameter Name="vcod_pac" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultasPorMascotaEntreFechas" ReturnType="Collection(HundeDBModel.usp_ConsultasPorMascotaEntreFechas_Result)">
+            <Parameter Name="vcod_pac" Mode="In" Type="String" />
+            <Parameter Name="vfec_ini" Mode="In" Type="DateTime" />
+            <Parameter Name="vfec_fin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultasPorMedico" ReturnType="Collection(HundeDBModel.usp_ConsultasPorMedico_Result)">
+          <Parameter Name="vcod_emp" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultasPorMedicoEntreFechas" ReturnType="Collection(HundeDBModel.usp_ConsultasPorMedicoEntreFechas_Result)">
+            <Parameter Name="vcod_emp" Mode="In" Type="String" />
+            <Parameter Name="vfec_ini" Mode="In" Type="DateTime" />
+            <Parameter Name="vfec_fin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarCliente">
+          <Parameter Name="vcod_cli" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EliminarEmpleado">
+          <Parameter Name="vcod_emp" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EmpleadosPorDepartamento" ReturnType="Collection(HundeDBModel.usp_EmpleadosPorDepartamento_Result)">
+          <Parameter Name="vdep" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GenerarConsulta">
+            <Parameter Name="vcod_pac" Mode="In" Type="String" />
+            <Parameter Name="vcod_emp" Mode="In" Type="String" />
+            <Parameter Name="vcod_cita" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarCliente">
+            <Parameter Name="vnom_cliente" Mode="In" Type="String" />
+            <Parameter Name="vape_cli" Mode="In" Type="String" />
+            <Parameter Name="vdir_cli" Mode="In" Type="String" />
+            <Parameter Name="vcel_cli" Mode="In" Type="String" />
+            <Parameter Name="vemail_cli" Mode="In" Type="String" />
+            <Parameter Name="ves_dueno" Mode="In" Type="Int32" />
+            <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
+            <Parameter Name="vdni_cli" Mode="In" Type="String" />
+            <Parameter Name="vusu_reg_cli" Mode="In" Type="String" />
+            <Parameter Name="vestado_cli" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarEmpleado">
+            <Parameter Name="vcod_rol" Mode="In" Type="Int32" />
+            <Parameter Name="vtipo_emp" Mode="In" Type="Int32" />
+            <Parameter Name="vnom_emp" Mode="In" Type="String" />
+            <Parameter Name="vape_emp" Mode="In" Type="String" />
+            <Parameter Name="vdir_emp" Mode="In" Type="String" />
+            <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
+            <Parameter Name="vfecha_ingreso" Mode="In" Type="DateTime" />
+            <Parameter Name="vsueldo" Mode="In" Type="Decimal" />
+            <Parameter Name="vemail_emp" Mode="In" Type="String" />
+            <Parameter Name="vcod_sup" Mode="In" Type="String" />
+            <Parameter Name="vusu_reg" Mode="In" Type="String" />
+            <Parameter Name="vestado_emp" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarPaciente">
+            <Parameter Name="vnom_pac" Mode="In" Type="String" />
+            <Parameter Name="vcod_raza" Mode="In" Type="Int32" />
+            <Parameter Name="vfec_nac_pac" Mode="In" Type="DateTime" />
+            <Parameter Name="vsexo" Mode="In" Type="Int32" />
+            <Parameter Name="vcod_color" Mode="In" Type="Int32" />
+            <Parameter Name="vlongitud" Mode="In" Type="Double" />
+            <Parameter Name="vpeso" Mode="In" Type="Double" />
+            <Parameter Name="vult_vis_pac" Mode="In" Type="DateTime" />
+            <Parameter Name="vfoto" Mode="In" Type="Binary" />
+            <Parameter Name="vobservaciones_pac" Mode="In" Type="String" />
+            <Parameter Name="vest_pac" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarClientes" ReturnType="Collection(HundeDBModel.usp_ListarClientes_Result)" />
+          <FunctionImport Name="usp_ListarEmpleado" ReturnType="Collection(HundeDBModel.usp_ListarEmpleado_Result)" />
+          <FunctionImport Name="usp_ListarPacientePorTratamiento" ReturnType="Collection(HundeDBModel.usp_ListarPacientePorTratamiento_Result)">
+          <Parameter Name="vcod_trat" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarPacientesPorRaza" ReturnType="Collection(HundeDBModel.usp_ListarPacientesPorRaza_Result)">
+          <Parameter Name="vcod_raza" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_MedicinasPorProveedor" ReturnType="Collection(HundeDBModel.usp_MedicinasPorProveedor_Result)">
+          <Parameter Name="vcod_prov" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_Ubigeo_DistritosProvinciaDepartamento" ReturnType="Collection(HundeDBModel.usp_Ubigeo_DistritosProvinciaDepartamento_Result)">
+            <Parameter Name="IdDepa" Mode="In" Type="String" />
+            <Parameter Name="IdProv" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_Ubigeo_ProvinciasDepartamento" ReturnType="Collection(HundeDBModel.usp_Ubigeo_ProvinciasDepartamento_Result)">
+          <Parameter Name="IdDepa" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UbigeoDepartamentos" ReturnType="Collection(HundeDBModel.usp_UbigeoDepartamentos_Result)" />
+          <FunctionImport Name="usp_ReservarCita">
+            <Parameter Name="vfec_cita" Mode="In" Type="DateTime" />
+            <Parameter Name="vhor_cita" Mode="In" Type="Time" />
+            <Parameter Name="vcod_cli" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarMedicinasPorProveedor" ReturnType="Collection(HundeDBModel.usp_ListarMedicinasPorProveedor_Result)">
+          <Parameter Name="vcod_prov" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_PacientesPorRaza" ReturnType="Collection(HundeDBModel.usp_PacientesPorRaza_Result)">
+            <Parameter Name="vcod_raza" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="usp_ConsultasEntreFechas_Result">
+          <Property Type="Int32" Name="cod_cita" Nullable="false" />
+          <Property Type="DateTime" Name="fecha" Nullable="false" />
+          <Property Type="Time" Name="hora" Nullable="false" />
+          <Property Type="String" Name="cod_emp" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="medico" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="mascota" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tipo" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="raza" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="color" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="cod_cli" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="lo_trajo" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="conducta" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="est_nutricional" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="actividad" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="observaciones" Nullable="true" MaxLength="300" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultasPorFecha_Result">
+          <Property Type="Int32" Name="cod_cita" Nullable="false" />
+          <Property Type="DateTime" Name="fecha" Nullable="false" />
+          <Property Type="Time" Name="hora" Nullable="false" />
+          <Property Type="String" Name="cod_emp" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="medico" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="mascota" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tipo" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="raza" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="color" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="cod_cli" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="lo_trajo" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="conducta" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="est_nutricional" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="actividad" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="observaciones" Nullable="true" MaxLength="300" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultasPorMascota_Result">
+          <Property Type="Int32" Name="cod_cita" Nullable="false" />
+          <Property Type="DateTime" Name="fecha" Nullable="false" />
+          <Property Type="Time" Name="hora" Nullable="false" />
+          <Property Type="String" Name="cod_emp" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="medico" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="mascota" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tipo" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="raza" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="color" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="cod_cli" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="lo_trajo" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="conducta" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="est_nutricional" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="actividad" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="observaciones" Nullable="true" MaxLength="300" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultasPorMascotaEntreFechas_Result">
+          <Property Type="Int32" Name="cod_cita" Nullable="false" />
+          <Property Type="DateTime" Name="fecha" Nullable="false" />
+          <Property Type="Time" Name="hora" Nullable="false" />
+          <Property Type="String" Name="cod_emp" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="medico" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="mascota" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tipo" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="raza" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="color" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="cod_cli" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="lo_trajo" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="conducta" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="est_nutricional" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="actividad" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="observaciones" Nullable="true" MaxLength="300" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultasPorMedico_Result">
+          <Property Type="Int32" Name="cod_cita" Nullable="false" />
+          <Property Type="DateTime" Name="fecha" Nullable="false" />
+          <Property Type="Time" Name="hora" Nullable="false" />
+          <Property Type="String" Name="cod_emp" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="medico" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="mascota" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tipo" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="raza" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="color" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="cod_cli" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="lo_trajo" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="conducta" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="est_nutricional" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="actividad" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="observaciones" Nullable="true" MaxLength="300" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultasPorMedicoEntreFechas_Result">
+          <Property Type="Int32" Name="cod_cita" Nullable="false" />
+          <Property Type="DateTime" Name="fecha" Nullable="false" />
+          <Property Type="Time" Name="hora" Nullable="false" />
+          <Property Type="String" Name="cod_emp" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="medico" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="mascota" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tipo" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="raza" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="color" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="cod_cli" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="lo_trajo" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="conducta" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="est_nutricional" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="actividad" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="observaciones" Nullable="true" MaxLength="300" />
+        </ComplexType>
+        <ComplexType Name="usp_EmpleadosPorDepartamento_Result">
+          <Property Type="String" Name="cod_emp" Nullable="false" MaxLength="4" />
+          <Property Type="Int32" Name="cod_rol" Nullable="false" />
+          <Property Type="Int32" Name="tipo_emp" Nullable="false" />
+          <Property Type="String" Name="nom_empleado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ape_empleado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="direccion_empleado" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="id_ubigeo" Nullable="false" MaxLength="6" />
+          <Property Type="DateTime" Name="fecha_ingreso" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="sueldo" Nullable="true" Precision="19" />
+          <Property Type="String" Name="email_emp" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="cod_supervisor" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="usu_reg_cli" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="fec_reg_cli" Nullable="true" Precision="23" />
+          <Property Type="String" Name="usu_ult_modificacion_emp" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="fecha_ult_modificacion_emp" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="estado_emp" Nullable="false" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Distrito" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarClientes_Result">
+          <Property Type="String" Name="cod_cli" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="nom_cliente" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ape_cliente" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="direccion_cliente" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="cel_cliente" Nullable="false" MaxLength="9" />
+          <Property Type="String" Name="email_cliente" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="es_dueno" Nullable="false" />
+          <Property Type="String" Name="id_ubigeo" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="dni_cliente" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="usu_reg_cli" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="fec_reg_cli" Nullable="true" Precision="23" />
+          <Property Type="String" Name="usu_ult_modificacion_cli" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="fecha_ult_modificacion_cli" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="estado_cli" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarEmpleado_Result">
+          <Property Type="String" Name="cod_emp" Nullable="false" MaxLength="4" />
+          <Property Type="Int32" Name="cod_rol" Nullable="false" />
+          <Property Type="Int32" Name="tipo_emp" Nullable="false" />
+          <Property Type="String" Name="nom_empleado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ape_empleado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="direccion_empleado" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="id_ubigeo" Nullable="false" MaxLength="6" />
+          <Property Type="DateTime" Name="fecha_ingreso" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="sueldo" Nullable="true" Precision="19" />
+          <Property Type="String" Name="email_emp" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="cod_supervisor" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="usu_reg_cli" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="fec_reg_cli" Nullable="true" Precision="23" />
+          <Property Type="String" Name="usu_ult_modificacion_emp" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="fecha_ult_modificacion_emp" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="estado_emp" Nullable="false" />
+          <Property Type="String" Name="nom_rol" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarPacientePorTratamiento_Result">
+          <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tipo" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="raza" Nullable="true" MaxLength="40" />
+          <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
+          <Property Type="String" Name="color" Nullable="true" MaxLength="40" />
+          <Property Type="Int32" Name="sexo" Nullable="false" />
+          <Property Type="Double" Name="longitud" Nullable="false" />
+          <Property Type="Double" Name="peso" Nullable="false" />
+          <Property Type="Int32" Name="est_pac" Nullable="false" />
+          <Property Type="Int32" Name="cod_trat" Nullable="false" />
+          <Property Type="String" Name="nombre_trat" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="estado_trat" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarPacientesPorRaza_Result">
+          <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="cod_raza" Nullable="true" />
+          <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
+          <Property Type="Int32" Name="sexo" Nullable="false" />
+          <Property Type="Int32" Name="cod_color" Nullable="false" />
+          <Property Type="Double" Name="longitud" Nullable="false" />
+          <Property Type="Double" Name="peso" Nullable="false" />
+          <Property Type="DateTime" Name="ult_vis_pac" Nullable="true" />
+          <Property Type="Binary" Name="foto" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="observaciones_pac" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="est_pac" Nullable="false" />
+          <Property Type="Int32" Name="cod_raza1" Nullable="false" />
+          <Property Type="String" Name="nom_raza" Nullable="true" MaxLength="40" />
+          <Property Type="Int32" Name="cod_tipo" Nullable="true" />
+          <Property Type="Int32" Name="cod_color1" Nullable="false" />
+          <Property Type="String" Name="nom_color" Nullable="true" MaxLength="40" />
+          <Property Type="Int32" Name="cod_tipo1" Nullable="false" />
+          <Property Type="String" Name="nom_tipo" Nullable="true" MaxLength="40" />
+        </ComplexType>
+        <ComplexType Name="usp_MedicinasPorProveedor_Result">
+          <Property Type="Int32" Name="cod_med" Nullable="false" />
+          <Property Type="String" Name="nombre_medicina" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_Ubigeo_DistritosProvinciaDepartamento_Result">
+          <Property Type="String" Name="IdDist" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Distrito" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="usp_Ubigeo_ProvinciasDepartamento_Result">
+          <Property Type="String" Name="IdProv" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="usp_UbigeoDepartamentos_Result">
+          <Property Type="String" Name="IdDepa" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarMedicinasPorProveedor_Result">
+          <Property Type="Int32" Name="cod_med" Nullable="false" />
+          <Property Type="String" Name="nombre_medicina" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="precio" Nullable="false" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="usp_PacientesPorRaza_Result">
+          <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="cod_raza" Nullable="true" />
+          <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
+          <Property Type="Int32" Name="sexo" Nullable="false" />
+          <Property Type="Int32" Name="cod_color" Nullable="false" />
+          <Property Type="Double" Name="longitud" Nullable="false" />
+          <Property Type="Double" Name="peso" Nullable="false" />
+          <Property Type="DateTime" Name="ult_vis_pac" Nullable="true" />
+          <Property Type="Binary" Name="foto" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="observaciones_pac" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="est_pac" Nullable="false" />
+          <Property Type="String" Name="nom_raza" Nullable="true" MaxLength="40" />
+          <Property Type="Int32" Name="cod_tipo" Nullable="true" />
+          <Property Type="String" Name="nom_tipo" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="nom_color" Nullable="true" MaxLength="40" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HundeDBModelStoreContainer" CdmEntityContainer="HundeDBEntities">
+          <EntitySetMapping Name="Tb_Cliente">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Cliente">
+              <MappingFragment StoreEntitySet="Tb_Cliente">
+                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
+                <ScalarProperty Name="nom_cliente" ColumnName="nom_cliente" />
+                <ScalarProperty Name="ape_cliente" ColumnName="ape_cliente" />
+                <ScalarProperty Name="direccion_cliente" ColumnName="direccion_cliente" />
+                <ScalarProperty Name="cel_cliente" ColumnName="cel_cliente" />
+                <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
+                <ScalarProperty Name="es_dueno" ColumnName="es_dueno" />
+                <ScalarProperty Name="id_ubigeo" ColumnName="id_ubigeo" />
+                <ScalarProperty Name="dni_cliente" ColumnName="dni_cliente" />
+                <ScalarProperty Name="usu_reg_cli" ColumnName="usu_reg_cli" />
+                <ScalarProperty Name="fec_reg_cli" ColumnName="fec_reg_cli" />
+                <ScalarProperty Name="usu_ult_modificacion_cli" ColumnName="usu_ult_modificacion_cli" />
+                <ScalarProperty Name="fecha_ult_modificacion_cli" ColumnName="fecha_ult_modificacion_cli" />
+                <ScalarProperty Name="estado_cli" ColumnName="estado_cli" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Color">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Color">
+              <MappingFragment StoreEntitySet="Tb_Color">
+                <ScalarProperty Name="cod_color" ColumnName="cod_color" />
+                <ScalarProperty Name="nom_color" ColumnName="nom_color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Empleado">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Empleado">
+              <MappingFragment StoreEntitySet="Tb_Empleado">
+                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+                <ScalarProperty Name="cod_rol" ColumnName="cod_rol" />
+                <ScalarProperty Name="tipo_emp" ColumnName="tipo_emp" />
+                <ScalarProperty Name="nom_empleado" ColumnName="nom_empleado" />
+                <ScalarProperty Name="ape_empleado" ColumnName="ape_empleado" />
+                <ScalarProperty Name="direccion_empleado" ColumnName="direccion_empleado" />
+                <ScalarProperty Name="id_ubigeo" ColumnName="id_ubigeo" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+                <ScalarProperty Name="email_emp" ColumnName="email_emp" />
+                <ScalarProperty Name="cod_supervisor" ColumnName="cod_supervisor" />
+                <ScalarProperty Name="usu_reg_cli" ColumnName="usu_reg_cli" />
+                <ScalarProperty Name="fec_reg_cli" ColumnName="fec_reg_cli" />
+                <ScalarProperty Name="usu_ult_modificacion_emp" ColumnName="usu_ult_modificacion_emp" />
+                <ScalarProperty Name="fecha_ult_modificacion_emp" ColumnName="fecha_ult_modificacion_emp" />
+                <ScalarProperty Name="estado_emp" ColumnName="estado_emp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Estado">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Estado">
+              <MappingFragment StoreEntitySet="Tb_Estado">
+                <ScalarProperty Name="cod_estado" ColumnName="cod_estado" />
+                <ScalarProperty Name="conducta" ColumnName="conducta" />
+                <ScalarProperty Name="est_nutricional" ColumnName="est_nutricional" />
+                <ScalarProperty Name="actividad" ColumnName="actividad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Medicina">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Medicina">
+              <MappingFragment StoreEntitySet="Tb_Medicina">
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="cod_med" ColumnName="cod_med" />
+                <ScalarProperty Name="nombre_medicina" ColumnName="nombre_medicina" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Paciente">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Paciente">
+              <MappingFragment StoreEntitySet="Tb_Paciente">
+                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+                <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
+                <ScalarProperty Name="cod_raza" ColumnName="cod_raza" />
+                <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="cod_color" ColumnName="cod_color" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
+                <ScalarProperty Name="est_pac" ColumnName="est_pac" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Proveedor">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Proveedor">
+              <MappingFragment StoreEntitySet="Tb_Proveedor">
+                <ScalarProperty Name="cod_prov" ColumnName="cod_prov" />
+                <ScalarProperty Name="raz_soc" ColumnName="raz_soc" />
+                <ScalarProperty Name="ruc_prov" ColumnName="ruc_prov" />
+                <ScalarProperty Name="direccion_prov" ColumnName="direccion_prov" />
+                <ScalarProperty Name="id_ubigeo" ColumnName="id_ubigeo" />
+                <ScalarProperty Name="tel_prov" ColumnName="tel_prov" />
+                <ScalarProperty Name="email_prov" ColumnName="email_prov" />
+                <ScalarProperty Name="rep_ven_prov" ColumnName="rep_ven_prov" />
+                <ScalarProperty Name="usu_reg_prov" ColumnName="usu_reg_prov" />
+                <ScalarProperty Name="fec_reg_prov" ColumnName="fec_reg_prov" />
+                <ScalarProperty Name="usu_ult_modificacion_prov" ColumnName="usu_ult_modificacion_prov" />
+                <ScalarProperty Name="fecha_ult_modificacion_prov" ColumnName="fecha_ult_modificacion_prov" />
+                <ScalarProperty Name="estado_prov" ColumnName="estado_prov" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Raza">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Raza">
+              <MappingFragment StoreEntitySet="Tb_Raza">
+                <ScalarProperty Name="cod_raza" ColumnName="cod_raza" />
+                <ScalarProperty Name="nom_raza" ColumnName="nom_raza" />
+                <ScalarProperty Name="cod_tipo" ColumnName="cod_tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Rol">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Rol">
+              <MappingFragment StoreEntitySet="Tb_Rol">
+                <ScalarProperty Name="cod_rol" ColumnName="cod_rol" />
+                <ScalarProperty Name="nom_rol" ColumnName="nom_rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Tipo_Paciente">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Tipo_Paciente">
+              <MappingFragment StoreEntitySet="Tb_Tipo_Paciente">
+                <ScalarProperty Name="cod_tipo" ColumnName="cod_tipo" />
+                <ScalarProperty Name="nom_tipo" ColumnName="nom_tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Tratamiento">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Tratamiento">
+              <MappingFragment StoreEntitySet="Tb_Tratamiento">
+                <ScalarProperty Name="cod_trat" ColumnName="cod_trat" />
+                <ScalarProperty Name="nombre_trat" ColumnName="nombre_trat" />
+                <ScalarProperty Name="estado_trat" ColumnName="estado_trat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Ubigeo">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Ubigeo">
+              <MappingFragment StoreEntitySet="Tb_Ubigeo">
+                <ScalarProperty Name="Id_Ubigeo" ColumnName="Id_Ubigeo" />
+                <ScalarProperty Name="IdDepa" ColumnName="IdDepa" />
+                <ScalarProperty Name="IdProv" ColumnName="IdProv" />
+                <ScalarProperty Name="IdDist" ColumnName="IdDist" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Usuario">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Usuario">
+              <MappingFragment StoreEntitySet="Tb_Usuario">
+                <ScalarProperty Name="login_usuario" ColumnName="login_usuario" />
+                <ScalarProperty Name="pass_usuario" ColumnName="pass_usuario" />
+                <ScalarProperty Name="niv_usuario" ColumnName="niv_usuario" />
+                <ScalarProperty Name="est_usuario" ColumnName="est_usuario" />
+                <ScalarProperty Name="fec_registro" ColumnName="fec_registro" />
+                <ScalarProperty Name="usu_reg_usu" ColumnName="usu_reg_usu" />
+                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Consultas">
+            <EntityTypeMapping TypeName="HundeDBModel.vw_Consultas">
+              <MappingFragment StoreEntitySet="vw_Consultas">
+                <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+                <ScalarProperty Name="medico" ColumnName="medico" />
+                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+                <ScalarProperty Name="mascota" ColumnName="mascota" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="raza" ColumnName="raza" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
+                <ScalarProperty Name="lo_trajo" ColumnName="lo_trajo" />
+                <ScalarProperty Name="conducta" ColumnName="conducta" />
+                <ScalarProperty Name="est_nutricional" ColumnName="est_nutricional" />
+                <ScalarProperty Name="actividad" ColumnName="actividad" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_DetallesPaciente">
+            <EntityTypeMapping TypeName="HundeDBModel.vw_DetallesPaciente">
+              <MappingFragment StoreEntitySet="vw_DetallesPaciente">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="nom_raza" ColumnName="nom_raza" />
+                <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="conducta" ColumnName="conducta" />
+                <ScalarProperty Name="nutricion" ColumnName="nutricion" />
+                <ScalarProperty Name="actividad" ColumnName="actividad" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="det_obs" ColumnName="det_obs" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_ActualizarCliente" FunctionName="HundeDBModel.Store.usp_ActualizarCliente" />
+          <FunctionImportMapping FunctionImportName="usp_ActualizarEmpleado" FunctionName="HundeDBModel.Store.usp_ActualizarEmpleado" />
+          <FunctionImportMapping FunctionImportName="usp_ActualizarPaciente" FunctionName="HundeDBModel.Store.usp_ActualizarPaciente" />
+          <FunctionImportMapping FunctionImportName="usp_ActualizarReservarCita" FunctionName="HundeDBModel.Store.usp_ActualizarReservarCita" />
+          <FunctionImportMapping FunctionImportName="usp_AgregarDetallesDeConsulta" FunctionName="HundeDBModel.Store.usp_AgregarDetallesDeConsulta" />
+          <FunctionImportMapping FunctionImportName="usp_CancelarConsulta" FunctionName="HundeDBModel.Store.usp_CancelarConsulta" />
+          <FunctionImportMapping FunctionImportName="usp_CancelarReserva" FunctionName="HundeDBModel.Store.usp_CancelarReserva" />
+          <FunctionImportMapping FunctionImportName="usp_ConsultasEntreFechas" FunctionName="HundeDBModel.Store.usp_ConsultasEntreFechas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ConsultasEntreFechas_Result">
+                <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+                <ScalarProperty Name="medico" ColumnName="medico" />
+                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+                <ScalarProperty Name="mascota" ColumnName="mascota" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="raza" ColumnName="raza" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
+                <ScalarProperty Name="lo_trajo" ColumnName="lo_trajo" />
+                <ScalarProperty Name="conducta" ColumnName="conducta" />
+                <ScalarProperty Name="est_nutricional" ColumnName="est_nutricional" />
+                <ScalarProperty Name="actividad" ColumnName="actividad" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultasPorFecha" FunctionName="HundeDBModel.Store.usp_ConsultasPorFecha">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ConsultasPorFecha_Result">
+                <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+                <ScalarProperty Name="medico" ColumnName="medico" />
+                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+                <ScalarProperty Name="mascota" ColumnName="mascota" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="raza" ColumnName="raza" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
+                <ScalarProperty Name="lo_trajo" ColumnName="lo_trajo" />
+                <ScalarProperty Name="conducta" ColumnName="conducta" />
+                <ScalarProperty Name="est_nutricional" ColumnName="est_nutricional" />
+                <ScalarProperty Name="actividad" ColumnName="actividad" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultasPorMascota" FunctionName="HundeDBModel.Store.usp_ConsultasPorMascota">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ConsultasPorMascota_Result">
+                <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+                <ScalarProperty Name="medico" ColumnName="medico" />
+                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+                <ScalarProperty Name="mascota" ColumnName="mascota" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="raza" ColumnName="raza" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
+                <ScalarProperty Name="lo_trajo" ColumnName="lo_trajo" />
+                <ScalarProperty Name="conducta" ColumnName="conducta" />
+                <ScalarProperty Name="est_nutricional" ColumnName="est_nutricional" />
+                <ScalarProperty Name="actividad" ColumnName="actividad" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultasPorMascotaEntreFechas" FunctionName="HundeDBModel.Store.usp_ConsultasPorMascotaEntreFechas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ConsultasPorMascotaEntreFechas_Result">
+                <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+                <ScalarProperty Name="medico" ColumnName="medico" />
+                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+                <ScalarProperty Name="mascota" ColumnName="mascota" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="raza" ColumnName="raza" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
+                <ScalarProperty Name="lo_trajo" ColumnName="lo_trajo" />
+                <ScalarProperty Name="conducta" ColumnName="conducta" />
+                <ScalarProperty Name="est_nutricional" ColumnName="est_nutricional" />
+                <ScalarProperty Name="actividad" ColumnName="actividad" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultasPorMedico" FunctionName="HundeDBModel.Store.usp_ConsultasPorMedico">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ConsultasPorMedico_Result">
+                <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+                <ScalarProperty Name="medico" ColumnName="medico" />
+                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+                <ScalarProperty Name="mascota" ColumnName="mascota" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="raza" ColumnName="raza" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
+                <ScalarProperty Name="lo_trajo" ColumnName="lo_trajo" />
+                <ScalarProperty Name="conducta" ColumnName="conducta" />
+                <ScalarProperty Name="est_nutricional" ColumnName="est_nutricional" />
+                <ScalarProperty Name="actividad" ColumnName="actividad" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultasPorMedicoEntreFechas" FunctionName="HundeDBModel.Store.usp_ConsultasPorMedicoEntreFechas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ConsultasPorMedicoEntreFechas_Result">
+                <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+                <ScalarProperty Name="medico" ColumnName="medico" />
+                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+                <ScalarProperty Name="mascota" ColumnName="mascota" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="raza" ColumnName="raza" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
+                <ScalarProperty Name="lo_trajo" ColumnName="lo_trajo" />
+                <ScalarProperty Name="conducta" ColumnName="conducta" />
+                <ScalarProperty Name="est_nutricional" ColumnName="est_nutricional" />
+                <ScalarProperty Name="actividad" ColumnName="actividad" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_EliminarCliente" FunctionName="HundeDBModel.Store.usp_EliminarCliente" />
+          <FunctionImportMapping FunctionImportName="usp_EliminarEmpleado" FunctionName="HundeDBModel.Store.usp_EliminarEmpleado" />
+          <FunctionImportMapping FunctionImportName="usp_EmpleadosPorDepartamento" FunctionName="HundeDBModel.Store.usp_EmpleadosPorDepartamento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_EmpleadosPorDepartamento_Result">
+                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+                <ScalarProperty Name="cod_rol" ColumnName="cod_rol" />
+                <ScalarProperty Name="tipo_emp" ColumnName="tipo_emp" />
+                <ScalarProperty Name="nom_empleado" ColumnName="nom_empleado" />
+                <ScalarProperty Name="ape_empleado" ColumnName="ape_empleado" />
+                <ScalarProperty Name="direccion_empleado" ColumnName="direccion_empleado" />
+                <ScalarProperty Name="id_ubigeo" ColumnName="id_ubigeo" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+                <ScalarProperty Name="email_emp" ColumnName="email_emp" />
+                <ScalarProperty Name="cod_supervisor" ColumnName="cod_supervisor" />
+                <ScalarProperty Name="usu_reg_cli" ColumnName="usu_reg_cli" />
+                <ScalarProperty Name="fec_reg_cli" ColumnName="fec_reg_cli" />
+                <ScalarProperty Name="usu_ult_modificacion_emp" ColumnName="usu_ult_modificacion_emp" />
+                <ScalarProperty Name="fecha_ult_modificacion_emp" ColumnName="fecha_ult_modificacion_emp" />
+                <ScalarProperty Name="estado_emp" ColumnName="estado_emp" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GenerarConsulta" FunctionName="HundeDBModel.Store.usp_GenerarConsulta" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarCliente" FunctionName="HundeDBModel.Store.usp_InsertarCliente" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarEmpleado" FunctionName="HundeDBModel.Store.usp_InsertarEmpleado" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarPaciente" FunctionName="HundeDBModel.Store.usp_InsertarPaciente" />
+          <FunctionImportMapping FunctionImportName="usp_ListarClientes" FunctionName="HundeDBModel.Store.usp_ListarClientes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarClientes_Result">
+                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
+                <ScalarProperty Name="nom_cliente" ColumnName="nom_cliente" />
+                <ScalarProperty Name="ape_cliente" ColumnName="ape_cliente" />
+                <ScalarProperty Name="direccion_cliente" ColumnName="direccion_cliente" />
+                <ScalarProperty Name="cel_cliente" ColumnName="cel_cliente" />
+                <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
+                <ScalarProperty Name="es_dueno" ColumnName="es_dueno" />
+                <ScalarProperty Name="id_ubigeo" ColumnName="id_ubigeo" />
+                <ScalarProperty Name="dni_cliente" ColumnName="dni_cliente" />
+                <ScalarProperty Name="usu_reg_cli" ColumnName="usu_reg_cli" />
+                <ScalarProperty Name="fec_reg_cli" ColumnName="fec_reg_cli" />
+                <ScalarProperty Name="usu_ult_modificacion_cli" ColumnName="usu_ult_modificacion_cli" />
+                <ScalarProperty Name="fecha_ult_modificacion_cli" ColumnName="fecha_ult_modificacion_cli" />
+                <ScalarProperty Name="estado_cli" ColumnName="estado_cli" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarEmpleado" FunctionName="HundeDBModel.Store.usp_ListarEmpleado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarEmpleado_Result">
+                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+                <ScalarProperty Name="cod_rol" ColumnName="cod_rol" />
+                <ScalarProperty Name="tipo_emp" ColumnName="tipo_emp" />
+                <ScalarProperty Name="nom_empleado" ColumnName="nom_empleado" />
+                <ScalarProperty Name="ape_empleado" ColumnName="ape_empleado" />
+                <ScalarProperty Name="direccion_empleado" ColumnName="direccion_empleado" />
+                <ScalarProperty Name="id_ubigeo" ColumnName="id_ubigeo" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+                <ScalarProperty Name="email_emp" ColumnName="email_emp" />
+                <ScalarProperty Name="cod_supervisor" ColumnName="cod_supervisor" />
+                <ScalarProperty Name="usu_reg_cli" ColumnName="usu_reg_cli" />
+                <ScalarProperty Name="fec_reg_cli" ColumnName="fec_reg_cli" />
+                <ScalarProperty Name="usu_ult_modificacion_emp" ColumnName="usu_ult_modificacion_emp" />
+                <ScalarProperty Name="fecha_ult_modificacion_emp" ColumnName="fecha_ult_modificacion_emp" />
+                <ScalarProperty Name="estado_emp" ColumnName="estado_emp" />
+                <ScalarProperty Name="nom_rol" ColumnName="nom_rol" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarPacientePorTratamiento" FunctionName="HundeDBModel.Store.usp_ListarPacientePorTratamiento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientePorTratamiento_Result">
+                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+                <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="raza" ColumnName="raza" />
+                <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="est_pac" ColumnName="est_pac" />
+                <ScalarProperty Name="cod_trat" ColumnName="cod_trat" />
+                <ScalarProperty Name="nombre_trat" ColumnName="nombre_trat" />
+                <ScalarProperty Name="estado_trat" ColumnName="estado_trat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarPacientesPorRaza" FunctionName="HundeDBModel.Store.usp_ListarPacientesPorRaza">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientesPorRaza_Result">
+                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+                <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
+                <ScalarProperty Name="cod_raza" ColumnName="cod_raza" />
+                <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="cod_color" ColumnName="cod_color" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
+                <ScalarProperty Name="est_pac" ColumnName="est_pac" />
+                <ScalarProperty Name="cod_raza1" ColumnName="cod_raza1" />
+                <ScalarProperty Name="nom_raza" ColumnName="nom_raza" />
+                <ScalarProperty Name="cod_tipo" ColumnName="cod_tipo" />
+                <ScalarProperty Name="cod_color1" ColumnName="cod_color1" />
+                <ScalarProperty Name="nom_color" ColumnName="nom_color" />
+                <ScalarProperty Name="cod_tipo1" ColumnName="cod_tipo1" />
+                <ScalarProperty Name="nom_tipo" ColumnName="nom_tipo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_MedicinasPorProveedor" FunctionName="HundeDBModel.Store.usp_MedicinasPorProveedor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_MedicinasPorProveedor_Result">
+                <ScalarProperty Name="cod_med" ColumnName="cod_med" />
+                <ScalarProperty Name="nombre_medicina" ColumnName="nombre_medicina" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_Ubigeo_DistritosProvinciaDepartamento" FunctionName="HundeDBModel.Store.usp_Ubigeo_DistritosProvinciaDepartamento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_Ubigeo_DistritosProvinciaDepartamento_Result">
+                <ScalarProperty Name="IdDist" ColumnName="IdDist" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_Ubigeo_ProvinciasDepartamento" FunctionName="HundeDBModel.Store.usp_Ubigeo_ProvinciasDepartamento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_Ubigeo_ProvinciasDepartamento_Result">
+                <ScalarProperty Name="IdProv" ColumnName="IdProv" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_UbigeoDepartamentos" FunctionName="HundeDBModel.Store.usp_UbigeoDepartamentos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_UbigeoDepartamentos_Result">
+                <ScalarProperty Name="IdDepa" ColumnName="IdDepa" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ReservarCita" FunctionName="HundeDBModel.Store.usp_ReservarCita" />
+          <FunctionImportMapping FunctionImportName="usp_ListarMedicinasPorProveedor" FunctionName="HundeDBModel.Store.usp_ListarMedicinasPorProveedor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarMedicinasPorProveedor_Result">
+                <ScalarProperty Name="cod_med" ColumnName="cod_med" />
+                <ScalarProperty Name="nombre_medicina" ColumnName="nombre_medicina" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_PacientesPorRaza" FunctionName="HundeDBModel.Store.usp_PacientesPorRaza">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_PacientesPorRaza_Result">
+                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+                <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
+                <ScalarProperty Name="cod_raza" ColumnName="cod_raza" />
+                <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="cod_color" ColumnName="cod_color" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
+                <ScalarProperty Name="est_pac" ColumnName="est_pac" />
+                <ScalarProperty Name="nom_raza" ColumnName="nom_raza" />
+                <ScalarProperty Name="cod_tipo" ColumnName="cod_tipo" />
+                <ScalarProperty Name="nom_tipo" ColumnName="nom_tipo" />
+                <ScalarProperty Name="nom_color" ColumnName="nom_color" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

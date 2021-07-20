@@ -15,10 +15,8 @@ namespace WCF_Hunde
     public partial class Tb_Cliente
     {
         public string cod_cli { get; set; }
-        public int Tipo_cliente { get; set; }
         public string nom_cliente { get; set; }
-        public string ape_pat_cliente { get; set; }
-        public string ape_mat_cliente { get; set; }
+        public string ape_cliente { get; set; }
         public string direccion_cliente { get; set; }
         public string cel_cliente { get; set; }
         public string email_cliente { get; set; }
@@ -30,5 +28,7 @@ namespace WCF_Hunde
         public string usu_ult_modificacion_cli { get; set; }
         public Nullable<System.DateTime> fecha_ult_modificacion_cli { get; set; }
         public Nullable<int> estado_cli { get; set; }
+    
+        public virtual Tb_Ubigeo Tb_Ubigeo { get; set; }
     }
 }
