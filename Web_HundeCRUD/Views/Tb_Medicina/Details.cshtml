@@ -1,0 +1,42 @@
+﻿@model Web_HundeCRUD.Models.Tb_Medicina
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tb_Medicina</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_medicina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_medicina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre_medicina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_medicina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tb_unidad_medida.descrip_uni_med)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tb_unidad_medida.descrip_uni_med)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cod_med }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

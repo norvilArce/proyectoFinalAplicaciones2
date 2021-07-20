@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web_Hunde", "Web_Hunde\Web_
 		{C94DCFFD-38F2-4C04-8AFE-BAFA02887BF4} = {C94DCFFD-38F2-4C04-8AFE-BAFA02887BF4}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web_HundeCRUD", "Web_HundeCRUD\Web_HundeCRUD.csproj", "{B02C1619-6523-44B5-A99D-3D6DE9C43774}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,10 +26,10 @@ Global
 		{892C2627-6E22-4279-A110-2601EE7C24AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{892C2627-6E22-4279-A110-2601EE7C24AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{892C2627-6E22-4279-A110-2601EE7C24AF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8BE5FDED-CDFE-484B-8471-83174D5CBF3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8BE5FDED-CDFE-484B-8471-83174D5CBF3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8BE5FDED-CDFE-484B-8471-83174D5CBF3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8BE5FDED-CDFE-484B-8471-83174D5CBF3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B02C1619-6523-44B5-A99D-3D6DE9C43774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B02C1619-6523-44B5-A99D-3D6DE9C43774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B02C1619-6523-44B5-A99D-3D6DE9C43774}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B02C1619-6523-44B5-A99D-3D6DE9C43774}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

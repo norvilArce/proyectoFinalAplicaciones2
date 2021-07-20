@@ -1,0 +1,138 @@
+﻿@model Web_HundeCRUD.Models.Tb_Cliente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tb_Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ape_pat_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ape_pat_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ape_mat_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ape_mat_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccion_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cel_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cel_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.es_dueno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.es_dueno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dni_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dni_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_reg_cli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_reg_cli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fec_reg_cli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fec_reg_cli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_ult_modificacion_cli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_ult_modificacion_cli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_ult_modificacion_cli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_ult_modificacion_cli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado_cli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado_cli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tb_Ubigeo.IdDepa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tb_Ubigeo.IdDepa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cod_cli }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,144 @@
+﻿@model Web_HundeCRUD.Models.Tb_Cliente
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Tb_Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ape_pat_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ape_pat_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ape_mat_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ape_mat_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccion_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cel_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cel_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.es_dueno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.es_dueno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dni_cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dni_cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_reg_cli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_reg_cli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fec_reg_cli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fec_reg_cli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_ult_modificacion_cli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_ult_modificacion_cli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_ult_modificacion_cli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_ult_modificacion_cli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado_cli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado_cli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tb_Ubigeo.IdDepa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tb_Ubigeo.IdDepa)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

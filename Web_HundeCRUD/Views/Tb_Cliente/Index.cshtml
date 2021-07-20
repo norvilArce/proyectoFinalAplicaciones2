@@ -1,0 +1,123 @@
+﻿@model IEnumerable<Web_HundeCRUD.Models.Tb_Cliente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cod_cli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo_cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nom_cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ape_pat_cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ape_mat_cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.direccion_cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cel_cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email_cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.es_dueno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dni_cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usu_reg_cli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fec_reg_cli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usu_ult_modificacion_cli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_ult_modificacion_cli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado_cli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tb_Ubigeo.IdDepa)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cod_cli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo_cliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nom_cliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ape_pat_cliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ape_mat_cliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccion_cliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cel_cliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email_cliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.es_dueno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dni_cliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usu_reg_cli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fec_reg_cli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usu_ult_modificacion_cli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_ult_modificacion_cli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado_cli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tb_Ubigeo.Id_Ubigeo)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.cod_cli }) |
+            @Html.ActionLink("Consultar", "Details", new { id=item.cod_cli }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.cod_cli })
+        </td>
+    </tr>
+}
+
+</table>
