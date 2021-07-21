@@ -24,9 +24,14 @@
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                     <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Mantenimiento Clientes", "Index", "Tb_Cliente")</li>
-                    <li>@Html.ActionLink("Mantenimiento Empleados", "Index", "Tb_Empleado")</li>
-                    <li>@Html.ActionLink("Mantenimiento Medicinas", "Index", "Tb_Medicina")</li>
+                    <li>Mantenimientos
+                        <ul>
+                            <li>@Html.ActionLink("Mantenimiento Clientes", "Index", "Tb_Cliente")</li>
+                            <li>@Html.ActionLink("Mantenimiento Empleados", "Index", "Tb_Empleado")</li>
+                            <li>@Html.ActionLink("Mantenimiento Paciente", "Index", "Tb_Paciente")</li>
+                            <li>@Html.ActionLink("Mantenimiento Medicinas", "Index", "Tb_Medicina")</li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
