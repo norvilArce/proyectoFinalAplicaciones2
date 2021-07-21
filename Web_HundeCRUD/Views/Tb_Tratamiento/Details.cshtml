@@ -1,0 +1,50 @@
+﻿@model Web_HundeCRUD.Models.Tb_Tratamiento
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tb_Tratamiento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_trat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_trat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre_trat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_trat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cod_cat_trat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cod_cat_trat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado_trat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado_trat)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cod_trat }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

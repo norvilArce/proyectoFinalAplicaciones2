@@ -52,6 +52,7 @@ namespace Web_HundeCRUD.Controllers
         {
             if (ModelState.IsValid)
             {
+                tb_Cliente.cod_cli = "";
                 db.Tb_Cliente.Add(tb_Cliente);
                 db.SaveChanges();
                 return RedirectToAction("Index");

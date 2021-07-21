@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Web_HundeCRUD.Models.Tb_Estado>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.conducta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.est_nutricional)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.actividad)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.conducta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.est_nutricional)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.actividad)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.cod_estado }) |
+            @Html.ActionLink("Details", "Details", new { id=item.cod_estado }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.cod_estado })
+        </td>
+    </tr>
+}
+
+</table>

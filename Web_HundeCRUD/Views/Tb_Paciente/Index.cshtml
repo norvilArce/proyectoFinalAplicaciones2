@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Web_HundeCRUD.Models.Tb_Paciente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nom_pac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo_pac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.raza)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fec_nac_pac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.longitud)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.peso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ult_vis_pac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.observaciones_pac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.est_pac)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nom_pac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo_pac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.raza)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fec_nac_pac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sexo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.longitud)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.peso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ult_vis_pac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.foto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.observaciones_pac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.est_pac)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.cod_pac }) |
+            @Html.ActionLink("Details", "Details", new { id=item.cod_pac }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.cod_pac })
+        </td>
+    </tr>
+}
+
+</table>

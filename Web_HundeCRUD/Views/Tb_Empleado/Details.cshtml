@@ -1,0 +1,98 @@
+﻿@model Web_HundeCRUD.Models.Tb_Empleado
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tb_Empleado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.rol_emp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rol_emp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_empleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_empleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ape_empleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ape_empleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_ingreso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_ingreso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sueldo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sueldo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email_emp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email_emp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cod_supervisor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cod_supervisor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_ult_modificacion_emp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_ult_modificacion_emp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_ult_modificacion_emp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_ult_modificacion_emp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado_emp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado_emp)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cod_emp }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

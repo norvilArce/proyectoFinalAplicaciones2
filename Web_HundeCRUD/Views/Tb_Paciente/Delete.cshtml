@@ -1,0 +1,120 @@
+﻿@model Web_HundeCRUD.Models.Tb_Paciente
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Tb_Paciente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_pac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_pac)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_pac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_pac)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.raza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.raza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fec_nac_pac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fec_nac_pac)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sexo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sexo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.longitud)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.longitud)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.peso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.peso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ult_vis_pac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ult_vis_pac)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.foto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.foto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.observaciones_pac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.observaciones_pac)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.est_pac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.est_pac)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

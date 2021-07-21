@@ -1,0 +1,112 @@
+﻿@model Web_HundeCRUD.Models.Tb_Proveedor
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Tb_Proveedor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_prov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ruc_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ruc_prov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccion_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion_prov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tel_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tel_prov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email_prov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rep_ven_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rep_ven_prov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_reg_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_reg_prov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fec_reg_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fec_reg_prov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_ult_modificacion_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_ult_modificacion_prov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_ult_modificacion_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_ult_modificacion_prov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado_prov)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

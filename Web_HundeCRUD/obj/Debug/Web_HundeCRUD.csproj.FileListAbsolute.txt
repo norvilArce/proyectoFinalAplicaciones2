@@ -87,3 +87,4 @@ D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\Web_Hu
 D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\Web_HundeCRUD\obj\Debug\Web_HundeCRUD.csproj.CopyComplete
 D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\Web_HundeCRUD\obj\Debug\Web_HundeCRUD.dll
 D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\Web_HundeCRUD\obj\Debug\Web_HundeCRUD.pdb
+D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\Web_HundeCRUD\obj\Debug\Web_HundeCRUD.csproj.AssemblyReference.cache

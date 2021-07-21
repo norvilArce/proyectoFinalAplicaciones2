@@ -1,0 +1,106 @@
+﻿@model Web_HundeCRUD.Models.Tb_Proveedor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tb_Proveedor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_prov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ruc_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ruc_prov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccion_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion_prov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tel_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tel_prov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email_prov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rep_ven_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rep_ven_prov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_reg_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_reg_prov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fec_reg_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fec_reg_prov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_ult_modificacion_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_ult_modificacion_prov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_ult_modificacion_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_ult_modificacion_prov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado_prov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado_prov)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cod_prov }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -398,5 +398,39 @@
       <End Role="Tb_Tratamiento" EntitySet="Tb_Tratamiento" />
       <End Role="Tb_Detalle_Consulta" EntitySet="Tb_Detalle_Consulta" />
     </AssociationSet>
+    <FunctionImport Name="usp_ActualizarCliente">
+      <Parameter Name="vtipo_cliente" Mode="In" Type="Int32" />
+      <Parameter Name="vnom_cliente" Mode="In" Type="String" />
+      <Parameter Name="vape_pat_cli" Mode="In" Type="String" />
+      <Parameter Name="vape_mat_cli" Mode="In" Type="String" />
+      <Parameter Name="vdir_cli" Mode="In" Type="String" />
+      <Parameter Name="vcel_cli" Mode="In" Type="String" />
+      <Parameter Name="vemail_cli" Mode="In" Type="String" />
+      <Parameter Name="ves_dueno" Mode="In" Type="Int32" />
+      <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
+      <Parameter Name="vdni_cli" Mode="In" Type="String" />
+      <Parameter Name="vusu_ult_mod" Mode="In" Type="String" />
+      <Parameter Name="vfec_ult_mod" Mode="In" Type="DateTime" />
+      <Parameter Name="vestado_cli" Mode="In" Type="Int32" />
+      <Parameter Name="vcod_cli" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_EliminarCliente">
+      <Parameter Name="vcod_cli" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_InsertarCliente">
+      <Parameter Name="vtipo_cliente" Mode="In" Type="Int32" />
+      <Parameter Name="vnom_cliente" Mode="In" Type="String" />
+      <Parameter Name="vape_pat_cli" Mode="In" Type="String" />
+      <Parameter Name="vape_mat_cli" Mode="In" Type="String" />
+      <Parameter Name="vdir_cli" Mode="In" Type="String" />
+      <Parameter Name="vcel_cli" Mode="In" Type="String" />
+      <Parameter Name="vemail_cli" Mode="In" Type="String" />
+      <Parameter Name="ves_dueno" Mode="In" Type="Int32" />
+      <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
+      <Parameter Name="vdni_cli" Mode="In" Type="String" />
+      <Parameter Name="vusu_reg_cli" Mode="In" Type="String" />
+      <Parameter Name="vusu_fec_reg_cli" Mode="In" Type="DateTime" />
+      <Parameter Name="vestado_cli" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
 </Schema>

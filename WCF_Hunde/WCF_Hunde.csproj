@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0EA9133A-F859-4E5F-B554-38954F59D05F}</ProjectGuid>
+    <ProjectGuid>{C94DCFFD-38F2-4C04-8AFE-BAFA02887BF4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WCF_Hunde</RootNamespace>

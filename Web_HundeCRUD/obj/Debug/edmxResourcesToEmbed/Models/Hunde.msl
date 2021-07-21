@@ -35,6 +35,44 @@
           <ScalarProperty Name="estado_cli" ColumnName="estado_cli" />
         </MappingFragment>
       </EntityTypeMapping>
+      <EntityTypeMapping TypeName="HundeDBModel.Tb_Cliente">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="HundeDBModel.Store.usp_InsertarCliente">
+            <ScalarProperty Name="estado_cli" ParameterName="vestado_cli" />
+            <ScalarProperty Name="fec_reg_cli" ParameterName="vusu_fec_reg_cli" />
+            <ScalarProperty Name="usu_reg_cli" ParameterName="vusu_reg_cli" />
+            <ScalarProperty Name="dni_cliente" ParameterName="vdni_cli" />
+            <ScalarProperty Name="id_ubigeo" ParameterName="vid_ubigeo" />
+            <ScalarProperty Name="es_dueno" ParameterName="ves_dueno" />
+            <ScalarProperty Name="email_cliente" ParameterName="vemail_cli" />
+            <ScalarProperty Name="cel_cliente" ParameterName="vcel_cli" />
+            <ScalarProperty Name="direccion_cliente" ParameterName="vdir_cli" />
+            <ScalarProperty Name="ape_mat_cliente" ParameterName="vape_mat_cli" />
+            <ScalarProperty Name="ape_pat_cliente" ParameterName="vape_pat_cli" />
+            <ScalarProperty Name="nom_cliente" ParameterName="vnom_cliente" />
+            <ScalarProperty Name="Tipo_cliente" ParameterName="vtipo_cliente" />
+          </InsertFunction>
+          <DeleteFunction FunctionName="HundeDBModel.Store.usp_EliminarCliente">
+            <ScalarProperty Name="cod_cli" ParameterName="vcod_cli" />
+          </DeleteFunction>
+          <UpdateFunction FunctionName="HundeDBModel.Store.usp_ActualizarCliente">
+            <ScalarProperty Name="cod_cli" ParameterName="vcod_cli" Version="Original" />
+            <ScalarProperty Name="estado_cli" ParameterName="vestado_cli" Version="Current" />
+            <ScalarProperty Name="fecha_ult_modificacion_cli" ParameterName="vfec_ult_mod" Version="Current" />
+            <ScalarProperty Name="usu_ult_modificacion_cli" ParameterName="vusu_ult_mod" Version="Current" />
+            <ScalarProperty Name="dni_cliente" ParameterName="vdni_cli" Version="Current" />
+            <ScalarProperty Name="id_ubigeo" ParameterName="vid_ubigeo" Version="Current" />
+            <ScalarProperty Name="es_dueno" ParameterName="ves_dueno" Version="Current" />
+            <ScalarProperty Name="email_cliente" ParameterName="vemail_cli" Version="Current" />
+            <ScalarProperty Name="cel_cliente" ParameterName="vcel_cli" Version="Current" />
+            <ScalarProperty Name="direccion_cliente" ParameterName="vdir_cli" Version="Current" />
+            <ScalarProperty Name="ape_mat_cliente" ParameterName="vape_mat_cli" Version="Current" />
+            <ScalarProperty Name="ape_pat_cliente" ParameterName="vape_pat_cli" Version="Current" />
+            <ScalarProperty Name="nom_cliente" ParameterName="vnom_cliente" Version="Current" />
+            <ScalarProperty Name="Tipo_cliente" ParameterName="vtipo_cliente" Version="Current" />
+          </UpdateFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Tb_Consulta">
       <EntityTypeMapping TypeName="HundeDBModel.Tb_Consulta">
@@ -198,5 +236,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_ActualizarCliente" FunctionName="HundeDBModel.Store.usp_ActualizarCliente" />
+    <FunctionImportMapping FunctionImportName="usp_EliminarCliente" FunctionName="HundeDBModel.Store.usp_EliminarCliente" />
+    <FunctionImportMapping FunctionImportName="usp_InsertarCliente" FunctionName="HundeDBModel.Store.usp_InsertarCliente" />
   </EntityContainerMapping>
 </Mapping>

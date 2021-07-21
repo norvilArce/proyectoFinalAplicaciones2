@@ -130,7 +130,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Tb_ClienteController.cs" />
+    <Compile Include="Controllers\Tb_EmpleadoController.cs" />
+    <Compile Include="Controllers\Tb_EstadoController.cs" />
     <Compile Include="Controllers\Tb_MedicinaController.cs" />
+    <Compile Include="Controllers\Tb_PacienteController.cs" />
+    <Compile Include="Controllers\Tb_ProveedorController.cs" />
+    <Compile Include="Controllers\Tb_TratamientoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -256,6 +261,31 @@
     <Content Include="Views\Tb_Cliente\Details.cshtml" />
     <Content Include="Views\Tb_Cliente\Edit.cshtml" />
     <Content Include="Views\Tb_Cliente\Index.cshtml" />
+    <Content Include="Views\Tb_Empleado\Create.cshtml" />
+    <Content Include="Views\Tb_Empleado\Delete.cshtml" />
+    <Content Include="Views\Tb_Empleado\Details.cshtml" />
+    <Content Include="Views\Tb_Empleado\Edit.cshtml" />
+    <Content Include="Views\Tb_Empleado\Index.cshtml" />
+    <Content Include="Views\Tb_Paciente\Create.cshtml" />
+    <Content Include="Views\Tb_Paciente\Delete.cshtml" />
+    <Content Include="Views\Tb_Paciente\Details.cshtml" />
+    <Content Include="Views\Tb_Paciente\Edit.cshtml" />
+    <Content Include="Views\Tb_Paciente\Index.cshtml" />
+    <Content Include="Views\Tb_Proveedor\Create.cshtml" />
+    <Content Include="Views\Tb_Proveedor\Delete.cshtml" />
+    <Content Include="Views\Tb_Proveedor\Details.cshtml" />
+    <Content Include="Views\Tb_Proveedor\Edit.cshtml" />
+    <Content Include="Views\Tb_Proveedor\Index.cshtml" />
+    <Content Include="Views\Tb_Tratamiento\Create.cshtml" />
+    <Content Include="Views\Tb_Tratamiento\Delete.cshtml" />
+    <Content Include="Views\Tb_Tratamiento\Details.cshtml" />
+    <Content Include="Views\Tb_Tratamiento\Edit.cshtml" />
+    <Content Include="Views\Tb_Tratamiento\Index.cshtml" />
+    <Content Include="Views\Tb_Estado\Create.cshtml" />
+    <Content Include="Views\Tb_Estado\Delete.cshtml" />
+    <Content Include="Views\Tb_Estado\Details.cshtml" />
+    <Content Include="Views\Tb_Estado\Edit.cshtml" />
+    <Content Include="Views\Tb_Estado\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

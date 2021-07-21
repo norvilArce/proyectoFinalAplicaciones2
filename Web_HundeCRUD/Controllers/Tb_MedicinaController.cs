@@ -51,7 +51,8 @@ namespace Web_HundeCRUD.Controllers
         public ActionResult Create([Bind(Include = "cod_med,tipo_medicina,nombre_medicina,cod_uni_med")] Tb_Medicina tb_Medicina)
         {
             if (ModelState.IsValid)
-            {
+            {   
+
                 db.Tb_Medicina.Add(tb_Medicina);
                 db.SaveChanges();
                 return RedirectToAction("Index");
