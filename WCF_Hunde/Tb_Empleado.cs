@@ -19,6 +19,7 @@ namespace WCF_Hunde
         {
             this.Tb_Empleado1 = new HashSet<Tb_Empleado>();
             this.Tb_Usuario = new HashSet<Tb_Usuario>();
+            this.Tb_Consulta = new HashSet<Tb_Consulta>();
         }
     
         public string cod_emp { get; set; }
@@ -45,5 +46,7 @@ namespace WCF_Hunde
         public virtual Tb_Rol Tb_Rol { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tb_Usuario> Tb_Usuario { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tb_Consulta> Tb_Consulta { get; set; }
     }
 }

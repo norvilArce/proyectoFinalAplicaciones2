@@ -18,7 +18,15 @@ namespace WCF_Hunde
         [OperationContract]
         List<Consulta> ConsultasPorFecha(DateTime fechaConsulta);
         [OperationContract]
-        List<Consulta> EntreFechas(DateTime fechaIni, DateTime fechaFin);
+        List<Consulta> ConsultasPorEstado(Int16 estado);
+        [OperationContract]
+        List<Consulta> ListarConsultas();
+        [OperationContract]
+        List<Cita> ListarCitas();
+        [OperationContract]
+        List<Cita> CitasPorEstado(Int16 estado);
+        [OperationContract]
+        List<Consulta> ConsultasEntreFechas(DateTime fechaIni, DateTime fechaFin);
         [OperationContract]
         List<Consulta> ConsultasPorMascotaEntreFechas(String codigoMascota, DateTime fechaIni, DateTime fechaFin);
         [OperationContract]
@@ -36,6 +44,10 @@ namespace WCF_Hunde
         [OperationContract]
         Boolean AgregarDetallesDeConsulta(Int16 codigoConsulta, Int16 codigoTratamiento,
             Int16 codigoEstado, Int16 codigoMedicina, String observaciones);
+        [OperationContract]
+        Consulta VerDetallesDeConsulta(Int16 codigoConsulta);
+        [OperationContract]
+        Cita VerDetallesDeCita(Int16 codigoCita);
     }
 
     [DataContract]
@@ -43,6 +55,7 @@ namespace WCF_Hunde
     public class Consulta
     {
         private Int16 mvarcod_cita;
+        private Int16 mvarcod_consulta;
         private String mvarfec_consulta;
         private String mvarhora_consulta;
         private String mvarcod_emp;
@@ -58,12 +71,21 @@ namespace WCF_Hunde
         private String mvarest_nutricional;
         private String mvaractividad;
         private String mvarobservaciones;
+        private Int16 mvarestado;
+        private Int16 mvarcod_tratamiento;
+        private Int16 mvarcod_medicina;
 
         [DataMember]
         public Int16 cod_cita
         {
             get { return mvarcod_cita; }
             set { mvarcod_cita = value; }
+        }
+        [DataMember]
+        public Int16 cod_consulta
+        {
+            get { return mvarcod_consulta; }
+            set { mvarcod_consulta = value; }
         }
 
         [DataMember]
@@ -170,8 +192,27 @@ namespace WCF_Hunde
             get { return mvarobservaciones; }
             set { mvarobservaciones = value; }
         }
+        [DataMember]
+        public Int16 estado
+        {
+            get { return mvarestado; }
+            set { mvarestado = value; }
+        }
+        [DataMember]
+        public Int16 cod_tratamiento
+        {
+            get { return mvarcod_tratamiento; }
+            set { mvarcod_tratamiento = value; }
+        }
+        [DataMember]
+        public Int16 cod_medicina
+        {
+            get { return mvarcod_medicina; }
+            set { mvarcod_medicina = value; }
+        }
 
     }
+
     [DataContract]
     [Serializable]
     public class Cita

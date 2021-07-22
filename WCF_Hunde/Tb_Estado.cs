@@ -14,9 +14,18 @@ namespace WCF_Hunde
     
     public partial class Tb_Estado
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Tb_Estado()
+        {
+            this.Tb_Detalle_Consulta = new HashSet<Tb_Detalle_Consulta>();
+        }
+    
         public int cod_estado { get; set; }
         public string conducta { get; set; }
         public string est_nutricional { get; set; }
         public string actividad { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tb_Detalle_Consulta> Tb_Detalle_Consulta { get; set; }
     }
 }

@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="HundeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tb_Cita">
+          <Key>
+            <PropertyRef Name="cod_cita" />
+          </Key>
+          <Property Name="cod_cita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fec_reserva" Type="datetime" Nullable="false" />
+          <Property Name="fec_cita" Type="date" Nullable="false" />
+          <Property Name="hor_cita" Type="time" Precision="7" Nullable="false" />
+          <Property Name="est_cita" Type="int" Nullable="false" />
+          <Property Name="cod_cli" Type="varchar" MaxLength="4" Nullable="false" />
+        </EntityType>
         <EntityType Name="Tb_Cliente">
           <Key>
             <PropertyRef Name="cod_cli" />
@@ -30,6 +41,32 @@
           </Key>
           <Property Name="cod_color" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nom_color" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Tb_Consulta">
+          <Key>
+            <PropertyRef Name="cod_cons" />
+          </Key>
+          <Property Name="cod_cons" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fec_cons" Type="date" Nullable="false" />
+          <Property Name="hor_cons" Type="time" Precision="7" Nullable="false" />
+          <Property Name="cod_pac" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="cod_emp" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="cod_cita" Type="int" Nullable="false" />
+          <Property Name="est_cons" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'HundeDB.dbo.Tb_Detalle_Consulta' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Tb_Detalle_Consulta">
+          <Key>
+            <PropertyRef Name="cod_cons" />
+            <PropertyRef Name="cod_trat" />
+            <PropertyRef Name="cod_estado" />
+          </Key>
+          <Property Name="cod_cons" Type="int" Nullable="false" />
+          <Property Name="cod_trat" Type="int" Nullable="false" />
+          <Property Name="cod_estado" Type="int" Nullable="false" />
+          <Property Name="cod_med" Type="int" />
+          <Property Name="obs_det_cons" Type="varchar" MaxLength="300" />
         </EntityType>
         <EntityType Name="Tb_Empleado">
           <Key>
@@ -159,10 +196,34 @@
           <Property Name="cod_emp" Type="varchar" MaxLength="4" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ConsultaDetallada' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_ConsultaDetallada">
+          <Key>
+            <PropertyRef Name="fec_cons" />
+            <PropertyRef Name="est_cons" />
+            <PropertyRef Name="nombre_trat" />
+            <PropertyRef Name="nombre_medicina" />
+            <PropertyRef Name="cod_cons" />
+            <PropertyRef Name="cod_trat" />
+            <PropertyRef Name="cod_estado" />
+          </Key>
+          <Property Name="fec_cons" Type="date" Nullable="false" />
+          <Property Name="est_cons" Type="int" Nullable="false" />
+          <Property Name="nombre_trat" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="estado_trat" Type="int" />
+          <Property Name="nombre_medicina" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cod_cons" Type="int" Nullable="false" />
+          <Property Name="cod_trat" Type="int" Nullable="false" />
+          <Property Name="cod_estado" Type="int" Nullable="false" />
+          <Property Name="cod_med" Type="int" />
+          <Property Name="obs_det_cons" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_Consultas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="vw_Consultas">
           <Key>
             <PropertyRef Name="cod_cita" />
+            <PropertyRef Name="cod_cons" />
             <PropertyRef Name="fecha" />
             <PropertyRef Name="hora" />
             <PropertyRef Name="cod_emp" />
@@ -171,11 +232,13 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_Consultas' no tiene definida 
             <PropertyRef Name="mascota" />
             <PropertyRef Name="cod_cli" />
             <PropertyRef Name="lo_trajo" />
+            <PropertyRef Name="est_cons" />
             <PropertyRef Name="conducta" />
             <PropertyRef Name="est_nutricional" />
             <PropertyRef Name="actividad" />
           </Key>
           <Property Name="cod_cita" Type="int" Nullable="false" />
+          <Property Name="cod_cons" Type="int" Nullable="false" />
           <Property Name="fecha" Type="date" Nullable="false" />
           <Property Name="hora" Type="time" Precision="7" Nullable="false" />
           <Property Name="cod_emp" Type="varchar" MaxLength="4" Nullable="false" />
@@ -187,6 +250,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_Consultas' no tiene definida 
           <Property Name="color" Type="varchar" MaxLength="40" />
           <Property Name="cod_cli" Type="varchar" MaxLength="4" Nullable="false" />
           <Property Name="lo_trajo" Type="varchar" MaxLength="101" Nullable="false" />
+          <Property Name="est_cons" Type="int" Nullable="false" />
           <Property Name="conducta" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="est_nutricional" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="actividad" Type="varchar" MaxLength="50" Nullable="false" />
@@ -217,6 +281,78 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <Property Name="estado" Type="int" />
           <Property Name="foto" Type="image" />
         </EntityType>
+        <Association Name="FK__Tb_Consul__cod_e__47DBAE45">
+          <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="1" />
+          <End Role="Tb_Consulta" Type="Self.Tb_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Empleado">
+              <PropertyRef Name="cod_emp" />
+            </Principal>
+            <Dependent Role="Tb_Consulta">
+              <PropertyRef Name="cod_emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Consul__cod_p__46E78A0C">
+          <End Role="Tb_Paciente" Type="Self.Tb_Paciente" Multiplicity="1" />
+          <End Role="Tb_Consulta" Type="Self.Tb_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Paciente">
+              <PropertyRef Name="cod_pac" />
+            </Principal>
+            <Dependent Role="Tb_Consulta">
+              <PropertyRef Name="cod_pac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Detall__cod_e__4CA06362">
+          <End Role="Tb_Estado" Type="Self.Tb_Estado" Multiplicity="1" />
+          <End Role="Tb_Detalle_Consulta" Type="Self.Tb_Detalle_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Estado">
+              <PropertyRef Name="cod_estado" />
+            </Principal>
+            <Dependent Role="Tb_Detalle_Consulta">
+              <PropertyRef Name="cod_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Detall__cod_m__4D94879B">
+          <End Role="Tb_Medicina" Type="Self.Tb_Medicina" Multiplicity="0..1" />
+          <End Role="Tb_Detalle_Consulta" Type="Self.Tb_Detalle_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Medicina">
+              <PropertyRef Name="cod_med" />
+            </Principal>
+            <Dependent Role="Tb_Detalle_Consulta">
+              <PropertyRef Name="cod_med" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Detall__cod_t__4BAC3F29">
+          <End Role="Tb_Tratamiento" Type="Self.Tb_Tratamiento" Multiplicity="1" />
+          <End Role="Tb_Detalle_Consulta" Type="Self.Tb_Detalle_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Tratamiento">
+              <PropertyRef Name="cod_trat" />
+            </Principal>
+            <Dependent Role="Tb_Detalle_Consulta">
+              <PropertyRef Name="cod_trat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cita_cliente">
+          <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="1" />
+          <End Role="Tb_Cita" Type="Self.Tb_Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Cliente">
+              <PropertyRef Name="cod_cli" />
+            </Principal>
+            <Dependent Role="Tb_Cita">
+              <PropertyRef Name="cod_cli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Cliente_Ubigeo">
           <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="1" />
           <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="*" />
@@ -238,6 +374,30 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
             </Principal>
             <Dependent Role="Tb_Paciente">
               <PropertyRef Name="cod_color" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulta_cita">
+          <End Role="Tb_Cita" Type="Self.Tb_Cita" Multiplicity="1" />
+          <End Role="Tb_Consulta" Type="Self.Tb_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Cita">
+              <PropertyRef Name="cod_cita" />
+            </Principal>
+            <Dependent Role="Tb_Consulta">
+              <PropertyRef Name="cod_cita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Detalle_Consulta">
+          <End Role="Tb_Consulta" Type="Self.Tb_Consulta" Multiplicity="1" />
+          <End Role="Tb_Detalle_Consulta" Type="Self.Tb_Detalle_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Consulta">
+              <PropertyRef Name="cod_cons" />
+            </Principal>
+            <Dependent Role="Tb_Detalle_Consulta">
+              <PropertyRef Name="cod_cons" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -469,12 +629,6 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
         <Function Name="usp_ListarPacientePorTratamiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="vcod_trat" Type="int" Mode="In" />
         </Function>
-        <Function Name="usp_ListarPacientesPorRaza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="vcod_raza" Type="int" Mode="In" />
-        </Function>
-        <Function Name="usp_MedicinasPorProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="vcod_prov" Type="varchar" Mode="In" />
-        </Function>
         <Function Name="usp_PacientesPorRaza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="vcod_raza" Type="int" Mode="In" />
         </Function>
@@ -492,8 +646,10 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
         </Function>
         <Function Name="usp_UbigeoDepartamentos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="HundeDBModelStoreContainer">
+          <EntitySet Name="Tb_Cita" EntityType="Self.Tb_Cita" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Cliente" EntityType="Self.Tb_Cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Color" EntityType="Self.Tb_Color" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Consulta" EntityType="Self.Tb_Consulta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Empleado" EntityType="Self.Tb_Empleado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Estado" EntityType="Self.Tb_Estado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Medicina" EntityType="Self.Tb_Medicina" Schema="dbo" store:Type="Tables" />
@@ -505,9 +661,33 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <EntitySet Name="Tb_Tratamiento" EntityType="Self.Tb_Tratamiento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Ubigeo" EntityType="Self.Tb_Ubigeo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Usuario" EntityType="Self.Tb_Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Detalle_Consulta" EntityType="Self.Tb_Detalle_Consulta" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Tb_Detalle_Consulta].[cod_cons] AS [cod_cons], 
+    [Tb_Detalle_Consulta].[cod_trat] AS [cod_trat], 
+    [Tb_Detalle_Consulta].[cod_estado] AS [cod_estado], 
+    [Tb_Detalle_Consulta].[cod_med] AS [cod_med], 
+    [Tb_Detalle_Consulta].[obs_det_cons] AS [obs_det_cons]
+    FROM [dbo].[Tb_Detalle_Consulta] AS [Tb_Detalle_Consulta]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_ConsultaDetallada" EntityType="Self.vw_ConsultaDetallada" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_ConsultaDetallada].[fec_cons] AS [fec_cons], 
+    [vw_ConsultaDetallada].[est_cons] AS [est_cons], 
+    [vw_ConsultaDetallada].[nombre_trat] AS [nombre_trat], 
+    [vw_ConsultaDetallada].[estado_trat] AS [estado_trat], 
+    [vw_ConsultaDetallada].[nombre_medicina] AS [nombre_medicina], 
+    [vw_ConsultaDetallada].[cod_cons] AS [cod_cons], 
+    [vw_ConsultaDetallada].[cod_trat] AS [cod_trat], 
+    [vw_ConsultaDetallada].[cod_estado] AS [cod_estado], 
+    [vw_ConsultaDetallada].[cod_med] AS [cod_med], 
+    [vw_ConsultaDetallada].[obs_det_cons] AS [obs_det_cons]
+    FROM [dbo].[vw_ConsultaDetallada] AS [vw_ConsultaDetallada]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vw_Consultas" EntityType="Self.vw_Consultas" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vw_Consultas].[cod_cita] AS [cod_cita], 
+    [vw_Consultas].[cod_cons] AS [cod_cons], 
     [vw_Consultas].[fecha] AS [fecha], 
     [vw_Consultas].[hora] AS [hora], 
     [vw_Consultas].[cod_emp] AS [cod_emp], 
@@ -519,6 +699,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
     [vw_Consultas].[color] AS [color], 
     [vw_Consultas].[cod_cli] AS [cod_cli], 
     [vw_Consultas].[lo_trajo] AS [lo_trajo], 
+    [vw_Consultas].[est_cons] AS [est_cons], 
     [vw_Consultas].[conducta] AS [conducta], 
     [vw_Consultas].[est_nutricional] AS [est_nutricional], 
     [vw_Consultas].[actividad] AS [actividad], 
@@ -545,6 +726,30 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
     [vw_DetallesPaciente].[foto] AS [foto]
     FROM [dbo].[vw_DetallesPaciente] AS [vw_DetallesPaciente]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK__Tb_Consul__cod_e__47DBAE45" Association="Self.FK__Tb_Consul__cod_e__47DBAE45">
+            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+            <End Role="Tb_Consulta" EntitySet="Tb_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Consul__cod_p__46E78A0C" Association="Self.FK__Tb_Consul__cod_p__46E78A0C">
+            <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
+            <End Role="Tb_Consulta" EntitySet="Tb_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Detall__cod_e__4CA06362" Association="Self.FK__Tb_Detall__cod_e__4CA06362">
+            <End Role="Tb_Estado" EntitySet="Tb_Estado" />
+            <End Role="Tb_Detalle_Consulta" EntitySet="Tb_Detalle_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Detall__cod_m__4D94879B" Association="Self.FK__Tb_Detall__cod_m__4D94879B">
+            <End Role="Tb_Medicina" EntitySet="Tb_Medicina" />
+            <End Role="Tb_Detalle_Consulta" EntitySet="Tb_Detalle_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Detall__cod_t__4BAC3F29" Association="Self.FK__Tb_Detall__cod_t__4BAC3F29">
+            <End Role="Tb_Tratamiento" EntitySet="Tb_Tratamiento" />
+            <End Role="Tb_Detalle_Consulta" EntitySet="Tb_Detalle_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cita_cliente" Association="Self.FK_Cita_cliente">
+            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+            <End Role="Tb_Cita" EntitySet="Tb_Cita" />
+          </AssociationSet>
           <AssociationSet Name="FK_Cliente_Ubigeo" Association="Self.FK_Cliente_Ubigeo">
             <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
             <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
@@ -552,6 +757,14 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <AssociationSet Name="FK_COLOR_PACIENTE" Association="Self.FK_COLOR_PACIENTE">
             <End Role="Tb_Color" EntitySet="Tb_Color" />
             <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulta_cita" Association="Self.FK_Consulta_cita">
+            <End Role="Tb_Cita" EntitySet="Tb_Cita" />
+            <End Role="Tb_Consulta" EntitySet="Tb_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Detalle_Consulta" Association="Self.FK_Detalle_Consulta">
+            <End Role="Tb_Consulta" EntitySet="Tb_Consulta" />
+            <End Role="Tb_Detalle_Consulta" EntitySet="Tb_Detalle_Consulta" />
           </AssociationSet>
           <AssociationSet Name="FK_Empleado_Supervisor" Association="Self.FK_Empleado_Supervisor">
             <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
@@ -586,6 +799,19 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HundeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tb_Cita">
+          <Key>
+            <PropertyRef Name="cod_cita" />
+          </Key>
+          <Property Name="cod_cita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fec_reserva" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fec_cita" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="hor_cita" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="est_cita" Type="Int32" Nullable="false" />
+          <Property Name="cod_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tb_Cliente" Relationship="Self.FK_Cita_cliente" FromRole="Tb_Cita" ToRole="Tb_Cliente" />
+          <NavigationProperty Name="Tb_Consulta" Relationship="HundeDBModel.FK_Consulta_cita" FromRole="Tb_Cita" ToRole="Tb_Consulta" />
+        </EntityType>
         <EntityType Name="Tb_Cliente">
           <Key>
             <PropertyRef Name="cod_cli" />
@@ -604,6 +830,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <Property Name="usu_ult_modificacion_cli" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="fecha_ult_modificacion_cli" Type="DateTime" Precision="3" />
           <Property Name="estado_cli" Type="Int32" />
+          <NavigationProperty Name="Tb_Cita" Relationship="Self.FK_Cita_cliente" FromRole="Tb_Cliente" ToRole="Tb_Cita" />
           <NavigationProperty Name="Tb_Ubigeo" Relationship="Self.FK_Cliente_Ubigeo" FromRole="Tb_Cliente" ToRole="Tb_Ubigeo" />
         </EntityType>
         <EntityType Name="Tb_Color">
@@ -639,6 +866,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <NavigationProperty Name="Tb_Ubigeo" Relationship="Self.FK_Empleado_Ubigeo" FromRole="Tb_Empleado" ToRole="Tb_Ubigeo" />
           <NavigationProperty Name="Tb_Rol" Relationship="Self.FK_ROL_EMPLEADO" FromRole="Tb_Empleado" ToRole="Tb_Rol" />
           <NavigationProperty Name="Tb_Usuario" Relationship="Self.FK_Usuario_user" FromRole="Tb_Empleado" ToRole="Tb_Usuario" />
+          <NavigationProperty Name="Tb_Consulta" Relationship="HundeDBModel.FK__Tb_Consul__cod_e__47DBAE45" FromRole="Tb_Empleado" ToRole="Tb_Consulta" />
         </EntityType>
         <EntityType Name="Tb_Estado">
           <Key>
@@ -648,6 +876,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <Property Name="conducta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="est_nutricional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="actividad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tb_Detalle_Consulta" Relationship="HundeDBModel.FK__Tb_Detall__cod_e__4CA06362" FromRole="Tb_Estado" ToRole="Tb_Detalle_Consulta" />
         </EntityType>
         <EntityType Name="Tb_Medicina">
           <Key>
@@ -655,7 +884,8 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           </Key>
           <Property Name="cod_med" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre_medicina" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="precio" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Tb_Detalle_Consulta" Relationship="HundeDBModel.FK__Tb_Detall__cod_m__4D94879B" FromRole="Tb_Medicina" ToRole="Tb_Detalle_Consulta" />
         </EntityType>
         <EntityType Name="Tb_Paciente">
           <Key>
@@ -675,6 +905,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <Property Name="est_pac" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Tb_Color" Relationship="Self.FK_COLOR_PACIENTE" FromRole="Tb_Paciente" ToRole="Tb_Color" />
           <NavigationProperty Name="Tb_Raza" Relationship="Self.FK_PACIENTE_RAZA" FromRole="Tb_Paciente" ToRole="Tb_Raza" />
+          <NavigationProperty Name="Tb_Consulta" Relationship="HundeDBModel.FK__Tb_Consul__cod_p__46E78A0C" FromRole="Tb_Paciente" ToRole="Tb_Consulta" />
         </EntityType>
         <EntityType Name="Tb_Proveedor">
           <Key>
@@ -728,6 +959,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <Property Name="cod_trat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre_trat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="estado_trat" Type="Int32" />
+          <NavigationProperty Name="Tb_Detalle_Consulta" Relationship="HundeDBModel.FK__Tb_Detall__cod_t__4BAC3F29" FromRole="Tb_Tratamiento" ToRole="Tb_Detalle_Consulta" />
         </EntityType>
         <EntityType Name="Tb_Ubigeo">
           <Key>
@@ -760,6 +992,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
         <EntityType Name="vw_Consultas">
           <Key>
             <PropertyRef Name="cod_cita" />
+            <PropertyRef Name="cod_cons" />
             <PropertyRef Name="fecha" />
             <PropertyRef Name="hora" />
             <PropertyRef Name="cod_emp" />
@@ -768,11 +1001,13 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
             <PropertyRef Name="mascota" />
             <PropertyRef Name="cod_cli" />
             <PropertyRef Name="lo_trajo" />
+            <PropertyRef Name="est_cons" />
             <PropertyRef Name="conducta" />
             <PropertyRef Name="est_nutricional" />
             <PropertyRef Name="actividad" />
           </Key>
           <Property Name="cod_cita" Type="Int32" Nullable="false" />
+          <Property Name="cod_cons" Type="Int32" Nullable="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="hora" Type="Time" Nullable="false" Precision="7" />
           <Property Name="cod_emp" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
@@ -784,6 +1019,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <Property Name="color" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="cod_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="lo_trajo" Type="String" MaxLength="101" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="est_cons" Type="Int32" Nullable="false" />
           <Property Name="conducta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="est_nutricional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="actividad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -812,6 +1048,18 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <Property Name="estado" Type="Int32" />
           <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <Association Name="FK_Cita_cliente">
+          <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="1" />
+          <End Role="Tb_Cita" Type="Self.Tb_Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Cliente">
+              <PropertyRef Name="cod_cli" />
+            </Principal>
+            <Dependent Role="Tb_Cita">
+              <PropertyRef Name="cod_cli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Cliente_Ubigeo">
           <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="1" />
           <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="*" />
@@ -921,6 +1169,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="HundeDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tb_Cita" EntityType="Self.Tb_Cita" />
           <EntitySet Name="Tb_Cliente" EntityType="Self.Tb_Cliente" />
           <EntitySet Name="Tb_Color" EntityType="Self.Tb_Color" />
           <EntitySet Name="Tb_Empleado" EntityType="Self.Tb_Empleado" />
@@ -936,6 +1185,10 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <EntitySet Name="Tb_Usuario" EntityType="Self.Tb_Usuario" />
           <EntitySet Name="vw_Consultas" EntityType="Self.vw_Consultas" />
           <EntitySet Name="vw_DetallesPaciente" EntityType="Self.vw_DetallesPaciente" />
+          <AssociationSet Name="FK_Cita_cliente" Association="Self.FK_Cita_cliente">
+            <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
+            <End Role="Tb_Cita" EntitySet="Tb_Cita" />
+          </AssociationSet>
           <AssociationSet Name="FK_Cliente_Ubigeo" Association="Self.FK_Cliente_Ubigeo">
             <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
             <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
@@ -1110,14 +1363,19 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           </FunctionImport>
           <FunctionImport Name="usp_ListarClientes" ReturnType="Collection(HundeDBModel.usp_ListarClientes_Result)" />
           <FunctionImport Name="usp_ListarEmpleado" ReturnType="Collection(HundeDBModel.usp_ListarEmpleado_Result)" />
+          <FunctionImport Name="usp_ListarMedicinasPorProveedor" ReturnType="Collection(HundeDBModel.usp_ListarMedicinasPorProveedor_Result)">
+          <Parameter Name="vcod_prov" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="usp_ListarPacientePorTratamiento" ReturnType="Collection(HundeDBModel.usp_ListarPacientePorTratamiento_Result)">
           <Parameter Name="vcod_trat" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="usp_ListarPacientesPorRaza" ReturnType="Collection(HundeDBModel.usp_ListarPacientesPorRaza_Result)">
+          <FunctionImport Name="usp_PacientesPorRaza" ReturnType="Collection(HundeDBModel.usp_PacientesPorRaza_Result)">
           <Parameter Name="vcod_raza" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="usp_MedicinasPorProveedor" ReturnType="Collection(HundeDBModel.usp_MedicinasPorProveedor_Result)">
-          <Parameter Name="vcod_prov" Mode="In" Type="String" />
+          <FunctionImport Name="usp_ReservarCita">
+            <Parameter Name="vfec_cita" Mode="In" Type="DateTime" />
+            <Parameter Name="vhor_cita" Mode="In" Type="Time" />
+            <Parameter Name="vcod_cli" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_Ubigeo_DistritosProvinciaDepartamento" ReturnType="Collection(HundeDBModel.usp_Ubigeo_DistritosProvinciaDepartamento_Result)">
             <Parameter Name="IdDepa" Mode="In" Type="String" />
@@ -1127,20 +1385,41 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <Parameter Name="IdDepa" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_UbigeoDepartamentos" ReturnType="Collection(HundeDBModel.usp_UbigeoDepartamentos_Result)" />
-          <FunctionImport Name="usp_ReservarCita">
-            <Parameter Name="vfec_cita" Mode="In" Type="DateTime" />
-            <Parameter Name="vhor_cita" Mode="In" Type="Time" />
-            <Parameter Name="vcod_cli" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_ListarMedicinasPorProveedor" ReturnType="Collection(HundeDBModel.usp_ListarMedicinasPorProveedor_Result)">
-          <Parameter Name="vcod_prov" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_PacientesPorRaza" ReturnType="Collection(HundeDBModel.usp_PacientesPorRaza_Result)">
-            <Parameter Name="vcod_raza" Mode="In" Type="Int32" />
-          </FunctionImport>
+          <EntitySet Name="vw_ConsultaDetallada" EntityType="HundeDBModel.vw_ConsultaDetallada" />
+          <EntitySet Name="Tb_Consulta" EntityType="HundeDBModel.Tb_Consulta" />
+          <EntitySet Name="Tb_Detalle_Consulta" EntityType="HundeDBModel.Tb_Detalle_Consulta" />
+          <AssociationSet Name="FK_Consulta_cita" Association="HundeDBModel.FK_Consulta_cita">
+            <End Role="Tb_Cita" EntitySet="Tb_Cita" />
+            <End Role="Tb_Consulta" EntitySet="Tb_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Consul__cod_e__47DBAE45" Association="HundeDBModel.FK__Tb_Consul__cod_e__47DBAE45">
+            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+            <End Role="Tb_Consulta" EntitySet="Tb_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Consul__cod_p__46E78A0C" Association="HundeDBModel.FK__Tb_Consul__cod_p__46E78A0C">
+            <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
+            <End Role="Tb_Consulta" EntitySet="Tb_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Detalle_Consulta" Association="HundeDBModel.FK_Detalle_Consulta">
+            <End Role="Tb_Consulta" EntitySet="Tb_Consulta" />
+            <End Role="Tb_Detalle_Consulta" EntitySet="Tb_Detalle_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Detall__cod_e__4CA06362" Association="HundeDBModel.FK__Tb_Detall__cod_e__4CA06362">
+            <End Role="Tb_Estado" EntitySet="Tb_Estado" />
+            <End Role="Tb_Detalle_Consulta" EntitySet="Tb_Detalle_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Detall__cod_m__4D94879B" Association="HundeDBModel.FK__Tb_Detall__cod_m__4D94879B">
+            <End Role="Tb_Medicina" EntitySet="Tb_Medicina" />
+            <End Role="Tb_Detalle_Consulta" EntitySet="Tb_Detalle_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Detall__cod_t__4BAC3F29" Association="HundeDBModel.FK__Tb_Detall__cod_t__4BAC3F29">
+            <End Role="Tb_Tratamiento" EntitySet="Tb_Tratamiento" />
+            <End Role="Tb_Detalle_Consulta" EntitySet="Tb_Detalle_Consulta" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="usp_ConsultasEntreFechas_Result">
           <Property Type="Int32" Name="cod_cita" Nullable="false" />
+          <Property Type="Int32" Name="cod_cons" Nullable="false" />
           <Property Type="DateTime" Name="fecha" Nullable="false" />
           <Property Type="Time" Name="hora" Nullable="false" />
           <Property Type="String" Name="cod_emp" Nullable="false" MaxLength="4" />
@@ -1152,6 +1431,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <Property Type="String" Name="color" Nullable="true" MaxLength="40" />
           <Property Type="String" Name="cod_cli" Nullable="false" MaxLength="4" />
           <Property Type="String" Name="lo_trajo" Nullable="false" MaxLength="101" />
+          <Property Type="Int32" Name="est_cons" Nullable="false" />
           <Property Type="String" Name="conducta" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="est_nutricional" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="actividad" Nullable="false" MaxLength="50" />
@@ -1159,6 +1439,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
         </ComplexType>
         <ComplexType Name="usp_ConsultasPorFecha_Result">
           <Property Type="Int32" Name="cod_cita" Nullable="false" />
+          <Property Type="Int32" Name="cod_cons" Nullable="false" />
           <Property Type="DateTime" Name="fecha" Nullable="false" />
           <Property Type="Time" Name="hora" Nullable="false" />
           <Property Type="String" Name="cod_emp" Nullable="false" MaxLength="4" />
@@ -1170,6 +1451,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <Property Type="String" Name="color" Nullable="true" MaxLength="40" />
           <Property Type="String" Name="cod_cli" Nullable="false" MaxLength="4" />
           <Property Type="String" Name="lo_trajo" Nullable="false" MaxLength="101" />
+          <Property Type="Int32" Name="est_cons" Nullable="false" />
           <Property Type="String" Name="conducta" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="est_nutricional" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="actividad" Nullable="false" MaxLength="50" />
@@ -1177,6 +1459,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
         </ComplexType>
         <ComplexType Name="usp_ConsultasPorMascota_Result">
           <Property Type="Int32" Name="cod_cita" Nullable="false" />
+          <Property Type="Int32" Name="cod_cons" Nullable="false" />
           <Property Type="DateTime" Name="fecha" Nullable="false" />
           <Property Type="Time" Name="hora" Nullable="false" />
           <Property Type="String" Name="cod_emp" Nullable="false" MaxLength="4" />
@@ -1188,6 +1471,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <Property Type="String" Name="color" Nullable="true" MaxLength="40" />
           <Property Type="String" Name="cod_cli" Nullable="false" MaxLength="4" />
           <Property Type="String" Name="lo_trajo" Nullable="false" MaxLength="101" />
+          <Property Type="Int32" Name="est_cons" Nullable="false" />
           <Property Type="String" Name="conducta" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="est_nutricional" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="actividad" Nullable="false" MaxLength="50" />
@@ -1195,6 +1479,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
         </ComplexType>
         <ComplexType Name="usp_ConsultasPorMascotaEntreFechas_Result">
           <Property Type="Int32" Name="cod_cita" Nullable="false" />
+          <Property Type="Int32" Name="cod_cons" Nullable="false" />
           <Property Type="DateTime" Name="fecha" Nullable="false" />
           <Property Type="Time" Name="hora" Nullable="false" />
           <Property Type="String" Name="cod_emp" Nullable="false" MaxLength="4" />
@@ -1206,6 +1491,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <Property Type="String" Name="color" Nullable="true" MaxLength="40" />
           <Property Type="String" Name="cod_cli" Nullable="false" MaxLength="4" />
           <Property Type="String" Name="lo_trajo" Nullable="false" MaxLength="101" />
+          <Property Type="Int32" Name="est_cons" Nullable="false" />
           <Property Type="String" Name="conducta" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="est_nutricional" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="actividad" Nullable="false" MaxLength="50" />
@@ -1213,6 +1499,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
         </ComplexType>
         <ComplexType Name="usp_ConsultasPorMedico_Result">
           <Property Type="Int32" Name="cod_cita" Nullable="false" />
+          <Property Type="Int32" Name="cod_cons" Nullable="false" />
           <Property Type="DateTime" Name="fecha" Nullable="false" />
           <Property Type="Time" Name="hora" Nullable="false" />
           <Property Type="String" Name="cod_emp" Nullable="false" MaxLength="4" />
@@ -1224,6 +1511,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <Property Type="String" Name="color" Nullable="true" MaxLength="40" />
           <Property Type="String" Name="cod_cli" Nullable="false" MaxLength="4" />
           <Property Type="String" Name="lo_trajo" Nullable="false" MaxLength="101" />
+          <Property Type="Int32" Name="est_cons" Nullable="false" />
           <Property Type="String" Name="conducta" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="est_nutricional" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="actividad" Nullable="false" MaxLength="50" />
@@ -1231,6 +1519,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
         </ComplexType>
         <ComplexType Name="usp_ConsultasPorMedicoEntreFechas_Result">
           <Property Type="Int32" Name="cod_cita" Nullable="false" />
+          <Property Type="Int32" Name="cod_cons" Nullable="false" />
           <Property Type="DateTime" Name="fecha" Nullable="false" />
           <Property Type="Time" Name="hora" Nullable="false" />
           <Property Type="String" Name="cod_emp" Nullable="false" MaxLength="4" />
@@ -1242,6 +1531,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <Property Type="String" Name="color" Nullable="true" MaxLength="40" />
           <Property Type="String" Name="cod_cli" Nullable="false" MaxLength="4" />
           <Property Type="String" Name="lo_trajo" Nullable="false" MaxLength="101" />
+          <Property Type="Int32" Name="est_cons" Nullable="false" />
           <Property Type="String" Name="conducta" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="est_nutricional" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="actividad" Nullable="false" MaxLength="50" />
@@ -1303,6 +1593,11 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <Property Type="Int32" Name="estado_emp" Nullable="false" />
           <Property Type="String" Name="nom_rol" Nullable="false" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="usp_ListarMedicinasPorProveedor_Result">
+          <Property Type="Int32" Name="cod_med" Nullable="false" />
+          <Property Type="String" Name="nombre_medicina" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="precio" Nullable="false" Precision="19" />
+        </ComplexType>
         <ComplexType Name="usp_ListarPacientePorTratamiento_Result">
           <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
           <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
@@ -1317,48 +1612,6 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <Property Type="Int32" Name="cod_trat" Nullable="false" />
           <Property Type="String" Name="nombre_trat" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="estado_trat" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="usp_ListarPacientesPorRaza_Result">
-          <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
-          <Property Type="String" Name="nom_pac" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="cod_raza" Nullable="true" />
-          <Property Type="DateTime" Name="fec_nac_pac" Nullable="false" />
-          <Property Type="Int32" Name="sexo" Nullable="false" />
-          <Property Type="Int32" Name="cod_color" Nullable="false" />
-          <Property Type="Double" Name="longitud" Nullable="false" />
-          <Property Type="Double" Name="peso" Nullable="false" />
-          <Property Type="DateTime" Name="ult_vis_pac" Nullable="true" />
-          <Property Type="Binary" Name="foto" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="observaciones_pac" Nullable="true" MaxLength="300" />
-          <Property Type="Int32" Name="est_pac" Nullable="false" />
-          <Property Type="Int32" Name="cod_raza1" Nullable="false" />
-          <Property Type="String" Name="nom_raza" Nullable="true" MaxLength="40" />
-          <Property Type="Int32" Name="cod_tipo" Nullable="true" />
-          <Property Type="Int32" Name="cod_color1" Nullable="false" />
-          <Property Type="String" Name="nom_color" Nullable="true" MaxLength="40" />
-          <Property Type="Int32" Name="cod_tipo1" Nullable="false" />
-          <Property Type="String" Name="nom_tipo" Nullable="true" MaxLength="40" />
-        </ComplexType>
-        <ComplexType Name="usp_MedicinasPorProveedor_Result">
-          <Property Type="Int32" Name="cod_med" Nullable="false" />
-          <Property Type="String" Name="nombre_medicina" Nullable="false" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="usp_Ubigeo_DistritosProvinciaDepartamento_Result">
-          <Property Type="String" Name="IdDist" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Distrito" Nullable="true" MaxLength="255" />
-        </ComplexType>
-        <ComplexType Name="usp_Ubigeo_ProvinciasDepartamento_Result">
-          <Property Type="String" Name="IdProv" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="255" />
-        </ComplexType>
-        <ComplexType Name="usp_UbigeoDepartamentos_Result">
-          <Property Type="String" Name="IdDepa" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="255" />
-        </ComplexType>
-        <ComplexType Name="usp_ListarMedicinasPorProveedor_Result">
-          <Property Type="Int32" Name="cod_med" Nullable="false" />
-          <Property Type="String" Name="nombre_medicina" Nullable="false" MaxLength="50" />
-          <Property Type="Decimal" Name="precio" Nullable="false" Precision="19" />
         </ComplexType>
         <ComplexType Name="usp_PacientesPorRaza_Result">
           <Property Type="String" Name="cod_pac" Nullable="false" MaxLength="4" />
@@ -1378,12 +1631,173 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <Property Type="String" Name="nom_tipo" Nullable="true" MaxLength="40" />
           <Property Type="String" Name="nom_color" Nullable="true" MaxLength="40" />
         </ComplexType>
+        <ComplexType Name="usp_Ubigeo_DistritosProvinciaDepartamento_Result">
+          <Property Type="String" Name="IdDist" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Distrito" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="usp_Ubigeo_ProvinciasDepartamento_Result">
+          <Property Type="String" Name="IdProv" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="usp_UbigeoDepartamentos_Result">
+          <Property Type="String" Name="IdDepa" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <EntityType Name="vw_ConsultaDetallada">
+          <Key>
+            <PropertyRef Name="fec_cons" />
+            <PropertyRef Name="est_cons" />
+            <PropertyRef Name="nombre_trat" />
+            <PropertyRef Name="nombre_medicina" />
+            <PropertyRef Name="cod_cons" />
+            <PropertyRef Name="cod_trat" />
+            <PropertyRef Name="cod_estado" />
+          </Key>
+          <Property Name="fec_cons" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="est_cons" Type="Int32" Nullable="false" />
+          <Property Name="nombre_trat" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="estado_trat" Type="Int32" />
+          <Property Name="nombre_medicina" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cod_cons" Type="Int32" Nullable="false" />
+          <Property Name="cod_trat" Type="Int32" Nullable="false" />
+          <Property Name="cod_estado" Type="Int32" Nullable="false" />
+          <Property Name="cod_med" Type="Int32" />
+          <Property Name="obs_det_cons" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tb_Consulta">
+          <Key>
+            <PropertyRef Name="cod_cons" />
+          </Key>
+          <Property Name="cod_cons" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fec_cons" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="hor_cons" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="cod_pac" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="cod_emp" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="cod_cita" Type="Int32" Nullable="false" />
+          <Property Name="est_cons" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tb_Cita" Relationship="HundeDBModel.FK_Consulta_cita" FromRole="Tb_Consulta" ToRole="Tb_Cita" />
+          <NavigationProperty Name="Tb_Empleado" Relationship="HundeDBModel.FK__Tb_Consul__cod_e__47DBAE45" FromRole="Tb_Consulta" ToRole="Tb_Empleado" />
+          <NavigationProperty Name="Tb_Paciente" Relationship="HundeDBModel.FK__Tb_Consul__cod_p__46E78A0C" FromRole="Tb_Consulta" ToRole="Tb_Paciente" />
+          <NavigationProperty Name="Tb_Detalle_Consulta" Relationship="HundeDBModel.FK_Detalle_Consulta" FromRole="Tb_Consulta" ToRole="Tb_Detalle_Consulta" />
+        </EntityType>
+        <EntityType Name="Tb_Detalle_Consulta">
+          <Key>
+            <PropertyRef Name="cod_cons" />
+            <PropertyRef Name="cod_trat" />
+            <PropertyRef Name="cod_estado" />
+          </Key>
+          <Property Name="cod_cons" Type="Int32" Nullable="false" />
+          <Property Name="cod_trat" Type="Int32" Nullable="false" />
+          <Property Name="cod_estado" Type="Int32" Nullable="false" />
+          <Property Name="cod_med" Type="Int32" />
+          <Property Name="obs_det_cons" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Consulta" Relationship="HundeDBModel.FK_Detalle_Consulta" FromRole="Tb_Detalle_Consulta" ToRole="Tb_Consulta" />
+          <NavigationProperty Name="Tb_Estado" Relationship="HundeDBModel.FK__Tb_Detall__cod_e__4CA06362" FromRole="Tb_Detalle_Consulta" ToRole="Tb_Estado" />
+          <NavigationProperty Name="Tb_Medicina" Relationship="HundeDBModel.FK__Tb_Detall__cod_m__4D94879B" FromRole="Tb_Detalle_Consulta" ToRole="Tb_Medicina" />
+          <NavigationProperty Name="Tb_Tratamiento" Relationship="HundeDBModel.FK__Tb_Detall__cod_t__4BAC3F29" FromRole="Tb_Detalle_Consulta" ToRole="Tb_Tratamiento" />
+        </EntityType>
+        <Association Name="FK_Consulta_cita">
+          <End Type="HundeDBModel.Tb_Cita" Role="Tb_Cita" Multiplicity="1" />
+          <End Type="HundeDBModel.Tb_Consulta" Role="Tb_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Cita">
+              <PropertyRef Name="cod_cita" />
+            </Principal>
+            <Dependent Role="Tb_Consulta">
+              <PropertyRef Name="cod_cita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Consul__cod_e__47DBAE45">
+          <End Type="HundeDBModel.Tb_Empleado" Role="Tb_Empleado" Multiplicity="1" />
+          <End Type="HundeDBModel.Tb_Consulta" Role="Tb_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Empleado">
+              <PropertyRef Name="cod_emp" />
+            </Principal>
+            <Dependent Role="Tb_Consulta">
+              <PropertyRef Name="cod_emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Consul__cod_p__46E78A0C">
+          <End Type="HundeDBModel.Tb_Paciente" Role="Tb_Paciente" Multiplicity="1" />
+          <End Type="HundeDBModel.Tb_Consulta" Role="Tb_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Paciente">
+              <PropertyRef Name="cod_pac" />
+            </Principal>
+            <Dependent Role="Tb_Consulta">
+              <PropertyRef Name="cod_pac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Detalle_Consulta">
+          <End Type="HundeDBModel.Tb_Consulta" Role="Tb_Consulta" Multiplicity="1" />
+          <End Type="HundeDBModel.Tb_Detalle_Consulta" Role="Tb_Detalle_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Consulta">
+              <PropertyRef Name="cod_cons" />
+            </Principal>
+            <Dependent Role="Tb_Detalle_Consulta">
+              <PropertyRef Name="cod_cons" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Detall__cod_e__4CA06362">
+          <End Type="HundeDBModel.Tb_Estado" Role="Tb_Estado" Multiplicity="1" />
+          <End Type="HundeDBModel.Tb_Detalle_Consulta" Role="Tb_Detalle_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Estado">
+              <PropertyRef Name="cod_estado" />
+            </Principal>
+            <Dependent Role="Tb_Detalle_Consulta">
+              <PropertyRef Name="cod_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Detall__cod_m__4D94879B">
+          <End Type="HundeDBModel.Tb_Medicina" Role="Tb_Medicina" Multiplicity="0..1" />
+          <End Type="HundeDBModel.Tb_Detalle_Consulta" Role="Tb_Detalle_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Medicina">
+              <PropertyRef Name="cod_med" />
+            </Principal>
+            <Dependent Role="Tb_Detalle_Consulta">
+              <PropertyRef Name="cod_med" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Detall__cod_t__4BAC3F29">
+          <End Type="HundeDBModel.Tb_Tratamiento" Role="Tb_Tratamiento" Multiplicity="1" />
+          <End Type="HundeDBModel.Tb_Detalle_Consulta" Role="Tb_Detalle_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Tratamiento">
+              <PropertyRef Name="cod_trat" />
+            </Principal>
+            <Dependent Role="Tb_Detalle_Consulta">
+              <PropertyRef Name="cod_trat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="HundeDBModelStoreContainer" CdmEntityContainer="HundeDBEntities">
+          <EntitySetMapping Name="Tb_Cita">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Cita">
+              <MappingFragment StoreEntitySet="Tb_Cita">
+                <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
+                <ScalarProperty Name="fec_reserva" ColumnName="fec_reserva" />
+                <ScalarProperty Name="fec_cita" ColumnName="fec_cita" />
+                <ScalarProperty Name="hor_cita" ColumnName="hor_cita" />
+                <ScalarProperty Name="est_cita" ColumnName="est_cita" />
+                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Tb_Cliente">
             <EntityTypeMapping TypeName="HundeDBModel.Tb_Cliente">
               <MappingFragment StoreEntitySet="Tb_Cliente">
@@ -1447,9 +1861,9 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
           <EntitySetMapping Name="Tb_Medicina">
             <EntityTypeMapping TypeName="HundeDBModel.Tb_Medicina">
               <MappingFragment StoreEntitySet="Tb_Medicina">
-                <ScalarProperty Name="precio" ColumnName="precio" />
                 <ScalarProperty Name="cod_med" ColumnName="cod_med" />
                 <ScalarProperty Name="nombre_medicina" ColumnName="nombre_medicina" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1554,6 +1968,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
             <EntityTypeMapping TypeName="HundeDBModel.vw_Consultas">
               <MappingFragment StoreEntitySet="vw_Consultas">
                 <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
+                <ScalarProperty Name="cod_cons" ColumnName="cod_cons" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="hora" ColumnName="hora" />
                 <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
@@ -1565,6 +1980,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
                 <ScalarProperty Name="color" ColumnName="color" />
                 <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
                 <ScalarProperty Name="lo_trajo" ColumnName="lo_trajo" />
+                <ScalarProperty Name="est_cons" ColumnName="est_cons" />
                 <ScalarProperty Name="conducta" ColumnName="conducta" />
                 <ScalarProperty Name="est_nutricional" ColumnName="est_nutricional" />
                 <ScalarProperty Name="actividad" ColumnName="actividad" />
@@ -1605,6 +2021,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
             <ResultMapping>
               <ComplexTypeMapping TypeName="HundeDBModel.usp_ConsultasEntreFechas_Result">
                 <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
+                <ScalarProperty Name="cod_cons" ColumnName="cod_cons" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="hora" ColumnName="hora" />
                 <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
@@ -1616,6 +2033,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
                 <ScalarProperty Name="color" ColumnName="color" />
                 <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
                 <ScalarProperty Name="lo_trajo" ColumnName="lo_trajo" />
+                <ScalarProperty Name="est_cons" ColumnName="est_cons" />
                 <ScalarProperty Name="conducta" ColumnName="conducta" />
                 <ScalarProperty Name="est_nutricional" ColumnName="est_nutricional" />
                 <ScalarProperty Name="actividad" ColumnName="actividad" />
@@ -1627,6 +2045,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
             <ResultMapping>
               <ComplexTypeMapping TypeName="HundeDBModel.usp_ConsultasPorFecha_Result">
                 <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
+                <ScalarProperty Name="cod_cons" ColumnName="cod_cons" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="hora" ColumnName="hora" />
                 <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
@@ -1638,6 +2057,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
                 <ScalarProperty Name="color" ColumnName="color" />
                 <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
                 <ScalarProperty Name="lo_trajo" ColumnName="lo_trajo" />
+                <ScalarProperty Name="est_cons" ColumnName="est_cons" />
                 <ScalarProperty Name="conducta" ColumnName="conducta" />
                 <ScalarProperty Name="est_nutricional" ColumnName="est_nutricional" />
                 <ScalarProperty Name="actividad" ColumnName="actividad" />
@@ -1649,6 +2069,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
             <ResultMapping>
               <ComplexTypeMapping TypeName="HundeDBModel.usp_ConsultasPorMascota_Result">
                 <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
+                <ScalarProperty Name="cod_cons" ColumnName="cod_cons" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="hora" ColumnName="hora" />
                 <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
@@ -1660,6 +2081,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
                 <ScalarProperty Name="color" ColumnName="color" />
                 <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
                 <ScalarProperty Name="lo_trajo" ColumnName="lo_trajo" />
+                <ScalarProperty Name="est_cons" ColumnName="est_cons" />
                 <ScalarProperty Name="conducta" ColumnName="conducta" />
                 <ScalarProperty Name="est_nutricional" ColumnName="est_nutricional" />
                 <ScalarProperty Name="actividad" ColumnName="actividad" />
@@ -1671,6 +2093,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
             <ResultMapping>
               <ComplexTypeMapping TypeName="HundeDBModel.usp_ConsultasPorMascotaEntreFechas_Result">
                 <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
+                <ScalarProperty Name="cod_cons" ColumnName="cod_cons" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="hora" ColumnName="hora" />
                 <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
@@ -1682,6 +2105,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
                 <ScalarProperty Name="color" ColumnName="color" />
                 <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
                 <ScalarProperty Name="lo_trajo" ColumnName="lo_trajo" />
+                <ScalarProperty Name="est_cons" ColumnName="est_cons" />
                 <ScalarProperty Name="conducta" ColumnName="conducta" />
                 <ScalarProperty Name="est_nutricional" ColumnName="est_nutricional" />
                 <ScalarProperty Name="actividad" ColumnName="actividad" />
@@ -1693,6 +2117,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
             <ResultMapping>
               <ComplexTypeMapping TypeName="HundeDBModel.usp_ConsultasPorMedico_Result">
                 <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
+                <ScalarProperty Name="cod_cons" ColumnName="cod_cons" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="hora" ColumnName="hora" />
                 <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
@@ -1704,6 +2129,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
                 <ScalarProperty Name="color" ColumnName="color" />
                 <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
                 <ScalarProperty Name="lo_trajo" ColumnName="lo_trajo" />
+                <ScalarProperty Name="est_cons" ColumnName="est_cons" />
                 <ScalarProperty Name="conducta" ColumnName="conducta" />
                 <ScalarProperty Name="est_nutricional" ColumnName="est_nutricional" />
                 <ScalarProperty Name="actividad" ColumnName="actividad" />
@@ -1715,6 +2141,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
             <ResultMapping>
               <ComplexTypeMapping TypeName="HundeDBModel.usp_ConsultasPorMedicoEntreFechas_Result">
                 <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
+                <ScalarProperty Name="cod_cons" ColumnName="cod_cons" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="hora" ColumnName="hora" />
                 <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
@@ -1726,6 +2153,7 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
                 <ScalarProperty Name="color" ColumnName="color" />
                 <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
                 <ScalarProperty Name="lo_trajo" ColumnName="lo_trajo" />
+                <ScalarProperty Name="est_cons" ColumnName="est_cons" />
                 <ScalarProperty Name="conducta" ColumnName="conducta" />
                 <ScalarProperty Name="est_nutricional" ColumnName="est_nutricional" />
                 <ScalarProperty Name="actividad" ColumnName="actividad" />
@@ -1807,6 +2235,15 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarMedicinasPorProveedor" FunctionName="HundeDBModel.Store.usp_ListarMedicinasPorProveedor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarMedicinasPorProveedor_Result">
+                <ScalarProperty Name="cod_med" ColumnName="cod_med" />
+                <ScalarProperty Name="nombre_medicina" ColumnName="nombre_medicina" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="usp_ListarPacientePorTratamiento" FunctionName="HundeDBModel.Store.usp_ListarPacientePorTratamiento">
             <ResultMapping>
               <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientePorTratamiento_Result">
@@ -1823,73 +2260,6 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
                 <ScalarProperty Name="cod_trat" ColumnName="cod_trat" />
                 <ScalarProperty Name="nombre_trat" ColumnName="nombre_trat" />
                 <ScalarProperty Name="estado_trat" ColumnName="estado_trat" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_ListarPacientesPorRaza" FunctionName="HundeDBModel.Store.usp_ListarPacientesPorRaza">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarPacientesPorRaza_Result">
-                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
-                <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
-                <ScalarProperty Name="cod_raza" ColumnName="cod_raza" />
-                <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
-                <ScalarProperty Name="sexo" ColumnName="sexo" />
-                <ScalarProperty Name="cod_color" ColumnName="cod_color" />
-                <ScalarProperty Name="longitud" ColumnName="longitud" />
-                <ScalarProperty Name="peso" ColumnName="peso" />
-                <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
-                <ScalarProperty Name="foto" ColumnName="foto" />
-                <ScalarProperty Name="observaciones_pac" ColumnName="observaciones_pac" />
-                <ScalarProperty Name="est_pac" ColumnName="est_pac" />
-                <ScalarProperty Name="cod_raza1" ColumnName="cod_raza1" />
-                <ScalarProperty Name="nom_raza" ColumnName="nom_raza" />
-                <ScalarProperty Name="cod_tipo" ColumnName="cod_tipo" />
-                <ScalarProperty Name="cod_color1" ColumnName="cod_color1" />
-                <ScalarProperty Name="nom_color" ColumnName="nom_color" />
-                <ScalarProperty Name="cod_tipo1" ColumnName="cod_tipo1" />
-                <ScalarProperty Name="nom_tipo" ColumnName="nom_tipo" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_MedicinasPorProveedor" FunctionName="HundeDBModel.Store.usp_MedicinasPorProveedor">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="HundeDBModel.usp_MedicinasPorProveedor_Result">
-                <ScalarProperty Name="cod_med" ColumnName="cod_med" />
-                <ScalarProperty Name="nombre_medicina" ColumnName="nombre_medicina" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_Ubigeo_DistritosProvinciaDepartamento" FunctionName="HundeDBModel.Store.usp_Ubigeo_DistritosProvinciaDepartamento">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="HundeDBModel.usp_Ubigeo_DistritosProvinciaDepartamento_Result">
-                <ScalarProperty Name="IdDist" ColumnName="IdDist" />
-                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_Ubigeo_ProvinciasDepartamento" FunctionName="HundeDBModel.Store.usp_Ubigeo_ProvinciasDepartamento">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="HundeDBModel.usp_Ubigeo_ProvinciasDepartamento_Result">
-                <ScalarProperty Name="IdProv" ColumnName="IdProv" />
-                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_UbigeoDepartamentos" FunctionName="HundeDBModel.Store.usp_UbigeoDepartamentos">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="HundeDBModel.usp_UbigeoDepartamentos_Result">
-                <ScalarProperty Name="IdDepa" ColumnName="IdDepa" />
-                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_ReservarCita" FunctionName="HundeDBModel.Store.usp_ReservarCita" />
-          <FunctionImportMapping FunctionImportName="usp_ListarMedicinasPorProveedor" FunctionName="HundeDBModel.Store.usp_ListarMedicinasPorProveedor">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="HundeDBModel.usp_ListarMedicinasPorProveedor_Result">
-                <ScalarProperty Name="cod_med" ColumnName="cod_med" />
-                <ScalarProperty Name="nombre_medicina" ColumnName="nombre_medicina" />
-                <ScalarProperty Name="precio" ColumnName="precio" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1915,6 +2285,71 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene de
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ReservarCita" FunctionName="HundeDBModel.Store.usp_ReservarCita" />
+          <FunctionImportMapping FunctionImportName="usp_Ubigeo_DistritosProvinciaDepartamento" FunctionName="HundeDBModel.Store.usp_Ubigeo_DistritosProvinciaDepartamento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_Ubigeo_DistritosProvinciaDepartamento_Result">
+                <ScalarProperty Name="IdDist" ColumnName="IdDist" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_Ubigeo_ProvinciasDepartamento" FunctionName="HundeDBModel.Store.usp_Ubigeo_ProvinciasDepartamento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_Ubigeo_ProvinciasDepartamento_Result">
+                <ScalarProperty Name="IdProv" ColumnName="IdProv" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_UbigeoDepartamentos" FunctionName="HundeDBModel.Store.usp_UbigeoDepartamentos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HundeDBModel.usp_UbigeoDepartamentos_Result">
+                <ScalarProperty Name="IdDepa" ColumnName="IdDepa" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="vw_ConsultaDetallada">
+            <EntityTypeMapping TypeName="HundeDBModel.vw_ConsultaDetallada">
+              <MappingFragment StoreEntitySet="vw_ConsultaDetallada">
+                <ScalarProperty Name="obs_det_cons" ColumnName="obs_det_cons" />
+                <ScalarProperty Name="cod_med" ColumnName="cod_med" />
+                <ScalarProperty Name="cod_estado" ColumnName="cod_estado" />
+                <ScalarProperty Name="cod_trat" ColumnName="cod_trat" />
+                <ScalarProperty Name="cod_cons" ColumnName="cod_cons" />
+                <ScalarProperty Name="nombre_medicina" ColumnName="nombre_medicina" />
+                <ScalarProperty Name="estado_trat" ColumnName="estado_trat" />
+                <ScalarProperty Name="nombre_trat" ColumnName="nombre_trat" />
+                <ScalarProperty Name="est_cons" ColumnName="est_cons" />
+                <ScalarProperty Name="fec_cons" ColumnName="fec_cons" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Consulta">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Consulta">
+              <MappingFragment StoreEntitySet="Tb_Consulta">
+                <ScalarProperty Name="est_cons" ColumnName="est_cons" />
+                <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
+                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
+                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
+                <ScalarProperty Name="hor_cons" ColumnName="hor_cons" />
+                <ScalarProperty Name="fec_cons" ColumnName="fec_cons" />
+                <ScalarProperty Name="cod_cons" ColumnName="cod_cons" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Detalle_Consulta">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Detalle_Consulta">
+              <MappingFragment StoreEntitySet="Tb_Detalle_Consulta">
+                <ScalarProperty Name="obs_det_cons" ColumnName="obs_det_cons" />
+                <ScalarProperty Name="cod_med" ColumnName="cod_med" />
+                <ScalarProperty Name="cod_estado" ColumnName="cod_estado" />
+                <ScalarProperty Name="cod_trat" ColumnName="cod_trat" />
+                <ScalarProperty Name="cod_cons" ColumnName="cod_cons" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

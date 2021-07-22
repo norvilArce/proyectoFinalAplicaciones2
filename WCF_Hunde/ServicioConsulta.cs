@@ -100,12 +100,13 @@ namespace WCF_Hunde
             try
             {
                 List<Consulta> consultas = new List<Consulta>();
-                var query = hundeDB.usp_ConsultasPorFecha(fechaConsulta);
+                var query = hundeDB.usp_ConsultasPorFecha(fechaConsulta).OrderBy(c => c.cod_cita);
 
                 foreach (var i in query)
                 {
                     Consulta consulta = new Consulta();
                     consulta.cod_cita = Convert.ToInt16(i.cod_cita);
+                    consulta.cod_consulta = Convert.ToInt16(i.cod_cons);
                     consulta.fec_consulta = i.fecha.ToString().Substring(0, 10);
                     consulta.hora_consulta = i.hora.ToString().Substring(0, 5);
                     consulta.cod_emp = i.cod_emp;
@@ -143,6 +144,7 @@ namespace WCF_Hunde
                 {
                     Consulta consulta = new Consulta();
                     consulta.cod_cita = Convert.ToInt16(i.cod_cita);
+                    consulta.cod_consulta = Convert.ToInt16(i.cod_cons);
                     consulta.fec_consulta = i.fecha.ToString().Substring(0, 10);
                     consulta.hora_consulta = i.hora.ToString().Substring(0, 5);
                     consulta.cod_emp = i.cod_emp;
@@ -180,6 +182,7 @@ namespace WCF_Hunde
                 {
                     Consulta consulta = new Consulta();
                     consulta.cod_cita = Convert.ToInt16(i.cod_cita);
+                    consulta.cod_consulta = Convert.ToInt16(i.cod_cons);
                     consulta.fec_consulta = i.fecha.ToString().Substring(0, 10);
                     consulta.hora_consulta = i.hora.ToString().Substring(0, 5);
                     consulta.cod_emp = i.cod_emp;
@@ -217,6 +220,7 @@ namespace WCF_Hunde
                 {
                     Consulta consulta = new Consulta();
                     consulta.cod_cita = Convert.ToInt16(i.cod_cita);
+                    consulta.cod_consulta = Convert.ToInt16(i.cod_cons);
                     consulta.fec_consulta = i.fecha.ToString().Substring(0, 10);
                     consulta.hora_consulta = i.hora.ToString().Substring(0, 5);
                     consulta.cod_emp = i.cod_emp;
@@ -254,6 +258,7 @@ namespace WCF_Hunde
                 {
                     Consulta consulta = new Consulta();
                     consulta.cod_cita = Convert.ToInt16(i.cod_cita);
+                    consulta.cod_consulta = Convert.ToInt16(i.cod_cons);
                     consulta.fec_consulta = i.fecha.ToString().Substring(0, 10);
                     consulta.hora_consulta = i.hora.ToString().Substring(0, 5);
                     consulta.cod_emp = i.cod_emp;
@@ -280,7 +285,7 @@ namespace WCF_Hunde
             }
         }
 
-        public List<Consulta> EntreFechas(DateTime fechaIni, DateTime fechaFin)
+        public List<Consulta> ConsultasEntreFechas(DateTime fechaIni, DateTime fechaFin)
         {
             try
             {
@@ -291,6 +296,7 @@ namespace WCF_Hunde
                 {
                     Consulta consulta = new Consulta();
                     consulta.cod_cita = Convert.ToInt16(i.cod_cita);
+                    consulta.cod_consulta = Convert.ToInt16(i.cod_cons);
                     consulta.fec_consulta = i.fecha.ToString().Substring(0, 10);
                     consulta.hora_consulta = i.hora.ToString().Substring(0, 5);
                     consulta.cod_emp = i.cod_emp;
@@ -312,6 +318,218 @@ namespace WCF_Hunde
                 return consultas;
             }
             catch (EntityException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<Consulta> ConsultasPorEstado(Int16 estado)
+        {
+            List<Consulta> consultas = new List<Consulta>();
+            try
+            {
+                var query = from c in hundeDB.vw_Consultas
+                            where c.est_cons==estado
+                            orderby c.cod_cons
+                            select c;
+                foreach (var i in query)
+                {
+                    Consulta consulta = new Consulta();
+
+                    consulta.cod_cita = Convert.ToInt16(i.cod_cita);
+                    consulta.cod_consulta = Convert.ToInt16(i.cod_cons);
+                    consulta.fec_consulta = i.fecha.ToString();
+                    consulta.hora_consulta = i.hora.ToString();
+                    consulta.cod_emp = i.cod_emp;
+                    consulta.nom_emp = i.medico;
+                    consulta.cod_pac = i.cod_pac;
+                    consulta.nom_pac = i.mascota;
+                    consulta.tipo_pac = i.tipo;
+                    consulta.raza_pac = i.raza;
+                    consulta.color_pac = i.color;
+                    consulta.cod_cli = i.cod_cli;
+                    consulta.nom_cli = i.lo_trajo;
+                    consulta.estado = Convert.ToInt16(i.est_cons);
+                    consulta.conduta = i.conducta;
+                    consulta.est_nutricional = i.est_nutricional;
+                    consulta.actividad = i.actividad;
+                    consulta.observaciones = i.observaciones;
+
+                    consultas.Add(consulta);
+                }
+                return consultas;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<Consulta> ListarConsultas()
+        {
+            List<Consulta> consultas = new List<Consulta>();
+            try
+            {
+                var query = from c in hundeDB.vw_Consultas
+                             orderby c.cod_cons
+                             select c;
+                foreach (var i in query)
+                {
+                    Consulta consulta = new Consulta();
+
+                    consulta.cod_cita = Convert.ToInt16(i.cod_cita);
+                    consulta.cod_consulta = Convert.ToInt16(i.cod_cons);
+                    consulta.fec_consulta = i.fecha.ToString();
+                    consulta.hora_consulta = i.hora.ToString();
+                    consulta.cod_emp = i.cod_emp;
+                    consulta.nom_emp = i.medico;
+                    consulta.cod_pac = i.cod_pac;
+                    consulta.nom_pac = i.mascota;
+                    consulta.tipo_pac = i.tipo;
+                    consulta.raza_pac = i.raza;
+                    consulta.color_pac = i.color;
+                    consulta.cod_cli = i.cod_cli;
+                    consulta.nom_cli = i.lo_trajo;
+                    consulta.estado = Convert.ToInt16(i.est_cons);
+                    consulta.conduta = i.conducta;
+                    consulta.est_nutricional = i.est_nutricional;
+                    consulta.actividad = i.actividad;
+                    consulta.observaciones = i.observaciones;
+
+                    consultas.Add(consulta);
+                }
+                return consultas;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<Cita> ListarCitas()
+        {
+            List<Cita> citas = new List<Cita>();
+            try
+            {
+                var query = from c in hundeDB.Tb_Cita
+                            select c;
+                foreach (var i in query)
+                {
+                    Cita cita = new Cita();
+
+                    cita.cod_cita = Convert.ToInt16(i.cod_cita);
+                    cita.fec_reserva = i.fec_reserva;
+                    cita.fec_cita = i.fec_cita;
+                    cita.hor_cita = i.hor_cita;
+                    cita.est_cita = Convert.ToInt16(i.est_cita);
+                    cita.cod_cli = i.cod_cli;
+
+                    citas.Add(cita);
+                }
+                return citas;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<Cita> CitasPorEstado(Int16 estado)
+        {
+            List<Cita> citas = new List<Cita>();
+            try
+            {
+                var query = from c in hundeDB.Tb_Cita
+                            where c.est_cita==estado
+                            select c;
+                foreach (var i in query)
+                {
+                    Cita cita = new Cita();
+
+                    cita.cod_cita = Convert.ToInt16(i.cod_cita);
+                    cita.fec_reserva = i.fec_reserva;
+                    cita.fec_cita = i.fec_cita;
+                    cita.hor_cita = i.hor_cita;
+                    cita.est_cita = Convert.ToInt16(i.est_cita);
+                    cita.cod_cli = i.cod_cli;
+
+                    citas.Add(cita);
+                }
+                return citas;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public Consulta VerDetallesDeConsulta(short codigoConsulta)
+        {
+            Consulta consulta = new Consulta();
+            try
+            {
+                Tb_Detalle_Consulta i = (from c in hundeDB.Tb_Detalle_Consulta
+                                  where c.cod_cons==codigoConsulta
+                                  select c).FirstOrDefault();
+
+                consulta.cod_cita = Convert.ToInt16(i.Tb_Consulta.cod_cita);
+                consulta.fec_consulta = i.Tb_Consulta.fec_cons.ToString();
+                consulta.hora_consulta = i.Tb_Consulta.hor_cons.ToString();
+                consulta.cod_emp = i.Tb_Consulta.cod_emp;
+                consulta.nom_emp = i.Tb_Consulta.Tb_Empleado.nom_empleado;
+                consulta.cod_pac = i.Tb_Consulta.cod_pac;
+                consulta.nom_pac = i.Tb_Consulta.Tb_Paciente.nom_pac;
+                consulta.tipo_pac = i.Tb_Consulta.Tb_Paciente.Tb_Raza.Tb_Tipo_Paciente.nom_tipo;
+                consulta.raza_pac = i.Tb_Consulta.Tb_Paciente.Tb_Raza.nom_raza;
+                consulta.color_pac = i.Tb_Consulta.Tb_Paciente.Tb_Color.nom_color;
+                consulta.cod_cli = i.Tb_Consulta.Tb_Cita.cod_cli;
+                consulta.nom_cli = i.Tb_Consulta.Tb_Cita.Tb_Cliente.nom_cliente;
+                consulta.conduta = i.Tb_Estado.conducta;
+                consulta.est_nutricional = i.Tb_Estado.est_nutricional;
+                consulta.actividad = i.Tb_Estado.actividad;
+
+                consulta.cod_consulta = Convert.ToInt16(i.cod_cons);
+                consulta.cod_tratamiento = Convert.ToInt16(i.cod_trat);
+                consulta.estado = Convert.ToInt16(i.cod_estado);
+                consulta.cod_medicina = Convert.ToInt16(i.cod_med);
+                consulta.observaciones = i.obs_det_cons;
+
+
+                return consulta;
+            }
+            catch (NullReferenceException)
+            {
+                return consulta;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public Cita VerDetallesDeCita(short codigoCita)
+        {
+            Cita cita = new Cita();
+            try
+            {
+                Tb_Cita i = (from c in hundeDB.Tb_Cita
+                            where c.cod_cita == codigoCita
+                            select c).FirstOrDefault();
+                
+                cita.cod_cita = Convert.ToInt16(i.cod_cita);
+                cita.fec_reserva = i.fec_reserva;
+                cita.fec_cita = i.fec_cita;
+                cita.hor_cita = i.hor_cita;
+                cita.est_cita = Convert.ToInt16(i.est_cita);
+                cita.cod_cli = i.cod_cli;
+
+                return cita;
+            }
+            catch(NullReferenceException )
+            {
+                return cita;
+            }
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }

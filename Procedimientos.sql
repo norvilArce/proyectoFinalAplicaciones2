@@ -556,6 +556,7 @@ SET @vhor_cons=(SELECT hor_cita FROM Tb_Cita WHERE cod_cita=@vcod_cita)
 
 UPDATE Tb_Cita
 SET est_cita=1
+WHERE cod_cita=@vcod_cita
 
 INSERT INTO Tb_Consulta VALUES (@vfec_cons, @vhor_cons, @vcod_pac, @vcod_emp, @vcod_cita, 2)
 GO
@@ -566,6 +567,7 @@ CREATE PROCEDURE usp_CancelarConsulta
 AS 
 UPDATE Tb_Consulta
 SET est_cons=3
+WHERE cod_cons=@vcod_cons
 GO
 
 --AGREGAR DETALLES DE CONSULTA
@@ -578,6 +580,11 @@ CREATE PROCEDURE usp_AgregarDetallesDeConsulta
 AS
 UPDATE Tb_Consulta
 SET est_cons=1
+WHERE cod_cons=@vcod_cons
+
+UPDATE Tb_Paciente
+SET observaciones_pac=@vobs_det_cons
+WHERE cod_pac=(SELECT cod_pac FROM Tb_Consulta WHERE cod_cons=@vcod_cons)
 
 INSERT INTO Tb_Detalle_Consulta VALUES (@vcod_cons, @vcod_trat, @vcod_estado, @vcod_med, @vobs_det_cons)
 GO

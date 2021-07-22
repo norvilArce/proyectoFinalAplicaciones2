@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C94DCFFD-38F2-4C04-8AFE-BAFA02887BF4}</ProjectGuid>
+    <ProjectGuid>{0EA9133A-F859-4E5F-B554-38954F59D05F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WCF_Hunde</RootNamespace>
@@ -98,10 +98,19 @@
     <Compile Include="ServicioTratamiento.cs" />
     <Compile Include="ServicioUbigeo.cs" />
     <Compile Include="ServicioUsuario.cs" />
+    <Compile Include="Tb_Cita.cs">
+      <DependentUpon>HundeDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Tb_Cliente.cs">
       <DependentUpon>HundeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Tb_Color.cs">
+      <DependentUpon>HundeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Consulta.cs">
+      <DependentUpon>HundeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Detalle_Consulta.cs">
       <DependentUpon>HundeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Tb_Empleado.cs">
@@ -170,12 +179,6 @@
     <Compile Include="usp_ListarPacientePorTratamiento_Result.cs">
       <DependentUpon>HundeDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="usp_ListarPacientesPorRaza_Result.cs">
-      <DependentUpon>HundeDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="usp_MedicinasPorProveedor_Result.cs">
-      <DependentUpon>HundeDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="usp_PacientesPorRaza_Result.cs">
       <DependentUpon>HundeDB.tt</DependentUpon>
     </Compile>
@@ -186,6 +189,9 @@
       <DependentUpon>HundeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="usp_Ubigeo_ProvinciasDepartamento_Result.cs">
+      <DependentUpon>HundeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_ConsultaDetallada.cs">
       <DependentUpon>HundeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="vw_Consultas.cs">
@@ -207,19 +213,19 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="HundeDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>HundeDB.Context.cs</LastGenOutput>
       <DependentUpon>HundeDB.edmx</DependentUpon>
+      <LastGenOutput>HundeDB.Context.cs</LastGenOutput>
     </Content>
     <Content Include="HundeDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HundeDB.edmx</DependentUpon>
       <LastGenOutput>HundeDB.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
