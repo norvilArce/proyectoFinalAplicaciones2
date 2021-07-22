@@ -18,14 +18,6 @@
         @Html.HiddenFor(model => model.cod_med)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tipo_medicina, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.tipo_medicina, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.tipo_medicina, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.nombre_medicina, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.nombre_medicina, new { htmlAttributes = new { @class = "form-control" } })
@@ -34,10 +26,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.cod_uni_med, "cod_uni_med", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.precio, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("cod_uni_med", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.cod_uni_med, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.precio, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.precio, "", new { @class = "text-danger" })
             </div>
         </div>
 

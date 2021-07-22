@@ -14,19 +14,8 @@ namespace Web_HundeCRUD.Models
     
     public partial class Tb_Medicina
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tb_Medicina()
-        {
-            this.Tb_Detalle_Consulta = new HashSet<Tb_Detalle_Consulta>();
-        }
-    
-        public string cod_med { get; set; }
-        public string tipo_medicina { get; set; }
+        public int cod_med { get; set; }
         public string nombre_medicina { get; set; }
-        public int cod_uni_med { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tb_Detalle_Consulta> Tb_Detalle_Consulta { get; set; }
-        public virtual Tb_unidad_medida Tb_unidad_medida { get; set; }
+        public decimal precio { get; set; }
     }
 }

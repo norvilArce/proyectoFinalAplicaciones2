@@ -12,26 +12,19 @@ namespace Web_HundeCRUD.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Tb_Consulta
+    public partial class Tb_Raza
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tb_Consulta()
+        public Tb_Raza()
         {
-            this.Tb_Detalle_Consulta = new HashSet<Tb_Detalle_Consulta>();
+            this.Tb_Paciente = new HashSet<Tb_Paciente>();
         }
     
-        public string cod_cons { get; set; }
-        public System.DateTime fec_cons { get; set; }
-        public System.TimeSpan hor_cons { get; set; }
-        public string cod_pac { get; set; }
-        public string cod_emp { get; set; }
-        public int cod_cita { get; set; }
-        public int est_cons { get; set; }
+        public int cod_raza { get; set; }
+        public string nom_raza { get; set; }
+        public Nullable<int> cod_tipo { get; set; }
     
-        public virtual Tb_Cita Tb_Cita { get; set; }
-        public virtual Tb_Empleado Tb_Empleado { get; set; }
-        public virtual Tb_Paciente Tb_Paciente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tb_Detalle_Consulta> Tb_Detalle_Consulta { get; set; }
+        public virtual ICollection<Tb_Paciente> Tb_Paciente { get; set; }
     }
 }

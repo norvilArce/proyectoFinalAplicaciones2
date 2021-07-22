@@ -12,17 +12,18 @@ namespace Web_HundeCRUD.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Tb_Detalle_Consulta
+    public partial class Tb_Color
     {
-        public string cod_cons { get; set; }
-        public int cod_trat { get; set; }
-        public int cod_estado { get; set; }
-        public string cod_med { get; set; }
-        public string obs_det_cons { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Tb_Color()
+        {
+            this.Tb_Paciente = new HashSet<Tb_Paciente>();
+        }
     
-        public virtual Tb_Consulta Tb_Consulta { get; set; }
-        public virtual Tb_Estado Tb_Estado { get; set; }
-        public virtual Tb_Medicina Tb_Medicina { get; set; }
-        public virtual Tb_Tratamiento Tb_Tratamiento { get; set; }
+        public int cod_color { get; set; }
+        public string nom_color { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tb_Paciente> Tb_Paciente { get; set; }
     }
 }

@@ -15,9 +15,10 @@ namespace Web_HundeCRUD.Models
     public partial class Tb_Proveedor
     {
         public string cod_prov { get; set; }
-        public string nom_prov { get; set; }
+        public string raz_soc { get; set; }
         public string ruc_prov { get; set; }
         public string direccion_prov { get; set; }
+        public string id_ubigeo { get; set; }
         public string tel_prov { get; set; }
         public string email_prov { get; set; }
         public string rep_ven_prov { get; set; }
@@ -26,5 +27,7 @@ namespace Web_HundeCRUD.Models
         public string usu_ult_modificacion_prov { get; set; }
         public Nullable<System.DateTime> fecha_ult_modificacion_prov { get; set; }
         public Nullable<int> estado_prov { get; set; }
+    
+        public virtual Tb_Ubigeo Tb_Ubigeo { get; set; }
     }
 }

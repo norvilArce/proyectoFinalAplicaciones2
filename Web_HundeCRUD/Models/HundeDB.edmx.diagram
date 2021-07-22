@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0accb339b1574b6bb6bd06cec41a8d96" Name="Diagram1">
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Cita" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Cliente" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Color" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Empleado" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Medicina" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Paciente" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Proveedor" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Raza" Width="1.5" PointX="7.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Tratamiento" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Ubigeo" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Usuario" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HundeDBModel.vw_ClientesPacientes" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HundeDBModel.vw_ClientesSonDueños" Width="1.5" PointX="11.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HundeDBModel.vw_DetallesPaciente" Width="1.5" PointX="5.75" PointY="11.75" IsExpanded="true" />
+        <AssociationConnector Association="HundeDBModel.FK_Cita_cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="HundeDBModel.FK_Cliente_Ubigeo" ManuallyRouted="false" />
+        <AssociationConnector Association="HundeDBModel.FK_COLOR_PACIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="HundeDBModel.FK_Empleado_Supervisor" ManuallyRouted="false" />
+        <AssociationConnector Association="HundeDBModel.FK_Empleado_Ubigeo" ManuallyRouted="false" />
+        <AssociationConnector Association="HundeDBModel.FK_Usuario_user" ManuallyRouted="false" />
+        <AssociationConnector Association="HundeDBModel.FK_PACIENTE_RAZA" ManuallyRouted="false" />
+        <AssociationConnector Association="HundeDBModel.FK_Proveedor_Ubigeo" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

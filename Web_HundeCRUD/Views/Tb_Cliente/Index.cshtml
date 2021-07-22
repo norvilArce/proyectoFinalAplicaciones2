@@ -12,19 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.cod_cli)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tipo_cliente)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.nom_cliente)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ape_pat_cliente)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ape_mat_cliente)
+            @Html.DisplayNameFor(model => model.ape_cliente)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.direccion_cliente)
@@ -65,19 +56,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.cod_cli)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tipo_cliente)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.nom_cliente)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ape_pat_cliente)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ape_mat_cliente)
+            @Html.DisplayFor(modelItem => item.ape_cliente)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.direccion_cliente)
@@ -110,12 +92,12 @@
             @Html.DisplayFor(modelItem => item.estado_cli)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Tb_Ubigeo.Id_Ubigeo)
+            @Html.DisplayFor(modelItem => item.Tb_Ubigeo.IdDepa)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.cod_cli }) |
-            @Html.ActionLink("Consultar", "Details", new { id=item.cod_cli }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.cod_cli })
+            @Html.ActionLink("Edit", "Edit", new { id=item.cod_cli }) |
+            @Html.ActionLink("Details", "Details", new { id=item.cod_cli }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.cod_cli })
         </td>
     </tr>
 }

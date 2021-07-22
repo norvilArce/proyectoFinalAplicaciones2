@@ -12,18 +12,21 @@ namespace Web_HundeCRUD.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class vw_ClientesPacientes
+    public partial class vw_ClientesSonDueños
     {
         public string cod_cli { get; set; }
-        public string dni_cliente { get; set; }
-        public string nombre_completo { get; set; }
+        public string nom_cliente { get; set; }
+        public string ape_cliente { get; set; }
         public string direccion_cliente { get; set; }
         public string cel_cliente { get; set; }
-        public Nullable<int> es_dueno { get; set; }
-        public string cod_pac { get; set; }
-        public string nom_pac { get; set; }
-        public string nom_raza { get; set; }
+        public string email_cliente { get; set; }
+        public int es_dueno { get; set; }
+        public string id_ubigeo { get; set; }
+        public string dni_cliente { get; set; }
+        public string usu_reg_cli { get; set; }
+        public Nullable<System.DateTime> fec_reg_cli { get; set; }
+        public string usu_ult_modificacion_cli { get; set; }
+        public Nullable<System.DateTime> fecha_ult_modificacion_cli { get; set; }
         public Nullable<int> estado_cli { get; set; }
-        public Nullable<int> est_pac { get; set; }
     }
 }

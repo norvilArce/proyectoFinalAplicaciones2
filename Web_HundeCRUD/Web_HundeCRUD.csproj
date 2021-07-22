@@ -8,7 +8,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B02C1619-6523-44B5-A99D-3D6DE9C43774}</ProjectGuid>
+    <ProjectGuid>{AD5FD946-4DDB-4EC8-B1B4-5434415C8905}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -130,71 +130,67 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Tb_ClienteController.cs" />
-    <Compile Include="Controllers\Tb_EmpleadoController.cs" />
-    <Compile Include="Controllers\Tb_EstadoController.cs" />
     <Compile Include="Controllers\Tb_MedicinaController.cs" />
     <Compile Include="Controllers\Tb_PacienteController.cs" />
-    <Compile Include="Controllers\Tb_ProveedorController.cs" />
-    <Compile Include="Controllers\Tb_TratamientoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Hunde.Context.cs">
+    <Compile Include="Models\HundeDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Hunde.Context.tt</DependentUpon>
+      <DependentUpon>HundeDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Hunde.cs">
+    <Compile Include="Models\HundeDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Hunde.tt</DependentUpon>
+      <DependentUpon>HundeDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Hunde.Designer.cs">
+    <Compile Include="Models\HundeDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Hunde.edmx</DependentUpon>
+      <DependentUpon>HundeDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Tb_Cita.cs">
-      <DependentUpon>Hunde.tt</DependentUpon>
+      <DependentUpon>HundeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tb_Cliente.cs">
-      <DependentUpon>Hunde.tt</DependentUpon>
+      <DependentUpon>HundeDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Tb_Consulta.cs">
-      <DependentUpon>Hunde.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Tb_Detalle_Consulta.cs">
-      <DependentUpon>Hunde.tt</DependentUpon>
+    <Compile Include="Models\Tb_Color.cs">
+      <DependentUpon>HundeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tb_Empleado.cs">
-      <DependentUpon>Hunde.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Tb_Estado.cs">
-      <DependentUpon>Hunde.tt</DependentUpon>
+      <DependentUpon>HundeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tb_Medicina.cs">
-      <DependentUpon>Hunde.tt</DependentUpon>
+      <DependentUpon>HundeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tb_Paciente.cs">
-      <DependentUpon>Hunde.tt</DependentUpon>
+      <DependentUpon>HundeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tb_Proveedor.cs">
-      <DependentUpon>Hunde.tt</DependentUpon>
+      <DependentUpon>HundeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_Raza.cs">
+      <DependentUpon>HundeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tb_Tratamiento.cs">
-      <DependentUpon>Hunde.tt</DependentUpon>
+      <DependentUpon>HundeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tb_Ubigeo.cs">
-      <DependentUpon>Hunde.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Tb_unidad_medida.cs">
-      <DependentUpon>Hunde.tt</DependentUpon>
+      <DependentUpon>HundeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tb_Usuario.cs">
-      <DependentUpon>Hunde.tt</DependentUpon>
+      <DependentUpon>HundeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vw_ClientesPacientes.cs">
-      <DependentUpon>Hunde.tt</DependentUpon>
+      <DependentUpon>HundeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw_ClientesSonDueños.cs">
+      <DependentUpon>HundeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw_DetallesPaciente.cs">
+      <DependentUpon>HundeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -207,24 +203,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Hunde.Context.tt">
+    <Content Include="Models\HundeDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Hunde.Context.cs</LastGenOutput>
-      <DependentUpon>Hunde.edmx</DependentUpon>
+      <LastGenOutput>HundeDB.Context.cs</LastGenOutput>
+      <DependentUpon>HundeDB.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\Hunde.tt">
+    <Content Include="Models\HundeDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Hunde.edmx</DependentUpon>
-      <LastGenOutput>Hunde.cs</LastGenOutput>
+      <DependentUpon>HundeDB.edmx</DependentUpon>
+      <LastGenOutput>HundeDB.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Hunde.edmx">
+    <EntityDeploy Include="Models\HundeDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Hunde.Designer.cs</LastGenOutput>
+      <LastGenOutput>HundeDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Hunde.edmx.diagram">
-      <DependentUpon>Hunde.edmx</DependentUpon>
+    <Content Include="Models\HundeDB.edmx.diagram">
+      <DependentUpon>HundeDB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -251,41 +247,21 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Tb_Medicina\Create.cshtml" />
-    <Content Include="Views\Tb_Medicina\Delete.cshtml" />
-    <Content Include="Views\Tb_Medicina\Details.cshtml" />
-    <Content Include="Views\Tb_Medicina\Edit.cshtml" />
-    <Content Include="Views\Tb_Medicina\Index.cshtml" />
     <Content Include="Views\Tb_Cliente\Create.cshtml" />
     <Content Include="Views\Tb_Cliente\Delete.cshtml" />
     <Content Include="Views\Tb_Cliente\Details.cshtml" />
     <Content Include="Views\Tb_Cliente\Edit.cshtml" />
     <Content Include="Views\Tb_Cliente\Index.cshtml" />
-    <Content Include="Views\Tb_Empleado\Create.cshtml" />
-    <Content Include="Views\Tb_Empleado\Delete.cshtml" />
-    <Content Include="Views\Tb_Empleado\Details.cshtml" />
-    <Content Include="Views\Tb_Empleado\Edit.cshtml" />
-    <Content Include="Views\Tb_Empleado\Index.cshtml" />
+    <Content Include="Views\Tb_Medicina\Create.cshtml" />
+    <Content Include="Views\Tb_Medicina\Delete.cshtml" />
+    <Content Include="Views\Tb_Medicina\Details.cshtml" />
+    <Content Include="Views\Tb_Medicina\Edit.cshtml" />
+    <Content Include="Views\Tb_Medicina\Index.cshtml" />
     <Content Include="Views\Tb_Paciente\Create.cshtml" />
     <Content Include="Views\Tb_Paciente\Delete.cshtml" />
     <Content Include="Views\Tb_Paciente\Details.cshtml" />
     <Content Include="Views\Tb_Paciente\Edit.cshtml" />
     <Content Include="Views\Tb_Paciente\Index.cshtml" />
-    <Content Include="Views\Tb_Proveedor\Create.cshtml" />
-    <Content Include="Views\Tb_Proveedor\Delete.cshtml" />
-    <Content Include="Views\Tb_Proveedor\Details.cshtml" />
-    <Content Include="Views\Tb_Proveedor\Edit.cshtml" />
-    <Content Include="Views\Tb_Proveedor\Index.cshtml" />
-    <Content Include="Views\Tb_Tratamiento\Create.cshtml" />
-    <Content Include="Views\Tb_Tratamiento\Delete.cshtml" />
-    <Content Include="Views\Tb_Tratamiento\Details.cshtml" />
-    <Content Include="Views\Tb_Tratamiento\Edit.cshtml" />
-    <Content Include="Views\Tb_Tratamiento\Index.cshtml" />
-    <Content Include="Views\Tb_Estado\Create.cshtml" />
-    <Content Include="Views\Tb_Estado\Delete.cshtml" />
-    <Content Include="Views\Tb_Estado\Details.cshtml" />
-    <Content Include="Views\Tb_Estado\Edit.cshtml" />
-    <Content Include="Views\Tb_Estado\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -322,7 +298,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50448</DevelopmentServerPort>
+          <DevelopmentServerPort>52436</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>https://localhost:44327/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

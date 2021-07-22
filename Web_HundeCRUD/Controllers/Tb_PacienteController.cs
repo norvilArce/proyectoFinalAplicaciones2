@@ -17,7 +17,8 @@ namespace Web_HundeCRUD.Controllers
         // GET: Tb_Paciente
         public ActionResult Index()
         {
-            return View(db.Tb_Paciente.ToList());
+            var tb_Paciente = db.Tb_Paciente.Include(t => t.Tb_Color).Include(t => t.Tb_Raza);
+            return View(tb_Paciente.ToList());
         }
 
         // GET: Tb_Paciente/Details/5
@@ -38,6 +39,8 @@ namespace Web_HundeCRUD.Controllers
         // GET: Tb_Paciente/Create
         public ActionResult Create()
         {
+            ViewBag.cod_color = new SelectList(db.Tb_Color, "cod_color", "nom_color");
+            ViewBag.cod_raza = new SelectList(db.Tb_Raza, "cod_raza", "nom_raza");
             return View();
         }
 
@@ -46,7 +49,7 @@ namespace Web_HundeCRUD.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "cod_pac,nom_pac,tipo_pac,raza,fec_nac_pac,sexo,color,longitud,peso,ult_vis_pac,foto,observaciones_pac,est_pac")] Tb_Paciente tb_Paciente)
+        public ActionResult Create([Bind(Include = "cod_pac,nom_pac,cod_raza,fec_nac_pac,sexo,cod_color,longitud,peso,ult_vis_pac,foto,observaciones_pac,est_pac")] Tb_Paciente tb_Paciente)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +58,8 @@ namespace Web_HundeCRUD.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.cod_color = new SelectList(db.Tb_Color, "cod_color", "nom_color", tb_Paciente.cod_color);
+            ViewBag.cod_raza = new SelectList(db.Tb_Raza, "cod_raza", "nom_raza", tb_Paciente.cod_raza);
             return View(tb_Paciente);
         }
 
@@ -70,6 +75,8 @@ namespace Web_HundeCRUD.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.cod_color = new SelectList(db.Tb_Color, "cod_color", "nom_color", tb_Paciente.cod_color);
+            ViewBag.cod_raza = new SelectList(db.Tb_Raza, "cod_raza", "nom_raza", tb_Paciente.cod_raza);
             return View(tb_Paciente);
         }
 
@@ -78,7 +85,7 @@ namespace Web_HundeCRUD.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "cod_pac,nom_pac,tipo_pac,raza,fec_nac_pac,sexo,color,longitud,peso,ult_vis_pac,foto,observaciones_pac,est_pac")] Tb_Paciente tb_Paciente)
+        public ActionResult Edit([Bind(Include = "cod_pac,nom_pac,cod_raza,fec_nac_pac,sexo,cod_color,longitud,peso,ult_vis_pac,foto,observaciones_pac,est_pac")] Tb_Paciente tb_Paciente)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +93,8 @@ namespace Web_HundeCRUD.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.cod_color = new SelectList(db.Tb_Color, "cod_color", "nom_color", tb_Paciente.cod_color);
+            ViewBag.cod_raza = new SelectList(db.Tb_Raza, "cod_raza", "nom_raza", tb_Paciente.cod_raza);
             return View(tb_Paciente);
         }
 

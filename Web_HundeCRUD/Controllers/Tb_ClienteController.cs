@@ -48,11 +48,10 @@ namespace Web_HundeCRUD.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "cod_cli,Tipo_cliente,nom_cliente,ape_pat_cliente,ape_mat_cliente,direccion_cliente,cel_cliente,email_cliente,es_dueno,id_ubigeo,dni_cliente,usu_reg_cli,fec_reg_cli,usu_ult_modificacion_cli,fecha_ult_modificacion_cli,estado_cli")] Tb_Cliente tb_Cliente)
+        public ActionResult Create([Bind(Include = "cod_cli,nom_cliente,ape_cliente,direccion_cliente,cel_cliente,email_cliente,es_dueno,id_ubigeo,dni_cliente,usu_reg_cli,fec_reg_cli,usu_ult_modificacion_cli,fecha_ult_modificacion_cli,estado_cli")] Tb_Cliente tb_Cliente)
         {
             if (ModelState.IsValid)
             {
-                tb_Cliente.cod_cli = "";
                 db.Tb_Cliente.Add(tb_Cliente);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -83,7 +82,7 @@ namespace Web_HundeCRUD.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "cod_cli,Tipo_cliente,nom_cliente,ape_pat_cliente,ape_mat_cliente,direccion_cliente,cel_cliente,email_cliente,es_dueno,id_ubigeo,dni_cliente,usu_reg_cli,fec_reg_cli,usu_ult_modificacion_cli,fecha_ult_modificacion_cli,estado_cli")] Tb_Cliente tb_Cliente)
+        public ActionResult Edit([Bind(Include = "cod_cli,nom_cliente,ape_cliente,direccion_cliente,cel_cliente,email_cliente,es_dueno,id_ubigeo,dni_cliente,usu_reg_cli,fec_reg_cli,usu_ult_modificacion_cli,fecha_ult_modificacion_cli,estado_cli")] Tb_Cliente tb_Cliente)
         {
             if (ModelState.IsValid)
             {

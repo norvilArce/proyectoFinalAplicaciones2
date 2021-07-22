@@ -1,50 +1,37 @@
 ﻿@model IEnumerable<Web_HundeCRUD.Models.Tb_Medicina>
 
 @{
-    ViewBag.Title = "Listado de Medicinas";
+    ViewBag.Title = "Index";
 }
 
-<h2>Listado de Medicinas</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Crear Nuevo", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>Codigo</th>
-        <th>Tipo Medicina</th>
-        <th>Descripción</th>.
-        <th>Unidad Medida</th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.tipo_medicina)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.nombre_medicina)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Tb_unidad_medida.descrip_uni_med)
-        </th>*@
+            @Html.DisplayNameFor(model => model.precio)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.cod_med)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tipo_medicina)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.nombre_medicina)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Tb_unidad_medida.descrip_uni_med)
+            @Html.DisplayFor(modelItem => item.precio)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.cod_med }) |
-            @Html.ActionLink("Consultar", "Details", new { id=item.cod_med }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.cod_med })
+            @Html.ActionLink("Edit", "Edit", new { id=item.cod_med }) |
+            @Html.ActionLink("Details", "Details", new { id=item.cod_med }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.cod_med })
         </td>
     </tr>
 }

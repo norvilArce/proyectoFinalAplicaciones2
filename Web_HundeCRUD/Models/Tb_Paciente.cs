@@ -14,27 +14,20 @@ namespace Web_HundeCRUD.Models
     
     public partial class Tb_Paciente
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tb_Paciente()
-        {
-            this.Tb_Consulta = new HashSet<Tb_Consulta>();
-        }
-    
         public string cod_pac { get; set; }
         public string nom_pac { get; set; }
-        public string tipo_pac { get; set; }
-        public string raza { get; set; }
+        public Nullable<int> cod_raza { get; set; }
         public System.DateTime fec_nac_pac { get; set; }
         public int sexo { get; set; }
-        public string color { get; set; }
+        public int cod_color { get; set; }
         public double longitud { get; set; }
         public double peso { get; set; }
         public Nullable<System.DateTime> ult_vis_pac { get; set; }
-        public string foto { get; set; }
+        public byte[] foto { get; set; }
         public string observaciones_pac { get; set; }
         public int est_pac { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tb_Consulta> Tb_Consulta { get; set; }
+        public virtual Tb_Color Tb_Color { get; set; }
+        public virtual Tb_Raza Tb_Raza { get; set; }
     }
 }

@@ -9,3 +9,17 @@ D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\
 D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\version_reload\Proy_Hunde_WCF\WCF_Hunde\obj\Debug\WCF_Hunde.csproj.CopyComplete
 D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\version_reload\Proy_Hunde_WCF\WCF_Hunde\obj\Debug\WCF_Hunde.dll
 D:\ISIL\DESARROLLO DE SOFTWARE\4to ciclo\DESARROLLO DE APLICACIONES II\proyecto\version_reload\Proy_Hunde_WCF\WCF_Hunde\obj\Debug\WCF_Hunde.pdb
+D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\WCF_Hunde\bin\Debug\WCF_Hunde.dll.config
+D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\WCF_Hunde\bin\Debug\WCF_Hunde.dll
+D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\WCF_Hunde\bin\Debug\WCF_Hunde.pdb
+D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\WCF_Hunde\bin\Debug\EntityFramework.dll
+D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\WCF_Hunde\bin\Debug\EntityFramework.SqlServer.dll
+D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\WCF_Hunde\bin\Debug\EntityFramework.xml
+D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\WCF_Hunde\bin\Debug\EntityFramework.SqlServer.xml
+D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\WCF_Hunde\bin\Debug\es\EntityFramework.resources.dll
+D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\WCF_Hunde\bin\Debug\es\EntityFramework.SqlServer.resources.dll
+D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\WCF_Hunde\obj\Debug\WCF_Hunde.csproj.AssemblyReference.cache
+D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\WCF_Hunde\obj\Debug\WCF_Hunde.csproj.CoreCompileInputs.cache
+D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\WCF_Hunde\obj\Debug\WCF_Hunde.csproj.CopyComplete
+D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\WCF_Hunde\obj\Debug\WCF_Hunde.dll
+D:\ISIL\IV CICLO\DESARROLLO APLICACIONES II\ProyectoFinal\Proyecto\Hunde2\WCF_Hunde\obj\Debug\WCF_Hunde.pdb

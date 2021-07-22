@@ -17,12 +17,11 @@ namespace Web_HundeCRUD.Controllers
         // GET: Tb_Medicina
         public ActionResult Index()
         {
-            var tb_Medicina = db.Tb_Medicina.Include(t => t.Tb_unidad_medida);
-            return View(tb_Medicina.ToList());
+            return View(db.Tb_Medicina.ToList());
         }
 
         // GET: Tb_Medicina/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -39,7 +38,6 @@ namespace Web_HundeCRUD.Controllers
         // GET: Tb_Medicina/Create
         public ActionResult Create()
         {
-            ViewBag.cod_uni_med = new SelectList(db.Tb_unidad_medida, "cod_uni_med", "descrip_uni_med");
             return View();
         }
 
@@ -48,22 +46,20 @@ namespace Web_HundeCRUD.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "cod_med,tipo_medicina,nombre_medicina,cod_uni_med")] Tb_Medicina tb_Medicina)
+        public ActionResult Create([Bind(Include = "cod_med,nombre_medicina,precio")] Tb_Medicina tb_Medicina)
         {
             if (ModelState.IsValid)
-            {   
-
+            {
                 db.Tb_Medicina.Add(tb_Medicina);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.cod_uni_med = new SelectList(db.Tb_unidad_medida, "cod_uni_med", "descrip_uni_med", tb_Medicina.cod_uni_med);
             return View(tb_Medicina);
         }
 
         // GET: Tb_Medicina/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -74,7 +70,6 @@ namespace Web_HundeCRUD.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.cod_uni_med = new SelectList(db.Tb_unidad_medida, "cod_uni_med", "descrip_uni_med", tb_Medicina.cod_uni_med);
             return View(tb_Medicina);
         }
 
@@ -83,7 +78,7 @@ namespace Web_HundeCRUD.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "cod_med,tipo_medicina,nombre_medicina,cod_uni_med")] Tb_Medicina tb_Medicina)
+        public ActionResult Edit([Bind(Include = "cod_med,nombre_medicina,precio")] Tb_Medicina tb_Medicina)
         {
             if (ModelState.IsValid)
             {
@@ -91,12 +86,11 @@ namespace Web_HundeCRUD.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.cod_uni_med = new SelectList(db.Tb_unidad_medida, "cod_uni_med", "descrip_uni_med", tb_Medicina.cod_uni_med);
             return View(tb_Medicina);
         }
 
         // GET: Tb_Medicina/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -113,7 +107,7 @@ namespace Web_HundeCRUD.Controllers
         // POST: Tb_Medicina/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Tb_Medicina tb_Medicina = db.Tb_Medicina.Find(id);
             db.Tb_Medicina.Remove(tb_Medicina);

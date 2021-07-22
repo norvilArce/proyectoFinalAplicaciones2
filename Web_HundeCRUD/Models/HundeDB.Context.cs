@@ -29,36 +29,28 @@ namespace Web_HundeCRUD.Models
     
         public virtual DbSet<Tb_Cita> Tb_Cita { get; set; }
         public virtual DbSet<Tb_Cliente> Tb_Cliente { get; set; }
-        public virtual DbSet<Tb_Consulta> Tb_Consulta { get; set; }
+        public virtual DbSet<Tb_Color> Tb_Color { get; set; }
         public virtual DbSet<Tb_Empleado> Tb_Empleado { get; set; }
-        public virtual DbSet<Tb_Estado> Tb_Estado { get; set; }
         public virtual DbSet<Tb_Medicina> Tb_Medicina { get; set; }
         public virtual DbSet<Tb_Paciente> Tb_Paciente { get; set; }
         public virtual DbSet<Tb_Proveedor> Tb_Proveedor { get; set; }
+        public virtual DbSet<Tb_Raza> Tb_Raza { get; set; }
         public virtual DbSet<Tb_Tratamiento> Tb_Tratamiento { get; set; }
         public virtual DbSet<Tb_Ubigeo> Tb_Ubigeo { get; set; }
-        public virtual DbSet<Tb_unidad_medida> Tb_unidad_medida { get; set; }
         public virtual DbSet<Tb_Usuario> Tb_Usuario { get; set; }
-        public virtual DbSet<Tb_Detalle_Consulta> Tb_Detalle_Consulta { get; set; }
         public virtual DbSet<vw_ClientesPacientes> vw_ClientesPacientes { get; set; }
+        public virtual DbSet<vw_ClientesSonDueños> vw_ClientesSonDueños { get; set; }
+        public virtual DbSet<vw_DetallesPaciente> vw_DetallesPaciente { get; set; }
     
-        public virtual int usp_ActualizarCliente(Nullable<int> vtipo_cliente, string vnom_cliente, string vape_pat_cli, string vape_mat_cli, string vdir_cli, string vcel_cli, string vemail_cli, Nullable<int> ves_dueno, string vid_ubigeo, string vdni_cli, string vusu_ult_mod, Nullable<System.DateTime> vfec_ult_mod, Nullable<int> vestado_cli, string vcod_cli)
+        public virtual int usp_ActualizarCliente(string vnom_cliente, string vape_cli, string vdir_cli, string vcel_cli, string vemail_cli, Nullable<int> ves_dueno, string vid_ubigeo, string vdni_cli, string vusu_ult_mod, Nullable<int> vestado_cli, string vcod_cli)
         {
-            var vtipo_clienteParameter = vtipo_cliente.HasValue ?
-                new ObjectParameter("vtipo_cliente", vtipo_cliente) :
-                new ObjectParameter("vtipo_cliente", typeof(int));
-    
             var vnom_clienteParameter = vnom_cliente != null ?
                 new ObjectParameter("vnom_cliente", vnom_cliente) :
                 new ObjectParameter("vnom_cliente", typeof(string));
     
-            var vape_pat_cliParameter = vape_pat_cli != null ?
-                new ObjectParameter("vape_pat_cli", vape_pat_cli) :
-                new ObjectParameter("vape_pat_cli", typeof(string));
-    
-            var vape_mat_cliParameter = vape_mat_cli != null ?
-                new ObjectParameter("vape_mat_cli", vape_mat_cli) :
-                new ObjectParameter("vape_mat_cli", typeof(string));
+            var vape_cliParameter = vape_cli != null ?
+                new ObjectParameter("vape_cli", vape_cli) :
+                new ObjectParameter("vape_cli", typeof(string));
     
             var vdir_cliParameter = vdir_cli != null ?
                 new ObjectParameter("vdir_cli", vdir_cli) :
@@ -88,10 +80,6 @@ namespace Web_HundeCRUD.Models
                 new ObjectParameter("vusu_ult_mod", vusu_ult_mod) :
                 new ObjectParameter("vusu_ult_mod", typeof(string));
     
-            var vfec_ult_modParameter = vfec_ult_mod.HasValue ?
-                new ObjectParameter("vfec_ult_mod", vfec_ult_mod) :
-                new ObjectParameter("vfec_ult_mod", typeof(System.DateTime));
-    
             var vestado_cliParameter = vestado_cli.HasValue ?
                 new ObjectParameter("vestado_cli", vestado_cli) :
                 new ObjectParameter("vestado_cli", typeof(int));
@@ -100,7 +88,7 @@ namespace Web_HundeCRUD.Models
                 new ObjectParameter("vcod_cli", vcod_cli) :
                 new ObjectParameter("vcod_cli", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_ActualizarCliente", vtipo_clienteParameter, vnom_clienteParameter, vape_pat_cliParameter, vape_mat_cliParameter, vdir_cliParameter, vcel_cliParameter, vemail_cliParameter, ves_duenoParameter, vid_ubigeoParameter, vdni_cliParameter, vusu_ult_modParameter, vfec_ult_modParameter, vestado_cliParameter, vcod_cliParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_ActualizarCliente", vnom_clienteParameter, vape_cliParameter, vdir_cliParameter, vcel_cliParameter, vemail_cliParameter, ves_duenoParameter, vid_ubigeoParameter, vdni_cliParameter, vusu_ult_modParameter, vestado_cliParameter, vcod_cliParameter);
         }
     
         public virtual int usp_EliminarCliente(string vcod_cli)
@@ -112,23 +100,15 @@ namespace Web_HundeCRUD.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_EliminarCliente", vcod_cliParameter);
         }
     
-        public virtual int usp_InsertarCliente(Nullable<int> vtipo_cliente, string vnom_cliente, string vape_pat_cli, string vape_mat_cli, string vdir_cli, string vcel_cli, string vemail_cli, Nullable<int> ves_dueno, string vid_ubigeo, string vdni_cli, string vusu_reg_cli, Nullable<System.DateTime> vusu_fec_reg_cli, Nullable<int> vestado_cli)
+        public virtual int usp_InsertarCliente(string vnom_cliente, string vape_cli, string vdir_cli, string vcel_cli, string vemail_cli, Nullable<int> ves_dueno, string vid_ubigeo, string vdni_cli, string vusu_reg_cli, Nullable<int> vestado_cli)
         {
-            var vtipo_clienteParameter = vtipo_cliente.HasValue ?
-                new ObjectParameter("vtipo_cliente", vtipo_cliente) :
-                new ObjectParameter("vtipo_cliente", typeof(int));
-    
             var vnom_clienteParameter = vnom_cliente != null ?
                 new ObjectParameter("vnom_cliente", vnom_cliente) :
                 new ObjectParameter("vnom_cliente", typeof(string));
     
-            var vape_pat_cliParameter = vape_pat_cli != null ?
-                new ObjectParameter("vape_pat_cli", vape_pat_cli) :
-                new ObjectParameter("vape_pat_cli", typeof(string));
-    
-            var vape_mat_cliParameter = vape_mat_cli != null ?
-                new ObjectParameter("vape_mat_cli", vape_mat_cli) :
-                new ObjectParameter("vape_mat_cli", typeof(string));
+            var vape_cliParameter = vape_cli != null ?
+                new ObjectParameter("vape_cli", vape_cli) :
+                new ObjectParameter("vape_cli", typeof(string));
     
             var vdir_cliParameter = vdir_cli != null ?
                 new ObjectParameter("vdir_cli", vdir_cli) :
@@ -158,15 +138,11 @@ namespace Web_HundeCRUD.Models
                 new ObjectParameter("vusu_reg_cli", vusu_reg_cli) :
                 new ObjectParameter("vusu_reg_cli", typeof(string));
     
-            var vusu_fec_reg_cliParameter = vusu_fec_reg_cli.HasValue ?
-                new ObjectParameter("vusu_fec_reg_cli", vusu_fec_reg_cli) :
-                new ObjectParameter("vusu_fec_reg_cli", typeof(System.DateTime));
-    
             var vestado_cliParameter = vestado_cli.HasValue ?
                 new ObjectParameter("vestado_cli", vestado_cli) :
                 new ObjectParameter("vestado_cli", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertarCliente", vtipo_clienteParameter, vnom_clienteParameter, vape_pat_cliParameter, vape_mat_cliParameter, vdir_cliParameter, vcel_cliParameter, vemail_cliParameter, ves_duenoParameter, vid_ubigeoParameter, vdni_cliParameter, vusu_reg_cliParameter, vusu_fec_reg_cliParameter, vestado_cliParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertarCliente", vnom_clienteParameter, vape_cliParameter, vdir_cliParameter, vcel_cliParameter, vemail_cliParameter, ves_duenoParameter, vid_ubigeoParameter, vdni_cliParameter, vusu_reg_cliParameter, vestado_cliParameter);
         }
     }
 }

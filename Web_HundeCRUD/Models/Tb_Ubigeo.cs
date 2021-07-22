@@ -18,6 +18,8 @@ namespace Web_HundeCRUD.Models
         public Tb_Ubigeo()
         {
             this.Tb_Cliente = new HashSet<Tb_Cliente>();
+            this.Tb_Empleado = new HashSet<Tb_Empleado>();
+            this.Tb_Proveedor = new HashSet<Tb_Proveedor>();
         }
     
         public string Id_Ubigeo { get; set; }
@@ -27,9 +29,12 @@ namespace Web_HundeCRUD.Models
         public string Departamento { get; set; }
         public string Provincia { get; set; }
         public string Distrito { get; set; }
-        public string Cod_Ven { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tb_Cliente> Tb_Cliente { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tb_Empleado> Tb_Empleado { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tb_Proveedor> Tb_Proveedor { get; set; }
     }
 }

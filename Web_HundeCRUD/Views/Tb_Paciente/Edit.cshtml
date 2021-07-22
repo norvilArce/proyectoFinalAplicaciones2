@@ -26,18 +26,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tipo_pac, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.cod_raza, "cod_raza", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.tipo_pac, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.tipo_pac, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.raza, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.raza, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.raza, "", new { @class = "text-danger" })
+                @Html.DropDownList("cod_raza", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.cod_raza, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -58,10 +50,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.color, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.cod_color, "cod_color", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.color, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.color, "", new { @class = "text-danger" })
+                @Html.DropDownList("cod_color", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.cod_color, "", new { @class = "text-danger" })
             </div>
         </div>
 

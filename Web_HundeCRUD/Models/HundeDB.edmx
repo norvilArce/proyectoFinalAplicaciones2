@@ -10,8 +10,7 @@
             <PropertyRef Name="cod_cita" />
           </Key>
           <Property Name="cod_cita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="fec_reserva" Type="date" Nullable="false" />
-          <Property Name="hor_reserva" Type="time" Precision="7" Nullable="false" />
+          <Property Name="fec_reserva" Type="datetime" Nullable="false" />
           <Property Name="fec_cita" Type="date" Nullable="false" />
           <Property Name="hor_cita" Type="time" Precision="7" Nullable="false" />
           <Property Name="est_cita" Type="int" Nullable="false" />
@@ -22,81 +21,55 @@
             <PropertyRef Name="cod_cli" />
           </Key>
           <Property Name="cod_cli" Type="varchar" MaxLength="4" Nullable="false" />
-          <Property Name="Tipo_cliente" Type="int" Nullable="false" />
           <Property Name="nom_cliente" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ape_pat_cliente" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ape_mat_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ape_cliente" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="direccion_cliente" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="cel_cliente" Type="varchar" MaxLength="9" Nullable="false" />
           <Property Name="email_cliente" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="es_dueno" Type="int" Nullable="false" />
           <Property Name="id_ubigeo" Type="varchar" MaxLength="6" Nullable="false" />
           <Property Name="dni_cliente" Type="char" MaxLength="8" Nullable="false" />
-          <Property Name="usu_reg_cli" Type="varchar" MaxLength="4" />
+          <Property Name="usu_reg_cli" Type="varchar" MaxLength="15" />
           <Property Name="fec_reg_cli" Type="datetime" />
-          <Property Name="usu_ult_modificacion_cli" Type="varchar" MaxLength="4" />
+          <Property Name="usu_ult_modificacion_cli" Type="varchar" MaxLength="15" />
           <Property Name="fecha_ult_modificacion_cli" Type="datetime" />
           <Property Name="estado_cli" Type="int" />
         </EntityType>
-        <EntityType Name="Tb_Consulta">
+        <EntityType Name="Tb_Color">
           <Key>
-            <PropertyRef Name="cod_cons" />
+            <PropertyRef Name="cod_color" />
           </Key>
-          <Property Name="cod_cons" Type="varchar" MaxLength="4" Nullable="false" />
-          <Property Name="fec_cons" Type="date" Nullable="false" />
-          <Property Name="hor_cons" Type="time" Precision="7" Nullable="false" />
-          <Property Name="cod_pac" Type="varchar" MaxLength="4" Nullable="false" />
-          <Property Name="cod_emp" Type="varchar" MaxLength="4" Nullable="false" />
-          <Property Name="cod_cita" Type="int" Nullable="false" />
-          <Property Name="est_cons" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'HundeDB.dbo.Tb_Detalle_Consulta' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="Tb_Detalle_Consulta">
-          <Key>
-            <PropertyRef Name="cod_cons" />
-            <PropertyRef Name="cod_trat" />
-            <PropertyRef Name="cod_estado" />
-          </Key>
-          <Property Name="cod_cons" Type="varchar" MaxLength="4" Nullable="false" />
-          <Property Name="cod_trat" Type="int" Nullable="false" />
-          <Property Name="cod_estado" Type="int" Nullable="false" />
-          <Property Name="cod_med" Type="varchar" MaxLength="4" />
-          <Property Name="obs_det_cons" Type="varchar" MaxLength="300" />
+          <Property Name="cod_color" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_color" Type="varchar" MaxLength="40" />
         </EntityType>
         <EntityType Name="Tb_Empleado">
           <Key>
             <PropertyRef Name="cod_emp" />
           </Key>
           <Property Name="cod_emp" Type="varchar" MaxLength="4" Nullable="false" />
-          <Property Name="rol_emp" Type="int" Nullable="false" />
+          <Property Name="cod_rol" Type="int" Nullable="false" />
+          <Property Name="tipo_emp" Type="int" Nullable="false" />
           <Property Name="nom_empleado" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ape_empleado" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="direccion_empleado" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="id_ubigeo" Type="varchar" MaxLength="6" Nullable="false" />
           <Property Name="fecha_ingreso" Type="datetime" Nullable="false" />
           <Property Name="sueldo" Type="money" />
           <Property Name="email_emp" Type="varchar" MaxLength="50" />
           <Property Name="cod_supervisor" Type="varchar" MaxLength="4" />
-          <Property Name="usu_ult_modificacion_emp" Type="varchar" MaxLength="4" />
+          <Property Name="usu_reg_cli" Type="varchar" MaxLength="15" />
+          <Property Name="fec_reg_cli" Type="datetime" />
+          <Property Name="usu_ult_modificacion_emp" Type="varchar" MaxLength="15" />
           <Property Name="fecha_ult_modificacion_emp" Type="datetime" />
           <Property Name="estado_emp" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Tb_Estado">
-          <Key>
-            <PropertyRef Name="cod_estado" />
-          </Key>
-          <Property Name="cod_estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="conducta" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="est_nutricional" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="actividad" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Tb_Medicina">
           <Key>
             <PropertyRef Name="cod_med" />
           </Key>
-          <Property Name="cod_med" Type="varchar" MaxLength="4" Nullable="false" />
-          <Property Name="tipo_medicina" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cod_med" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre_medicina" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="cod_uni_med" Type="int" Nullable="false" />
+          <Property Name="precio" Type="money" Nullable="false" />
         </EntityType>
         <EntityType Name="Tb_Paciente">
           <Key>
@@ -104,15 +77,14 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.Tb_Detalle_Consulta' no tiene de
           </Key>
           <Property Name="cod_pac" Type="varchar" MaxLength="4" Nullable="false" />
           <Property Name="nom_pac" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="tipo_pac" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="raza" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cod_raza" Type="int" />
           <Property Name="fec_nac_pac" Type="date" Nullable="false" />
           <Property Name="sexo" Type="int" Nullable="false" />
-          <Property Name="color" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cod_color" Type="int" Nullable="false" />
           <Property Name="longitud" Type="float" Nullable="false" />
           <Property Name="peso" Type="float" Nullable="false" />
           <Property Name="ult_vis_pac" Type="date" />
-          <Property Name="foto" Type="varchar" MaxLength="50" />
+          <Property Name="foto" Type="image" />
           <Property Name="observaciones_pac" Type="varchar" MaxLength="300" />
           <Property Name="est_pac" Type="int" Nullable="false" />
         </EntityType>
@@ -121,26 +93,33 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.Tb_Detalle_Consulta' no tiene de
             <PropertyRef Name="cod_prov" />
           </Key>
           <Property Name="cod_prov" Type="varchar" MaxLength="4" Nullable="false" />
-          <Property Name="nom_prov" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ruc_prov" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="raz_soc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ruc_prov" Type="char" MaxLength="11" Nullable="false" />
           <Property Name="direccion_prov" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="id_ubigeo" Type="varchar" MaxLength="6" Nullable="false" />
           <Property Name="tel_prov" Type="varchar" MaxLength="9" Nullable="false" />
           <Property Name="email_prov" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="rep_ven_prov" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="usu_reg_prov" Type="varchar" MaxLength="4" />
+          <Property Name="usu_reg_prov" Type="varchar" MaxLength="15" />
           <Property Name="fec_reg_prov" Type="datetime" />
-          <Property Name="usu_ult_modificacion_prov" Type="varchar" MaxLength="4" />
+          <Property Name="usu_ult_modificacion_prov" Type="varchar" MaxLength="15" />
           <Property Name="fecha_ult_modificacion_prov" Type="datetime" />
           <Property Name="estado_prov" Type="int" />
+        </EntityType>
+        <EntityType Name="Tb_Raza">
+          <Key>
+            <PropertyRef Name="cod_raza" />
+          </Key>
+          <Property Name="cod_raza" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_raza" Type="varchar" MaxLength="40" />
+          <Property Name="cod_tipo" Type="int" />
         </EntityType>
         <EntityType Name="Tb_Tratamiento">
           <Key>
             <PropertyRef Name="cod_trat" />
           </Key>
           <Property Name="cod_trat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="tipo_trat" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="nombre_trat" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="cod_cat_trat" Type="varchar" MaxLength="4" Nullable="false" />
           <Property Name="estado_trat" Type="int" />
         </EntityType>
         <EntityType Name="Tb_Ubigeo">
@@ -154,20 +133,12 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.Tb_Detalle_Consulta' no tiene de
           <Property Name="Departamento" Type="nvarchar" MaxLength="255" />
           <Property Name="Provincia" Type="nvarchar" MaxLength="255" />
           <Property Name="Distrito" Type="nvarchar" MaxLength="255" />
-          <Property Name="Cod_Ven" Type="nchar" MaxLength="3" />
-        </EntityType>
-        <EntityType Name="Tb_unidad_medida">
-          <Key>
-            <PropertyRef Name="cod_uni_med" />
-          </Key>
-          <Property Name="cod_uni_med" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="descrip_uni_med" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Tb_Usuario">
           <Key>
             <PropertyRef Name="login_usuario" />
           </Key>
-          <Property Name="login_usuario" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="login_usuario" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="pass_usuario" Type="varchar" MaxLength="20" />
           <Property Name="niv_usuario" Type="int" />
           <Property Name="est_usuario" Type="int" />
@@ -183,77 +154,70 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
           </Key>
           <Property Name="cod_cli" Type="varchar" MaxLength="4" />
           <Property Name="dni_cliente" Type="char" MaxLength="8" />
-          <Property Name="nombre_completo" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="nombre_completo" Type="varchar" MaxLength="101" Nullable="false" />
           <Property Name="direccion_cliente" Type="varchar" MaxLength="100" />
           <Property Name="cel_cliente" Type="varchar" MaxLength="9" />
           <Property Name="es_dueno" Type="int" />
           <Property Name="cod_pac" Type="varchar" MaxLength="4" />
           <Property Name="nom_pac" Type="varchar" MaxLength="50" />
-          <Property Name="tipo_pac" Type="varchar" MaxLength="50" />
-          <Property Name="raza" Type="varchar" MaxLength="50" />
+          <Property Name="nom_raza" Type="varchar" MaxLength="40" />
           <Property Name="estado_cli" Type="int" />
           <Property Name="est_pac" Type="int" />
         </EntityType>
-        <Association Name="FK__Tb_Consul__cod_e__46E78A0C">
-          <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="1" />
-          <End Role="Tb_Consulta" Type="Self.Tb_Consulta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tb_Empleado">
-              <PropertyRef Name="cod_emp" />
-            </Principal>
-            <Dependent Role="Tb_Consulta">
-              <PropertyRef Name="cod_emp" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Tb_Consul__cod_p__45F365D3">
-          <End Role="Tb_Paciente" Type="Self.Tb_Paciente" Multiplicity="1" />
-          <End Role="Tb_Consulta" Type="Self.Tb_Consulta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tb_Paciente">
-              <PropertyRef Name="cod_pac" />
-            </Principal>
-            <Dependent Role="Tb_Consulta">
-              <PropertyRef Name="cod_pac" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Tb_Detall__cod_e__4CA06362">
-          <End Role="Tb_Estado" Type="Self.Tb_Estado" Multiplicity="1" />
-          <End Role="Tb_Detalle_Consulta" Type="Self.Tb_Detalle_Consulta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tb_Estado">
-              <PropertyRef Name="cod_estado" />
-            </Principal>
-            <Dependent Role="Tb_Detalle_Consulta">
-              <PropertyRef Name="cod_estado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Tb_Detall__cod_m__4D94879B">
-          <End Role="Tb_Medicina" Type="Self.Tb_Medicina" Multiplicity="0..1" />
-          <End Role="Tb_Detalle_Consulta" Type="Self.Tb_Detalle_Consulta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tb_Medicina">
-              <PropertyRef Name="cod_med" />
-            </Principal>
-            <Dependent Role="Tb_Detalle_Consulta">
-              <PropertyRef Name="cod_med" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Tb_Detall__cod_t__4BAC3F29">
-          <End Role="Tb_Tratamiento" Type="Self.Tb_Tratamiento" Multiplicity="1" />
-          <End Role="Tb_Detalle_Consulta" Type="Self.Tb_Detalle_Consulta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tb_Tratamiento">
-              <PropertyRef Name="cod_trat" />
-            </Principal>
-            <Dependent Role="Tb_Detalle_Consulta">
-              <PropertyRef Name="cod_trat" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesSonDueños' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_ClientesSonDueños">
+          <Key>
+            <PropertyRef Name="cod_cli" />
+            <PropertyRef Name="nom_cliente" />
+            <PropertyRef Name="ape_cliente" />
+            <PropertyRef Name="direccion_cliente" />
+            <PropertyRef Name="cel_cliente" />
+            <PropertyRef Name="email_cliente" />
+            <PropertyRef Name="es_dueno" />
+            <PropertyRef Name="id_ubigeo" />
+            <PropertyRef Name="dni_cliente" />
+          </Key>
+          <Property Name="cod_cli" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="nom_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ape_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="direccion_cliente" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cel_cliente" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="email_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="es_dueno" Type="int" Nullable="false" />
+          <Property Name="id_ubigeo" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="dni_cliente" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="usu_reg_cli" Type="varchar" MaxLength="15" />
+          <Property Name="fec_reg_cli" Type="datetime" />
+          <Property Name="usu_ult_modificacion_cli" Type="varchar" MaxLength="15" />
+          <Property Name="fecha_ult_modificacion_cli" Type="datetime" />
+          <Property Name="estado_cli" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_DetallesPaciente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_DetallesPaciente">
+          <Key>
+            <PropertyRef Name="conducta" />
+            <PropertyRef Name="nutricion" />
+            <PropertyRef Name="actividad" />
+          </Key>
+          <Property Name="codigo" Type="varchar" MaxLength="4" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="tipo" Type="varchar" MaxLength="40" />
+          <Property Name="nom_raza" Type="varchar" MaxLength="40" />
+          <Property Name="fec_nac_pac" Type="date" />
+          <Property Name="sexo" Type="int" />
+          <Property Name="color" Type="varchar" MaxLength="40" />
+          <Property Name="longitud" Type="float" />
+          <Property Name="peso" Type="float" />
+          <Property Name="conducta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nutricion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="actividad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="observaciones" Type="varchar" MaxLength="300" />
+          <Property Name="det_obs" Type="varchar" MaxLength="300" />
+          <Property Name="estado" Type="int" />
+          <Property Name="foto" Type="image" />
+        </EntityType>
         <Association Name="FK_Cita_cliente">
           <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="1" />
           <End Role="Tb_Cita" Type="Self.Tb_Cita" Multiplicity="*" />
@@ -278,39 +242,63 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Consulta_cita">
-          <End Role="Tb_Cita" Type="Self.Tb_Cita" Multiplicity="1" />
-          <End Role="Tb_Consulta" Type="Self.Tb_Consulta" Multiplicity="*" />
+        <Association Name="FK_COLOR_PACIENTE">
+          <End Role="Tb_Color" Type="Self.Tb_Color" Multiplicity="1" />
+          <End Role="Tb_Paciente" Type="Self.Tb_Paciente" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Tb_Cita">
-              <PropertyRef Name="cod_cita" />
+            <Principal Role="Tb_Color">
+              <PropertyRef Name="cod_color" />
             </Principal>
-            <Dependent Role="Tb_Consulta">
-              <PropertyRef Name="cod_cita" />
+            <Dependent Role="Tb_Paciente">
+              <PropertyRef Name="cod_color" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Detalle_Consulta">
-          <End Role="Tb_Consulta" Type="Self.Tb_Consulta" Multiplicity="1" />
-          <End Role="Tb_Detalle_Consulta" Type="Self.Tb_Detalle_Consulta" Multiplicity="*" />
+        <Association Name="FK_Empleado_Supervisor">
+          <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="0..1" />
+          <End Role="Tb_Empleado1" Type="Self.Tb_Empleado" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Tb_Consulta">
-              <PropertyRef Name="cod_cons" />
+            <Principal Role="Tb_Empleado">
+              <PropertyRef Name="cod_emp" />
             </Principal>
-            <Dependent Role="Tb_Detalle_Consulta">
-              <PropertyRef Name="cod_cons" />
+            <Dependent Role="Tb_Empleado1">
+              <PropertyRef Name="cod_supervisor" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Fk_Medicina_unidad">
-          <End Role="Tb_unidad_medida" Type="Self.Tb_unidad_medida" Multiplicity="1" />
-          <End Role="Tb_Medicina" Type="Self.Tb_Medicina" Multiplicity="*" />
+        <Association Name="FK_Empleado_Ubigeo">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="1" />
+          <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Tb_unidad_medida">
-              <PropertyRef Name="cod_uni_med" />
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_Ubigeo" />
             </Principal>
-            <Dependent Role="Tb_Medicina">
-              <PropertyRef Name="cod_uni_med" />
+            <Dependent Role="Tb_Empleado">
+              <PropertyRef Name="id_ubigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PACIENTE_RAZA">
+          <End Role="Tb_Raza" Type="Self.Tb_Raza" Multiplicity="0..1" />
+          <End Role="Tb_Paciente" Type="Self.Tb_Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Raza">
+              <PropertyRef Name="cod_raza" />
+            </Principal>
+            <Dependent Role="Tb_Paciente">
+              <PropertyRef Name="cod_raza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proveedor_Ubigeo">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="1" />
+          <End Role="Tb_Proveedor" Type="Self.Tb_Proveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_Ubigeo" />
+            </Principal>
+            <Dependent Role="Tb_Proveedor">
+              <PropertyRef Name="id_ubigeo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -327,10 +315,8 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
           </ReferentialConstraint>
         </Association>
         <Function Name="usp_ActualizarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="vtipo_cliente" Type="int" Mode="In" />
           <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
-          <Parameter Name="vape_pat_cli" Type="varchar" Mode="In" />
-          <Parameter Name="vape_mat_cli" Type="varchar" Mode="In" />
+          <Parameter Name="vape_cli" Type="varchar" Mode="In" />
           <Parameter Name="vdir_cli" Type="varchar" Mode="In" />
           <Parameter Name="vcel_cli" Type="varchar" Mode="In" />
           <Parameter Name="vemail_cli" Type="varchar" Mode="In" />
@@ -338,7 +324,6 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
           <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
           <Parameter Name="vdni_cli" Type="char" Mode="In" />
           <Parameter Name="vusu_ult_mod" Type="varchar" Mode="In" />
-          <Parameter Name="vfec_ult_mod" Type="datetime" Mode="In" />
           <Parameter Name="vestado_cli" Type="int" Mode="In" />
           <Parameter Name="vcod_cli" Type="varchar" Mode="In" />
         </Function>
@@ -346,10 +331,8 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
           <Parameter Name="vcod_cli" Type="varchar" Mode="In" />
         </Function>
         <Function Name="usp_InsertarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="vtipo_cliente" Type="int" Mode="In" />
           <Parameter Name="vnom_cliente" Type="varchar" Mode="In" />
-          <Parameter Name="vape_pat_cli" Type="varchar" Mode="In" />
-          <Parameter Name="vape_mat_cli" Type="varchar" Mode="In" />
+          <Parameter Name="vape_cli" Type="varchar" Mode="In" />
           <Parameter Name="vdir_cli" Type="varchar" Mode="In" />
           <Parameter Name="vcel_cli" Type="varchar" Mode="In" />
           <Parameter Name="vemail_cli" Type="varchar" Mode="In" />
@@ -357,31 +340,20 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
           <Parameter Name="vid_ubigeo" Type="varchar" Mode="In" />
           <Parameter Name="vdni_cli" Type="char" Mode="In" />
           <Parameter Name="vusu_reg_cli" Type="varchar" Mode="In" />
-          <Parameter Name="vusu_fec_reg_cli" Type="datetime" Mode="In" />
           <Parameter Name="vestado_cli" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="HundeDBModelStoreContainer">
           <EntitySet Name="Tb_Cita" EntityType="Self.Tb_Cita" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Cliente" EntityType="Self.Tb_Cliente" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tb_Consulta" EntityType="Self.Tb_Consulta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Color" EntityType="Self.Tb_Color" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Empleado" EntityType="Self.Tb_Empleado" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tb_Estado" EntityType="Self.Tb_Estado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Medicina" EntityType="Self.Tb_Medicina" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Paciente" EntityType="Self.Tb_Paciente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Proveedor" EntityType="Self.Tb_Proveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tb_Raza" EntityType="Self.Tb_Raza" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Tratamiento" EntityType="Self.Tb_Tratamiento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Ubigeo" EntityType="Self.Tb_Ubigeo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tb_unidad_medida" EntityType="Self.Tb_unidad_medida" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_Usuario" EntityType="Self.Tb_Usuario" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tb_Detalle_Consulta" EntityType="Self.Tb_Detalle_Consulta" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Tb_Detalle_Consulta].[cod_cons] AS [cod_cons], 
-    [Tb_Detalle_Consulta].[cod_trat] AS [cod_trat], 
-    [Tb_Detalle_Consulta].[cod_estado] AS [cod_estado], 
-    [Tb_Detalle_Consulta].[cod_med] AS [cod_med], 
-    [Tb_Detalle_Consulta].[obs_det_cons] AS [obs_det_cons]
-    FROM [dbo].[Tb_Detalle_Consulta] AS [Tb_Detalle_Consulta]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="vw_ClientesPacientes" EntityType="Self.vw_ClientesPacientes" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vw_ClientesPacientes].[cod_cli] AS [cod_cli], 
@@ -392,32 +364,49 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
     [vw_ClientesPacientes].[es_dueno] AS [es_dueno], 
     [vw_ClientesPacientes].[cod_pac] AS [cod_pac], 
     [vw_ClientesPacientes].[nom_pac] AS [nom_pac], 
-    [vw_ClientesPacientes].[tipo_pac] AS [tipo_pac], 
-    [vw_ClientesPacientes].[raza] AS [raza], 
+    [vw_ClientesPacientes].[nom_raza] AS [nom_raza], 
     [vw_ClientesPacientes].[estado_cli] AS [estado_cli], 
     [vw_ClientesPacientes].[est_pac] AS [est_pac]
     FROM [dbo].[vw_ClientesPacientes] AS [vw_ClientesPacientes]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Tb_Consul__cod_e__46E78A0C" Association="Self.FK__Tb_Consul__cod_e__46E78A0C">
-            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
-            <End Role="Tb_Consulta" EntitySet="Tb_Consulta" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Tb_Consul__cod_p__45F365D3" Association="Self.FK__Tb_Consul__cod_p__45F365D3">
-            <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
-            <End Role="Tb_Consulta" EntitySet="Tb_Consulta" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Tb_Detall__cod_e__4CA06362" Association="Self.FK__Tb_Detall__cod_e__4CA06362">
-            <End Role="Tb_Estado" EntitySet="Tb_Estado" />
-            <End Role="Tb_Detalle_Consulta" EntitySet="Tb_Detalle_Consulta" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Tb_Detall__cod_m__4D94879B" Association="Self.FK__Tb_Detall__cod_m__4D94879B">
-            <End Role="Tb_Medicina" EntitySet="Tb_Medicina" />
-            <End Role="Tb_Detalle_Consulta" EntitySet="Tb_Detalle_Consulta" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Tb_Detall__cod_t__4BAC3F29" Association="Self.FK__Tb_Detall__cod_t__4BAC3F29">
-            <End Role="Tb_Tratamiento" EntitySet="Tb_Tratamiento" />
-            <End Role="Tb_Detalle_Consulta" EntitySet="Tb_Detalle_Consulta" />
-          </AssociationSet>
+          <EntitySet Name="vw_ClientesSonDueños" EntityType="Self.vw_ClientesSonDueños" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_ClientesSonDueños].[cod_cli] AS [cod_cli], 
+    [vw_ClientesSonDueños].[nom_cliente] AS [nom_cliente], 
+    [vw_ClientesSonDueños].[ape_cliente] AS [ape_cliente], 
+    [vw_ClientesSonDueños].[direccion_cliente] AS [direccion_cliente], 
+    [vw_ClientesSonDueños].[cel_cliente] AS [cel_cliente], 
+    [vw_ClientesSonDueños].[email_cliente] AS [email_cliente], 
+    [vw_ClientesSonDueños].[es_dueno] AS [es_dueno], 
+    [vw_ClientesSonDueños].[id_ubigeo] AS [id_ubigeo], 
+    [vw_ClientesSonDueños].[dni_cliente] AS [dni_cliente], 
+    [vw_ClientesSonDueños].[usu_reg_cli] AS [usu_reg_cli], 
+    [vw_ClientesSonDueños].[fec_reg_cli] AS [fec_reg_cli], 
+    [vw_ClientesSonDueños].[usu_ult_modificacion_cli] AS [usu_ult_modificacion_cli], 
+    [vw_ClientesSonDueños].[fecha_ult_modificacion_cli] AS [fecha_ult_modificacion_cli], 
+    [vw_ClientesSonDueños].[estado_cli] AS [estado_cli]
+    FROM [dbo].[vw_ClientesSonDueños] AS [vw_ClientesSonDueños]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_DetallesPaciente" EntityType="Self.vw_DetallesPaciente" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_DetallesPaciente].[codigo] AS [codigo], 
+    [vw_DetallesPaciente].[nombre] AS [nombre], 
+    [vw_DetallesPaciente].[tipo] AS [tipo], 
+    [vw_DetallesPaciente].[nom_raza] AS [nom_raza], 
+    [vw_DetallesPaciente].[fec_nac_pac] AS [fec_nac_pac], 
+    [vw_DetallesPaciente].[sexo] AS [sexo], 
+    [vw_DetallesPaciente].[color] AS [color], 
+    [vw_DetallesPaciente].[longitud] AS [longitud], 
+    [vw_DetallesPaciente].[peso] AS [peso], 
+    [vw_DetallesPaciente].[conducta] AS [conducta], 
+    [vw_DetallesPaciente].[nutricion] AS [nutricion], 
+    [vw_DetallesPaciente].[actividad] AS [actividad], 
+    [vw_DetallesPaciente].[observaciones] AS [observaciones], 
+    [vw_DetallesPaciente].[det_obs] AS [det_obs], 
+    [vw_DetallesPaciente].[estado] AS [estado], 
+    [vw_DetallesPaciente].[foto] AS [foto]
+    FROM [dbo].[vw_DetallesPaciente] AS [vw_DetallesPaciente]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Cita_cliente" Association="Self.FK_Cita_cliente">
             <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
             <End Role="Tb_Cita" EntitySet="Tb_Cita" />
@@ -426,17 +415,25 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
             <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
             <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
           </AssociationSet>
-          <AssociationSet Name="FK_Consulta_cita" Association="Self.FK_Consulta_cita">
-            <End Role="Tb_Cita" EntitySet="Tb_Cita" />
-            <End Role="Tb_Consulta" EntitySet="Tb_Consulta" />
+          <AssociationSet Name="FK_COLOR_PACIENTE" Association="Self.FK_COLOR_PACIENTE">
+            <End Role="Tb_Color" EntitySet="Tb_Color" />
+            <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
           </AssociationSet>
-          <AssociationSet Name="FK_Detalle_Consulta" Association="Self.FK_Detalle_Consulta">
-            <End Role="Tb_Consulta" EntitySet="Tb_Consulta" />
-            <End Role="Tb_Detalle_Consulta" EntitySet="Tb_Detalle_Consulta" />
+          <AssociationSet Name="FK_Empleado_Supervisor" Association="Self.FK_Empleado_Supervisor">
+            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+            <End Role="Tb_Empleado1" EntitySet="Tb_Empleado" />
           </AssociationSet>
-          <AssociationSet Name="Fk_Medicina_unidad" Association="Self.Fk_Medicina_unidad">
-            <End Role="Tb_unidad_medida" EntitySet="Tb_unidad_medida" />
-            <End Role="Tb_Medicina" EntitySet="Tb_Medicina" />
+          <AssociationSet Name="FK_Empleado_Ubigeo" Association="Self.FK_Empleado_Ubigeo">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PACIENTE_RAZA" Association="Self.FK_PACIENTE_RAZA">
+            <End Role="Tb_Raza" EntitySet="Tb_Raza" />
+            <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proveedor_Ubigeo" Association="Self.FK_Proveedor_Ubigeo">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Proveedor" EntitySet="Tb_Proveedor" />
           </AssociationSet>
           <AssociationSet Name="FK_Usuario_user" Association="Self.FK_Usuario_user">
             <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
@@ -452,92 +449,74 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
             <PropertyRef Name="cod_cita" />
           </Key>
           <Property Name="cod_cita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fec_reserva" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="hor_reserva" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="fec_reserva" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="fec_cita" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="hor_cita" Type="Time" Nullable="false" Precision="7" />
           <Property Name="est_cita" Type="Int32" Nullable="false" />
           <Property Name="cod_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Tb_Cliente" Relationship="Self.FK_Cita_cliente" FromRole="Tb_Cita" ToRole="Tb_Cliente" />
-          <NavigationProperty Name="Tb_Consulta" Relationship="Self.FK_Consulta_cita" FromRole="Tb_Cita" ToRole="Tb_Consulta" />
         </EntityType>
         <EntityType Name="Tb_Cliente">
           <Key>
             <PropertyRef Name="cod_cli" />
           </Key>
           <Property Name="cod_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Tipo_cliente" Type="Int32" Nullable="false" />
           <Property Name="nom_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ape_pat_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ape_mat_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ape_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="direccion_cliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="cel_cliente" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="email_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="es_dueno" Type="Int32" Nullable="false" />
           <Property Name="id_ubigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="dni_cliente" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="usu_reg_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="usu_reg_cli" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="fec_reg_cli" Type="DateTime" Precision="3" />
-          <Property Name="usu_ult_modificacion_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="usu_ult_modificacion_cli" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="fecha_ult_modificacion_cli" Type="DateTime" Precision="3" />
           <Property Name="estado_cli" Type="Int32" />
           <NavigationProperty Name="Tb_Cita" Relationship="Self.FK_Cita_cliente" FromRole="Tb_Cliente" ToRole="Tb_Cita" />
           <NavigationProperty Name="Tb_Ubigeo" Relationship="Self.FK_Cliente_Ubigeo" FromRole="Tb_Cliente" ToRole="Tb_Ubigeo" />
         </EntityType>
-        <EntityType Name="Tb_Consulta">
+        <EntityType Name="Tb_Color">
           <Key>
-            <PropertyRef Name="cod_cons" />
+            <PropertyRef Name="cod_color" />
           </Key>
-          <Property Name="cod_cons" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fec_cons" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="hor_cons" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="cod_pac" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cod_emp" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cod_cita" Type="Int32" Nullable="false" />
-          <Property Name="est_cons" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Tb_Cita" Relationship="Self.FK_Consulta_cita" FromRole="Tb_Consulta" ToRole="Tb_Cita" />
-          <NavigationProperty Name="Tb_Empleado" Relationship="Self.FK__Tb_Consul__cod_e__46E78A0C" FromRole="Tb_Consulta" ToRole="Tb_Empleado" />
-          <NavigationProperty Name="Tb_Paciente" Relationship="Self.FK__Tb_Consul__cod_p__45F365D3" FromRole="Tb_Consulta" ToRole="Tb_Paciente" />
-          <NavigationProperty Name="Tb_Detalle_Consulta" Relationship="Self.FK_Detalle_Consulta" FromRole="Tb_Consulta" ToRole="Tb_Detalle_Consulta" />
+          <Property Name="cod_color" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_color" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tb_Paciente" Relationship="Self.FK_COLOR_PACIENTE" FromRole="Tb_Color" ToRole="Tb_Paciente" />
         </EntityType>
         <EntityType Name="Tb_Empleado">
           <Key>
             <PropertyRef Name="cod_emp" />
           </Key>
           <Property Name="cod_emp" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="rol_emp" Type="Int32" Nullable="false" />
+          <Property Name="cod_rol" Type="Int32" Nullable="false" />
+          <Property Name="tipo_emp" Type="Int32" Nullable="false" />
           <Property Name="nom_empleado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ape_empleado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion_empleado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_ubigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fecha_ingreso" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="sueldo" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="email_emp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="cod_supervisor" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="usu_ult_modificacion_emp" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="usu_reg_cli" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="fec_reg_cli" Type="DateTime" Precision="3" />
+          <Property Name="usu_ult_modificacion_emp" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="fecha_ult_modificacion_emp" Type="DateTime" Precision="3" />
           <Property Name="estado_emp" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Tb_Consulta" Relationship="Self.FK__Tb_Consul__cod_e__46E78A0C" FromRole="Tb_Empleado" ToRole="Tb_Consulta" />
+          <NavigationProperty Name="Tb_Empleado1" Relationship="Self.FK_Empleado_Supervisor" FromRole="Tb_Empleado" ToRole="Tb_Empleado1" />
+          <NavigationProperty Name="Tb_Empleado2" Relationship="Self.FK_Empleado_Supervisor" FromRole="Tb_Empleado1" ToRole="Tb_Empleado" />
+          <NavigationProperty Name="Tb_Ubigeo" Relationship="Self.FK_Empleado_Ubigeo" FromRole="Tb_Empleado" ToRole="Tb_Ubigeo" />
           <NavigationProperty Name="Tb_Usuario" Relationship="Self.FK_Usuario_user" FromRole="Tb_Empleado" ToRole="Tb_Usuario" />
-        </EntityType>
-        <EntityType Name="Tb_Estado">
-          <Key>
-            <PropertyRef Name="cod_estado" />
-          </Key>
-          <Property Name="cod_estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="conducta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="est_nutricional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="actividad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Tb_Detalle_Consulta" Relationship="Self.FK__Tb_Detall__cod_e__4CA06362" FromRole="Tb_Estado" ToRole="Tb_Detalle_Consulta" />
         </EntityType>
         <EntityType Name="Tb_Medicina">
           <Key>
             <PropertyRef Name="cod_med" />
           </Key>
-          <Property Name="cod_med" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="tipo_medicina" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cod_med" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre_medicina" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cod_uni_med" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Tb_Detalle_Consulta" Relationship="Self.FK__Tb_Detall__cod_m__4D94879B" FromRole="Tb_Medicina" ToRole="Tb_Detalle_Consulta" />
-          <NavigationProperty Name="Tb_unidad_medida" Relationship="Self.Fk_Medicina_unidad" FromRole="Tb_Medicina" ToRole="Tb_unidad_medida" />
+          <Property Name="precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
         </EntityType>
         <EntityType Name="Tb_Paciente">
           <Key>
@@ -545,46 +524,54 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
           </Key>
           <Property Name="cod_pac" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nom_pac" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="tipo_pac" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="raza" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cod_raza" Type="Int32" />
           <Property Name="fec_nac_pac" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="sexo" Type="Int32" Nullable="false" />
-          <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cod_color" Type="Int32" Nullable="false" />
           <Property Name="longitud" Type="Double" Nullable="false" />
           <Property Name="peso" Type="Double" Nullable="false" />
           <Property Name="ult_vis_pac" Type="DateTime" Precision="0" />
-          <Property Name="foto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="observaciones_pac" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="est_pac" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Tb_Consulta" Relationship="Self.FK__Tb_Consul__cod_p__45F365D3" FromRole="Tb_Paciente" ToRole="Tb_Consulta" />
+          <NavigationProperty Name="Tb_Color" Relationship="Self.FK_COLOR_PACIENTE" FromRole="Tb_Paciente" ToRole="Tb_Color" />
+          <NavigationProperty Name="Tb_Raza" Relationship="Self.FK_PACIENTE_RAZA" FromRole="Tb_Paciente" ToRole="Tb_Raza" />
         </EntityType>
         <EntityType Name="Tb_Proveedor">
           <Key>
             <PropertyRef Name="cod_prov" />
           </Key>
           <Property Name="cod_prov" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="nom_prov" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ruc_prov" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="raz_soc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ruc_prov" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="direccion_prov" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_ubigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="tel_prov" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="email_prov" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="rep_ven_prov" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="usu_reg_prov" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="usu_reg_prov" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="fec_reg_prov" Type="DateTime" Precision="3" />
-          <Property Name="usu_ult_modificacion_prov" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="usu_ult_modificacion_prov" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="fecha_ult_modificacion_prov" Type="DateTime" Precision="3" />
           <Property Name="estado_prov" Type="Int32" />
+          <NavigationProperty Name="Tb_Ubigeo" Relationship="Self.FK_Proveedor_Ubigeo" FromRole="Tb_Proveedor" ToRole="Tb_Ubigeo" />
+        </EntityType>
+        <EntityType Name="Tb_Raza">
+          <Key>
+            <PropertyRef Name="cod_raza" />
+          </Key>
+          <Property Name="cod_raza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_raza" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="cod_tipo" Type="Int32" />
+          <NavigationProperty Name="Tb_Paciente" Relationship="Self.FK_PACIENTE_RAZA" FromRole="Tb_Raza" ToRole="Tb_Paciente" />
         </EntityType>
         <EntityType Name="Tb_Tratamiento">
           <Key>
             <PropertyRef Name="cod_trat" />
           </Key>
           <Property Name="cod_trat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tipo_trat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nombre_trat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cod_cat_trat" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="estado_trat" Type="Int32" />
-          <NavigationProperty Name="Tb_Detalle_Consulta" Relationship="Self.FK__Tb_Detall__cod_t__4BAC3F29" FromRole="Tb_Tratamiento" ToRole="Tb_Detalle_Consulta" />
         </EntityType>
         <EntityType Name="Tb_Ubigeo">
           <Key>
@@ -597,22 +584,15 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
           <Property Name="Departamento" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Provincia" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Distrito" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Cod_Ven" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Tb_Cliente" Relationship="Self.FK_Cliente_Ubigeo" FromRole="Tb_Ubigeo" ToRole="Tb_Cliente" />
-        </EntityType>
-        <EntityType Name="Tb_unidad_medida">
-          <Key>
-            <PropertyRef Name="cod_uni_med" />
-          </Key>
-          <Property Name="cod_uni_med" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="descrip_uni_med" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Tb_Medicina" Relationship="Self.Fk_Medicina_unidad" FromRole="Tb_unidad_medida" ToRole="Tb_Medicina" />
+          <NavigationProperty Name="Tb_Empleado" Relationship="Self.FK_Empleado_Ubigeo" FromRole="Tb_Ubigeo" ToRole="Tb_Empleado" />
+          <NavigationProperty Name="Tb_Proveedor" Relationship="Self.FK_Proveedor_Ubigeo" FromRole="Tb_Ubigeo" ToRole="Tb_Proveedor" />
         </EntityType>
         <EntityType Name="Tb_Usuario">
           <Key>
             <PropertyRef Name="login_usuario" />
           </Key>
-          <Property Name="login_usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="login_usuario" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="pass_usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="niv_usuario" Type="Int32" />
           <Property Name="est_usuario" Type="Int32" />
@@ -621,38 +601,71 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
           <Property Name="cod_emp" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Tb_Empleado" Relationship="Self.FK_Usuario_user" FromRole="Tb_Usuario" ToRole="Tb_Empleado" />
         </EntityType>
-        <EntityType Name="Tb_Detalle_Consulta">
-          <Key>
-            <PropertyRef Name="cod_cons" />
-            <PropertyRef Name="cod_trat" />
-            <PropertyRef Name="cod_estado" />
-          </Key>
-          <Property Name="cod_cons" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cod_trat" Type="Int32" Nullable="false" />
-          <Property Name="cod_estado" Type="Int32" Nullable="false" />
-          <Property Name="cod_med" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="obs_det_cons" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Tb_Consulta" Relationship="Self.FK_Detalle_Consulta" FromRole="Tb_Detalle_Consulta" ToRole="Tb_Consulta" />
-          <NavigationProperty Name="Tb_Estado" Relationship="Self.FK__Tb_Detall__cod_e__4CA06362" FromRole="Tb_Detalle_Consulta" ToRole="Tb_Estado" />
-          <NavigationProperty Name="Tb_Medicina" Relationship="Self.FK__Tb_Detall__cod_m__4D94879B" FromRole="Tb_Detalle_Consulta" ToRole="Tb_Medicina" />
-          <NavigationProperty Name="Tb_Tratamiento" Relationship="Self.FK__Tb_Detall__cod_t__4BAC3F29" FromRole="Tb_Detalle_Consulta" ToRole="Tb_Tratamiento" />
-        </EntityType>
         <EntityType Name="vw_ClientesPacientes">
           <Key>
             <PropertyRef Name="nombre_completo" />
           </Key>
           <Property Name="cod_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="dni_cliente" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
-          <Property Name="nombre_completo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre_completo" Type="String" MaxLength="101" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="direccion_cliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="cel_cliente" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
           <Property Name="es_dueno" Type="Int32" />
           <Property Name="cod_pac" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="nom_pac" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tipo_pac" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="raza" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nom_raza" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="estado_cli" Type="Int32" />
           <Property Name="est_pac" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_ClientesSonDueños">
+          <Key>
+            <PropertyRef Name="cod_cli" />
+            <PropertyRef Name="nom_cliente" />
+            <PropertyRef Name="ape_cliente" />
+            <PropertyRef Name="direccion_cliente" />
+            <PropertyRef Name="cel_cliente" />
+            <PropertyRef Name="email_cliente" />
+            <PropertyRef Name="es_dueno" />
+            <PropertyRef Name="id_ubigeo" />
+            <PropertyRef Name="dni_cliente" />
+          </Key>
+          <Property Name="cod_cli" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nom_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ape_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion_cliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cel_cliente" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="es_dueno" Type="Int32" Nullable="false" />
+          <Property Name="id_ubigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dni_cliente" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="usu_reg_cli" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="fec_reg_cli" Type="DateTime" Precision="3" />
+          <Property Name="usu_ult_modificacion_cli" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ult_modificacion_cli" Type="DateTime" Precision="3" />
+          <Property Name="estado_cli" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_DetallesPaciente">
+          <Key>
+            <PropertyRef Name="conducta" />
+            <PropertyRef Name="nutricion" />
+            <PropertyRef Name="actividad" />
+          </Key>
+          <Property Name="codigo" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="nom_raza" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="fec_nac_pac" Type="DateTime" Precision="0" />
+          <Property Name="sexo" Type="Int32" />
+          <Property Name="color" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="longitud" Type="Double" />
+          <Property Name="peso" Type="Double" />
+          <Property Name="conducta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nutricion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="actividad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="observaciones" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="det_obs" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_Cita_cliente">
           <End Role="Tb_Cliente" Type="Self.Tb_Cliente" Multiplicity="1" />
@@ -663,18 +676,6 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
             </Principal>
             <Dependent Role="Tb_Cita">
               <PropertyRef Name="cod_cli" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Consulta_cita">
-          <End Role="Tb_Cita" Type="Self.Tb_Cita" Multiplicity="1" />
-          <End Role="Tb_Consulta" Type="Self.Tb_Consulta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tb_Cita">
-              <PropertyRef Name="cod_cita" />
-            </Principal>
-            <Dependent Role="Tb_Consulta">
-              <PropertyRef Name="cod_cita" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -690,39 +691,39 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Tb_Consul__cod_e__46E78A0C">
-          <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="1" />
-          <End Role="Tb_Consulta" Type="Self.Tb_Consulta" Multiplicity="*" />
+        <Association Name="FK_COLOR_PACIENTE">
+          <End Role="Tb_Color" Type="Self.Tb_Color" Multiplicity="1" />
+          <End Role="Tb_Paciente" Type="Self.Tb_Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Color">
+              <PropertyRef Name="cod_color" />
+            </Principal>
+            <Dependent Role="Tb_Paciente">
+              <PropertyRef Name="cod_color" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Supervisor">
+          <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="0..1" />
+          <End Role="Tb_Empleado1" Type="Self.Tb_Empleado" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tb_Empleado">
               <PropertyRef Name="cod_emp" />
             </Principal>
-            <Dependent Role="Tb_Consulta">
-              <PropertyRef Name="cod_emp" />
+            <Dependent Role="Tb_Empleado1">
+              <PropertyRef Name="cod_supervisor" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Tb_Consul__cod_p__45F365D3">
-          <End Role="Tb_Paciente" Type="Self.Tb_Paciente" Multiplicity="1" />
-          <End Role="Tb_Consulta" Type="Self.Tb_Consulta" Multiplicity="*" />
+        <Association Name="FK_Empleado_Ubigeo">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="1" />
+          <End Role="Tb_Empleado" Type="Self.Tb_Empleado" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Tb_Paciente">
-              <PropertyRef Name="cod_pac" />
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_Ubigeo" />
             </Principal>
-            <Dependent Role="Tb_Consulta">
-              <PropertyRef Name="cod_pac" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Detalle_Consulta">
-          <End Role="Tb_Consulta" Type="Self.Tb_Consulta" Multiplicity="1" />
-          <End Role="Tb_Detalle_Consulta" Type="Self.Tb_Detalle_Consulta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tb_Consulta">
-              <PropertyRef Name="cod_cons" />
-            </Principal>
-            <Dependent Role="Tb_Detalle_Consulta">
-              <PropertyRef Name="cod_cons" />
+            <Dependent Role="Tb_Empleado">
+              <PropertyRef Name="id_ubigeo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -738,118 +739,80 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Tb_Detall__cod_e__4CA06362">
-          <End Role="Tb_Estado" Type="Self.Tb_Estado" Multiplicity="1" />
-          <End Role="Tb_Detalle_Consulta" Type="Self.Tb_Detalle_Consulta" Multiplicity="*" />
+        <Association Name="FK_PACIENTE_RAZA">
+          <End Role="Tb_Raza" Type="Self.Tb_Raza" Multiplicity="0..1" />
+          <End Role="Tb_Paciente" Type="Self.Tb_Paciente" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Tb_Estado">
-              <PropertyRef Name="cod_estado" />
+            <Principal Role="Tb_Raza">
+              <PropertyRef Name="cod_raza" />
             </Principal>
-            <Dependent Role="Tb_Detalle_Consulta">
-              <PropertyRef Name="cod_estado" />
+            <Dependent Role="Tb_Paciente">
+              <PropertyRef Name="cod_raza" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Tb_Detall__cod_m__4D94879B">
-          <End Role="Tb_Medicina" Type="Self.Tb_Medicina" Multiplicity="0..1" />
-          <End Role="Tb_Detalle_Consulta" Type="Self.Tb_Detalle_Consulta" Multiplicity="*" />
+        <Association Name="FK_Proveedor_Ubigeo">
+          <End Role="Tb_Ubigeo" Type="Self.Tb_Ubigeo" Multiplicity="1" />
+          <End Role="Tb_Proveedor" Type="Self.Tb_Proveedor" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Tb_Medicina">
-              <PropertyRef Name="cod_med" />
+            <Principal Role="Tb_Ubigeo">
+              <PropertyRef Name="Id_Ubigeo" />
             </Principal>
-            <Dependent Role="Tb_Detalle_Consulta">
-              <PropertyRef Name="cod_med" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Fk_Medicina_unidad">
-          <End Role="Tb_unidad_medida" Type="Self.Tb_unidad_medida" Multiplicity="1" />
-          <End Role="Tb_Medicina" Type="Self.Tb_Medicina" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tb_unidad_medida">
-              <PropertyRef Name="cod_uni_med" />
-            </Principal>
-            <Dependent Role="Tb_Medicina">
-              <PropertyRef Name="cod_uni_med" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Tb_Detall__cod_t__4BAC3F29">
-          <End Role="Tb_Tratamiento" Type="Self.Tb_Tratamiento" Multiplicity="1" />
-          <End Role="Tb_Detalle_Consulta" Type="Self.Tb_Detalle_Consulta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tb_Tratamiento">
-              <PropertyRef Name="cod_trat" />
-            </Principal>
-            <Dependent Role="Tb_Detalle_Consulta">
-              <PropertyRef Name="cod_trat" />
+            <Dependent Role="Tb_Proveedor">
+              <PropertyRef Name="id_ubigeo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="HundeDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Tb_Cita" EntityType="Self.Tb_Cita" />
           <EntitySet Name="Tb_Cliente" EntityType="Self.Tb_Cliente" />
-          <EntitySet Name="Tb_Consulta" EntityType="Self.Tb_Consulta" />
+          <EntitySet Name="Tb_Color" EntityType="Self.Tb_Color" />
           <EntitySet Name="Tb_Empleado" EntityType="Self.Tb_Empleado" />
-          <EntitySet Name="Tb_Estado" EntityType="Self.Tb_Estado" />
           <EntitySet Name="Tb_Medicina" EntityType="Self.Tb_Medicina" />
           <EntitySet Name="Tb_Paciente" EntityType="Self.Tb_Paciente" />
           <EntitySet Name="Tb_Proveedor" EntityType="Self.Tb_Proveedor" />
+          <EntitySet Name="Tb_Raza" EntityType="Self.Tb_Raza" />
           <EntitySet Name="Tb_Tratamiento" EntityType="Self.Tb_Tratamiento" />
           <EntitySet Name="Tb_Ubigeo" EntityType="Self.Tb_Ubigeo" />
-          <EntitySet Name="Tb_unidad_medida" EntityType="Self.Tb_unidad_medida" />
           <EntitySet Name="Tb_Usuario" EntityType="Self.Tb_Usuario" />
-          <EntitySet Name="Tb_Detalle_Consulta" EntityType="Self.Tb_Detalle_Consulta" />
           <EntitySet Name="vw_ClientesPacientes" EntityType="Self.vw_ClientesPacientes" />
+          <EntitySet Name="vw_ClientesSonDueños" EntityType="Self.vw_ClientesSonDueños" />
+          <EntitySet Name="vw_DetallesPaciente" EntityType="Self.vw_DetallesPaciente" />
           <AssociationSet Name="FK_Cita_cliente" Association="Self.FK_Cita_cliente">
             <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
             <End Role="Tb_Cita" EntitySet="Tb_Cita" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Consulta_cita" Association="Self.FK_Consulta_cita">
-            <End Role="Tb_Cita" EntitySet="Tb_Cita" />
-            <End Role="Tb_Consulta" EntitySet="Tb_Consulta" />
           </AssociationSet>
           <AssociationSet Name="FK_Cliente_Ubigeo" Association="Self.FK_Cliente_Ubigeo">
             <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
             <End Role="Tb_Cliente" EntitySet="Tb_Cliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Tb_Consul__cod_e__46E78A0C" Association="Self.FK__Tb_Consul__cod_e__46E78A0C">
-            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
-            <End Role="Tb_Consulta" EntitySet="Tb_Consulta" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Tb_Consul__cod_p__45F365D3" Association="Self.FK__Tb_Consul__cod_p__45F365D3">
+          <AssociationSet Name="FK_COLOR_PACIENTE" Association="Self.FK_COLOR_PACIENTE">
+            <End Role="Tb_Color" EntitySet="Tb_Color" />
             <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
-            <End Role="Tb_Consulta" EntitySet="Tb_Consulta" />
           </AssociationSet>
-          <AssociationSet Name="FK_Detalle_Consulta" Association="Self.FK_Detalle_Consulta">
-            <End Role="Tb_Consulta" EntitySet="Tb_Consulta" />
-            <End Role="Tb_Detalle_Consulta" EntitySet="Tb_Detalle_Consulta" />
+          <AssociationSet Name="FK_Empleado_Supervisor" Association="Self.FK_Empleado_Supervisor">
+            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
+            <End Role="Tb_Empleado1" EntitySet="Tb_Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Ubigeo" Association="Self.FK_Empleado_Ubigeo">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
           </AssociationSet>
           <AssociationSet Name="FK_Usuario_user" Association="Self.FK_Usuario_user">
             <End Role="Tb_Empleado" EntitySet="Tb_Empleado" />
             <End Role="Tb_Usuario" EntitySet="Tb_Usuario" />
           </AssociationSet>
-          <AssociationSet Name="FK__Tb_Detall__cod_e__4CA06362" Association="Self.FK__Tb_Detall__cod_e__4CA06362">
-            <End Role="Tb_Estado" EntitySet="Tb_Estado" />
-            <End Role="Tb_Detalle_Consulta" EntitySet="Tb_Detalle_Consulta" />
+          <AssociationSet Name="FK_PACIENTE_RAZA" Association="Self.FK_PACIENTE_RAZA">
+            <End Role="Tb_Raza" EntitySet="Tb_Raza" />
+            <End Role="Tb_Paciente" EntitySet="Tb_Paciente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Tb_Detall__cod_m__4D94879B" Association="Self.FK__Tb_Detall__cod_m__4D94879B">
-            <End Role="Tb_Medicina" EntitySet="Tb_Medicina" />
-            <End Role="Tb_Detalle_Consulta" EntitySet="Tb_Detalle_Consulta" />
-          </AssociationSet>
-          <AssociationSet Name="Fk_Medicina_unidad" Association="Self.Fk_Medicina_unidad">
-            <End Role="Tb_unidad_medida" EntitySet="Tb_unidad_medida" />
-            <End Role="Tb_Medicina" EntitySet="Tb_Medicina" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Tb_Detall__cod_t__4BAC3F29" Association="Self.FK__Tb_Detall__cod_t__4BAC3F29">
-            <End Role="Tb_Tratamiento" EntitySet="Tb_Tratamiento" />
-            <End Role="Tb_Detalle_Consulta" EntitySet="Tb_Detalle_Consulta" />
+          <AssociationSet Name="FK_Proveedor_Ubigeo" Association="Self.FK_Proveedor_Ubigeo">
+            <End Role="Tb_Ubigeo" EntitySet="Tb_Ubigeo" />
+            <End Role="Tb_Proveedor" EntitySet="Tb_Proveedor" />
           </AssociationSet>
           <FunctionImport Name="usp_ActualizarCliente">
-            <Parameter Name="vtipo_cliente" Mode="In" Type="Int32" />
             <Parameter Name="vnom_cliente" Mode="In" Type="String" />
-            <Parameter Name="vape_pat_cli" Mode="In" Type="String" />
-            <Parameter Name="vape_mat_cli" Mode="In" Type="String" />
+            <Parameter Name="vape_cli" Mode="In" Type="String" />
             <Parameter Name="vdir_cli" Mode="In" Type="String" />
             <Parameter Name="vcel_cli" Mode="In" Type="String" />
             <Parameter Name="vemail_cli" Mode="In" Type="String" />
@@ -857,7 +820,6 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
             <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
             <Parameter Name="vdni_cli" Mode="In" Type="String" />
             <Parameter Name="vusu_ult_mod" Mode="In" Type="String" />
-            <Parameter Name="vfec_ult_mod" Mode="In" Type="DateTime" />
             <Parameter Name="vestado_cli" Mode="In" Type="Int32" />
             <Parameter Name="vcod_cli" Mode="In" Type="String" />
           </FunctionImport>
@@ -865,10 +827,8 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
             <Parameter Name="vcod_cli" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_InsertarCliente">
-            <Parameter Name="vtipo_cliente" Mode="In" Type="Int32" />
             <Parameter Name="vnom_cliente" Mode="In" Type="String" />
-            <Parameter Name="vape_pat_cli" Mode="In" Type="String" />
-            <Parameter Name="vape_mat_cli" Mode="In" Type="String" />
+            <Parameter Name="vape_cli" Mode="In" Type="String" />
             <Parameter Name="vdir_cli" Mode="In" Type="String" />
             <Parameter Name="vcel_cli" Mode="In" Type="String" />
             <Parameter Name="vemail_cli" Mode="In" Type="String" />
@@ -876,7 +836,6 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
             <Parameter Name="vid_ubigeo" Mode="In" Type="String" />
             <Parameter Name="vdni_cli" Mode="In" Type="String" />
             <Parameter Name="vusu_reg_cli" Mode="In" Type="String" />
-            <Parameter Name="vusu_fec_reg_cli" Mode="In" Type="DateTime" />
             <Parameter Name="vestado_cli" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
@@ -891,7 +850,6 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
               <MappingFragment StoreEntitySet="Tb_Cita">
                 <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
                 <ScalarProperty Name="fec_reserva" ColumnName="fec_reserva" />
-                <ScalarProperty Name="hor_reserva" ColumnName="hor_reserva" />
                 <ScalarProperty Name="fec_cita" ColumnName="fec_cita" />
                 <ScalarProperty Name="hor_cita" ColumnName="hor_cita" />
                 <ScalarProperty Name="est_cita" ColumnName="est_cita" />
@@ -903,10 +861,8 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
             <EntityTypeMapping TypeName="HundeDBModel.Tb_Cliente">
               <MappingFragment StoreEntitySet="Tb_Cliente">
                 <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
-                <ScalarProperty Name="Tipo_cliente" ColumnName="Tipo_cliente" />
                 <ScalarProperty Name="nom_cliente" ColumnName="nom_cliente" />
-                <ScalarProperty Name="ape_pat_cliente" ColumnName="ape_pat_cliente" />
-                <ScalarProperty Name="ape_mat_cliente" ColumnName="ape_mat_cliente" />
+                <ScalarProperty Name="ape_cliente" ColumnName="ape_cliente" />
                 <ScalarProperty Name="direccion_cliente" ColumnName="direccion_cliente" />
                 <ScalarProperty Name="cel_cliente" ColumnName="cel_cliente" />
                 <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
@@ -920,55 +876,12 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
                 <ScalarProperty Name="estado_cli" ColumnName="estado_cli" />
               </MappingFragment>
             </EntityTypeMapping>
-            <EntityTypeMapping TypeName="HundeDBModel.Tb_Cliente">
-              <ModificationFunctionMapping>
-                <InsertFunction FunctionName="HundeDBModel.Store.usp_InsertarCliente" >
-                  <ScalarProperty Name="estado_cli" ParameterName="vestado_cli" />
-                  <ScalarProperty Name="fec_reg_cli" ParameterName="vusu_fec_reg_cli" />
-                  <ScalarProperty Name="usu_reg_cli" ParameterName="vusu_reg_cli" />
-                  <ScalarProperty Name="dni_cliente" ParameterName="vdni_cli" />
-                  <ScalarProperty Name="id_ubigeo" ParameterName="vid_ubigeo" />
-                  <ScalarProperty Name="es_dueno" ParameterName="ves_dueno" />
-                  <ScalarProperty Name="email_cliente" ParameterName="vemail_cli" />
-                  <ScalarProperty Name="cel_cliente" ParameterName="vcel_cli" />
-                  <ScalarProperty Name="direccion_cliente" ParameterName="vdir_cli" />
-                  <ScalarProperty Name="ape_mat_cliente" ParameterName="vape_mat_cli" />
-                  <ScalarProperty Name="ape_pat_cliente" ParameterName="vape_pat_cli" />
-                  <ScalarProperty Name="nom_cliente" ParameterName="vnom_cliente" />
-                  <ScalarProperty Name="Tipo_cliente" ParameterName="vtipo_cliente" />
-                </InsertFunction>
-                <DeleteFunction FunctionName="HundeDBModel.Store.usp_EliminarCliente" >
-                  <ScalarProperty Name="cod_cli" ParameterName="vcod_cli" />
-                </DeleteFunction>
-                <UpdateFunction FunctionName="HundeDBModel.Store.usp_ActualizarCliente" >
-                  <ScalarProperty Name="cod_cli" ParameterName="vcod_cli" Version="Original" />
-                  <ScalarProperty Name="estado_cli" ParameterName="vestado_cli" Version="Current" />
-                  <ScalarProperty Name="fecha_ult_modificacion_cli" ParameterName="vfec_ult_mod" Version="Current" />
-                  <ScalarProperty Name="usu_ult_modificacion_cli" ParameterName="vusu_ult_mod" Version="Current" />
-                  <ScalarProperty Name="dni_cliente" ParameterName="vdni_cli" Version="Current" />
-                  <ScalarProperty Name="id_ubigeo" ParameterName="vid_ubigeo" Version="Current" />
-                  <ScalarProperty Name="es_dueno" ParameterName="ves_dueno" Version="Current" />
-                  <ScalarProperty Name="email_cliente" ParameterName="vemail_cli" Version="Current" />
-                  <ScalarProperty Name="cel_cliente" ParameterName="vcel_cli" Version="Current" />
-                  <ScalarProperty Name="direccion_cliente" ParameterName="vdir_cli" Version="Current" />
-                  <ScalarProperty Name="ape_mat_cliente" ParameterName="vape_mat_cli" Version="Current" />
-                  <ScalarProperty Name="ape_pat_cliente" ParameterName="vape_pat_cli" Version="Current" />
-                  <ScalarProperty Name="nom_cliente" ParameterName="vnom_cliente" Version="Current" />
-                  <ScalarProperty Name="Tipo_cliente" ParameterName="vtipo_cliente" Version="Current" />
-                </UpdateFunction>
-              </ModificationFunctionMapping>
-            </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tb_Consulta">
-            <EntityTypeMapping TypeName="HundeDBModel.Tb_Consulta">
-              <MappingFragment StoreEntitySet="Tb_Consulta">
-                <ScalarProperty Name="cod_cons" ColumnName="cod_cons" />
-                <ScalarProperty Name="fec_cons" ColumnName="fec_cons" />
-                <ScalarProperty Name="hor_cons" ColumnName="hor_cons" />
-                <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
-                <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
-                <ScalarProperty Name="cod_cita" ColumnName="cod_cita" />
-                <ScalarProperty Name="est_cons" ColumnName="est_cons" />
+          <EntitySetMapping Name="Tb_Color">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Color">
+              <MappingFragment StoreEntitySet="Tb_Color">
+                <ScalarProperty Name="cod_color" ColumnName="cod_color" />
+                <ScalarProperty Name="nom_color" ColumnName="nom_color" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -976,26 +889,21 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
             <EntityTypeMapping TypeName="HundeDBModel.Tb_Empleado">
               <MappingFragment StoreEntitySet="Tb_Empleado">
                 <ScalarProperty Name="cod_emp" ColumnName="cod_emp" />
-                <ScalarProperty Name="rol_emp" ColumnName="rol_emp" />
+                <ScalarProperty Name="cod_rol" ColumnName="cod_rol" />
+                <ScalarProperty Name="tipo_emp" ColumnName="tipo_emp" />
                 <ScalarProperty Name="nom_empleado" ColumnName="nom_empleado" />
                 <ScalarProperty Name="ape_empleado" ColumnName="ape_empleado" />
+                <ScalarProperty Name="direccion_empleado" ColumnName="direccion_empleado" />
+                <ScalarProperty Name="id_ubigeo" ColumnName="id_ubigeo" />
                 <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
                 <ScalarProperty Name="sueldo" ColumnName="sueldo" />
                 <ScalarProperty Name="email_emp" ColumnName="email_emp" />
                 <ScalarProperty Name="cod_supervisor" ColumnName="cod_supervisor" />
+                <ScalarProperty Name="usu_reg_cli" ColumnName="usu_reg_cli" />
+                <ScalarProperty Name="fec_reg_cli" ColumnName="fec_reg_cli" />
                 <ScalarProperty Name="usu_ult_modificacion_emp" ColumnName="usu_ult_modificacion_emp" />
                 <ScalarProperty Name="fecha_ult_modificacion_emp" ColumnName="fecha_ult_modificacion_emp" />
                 <ScalarProperty Name="estado_emp" ColumnName="estado_emp" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tb_Estado">
-            <EntityTypeMapping TypeName="HundeDBModel.Tb_Estado">
-              <MappingFragment StoreEntitySet="Tb_Estado">
-                <ScalarProperty Name="cod_estado" ColumnName="cod_estado" />
-                <ScalarProperty Name="conducta" ColumnName="conducta" />
-                <ScalarProperty Name="est_nutricional" ColumnName="est_nutricional" />
-                <ScalarProperty Name="actividad" ColumnName="actividad" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1003,9 +911,8 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
             <EntityTypeMapping TypeName="HundeDBModel.Tb_Medicina">
               <MappingFragment StoreEntitySet="Tb_Medicina">
                 <ScalarProperty Name="cod_med" ColumnName="cod_med" />
-                <ScalarProperty Name="tipo_medicina" ColumnName="tipo_medicina" />
                 <ScalarProperty Name="nombre_medicina" ColumnName="nombre_medicina" />
-                <ScalarProperty Name="cod_uni_med" ColumnName="cod_uni_med" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1014,11 +921,10 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
               <MappingFragment StoreEntitySet="Tb_Paciente">
                 <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
                 <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
-                <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
-                <ScalarProperty Name="raza" ColumnName="raza" />
+                <ScalarProperty Name="cod_raza" ColumnName="cod_raza" />
                 <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
                 <ScalarProperty Name="sexo" ColumnName="sexo" />
-                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="cod_color" ColumnName="cod_color" />
                 <ScalarProperty Name="longitud" ColumnName="longitud" />
                 <ScalarProperty Name="peso" ColumnName="peso" />
                 <ScalarProperty Name="ult_vis_pac" ColumnName="ult_vis_pac" />
@@ -1032,9 +938,10 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
             <EntityTypeMapping TypeName="HundeDBModel.Tb_Proveedor">
               <MappingFragment StoreEntitySet="Tb_Proveedor">
                 <ScalarProperty Name="cod_prov" ColumnName="cod_prov" />
-                <ScalarProperty Name="nom_prov" ColumnName="nom_prov" />
+                <ScalarProperty Name="raz_soc" ColumnName="raz_soc" />
                 <ScalarProperty Name="ruc_prov" ColumnName="ruc_prov" />
                 <ScalarProperty Name="direccion_prov" ColumnName="direccion_prov" />
+                <ScalarProperty Name="id_ubigeo" ColumnName="id_ubigeo" />
                 <ScalarProperty Name="tel_prov" ColumnName="tel_prov" />
                 <ScalarProperty Name="email_prov" ColumnName="email_prov" />
                 <ScalarProperty Name="rep_ven_prov" ColumnName="rep_ven_prov" />
@@ -1046,13 +953,20 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Raza">
+            <EntityTypeMapping TypeName="HundeDBModel.Tb_Raza">
+              <MappingFragment StoreEntitySet="Tb_Raza">
+                <ScalarProperty Name="cod_raza" ColumnName="cod_raza" />
+                <ScalarProperty Name="nom_raza" ColumnName="nom_raza" />
+                <ScalarProperty Name="cod_tipo" ColumnName="cod_tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Tb_Tratamiento">
             <EntityTypeMapping TypeName="HundeDBModel.Tb_Tratamiento">
               <MappingFragment StoreEntitySet="Tb_Tratamiento">
                 <ScalarProperty Name="cod_trat" ColumnName="cod_trat" />
-                <ScalarProperty Name="tipo_trat" ColumnName="tipo_trat" />
                 <ScalarProperty Name="nombre_trat" ColumnName="nombre_trat" />
-                <ScalarProperty Name="cod_cat_trat" ColumnName="cod_cat_trat" />
                 <ScalarProperty Name="estado_trat" ColumnName="estado_trat" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1067,15 +981,6 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
                 <ScalarProperty Name="Departamento" ColumnName="Departamento" />
                 <ScalarProperty Name="Provincia" ColumnName="Provincia" />
                 <ScalarProperty Name="Distrito" ColumnName="Distrito" />
-                <ScalarProperty Name="Cod_Ven" ColumnName="Cod_Ven" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tb_unidad_medida">
-            <EntityTypeMapping TypeName="HundeDBModel.Tb_unidad_medida">
-              <MappingFragment StoreEntitySet="Tb_unidad_medida">
-                <ScalarProperty Name="cod_uni_med" ColumnName="cod_uni_med" />
-                <ScalarProperty Name="descrip_uni_med" ColumnName="descrip_uni_med" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1092,17 +997,6 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tb_Detalle_Consulta">
-            <EntityTypeMapping TypeName="HundeDBModel.Tb_Detalle_Consulta">
-              <MappingFragment StoreEntitySet="Tb_Detalle_Consulta">
-                <ScalarProperty Name="cod_cons" ColumnName="cod_cons" />
-                <ScalarProperty Name="cod_trat" ColumnName="cod_trat" />
-                <ScalarProperty Name="cod_estado" ColumnName="cod_estado" />
-                <ScalarProperty Name="cod_med" ColumnName="cod_med" />
-                <ScalarProperty Name="obs_det_cons" ColumnName="obs_det_cons" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="vw_ClientesPacientes">
             <EntityTypeMapping TypeName="HundeDBModel.vw_ClientesPacientes">
               <MappingFragment StoreEntitySet="vw_ClientesPacientes">
@@ -1114,10 +1008,51 @@ advertencia 6002: La tabla o vista 'HundeDB.dbo.vw_ClientesPacientes' no tiene d
                 <ScalarProperty Name="es_dueno" ColumnName="es_dueno" />
                 <ScalarProperty Name="cod_pac" ColumnName="cod_pac" />
                 <ScalarProperty Name="nom_pac" ColumnName="nom_pac" />
-                <ScalarProperty Name="tipo_pac" ColumnName="tipo_pac" />
-                <ScalarProperty Name="raza" ColumnName="raza" />
+                <ScalarProperty Name="nom_raza" ColumnName="nom_raza" />
                 <ScalarProperty Name="estado_cli" ColumnName="estado_cli" />
                 <ScalarProperty Name="est_pac" ColumnName="est_pac" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_ClientesSonDueños">
+            <EntityTypeMapping TypeName="HundeDBModel.vw_ClientesSonDueños">
+              <MappingFragment StoreEntitySet="vw_ClientesSonDueños">
+                <ScalarProperty Name="cod_cli" ColumnName="cod_cli" />
+                <ScalarProperty Name="nom_cliente" ColumnName="nom_cliente" />
+                <ScalarProperty Name="ape_cliente" ColumnName="ape_cliente" />
+                <ScalarProperty Name="direccion_cliente" ColumnName="direccion_cliente" />
+                <ScalarProperty Name="cel_cliente" ColumnName="cel_cliente" />
+                <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
+                <ScalarProperty Name="es_dueno" ColumnName="es_dueno" />
+                <ScalarProperty Name="id_ubigeo" ColumnName="id_ubigeo" />
+                <ScalarProperty Name="dni_cliente" ColumnName="dni_cliente" />
+                <ScalarProperty Name="usu_reg_cli" ColumnName="usu_reg_cli" />
+                <ScalarProperty Name="fec_reg_cli" ColumnName="fec_reg_cli" />
+                <ScalarProperty Name="usu_ult_modificacion_cli" ColumnName="usu_ult_modificacion_cli" />
+                <ScalarProperty Name="fecha_ult_modificacion_cli" ColumnName="fecha_ult_modificacion_cli" />
+                <ScalarProperty Name="estado_cli" ColumnName="estado_cli" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_DetallesPaciente">
+            <EntityTypeMapping TypeName="HundeDBModel.vw_DetallesPaciente">
+              <MappingFragment StoreEntitySet="vw_DetallesPaciente">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="nom_raza" ColumnName="nom_raza" />
+                <ScalarProperty Name="fec_nac_pac" ColumnName="fec_nac_pac" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="conducta" ColumnName="conducta" />
+                <ScalarProperty Name="nutricion" ColumnName="nutricion" />
+                <ScalarProperty Name="actividad" ColumnName="actividad" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="det_obs" ColumnName="det_obs" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
