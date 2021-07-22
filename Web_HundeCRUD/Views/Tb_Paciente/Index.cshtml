@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>istado de Pacientes</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nuevo", "Create")
 </p>
 <table class="table">
     <tr>
@@ -29,9 +29,9 @@
         <th>
             @Html.DisplayNameFor(model => model.ult_vis_pac)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.foto)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.observaciones_pac)
         </th>
@@ -67,9 +67,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.ult_vis_pac)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.foto)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.observaciones_pac)
         </td>
@@ -83,9 +83,9 @@
             @Html.DisplayFor(modelItem => item.Tb_Raza.nom_raza)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.cod_pac }) |
-            @Html.ActionLink("Details", "Details", new { id=item.cod_pac }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.cod_pac })
+            @Html.ActionLink("Editar", "Edit", new { id=item.cod_pac }) |
+            @Html.ActionLink("Consultar", "Details", new { id=item.cod_pac }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.cod_pac })
         </td>
     </tr>
 }

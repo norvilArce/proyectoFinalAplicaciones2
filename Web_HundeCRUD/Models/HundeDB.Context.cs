@@ -144,5 +144,112 @@ namespace Web_HundeCRUD.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertarCliente", vnom_clienteParameter, vape_cliParameter, vdir_cliParameter, vcel_cliParameter, vemail_cliParameter, ves_duenoParameter, vid_ubigeoParameter, vdni_cliParameter, vusu_reg_cliParameter, vestado_cliParameter);
         }
+    
+        public virtual int usp_ActualizarPaciente(string vnom_pac, Nullable<int> vcod_raza, Nullable<System.DateTime> vfec_nac_pac, Nullable<int> vsexo, Nullable<int> vcod_color, Nullable<double> vlongitud, Nullable<double> vpeso, byte[] vfoto, string vobservaciones_pac, Nullable<int> vest_pac, string vcod_pac)
+        {
+            var vnom_pacParameter = vnom_pac != null ?
+                new ObjectParameter("vnom_pac", vnom_pac) :
+                new ObjectParameter("vnom_pac", typeof(string));
+    
+            var vcod_razaParameter = vcod_raza.HasValue ?
+                new ObjectParameter("vcod_raza", vcod_raza) :
+                new ObjectParameter("vcod_raza", typeof(int));
+    
+            var vfec_nac_pacParameter = vfec_nac_pac.HasValue ?
+                new ObjectParameter("vfec_nac_pac", vfec_nac_pac) :
+                new ObjectParameter("vfec_nac_pac", typeof(System.DateTime));
+    
+            var vsexoParameter = vsexo.HasValue ?
+                new ObjectParameter("vsexo", vsexo) :
+                new ObjectParameter("vsexo", typeof(int));
+    
+            var vcod_colorParameter = vcod_color.HasValue ?
+                new ObjectParameter("vcod_color", vcod_color) :
+                new ObjectParameter("vcod_color", typeof(int));
+    
+            var vlongitudParameter = vlongitud.HasValue ?
+                new ObjectParameter("vlongitud", vlongitud) :
+                new ObjectParameter("vlongitud", typeof(double));
+    
+            var vpesoParameter = vpeso.HasValue ?
+                new ObjectParameter("vpeso", vpeso) :
+                new ObjectParameter("vpeso", typeof(double));
+    
+            var vfotoParameter = vfoto != null ?
+                new ObjectParameter("vfoto", vfoto) :
+                new ObjectParameter("vfoto", typeof(byte[]));
+    
+            var vobservaciones_pacParameter = vobservaciones_pac != null ?
+                new ObjectParameter("vobservaciones_pac", vobservaciones_pac) :
+                new ObjectParameter("vobservaciones_pac", typeof(string));
+    
+            var vest_pacParameter = vest_pac.HasValue ?
+                new ObjectParameter("vest_pac", vest_pac) :
+                new ObjectParameter("vest_pac", typeof(int));
+    
+            var vcod_pacParameter = vcod_pac != null ?
+                new ObjectParameter("vcod_pac", vcod_pac) :
+                new ObjectParameter("vcod_pac", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_ActualizarPaciente", vnom_pacParameter, vcod_razaParameter, vfec_nac_pacParameter, vsexoParameter, vcod_colorParameter, vlongitudParameter, vpesoParameter, vfotoParameter, vobservaciones_pacParameter, vest_pacParameter, vcod_pacParameter);
+        }
+    
+        public virtual int usp_EliminarPaciente(string vcod_pac)
+        {
+            var vcod_pacParameter = vcod_pac != null ?
+                new ObjectParameter("vcod_pac", vcod_pac) :
+                new ObjectParameter("vcod_pac", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_EliminarPaciente", vcod_pacParameter);
+        }
+    
+        public virtual int usp_InsertarPaciente(string vnom_pac, Nullable<int> vcod_raza, Nullable<System.DateTime> vfec_nac_pac, Nullable<int> vsexo, Nullable<int> vcod_color, Nullable<double> vlongitud, Nullable<double> vpeso, Nullable<System.DateTime> vult_vis_pac, byte[] vfoto, string vobservaciones_pac, Nullable<int> vest_pac)
+        {
+            var vnom_pacParameter = vnom_pac != null ?
+                new ObjectParameter("vnom_pac", vnom_pac) :
+                new ObjectParameter("vnom_pac", typeof(string));
+    
+            var vcod_razaParameter = vcod_raza.HasValue ?
+                new ObjectParameter("vcod_raza", vcod_raza) :
+                new ObjectParameter("vcod_raza", typeof(int));
+    
+            var vfec_nac_pacParameter = vfec_nac_pac.HasValue ?
+                new ObjectParameter("vfec_nac_pac", vfec_nac_pac) :
+                new ObjectParameter("vfec_nac_pac", typeof(System.DateTime));
+    
+            var vsexoParameter = vsexo.HasValue ?
+                new ObjectParameter("vsexo", vsexo) :
+                new ObjectParameter("vsexo", typeof(int));
+    
+            var vcod_colorParameter = vcod_color.HasValue ?
+                new ObjectParameter("vcod_color", vcod_color) :
+                new ObjectParameter("vcod_color", typeof(int));
+    
+            var vlongitudParameter = vlongitud.HasValue ?
+                new ObjectParameter("vlongitud", vlongitud) :
+                new ObjectParameter("vlongitud", typeof(double));
+    
+            var vpesoParameter = vpeso.HasValue ?
+                new ObjectParameter("vpeso", vpeso) :
+                new ObjectParameter("vpeso", typeof(double));
+    
+            var vult_vis_pacParameter = vult_vis_pac.HasValue ?
+                new ObjectParameter("vult_vis_pac", vult_vis_pac) :
+                new ObjectParameter("vult_vis_pac", typeof(System.DateTime));
+    
+            var vfotoParameter = vfoto != null ?
+                new ObjectParameter("vfoto", vfoto) :
+                new ObjectParameter("vfoto", typeof(byte[]));
+    
+            var vobservaciones_pacParameter = vobservaciones_pac != null ?
+                new ObjectParameter("vobservaciones_pac", vobservaciones_pac) :
+                new ObjectParameter("vobservaciones_pac", typeof(string));
+    
+            var vest_pacParameter = vest_pac.HasValue ?
+                new ObjectParameter("vest_pac", vest_pac) :
+                new ObjectParameter("vest_pac", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertarPaciente", vnom_pacParameter, vcod_razaParameter, vfec_nac_pacParameter, vsexoParameter, vcod_colorParameter, vlongitudParameter, vpesoParameter, vult_vis_pacParameter, vfotoParameter, vobservaciones_pacParameter, vest_pacParameter);
+        }
     }
 }

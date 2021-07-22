@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Veterinaria Hunde SAC</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/estilos.css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -17,7 +18,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Veterinaria Hunde SAC", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -26,6 +27,7 @@
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Mantenimiento de clientes", "Index", "Tb_Cliente")</li>
                     <li>@Html.ActionLink("Mantenimiento de Medicina", "Index", "Tb_Medicina")</li>
+                    <li>@Html.ActionLink("Mantenimiento de Pacientes", "Index", "Tb_Paciente")</li>
                 </ul>
             </div>
         </div>
@@ -34,7 +36,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year - Hunde Copyright</p>
         </footer>
     </div>
 
