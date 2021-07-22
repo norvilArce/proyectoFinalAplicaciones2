@@ -14,6 +14,12 @@ namespace WCF_Hunde
     
     public partial class Tb_Paciente
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Tb_Paciente()
+        {
+            this.Tb_Consulta = new HashSet<Tb_Consulta>();
+        }
+    
         public string cod_pac { get; set; }
         public string nom_pac { get; set; }
         public Nullable<int> cod_raza { get; set; }
@@ -29,5 +35,7 @@ namespace WCF_Hunde
     
         public virtual Tb_Color Tb_Color { get; set; }
         public virtual Tb_Raza Tb_Raza { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tb_Consulta> Tb_Consulta { get; set; }
     }
 }

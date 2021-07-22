@@ -44,6 +44,8 @@ namespace WCF_Hunde
         public virtual DbSet<vw_Consultas> vw_Consultas { get; set; }
         public virtual DbSet<vw_DetallesPaciente> vw_DetallesPaciente { get; set; }
         public virtual DbSet<vw_ConsultaDetallada> vw_ConsultaDetallada { get; set; }
+        public virtual DbSet<Tb_Consulta> Tb_Consulta { get; set; }
+        public virtual DbSet<Tb_Detalle_Consulta> Tb_Detalle_Consulta { get; set; }
     
         public virtual int usp_ActualizarCliente(string vnom_cliente, string vape_cli, string vdir_cli, string vcel_cli, string vemail_cli, Nullable<int> ves_dueno, string vid_ubigeo, string vdni_cli, string vusu_ult_mod, Nullable<int> vestado_cli, string vcod_cli)
         {

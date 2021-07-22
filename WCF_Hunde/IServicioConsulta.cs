@@ -72,6 +72,8 @@ namespace WCF_Hunde
         private String mvaractividad;
         private String mvarobservaciones;
         private Int16 mvarestado;
+        private Int16 mvarcod_tratamiento;
+        private Int16 mvarcod_medicina;
 
         [DataMember]
         public Int16 cod_cita
@@ -195,6 +197,18 @@ namespace WCF_Hunde
         {
             get { return mvarestado; }
             set { mvarestado = value; }
+        }
+        [DataMember]
+        public Int16 cod_tratamiento
+        {
+            get { return mvarcod_tratamiento; }
+            set { mvarcod_tratamiento = value; }
+        }
+        [DataMember]
+        public Int16 cod_medicina
+        {
+            get { return mvarcod_medicina; }
+            set { mvarcod_medicina = value; }
         }
 
     }

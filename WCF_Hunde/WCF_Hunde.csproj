@@ -107,6 +107,12 @@
     <Compile Include="Tb_Color.cs">
       <DependentUpon>HundeDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Tb_Consulta.cs">
+      <DependentUpon>HundeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tb_Detalle_Consulta.cs">
+      <DependentUpon>HundeDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Tb_Empleado.cs">
       <DependentUpon>HundeDB.tt</DependentUpon>
     </Compile>

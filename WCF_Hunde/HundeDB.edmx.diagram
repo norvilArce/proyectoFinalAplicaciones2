@@ -32,6 +32,15 @@
         <AssociationConnector Association="HundeDBModel.FK_Proveedor_Ubigeo" ManuallyRouted="false" />
         <AssociationConnector Association="HundeDBModel.FK_TIPO_RAZA" ManuallyRouted="false" />
         <EntityTypeShape EntityType="HundeDBModel.vw_ConsultaDetallada" Width="1.5" PointX="13.375" PointY="10.75" />
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Consulta" Width="1.5" PointX="15.5" PointY="6.125" />
+        <EntityTypeShape EntityType="HundeDBModel.Tb_Detalle_Consulta" Width="1.5" PointX="17.75" PointY="3.625" />
+        <AssociationConnector Association="HundeDBModel.FK_Consulta_cita" />
+        <AssociationConnector Association="HundeDBModel.FK__Tb_Consul__cod_e__47DBAE45" />
+        <AssociationConnector Association="HundeDBModel.FK__Tb_Consul__cod_p__46E78A0C" />
+        <AssociationConnector Association="HundeDBModel.FK_Detalle_Consulta" />
+        <AssociationConnector Association="HundeDBModel.FK__Tb_Detall__cod_e__4CA06362" />
+        <AssociationConnector Association="HundeDBModel.FK__Tb_Detall__cod_m__4D94879B" />
+        <AssociationConnector Association="HundeDBModel.FK__Tb_Detall__cod_t__4BAC3F29" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
