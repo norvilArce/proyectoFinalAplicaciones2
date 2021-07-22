@@ -1,0 +1,29 @@
+<publishData>
+  <publishTarget publishUrl="http://localhost/WCF_Hunde">
+    <file relUrl="Web.config" publishTime="07/21/2021 22:53:52" />
+    <file relUrl="bin/EntityFramework.dll" publishTime="10/23/2017 13:15:18" />
+    <file relUrl="WCF_Hunde.ServicioEmpleado.svc" publishTime="07/22/2021 03:03:46" />
+    <file relUrl="WCF_Hunde.Service1.svc" publishTime="07/22/2021 03:03:46" />
+    <file relUrl="WCF_Hunde.ServicioPaciente.svc" publishTime="07/22/2021 03:03:46" />
+    <file relUrl="WCF_Hunde.ServicioMedicina.svc" publishTime="07/22/2021 03:03:46" />
+    <file relUrl="WCF_Hunde.ServicioUbigeo.svc" publishTime="07/22/2021 03:03:46" />
+    <file relUrl="HundeDB.Context.tt" publishTime="07/21/2021 22:53:53" />
+    <file relUrl="WCF_Hunde.ServicioProveedor.svc" publishTime="07/22/2021 03:03:46" />
+    <file relUrl="bin/EntityFramework.xml" publishTime="10/23/2017 13:15:20" />
+    <file relUrl="WCF_Hunde.ServicioTratamiento.svc" publishTime="07/22/2021 03:03:46" />
+    <file relUrl="WCF_Hunde.ServicioRol.svc" publishTime="07/22/2021 03:03:46" />
+    <file relUrl="bin/EntityFramework.SqlServer.dll" publishTime="10/23/2017 13:15:20" />
+    <file relUrl="WCF_Hunde.ServicioColor.svc" publishTime="07/22/2021 03:03:46" />
+    <file relUrl="WCF_Hunde.ServicioTipoPaciente.svc" publishTime="07/22/2021 03:03:46" />
+    <file relUrl="WCF_Hunde.ServicioEstado.svc" publishTime="07/22/2021 03:03:46" />
+    <file relUrl="WCF_Hunde.ServicioCliente.svc" publishTime="07/22/2021 03:03:46" />
+    <file relUrl="bin/WCF_Hunde.dll" publishTime="07/22/2021 03:03:41" />
+    <file relUrl="bin/EntityFramework.SqlServer.xml" publishTime="10/23/2017 13:15:20" />
+    <file relUrl="bin/WCF_Hunde.dll.config" publishTime="07/21/2021 22:53:52" />
+    <file relUrl="WCF_Hunde.ServicioRaza.svc" publishTime="07/22/2021 03:03:46" />
+    <file relUrl="WCF_Hunde.ServicioConsulta.svc" publishTime="07/22/2021 03:03:46" />
+    <file relUrl="HundeDB.tt" publishTime="07/21/2021 22:53:53" />
+    <file relUrl="WCF_Hunde.ServicioUsuario.svc" publishTime="07/22/2021 03:03:46" />
+    <file relUrl="bin/WCF_Hunde.pdb" publishTime="07/22/2021 03:03:41" />
+  </publishTarget>
+</publishData>

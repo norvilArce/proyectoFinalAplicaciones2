@@ -27,6 +27,7 @@ namespace WCF_Hunde
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Tb_Cita> Tb_Cita { get; set; }
         public virtual DbSet<Tb_Cliente> Tb_Cliente { get; set; }
         public virtual DbSet<Tb_Color> Tb_Color { get; set; }
         public virtual DbSet<Tb_Empleado> Tb_Empleado { get; set; }
@@ -42,6 +43,7 @@ namespace WCF_Hunde
         public virtual DbSet<Tb_Usuario> Tb_Usuario { get; set; }
         public virtual DbSet<vw_Consultas> vw_Consultas { get; set; }
         public virtual DbSet<vw_DetallesPaciente> vw_DetallesPaciente { get; set; }
+        public virtual DbSet<vw_ConsultaDetallada> vw_ConsultaDetallada { get; set; }
     
         public virtual int usp_ActualizarCliente(string vnom_cliente, string vape_cli, string vdir_cli, string vcel_cli, string vemail_cli, Nullable<int> ves_dueno, string vid_ubigeo, string vdni_cli, string vusu_ult_mod, Nullable<int> vestado_cli, string vcod_cli)
         {
@@ -537,6 +539,15 @@ namespace WCF_Hunde
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ListarEmpleado_Result>("usp_ListarEmpleado");
         }
     
+        public virtual ObjectResult<usp_ListarMedicinasPorProveedor_Result> usp_ListarMedicinasPorProveedor(string vcod_prov)
+        {
+            var vcod_provParameter = vcod_prov != null ?
+                new ObjectParameter("vcod_prov", vcod_prov) :
+                new ObjectParameter("vcod_prov", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ListarMedicinasPorProveedor_Result>("usp_ListarMedicinasPorProveedor", vcod_provParameter);
+        }
+    
         public virtual ObjectResult<usp_ListarPacientePorTratamiento_Result> usp_ListarPacientePorTratamiento(Nullable<int> vcod_trat)
         {
             var vcod_tratParameter = vcod_trat.HasValue ?
@@ -546,22 +557,30 @@ namespace WCF_Hunde
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ListarPacientePorTratamiento_Result>("usp_ListarPacientePorTratamiento", vcod_tratParameter);
         }
     
-        public virtual ObjectResult<usp_ListarPacientesPorRaza_Result> usp_ListarPacientesPorRaza(Nullable<int> vcod_raza)
+        public virtual ObjectResult<usp_PacientesPorRaza_Result> usp_PacientesPorRaza(Nullable<int> vcod_raza)
         {
             var vcod_razaParameter = vcod_raza.HasValue ?
                 new ObjectParameter("vcod_raza", vcod_raza) :
                 new ObjectParameter("vcod_raza", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ListarPacientesPorRaza_Result>("usp_ListarPacientesPorRaza", vcod_razaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_PacientesPorRaza_Result>("usp_PacientesPorRaza", vcod_razaParameter);
         }
     
-        public virtual ObjectResult<usp_MedicinasPorProveedor_Result> usp_MedicinasPorProveedor(string vcod_prov)
+        public virtual int usp_ReservarCita(Nullable<System.DateTime> vfec_cita, Nullable<System.TimeSpan> vhor_cita, string vcod_cli)
         {
-            var vcod_provParameter = vcod_prov != null ?
-                new ObjectParameter("vcod_prov", vcod_prov) :
-                new ObjectParameter("vcod_prov", typeof(string));
+            var vfec_citaParameter = vfec_cita.HasValue ?
+                new ObjectParameter("vfec_cita", vfec_cita) :
+                new ObjectParameter("vfec_cita", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_MedicinasPorProveedor_Result>("usp_MedicinasPorProveedor", vcod_provParameter);
+            var vhor_citaParameter = vhor_cita.HasValue ?
+                new ObjectParameter("vhor_cita", vhor_cita) :
+                new ObjectParameter("vhor_cita", typeof(System.TimeSpan));
+    
+            var vcod_cliParameter = vcod_cli != null ?
+                new ObjectParameter("vcod_cli", vcod_cli) :
+                new ObjectParameter("vcod_cli", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_ReservarCita", vfec_citaParameter, vhor_citaParameter, vcod_cliParameter);
         }
     
         public virtual ObjectResult<usp_Ubigeo_DistritosProvinciaDepartamento_Result> usp_Ubigeo_DistritosProvinciaDepartamento(string idDepa, string idProv)
@@ -589,41 +608,6 @@ namespace WCF_Hunde
         public virtual ObjectResult<usp_UbigeoDepartamentos_Result> usp_UbigeoDepartamentos()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_UbigeoDepartamentos_Result>("usp_UbigeoDepartamentos");
-        }
-    
-        public virtual int usp_ReservarCita(Nullable<System.DateTime> vfec_cita, Nullable<System.TimeSpan> vhor_cita, string vcod_cli)
-        {
-            var vfec_citaParameter = vfec_cita.HasValue ?
-                new ObjectParameter("vfec_cita", vfec_cita) :
-                new ObjectParameter("vfec_cita", typeof(System.DateTime));
-    
-            var vhor_citaParameter = vhor_cita.HasValue ?
-                new ObjectParameter("vhor_cita", vhor_cita) :
-                new ObjectParameter("vhor_cita", typeof(System.TimeSpan));
-    
-            var vcod_cliParameter = vcod_cli != null ?
-                new ObjectParameter("vcod_cli", vcod_cli) :
-                new ObjectParameter("vcod_cli", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_ReservarCita", vfec_citaParameter, vhor_citaParameter, vcod_cliParameter);
-        }
-    
-        public virtual ObjectResult<usp_ListarMedicinasPorProveedor_Result> usp_ListarMedicinasPorProveedor(string vcod_prov)
-        {
-            var vcod_provParameter = vcod_prov != null ?
-                new ObjectParameter("vcod_prov", vcod_prov) :
-                new ObjectParameter("vcod_prov", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ListarMedicinasPorProveedor_Result>("usp_ListarMedicinasPorProveedor", vcod_provParameter);
-        }
-    
-        public virtual ObjectResult<usp_PacientesPorRaza_Result> usp_PacientesPorRaza(Nullable<int> vcod_raza)
-        {
-            var vcod_razaParameter = vcod_raza.HasValue ?
-                new ObjectParameter("vcod_raza", vcod_raza) :
-                new ObjectParameter("vcod_raza", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_PacientesPorRaza_Result>("usp_PacientesPorRaza", vcod_razaParameter);
         }
     }
 }

@@ -14,6 +14,7 @@ namespace WCF_Hunde
     public partial class usp_ConsultasPorMedicoEntreFechas_Result
     {
         public int cod_cita { get; set; }
+        public int cod_cons { get; set; }
         public System.DateTime fecha { get; set; }
         public System.TimeSpan hora { get; set; }
         public string cod_emp { get; set; }
@@ -25,6 +26,7 @@ namespace WCF_Hunde
         public string color { get; set; }
         public string cod_cli { get; set; }
         public string lo_trajo { get; set; }
+        public int est_cons { get; set; }
         public string conducta { get; set; }
         public string est_nutricional { get; set; }
         public string actividad { get; set; }

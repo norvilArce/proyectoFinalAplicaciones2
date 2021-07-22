@@ -14,6 +14,12 @@ namespace WCF_Hunde
     
     public partial class Tb_Cliente
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Tb_Cliente()
+        {
+            this.Tb_Cita = new HashSet<Tb_Cita>();
+        }
+    
         public string cod_cli { get; set; }
         public string nom_cliente { get; set; }
         public string ape_cliente { get; set; }
@@ -29,6 +35,8 @@ namespace WCF_Hunde
         public Nullable<System.DateTime> fecha_ult_modificacion_cli { get; set; }
         public Nullable<int> estado_cli { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tb_Cita> Tb_Cita { get; set; }
         public virtual Tb_Ubigeo Tb_Ubigeo { get; set; }
     }
 }
